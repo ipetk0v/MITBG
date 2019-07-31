@@ -1,0 +1,65 @@
+﻿@using Nop.Core
+@using Nop.Services.Configuration
+
+
+@inject IStoreContext storeContext
+@inject ISettingService settingService
+@{
+    bool stickyCategoryMenuFlyout = true;
+    bool showCategoriesInSideMenu = true;
+}
+<div class="header">
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderBefore })
+    <div class="header-upper">
+        <div class="header-selectors-wrapper">
+            @await Component.InvokeAsync("TaxTypeSelector")
+            @await Component.InvokeAsync("CurrencySelector")
+            @await Component.InvokeAsync("LanguageSelector")
+            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderSelectors })
+        </div>
+    </div>
+    <div class="header-lower">
+        <div class="header-logo">
+            @await Component.InvokeAsync("Logo")
+        </div>
+        <div class="search-box store-search-box">
+            <div class="close-side-menu">
+                <span class="close-side-menu-text">@T("Search.SearchBox.Tooltip")</span>
+                <span class="close-side-menu-btn">@T("SevenSpikes.Themes.Common.CloseMenu")</span>
+            </div>
+            @await Component.InvokeAsync("SearchBox")
+        </div>
+
+        <div class="header-links-wrapper">
+            @await Component.InvokeAsync("HeaderLinks")
+        </div>
+    </div>
+    <div class="header-menu-parent">
+        <div class="header-menu @if (showCategoriesInSideMenu){<text>categories-in-side-panel</text>}">
+            @if (showCategoriesInSideMenu)
+		    {
+		        <div class="category-navigation-list-wrapper">
+			        <span class="category-navigation-title">@T("SevenSpikes.Themes.Emporium.Header.AllCategories")</span>
+		            <ul class="category-navigation-list @if (stickyCategoryMenuFlyout){<text>sticky-flyout</text>}"></ul>
+		        </div>
+		    }
+		    <div class="close-menu">
+		    	<span class="close-menu-text">@T("SevenSpikes.Themes.Common.MenuTitle")</span>
+		        <span class="close-menu-btn">@T("SevenSpikes.Themes.Common.CloseMenu")</span>
+		    </div>
+            @{
+                var menuHtml = await Component.InvokeAsync("Widget", new { widgetZone = "theme_header_menu" });
+            }
+            @if (!String.IsNullOrEmpty(menuHtml.ToHtmlString()))
+            {
+                @menuHtml
+            }
+            else
+            {
+                @await Component.InvokeAsync("TopMenu")
+            }
+		    <div class="mobile-menu-items"></div>
+        </div>
+    </div>
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderAfter })
+</div>

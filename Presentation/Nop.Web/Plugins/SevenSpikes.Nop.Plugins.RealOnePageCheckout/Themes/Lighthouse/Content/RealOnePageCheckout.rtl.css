@@ -1,0 +1,63 @@
+
+.ropc .section .title {
+	background-position: left center;
+}
+.ropc .shipping-results strong {
+	margin: 0 0 0 3px;
+}
+.ropc .use-reward-points {
+	text-align: right;
+}
+.ropc .payment-info td {
+	text-align: right !important;
+}
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"] {
+	float: right;
+}
+.ropc .coupon-box-panel .coupon-code button,
+.ropc .giftcard-box-panel .coupon-code button {
+	float: right;
+	margin: 0 -2px 0 0;
+}
+.ropc .total-info td {
+	text-align: right;
+}
+.ropc .total-info button {
+	margin: -2px 0 0 -4px;
+}
+
+
+@media all and (max-width: 1024px) {
+
+.ropc .cart tr {
+	float: right;
+}	
+}
+
+@media all and (min-width: 769px) {
+	
+.ropc .pickup-in-store .section-body {
+	text-align: right;
+}	
+}
+
+@media all and (min-width: 1025px) {
+	
+.ropc .coupon-box-panel,
+.ropc .giftcard-box-panel {
+	float: left;
+}
+.ropc .order-totals-panel {
+	margin: 0 auto 20px 0;
+}
+.ropc .order-confirm,
+.ropc .terms-of-service,
+.ropc .complete-button,
+.ropc .addon-buttons {
+	margin-right: auto;
+	margin-left: 0;
+	text-align: left;
+}
+	
+}

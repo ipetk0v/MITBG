@@ -1,0 +1,79 @@
+.panel-loader-effect .loader-line-mask {
+    -webkit-transform-origin: 0 60px;
+    -moz-transform-origin: 0 60px;
+    -o-transform-origin: 0 60px;
+    -ms-transform-origin: 0 60px;
+    transform-origin: 0 60px;
+    margin-left: 0px;
+}
+
+.ropc-page .shipping-results {
+    text-align: right;
+}
+.ropc-page .options.ship-to-same-address {
+    text-align: right;
+}
+.ropc-page .shipping-method .method-list,
+.ropc-page .payment-method .method-list {
+	text-align: right;
+}
+.ropc-page .payment-info .info p {
+	text-align: right;
+}
+.ropc-page .attribute-list .attribute-item {
+    text-align: right;
+}
+.ropc-page .coupon-box-panel .current-code button,
+.ropc-page .total-info .cart-total button {
+    margin-left: unset;
+    margin-right: 3px;
+}
+
+@media all and (min-width: 401px) and (max-width: 1365px) {
+    .ropc-page .cart td.remove-from-cart,
+    .ropc-page .cart td.sku {
+        float: right;
+    }
+    .ropc-page .cart td.sku {
+        border-left: unset !important;
+        border-right: 1px solid #ececec !important;
+    }
+}
+
+@media all and (min-width: 481px) and (max-width: 1365px) {
+    
+    .ropc-page .cart td.unit-price {
+        float: right;
+    }
+    .ropc-page .cart td.quantity {
+        float: right;
+        border-left: unset !important;
+        border-right: 1px solid #ececec !important;
+    }
+}
+
+@media all and (min-width: 1001px) and (max-width: 1365px), (min-width: 1600px) {
+    .ropc-page .coupon-code input[type="text"] {
+        float: right;
+    }
+    .ropc-page .coupon-code button {
+        float: left;
+    }
+}
+
+@media all and (min-width: 1366px) {
+    .desktop .ropc-page .cart .details {
+        margin-left: unset;
+        margin-right: 10px;
+        text-align: right;
+    }
+    .desktop .ropc-page .ropc .coupon-box-panel {
+        float: right;
+    }
+    .desktop .ropc-page .ropc .giftcard-box-panel {
+        float: left;
+    }
+    .ropc-page .totals {
+        float: left;
+    }
+}

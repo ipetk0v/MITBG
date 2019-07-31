@@ -1,0 +1,90 @@
+
+.ropc .section-title {
+	background-position: left center;
+	text-align: right;
+}
+.ropc .section-title strong {
+	padding: 0 16px 0 0;
+}
+.ropc .section-title strong:before {
+	right: 0;
+	left: auto;
+}
+.ropc .inputs label {
+	padding: 0 0 0 10px;
+	text-align: left;
+}
+.ropc .payment-logo {
+	margin: 0 0 0 10px;
+}
+.ropc .checkout-attributes {
+	text-align: right;
+}
+.ropc .attribute-values li {
+	text-align: right;
+}
+.ropc .cart-total-right {
+	text-align: left;
+}
+.ropc .total-info button {
+	margin: -2px 3px 0 -3px;
+}
+.ropc .error-list {
+	text-align: left;
+}
+
+@media all and (min-width:769px) {
+	
+.ropc .estimate-shipping .buttons {
+	text-align: left !important;
+}
+.ropc .attribute-list > li {
+	border-right: none;
+	border-left: 1px solid #c9c9c9;
+}
+.ropc .coupon-box,
+.ropc .giftcard-box {
+	text-align: right;
+}
+.order-totals-panel {
+	margin: 0 auto 20px 0 !important;
+}
+.ropc .terms-of-service,
+.ropc .complete-button {
+	text-align: left !important;
+}
+
+.ropc .addon-buttons > * {
+    margin: 0 5px 5px 0;
+}
+
+}
+
+@media all and (min-width:1025px) {
+	
+.ropc .panel-group-right-top,
+.ropc .panel-group-right-middle,
+.ropc .panel-group-right-bottom {
+	float: left;
+}
+.ropc .buttons {
+	text-align: left !important;
+}
+.ropc .payment-method ul {
+	float: right;
+}
+.ropc .payment-info {
+	float: left;
+}
+.order-summary-panel .cart th:first-child,
+.order-summary-panel .cart td:first-child {
+	border-right: none;
+}
+.order-summary-panel .cart th:last-child,
+.order-summary-panel .cart td:last-child {
+	border-left: none;
+}
+
+
+
+}

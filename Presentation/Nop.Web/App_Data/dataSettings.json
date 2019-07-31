@@ -1,0 +1,5 @@
+﻿{
+  "DataProvider": "sqlserver",
+  "DataConnectionString": "Data Source=NTPC-KGEORGIEV\\MSSQLSERVER01;Initial Catalog=MIT;Integrated Security=True;Persist Security Info=False",
+  "RawDataSettings": {}
+}

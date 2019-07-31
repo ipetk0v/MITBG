@@ -1,0 +1,37 @@
+﻿@model RealOnePageCheckoutSettingsModel
+
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="AjaxUpdateShippingMethodsOnAddressFieldsUpdate_OverrideForStore" asp-input="AjaxUpdateShippingMethodsOnAddressFieldsUpdate" asp-store-scope="Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="AjaxUpdateShippingMethodsOnAddressFieldsUpdate" />
+                </div>
+                <div class="col-md-9">
+                    <select id="@Html.IdFor(model => model.AjaxUpdateShippingMethodsOnAddressFieldsUpdate)" name="@Html.IdFor(model => model.AjaxUpdateShippingMethodsOnAddressFieldsUpdate)" multiple="multiple" data-placeholder="@T("SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateShippingMethodsOnAddressFieldsUpdate.SelectFields")">
+                        
+                        @foreach (string addressField in Model.AvailableAddressFields)
+                        {
+                            bool isSelected = Model.AjaxUpdateShippingMethodsOnAddressFieldsUpdate.Contains(addressField);
+
+                            <!option @Html.Raw(isSelected ? "selected='selected'" : string.Empty)>@addressField</!option>
+                        }
+                    </select>
+                    <span asp-validation-for="AjaxUpdateShippingMethodsOnAddressFieldsUpdate"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="AjaxUpdateShippingMethodsOnCartUpdate_OverrideForStore" asp-input="AjaxUpdateShippingMethodsOnCartUpdate" asp-store-scope="Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="AjaxUpdateShippingMethodsOnCartUpdate" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="AjaxUpdateShippingMethodsOnCartUpdate" />
+                    <span asp-validation-for="AjaxUpdateShippingMethodsOnCartUpdate"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

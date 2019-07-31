@@ -1,0 +1,57 @@
+﻿@using Nop.Plugin.Shipping.Speedy.Models
+@using Nop.Web.Framework.UI
+@model bool
+
+@{
+    if (Model)
+    {
+        <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/css/bootstrap.min.css")" />
+        <script src="@Url.Content("~/Plugins/Shipping.Speedy/Scripts/jquery.blockUI.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Plugins/Shipping.Speedy/Scripts/SpeedyForm.js")" type="text/javascript"></script>
+    }
+    else
+    {
+        Html.AddCssFileParts("~/lib/bootstrap/css/bootstrap.min.css");
+        Html.AddScriptParts(ResourceLocation.Footer, "~/Plugins/Shipping.Speedy/Scripts/jquery.blockUI.js");
+        Html.AddScriptParts(ResourceLocation.Footer, "~/Plugins/Shipping.Speedy/Scripts/SpeedyForm.js");
+    }
+
+}
+
+<div id="speedy_form" style="display: block; width: auto; border: 1px solid gray; margin: 20px -15px; padding: 15px;">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-horizontal" id="speedyForm">
+                <div class="form-group">
+                    <label for="inputCity" class="col-sm-2 control-label">@T("Speedy.AddressForm.City")</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="js_siteInpit" style="width: 100%;" />
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div id="addressForm">
+
+                    <div id="changableForm">
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    (function() {
+        var resources = {};
+        resources["Speedy.AddressForm.LoadingFormData"] = "@T("Speedy.AddressForm.LoadingFormData")";
+        resources.T = function(key) {
+            return resources[key];
+        }
+        window.SpeedyResources = resources;
+    }());
+</script>

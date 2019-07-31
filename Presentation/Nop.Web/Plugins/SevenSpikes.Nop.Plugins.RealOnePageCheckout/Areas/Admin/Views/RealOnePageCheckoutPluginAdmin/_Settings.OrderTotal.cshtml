@@ -1,0 +1,47 @@
+﻿@model RealOnePageCheckoutSettingsModel
+
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="AjaxUpdateOrderTotalOnPaymentMethodsUpdate_OverrideForStore" asp-input="AjaxUpdateOrderTotalOnPaymentMethodsUpdate" asp-store-scope="Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="AjaxUpdateOrderTotalOnPaymentMethodsUpdate" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="AjaxUpdateOrderTotalOnPaymentMethodsUpdate" />
+                    <span asp-validation-for="AjaxUpdateOrderTotalOnPaymentMethodsUpdate"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="AjaxUpdateOrderTotalOnShippingMethodsUpdate_OverrideForStore" asp-input="AjaxUpdateOrderTotalOnShippingMethodsUpdate" asp-store-scope="Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="AjaxUpdateOrderTotalOnShippingMethodsUpdate" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="AjaxUpdateOrderTotalOnShippingMethodsUpdate" />
+                    <span asp-validation-for="AjaxUpdateOrderTotalOnShippingMethodsUpdate"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange_OverrideForStore" asp-input="AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange" asp-store-scope="Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange" />
+                </div>
+                <div class="col-md-9">
+                    <select id="@Html.IdFor(model => model.AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange)" name="@Html.IdFor(model => model.AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange)" multiple="multiple" data-placeholder="@T("SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange.SelectFields")">
+                        
+                        @foreach (string addressField in Model.AvailableAddressFields)
+                        {
+                            bool isSelected = Model.AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange.Contains(addressField);
+
+                            <!option @Html.Raw(isSelected ? "selected='selected'" : string.Empty)>@addressField</!option>
+                        }
+                    </select>
+                    <span asp-validation-for="AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

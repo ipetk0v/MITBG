@@ -1,0 +1,48 @@
+
+.method-name,
+.payment-info td,
+.cart-total {
+	text-align: right;
+}
+.coupon-box button,
+.giftcard-box button {
+	padding: 10px 40px 10px 15px;
+	margin: 0 -35px 5px 0;
+}
+.current-code button{
+	margin: 0 5px 0 0 !important;
+}
+.cart-total button{
+	margin: 0 0 0 -17px !important;
+}
+
+@media all and (min-width: 1025px) {
+	
+.checkout-page .selected-checkout-attributes,
+.checkout-page .checkout-attributes {
+	text-align: right;
+}
+.attribute-values li {
+	margin: 0 0 0 10px;
+}
+.coupon-box button,
+.giftcard-box button {
+	padding: 10px 45px 10px 15px;
+}
+.order-totals-panel {
+	margin: 50px auto 20px 0 !important;
+}
+.terms-of-service,
+.complete-button,
+.error-list {
+	text-align: left;
+}
+
+.ropc .addon-buttons {
+    text-align: left;
+}
+
+.ropc .addon-buttons > * {
+    margin: 0 5px 5px 0;
+}
+}

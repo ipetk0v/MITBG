@@ -1,0 +1,128 @@
+﻿
+
+/* quick view button */
+
+.quick-view-button:only-child a:before {
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+/********* SCREEN OVERLAY & DATA LOADER *********/
+
+
+
+.k-overlay {
+    right: 0;
+    left: auto;
+}
+
+
+/********** PRODUCT OVERVIEW *********/
+
+.quickViewWindow .links-panel a:after {
+    content: "\6b";
+}
+    .quickView .k-window-titlebar.k-header .k-window-actions {
+    left: 25px;
+    right: auto;
+}
+
+
+/* transitional image (on thumbnail click) */
+
+.quickViewWindow .gallery {
+    float: right;
+}
+
+  
+
+.quickViewWindow .gallery .thumbnails a,
+.quickViewWindow .gallery .thumbnails > img {
+    float: right;
+    margin: 0 5px 5px 0;
+}
+
+.quickViewWindow .gallery .thumbnails a:nth-child(4n+1),
+.quickViewWindow .gallery .thumbnails > img:nth-child(4n+1) {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.quickViewWindow .links-panel a:after {
+    margin-right: 10px;
+    margin-left: auto;
+}
+
+
+.quickViewWindow .overview {
+    margin: 0 43% 0 0;
+}
+
+.quickViewWindow #accordion > h3 span {
+    right: 20px;
+    left: auto;
+}
+
+.quickViewWindow .overview .add-to-wishlist {
+    margin-right: 5px;
+    margin-left: auto;
+}
+
+.quickViewWindow .overview .short-description,
+.quickViewWindow .overview .full-description {
+    text-align: right;
+}
+
+
+/* variants */
+
+.quickViewWindow .product-variant-list {
+    text-align: right;
+}
+
+.quickViewWindow .product-variant {
+    float: right;
+}
+
+.quickViewWindow .variant-info {
+    text-align: right;
+}
+
+.quickViewWindow .product-variant .tax-shipping-info {
+    margin-right: 5px;
+    margin-left: auto;
+    text-align: right;
+}
+
+.quickViewWindow .product-variant .tax-shipping-info a {
+    display: inline-block;
+}
+
+
+
+/* related/also-purchased products */
+
+
+.quickViewWindow .product-grid .item-box {
+    border-right: 0;
+    border-left: 1px solid #eee;
+    border-radius: 3px 0 0 3px;
+}
+
+.quickViewWindow .product-grid .item-box:nth-child(2n+1) {
+    border-right: 1px solid #eee;
+    margin-left: -1px;
+    border-radius: 0 3px 3px 0;
+}
+
+.quickViewWindow .product-grid .item-box .details {
+    text-align: right;
+}
+
+
+/* gift card */
+
+
+.quickView .giftcard label {
+    text-align: right;
+}

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SupportedWidgetZones>
+  <WidgetZone>footer_top</WidgetZone>
+  <WidgetZone>productdetails_related_carosuel</WidgetZone>
+  <WidgetZone>productdetails_purchased_carosuel</WidgetZone>
+</SupportedWidgetZones>

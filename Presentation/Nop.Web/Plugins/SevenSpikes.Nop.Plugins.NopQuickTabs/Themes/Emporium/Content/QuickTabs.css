@@ -1,0 +1,88 @@
+/* GLOBAL STYLES */
+
+
+/* hiding specific for the theme content and showing it only in the tabs */
+
+
+.product-details-page .ui-tabs .product-no-reviews,
+.product-details-page .ui-tabs .product-review-links {
+    display: block;
+}
+
+
+.ui-tabs .write-review {
+    max-width: 600px;
+    margin: 0 auto 50px;
+}
+
+.ui-tabs .product-review-item {
+    overflow: hidden;
+}
+
+.ui-tabs .product-review-links {
+    font-size: 16px;
+    color: #8c8c8c;
+    font-weight: 700;
+}
+
+.ui-tabs .submitReviewResult {
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #97c300;
+}
+
+.ui-tabs .product-review-list {
+    border: 0;
+}
+
+
+/* TABS STYLES */
+
+.productTabs {
+    margin: 0;
+}
+
+.productTabs.ui-tabs .ui-tabs-panel {
+    padding: 30px 20px;
+    margin: 0 -10px;
+}
+
+.productTabs .full-description,
+.productTabs .product-specs-box {
+    margin: 0;
+    padding: 0;
+}
+
+.productTabs .write-review-collapse {
+    border: none;
+}
+
+@media all and (max-width: 767px) {
+    .productTabs.ui-tabs .ui-tabs-nav li {
+        display: block;
+        margin: 0;
+        text-align: center;
+    }
+    .ui-tabs .full-description,
+    .ui-tabs .product-specs-box {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media all and (min-width:768px) {
+    .productTabs.ui-tabs .ui-tabs-panel {
+        margin: 0 -20px;
+    }
+}
+
+
+
+@media (min-width: 1281px) {
+    .productTabs.ui-tabs .ui-tabs-panel {
+        margin: 0 -6vw;
+        padding: 40px 22%;
+    }
+
+
+}

@@ -1,0 +1,58 @@
+
+.ropc .method-list {
+	text-align: right;
+}
+.ropc .payment-method .method-name img {
+	margin: 0 0 0 10px;
+}
+.ropc .current-code button {
+	margin: 0 5px 0 0;
+}
+.ropc .order-totals-panel {
+	text-align: left;
+}
+.ropc .cart-total button {
+	margin: 0 5px 0 -5px;
+}
+
+
+@media all and (min-width:769px) {
+	
+.ropc .use-reward-points {
+	text-align: right;
+}
+.ropc .payment-info .info {
+	text-align: right;
+}
+}
+
+@media all and (min-width:1025px) {
+	
+.ropc .coupon-code button {
+	margin: 10px -22px 0 0;
+}
+}
+
+@media all and (min-width:1281px) {
+	
+.ropc .coupon-code button {
+	margin: 10px -22px 0 0;
+}
+.ropc .order-totals-panel {
+	margin: 0 auto 20px 0;
+}
+.ropc .error-list,
+.ropc .terms-of-service,
+.ropc .complete-button {
+	text-align: left;
+}
+
+.ropc .addon-buttons {
+    text-align: left;
+}
+
+.ropc .addon-buttons > * {
+     margin: 0 5px 5px 0;
+}
+
+}

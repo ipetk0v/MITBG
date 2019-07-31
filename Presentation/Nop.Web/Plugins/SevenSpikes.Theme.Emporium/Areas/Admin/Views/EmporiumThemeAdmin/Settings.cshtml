@@ -1,0 +1,66 @@
+﻿@model EmporiumThemeSettingsModel
+
+@{
+    Layout = AdminViewLocations.AdminLayoutViewPath;
+
+    Html.AppendCssFileParts("~/Plugins/SevenSpikes.Core/Areas/Admin/Content/Styles/adminstyles.css");
+    Html.AddCssFileParts("~/Plugins/SevenSpikes.Theme.Emporium/Areas/Admin/Content/Styles/admin.css");
+
+    Html.AddScriptParts("~/Plugins/SevenSpikes.Core/Areas/Admin/Content/Scripts/custom.presets.min.js");
+    Html.AddScriptParts("~/Plugins/SevenSpikes.Theme.Emporium/Areas/Admin/Content/Scripts/admin.min.js");
+
+    Html.SetActiveMenuItemSystemName("SevenSpikes.Themes.Admin.SettingsSubmenu.Emporium");
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+            $("#@Html.IdFor(model => model.SaleOfTheDayBackgroundImageId_OverrideForStore)").change(saleOfTheDayBackgroundImageChanged);
+
+            $('.store-scope-configuration .checkbox input').change(function () {
+                saleOfTheDayBackgroundImageChanged();
+            });
+
+            saleOfTheDayBackgroundImageChanged();
+        });
+
+    function saleOfTheDayBackgroundImageChanged() {
+        if ($('#@Html.IdFor(model => model.SaleOfTheDayBackgroundImageId_OverrideForStore)').length == 0) {
+            return;
+        }
+
+        if ($('#@Html.IdFor(model => model.SaleOfTheDayBackgroundImageId_OverrideForStore)').is(':checked') == true) {
+            $("#sale-of-the-day-title-image .upload-image-overlay").remove();
+        } else {
+            $('#sale-of-the-day-title-image').append("<div class=\"upload-image-overlay\"></div>");
+        }
+    }
+</script>
+
+<form method="post">
+    <nop-antiforgery-token />
+
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("SevenSpikes.Themes.Emporium.Admin.Settings")
+        </h1>
+        <div class="pull-right">
+            @await Html.PartialAsync(AdminViewLocations.AdminResetDefaultSettingsViewPath, Plugin.FolderName)
+            <button type="submit" name="save" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.Save")
+            </button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="form-horizontal">
+            @await Component.InvokeAsync("StoreScopeConfiguration")
+            <nop-tabs id="emporium-settings-edit" data-logoImageId="#@Html.IdFor(model => model.LogoImageId_OverrideForStore)">
+                <nop-tab asp-name="tab-general-settings" asp-title="@T("SevenSpikes.Themes.Emporium.Admin.TabTitle.GeneralSettings")" asp-default="true">@await Html.PartialAsync("_Settings.General", Model)</nop-tab>
+                <nop-tab asp-name="tab-additional-settings" asp-title="@T("SevenSpikes.Themes.Emporium.Admin.TabTitle.AdditionalSettings")">@await Html.PartialAsync("_Settings.Additional", Model)</nop-tab>
+                <nop-tab asp-name="tab-info-boxes" asp-title="@T("SevenSpikes.Themes.Emporium.Admin.TabTitle.InfoBoxesSettings")">@await Html.PartialAsync("_Settings.InfoBoxes", Model)</nop-tab>
+            </nop-tabs>
+        </div>
+    </div>
+</form>

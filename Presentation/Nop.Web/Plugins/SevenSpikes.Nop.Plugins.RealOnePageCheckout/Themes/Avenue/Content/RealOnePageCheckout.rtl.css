@@ -1,0 +1,80 @@
+
+.ropc .cart .remove-product:before {
+	margin-right: 0;
+	margin-left: 5px;
+}
+.ropc .current-code button,
+.ropc .cart-total button {
+	margin-right: 5px;
+	margin-left: 0;
+}
+.ropc .cart-total-left {
+	text-align: right;
+}
+.ropc .cart-total-right {
+	text-align: left;
+}
+
+
+@media all and (max-width: 1500px) 
+and (min-width: 1025px) {
+
+	.ropc .cart tr {
+		float: right;
+	}
+	.ropc .cart tr:nth-child(even) {
+		margin-right: 2%;
+		margin-left: 0;
+	}
+	.ropc .cart td {
+		text-align: right;
+	}
+}
+
+@media all and (min-width: 769px) {
+
+	.panel-group-right {
+		border-right: 15px solid #fff;
+		border-left: none;
+	}
+	.ropc .method-list li {
+		text-align: right;
+	}
+	.ropc .payment-logo {
+		margin-right: 0;
+		margin-left: 15px;
+	}
+	.ropc .coupon-box-panel .section,
+	.ropc .giftcard-box-panel .section,
+	.ropc .attributes-panel .section {
+		text-align: right;
+	}
+	.ropc .coupon-code button {
+		right: auto;
+		left: 3px;
+	}
+}
+
+@media all and (min-width: 1201px) {
+
+	.panel-group-right {
+		border-right-width: 20px;
+	}
+}
+
+@media all and (min-width: 1501px) {
+
+	.panel-group-right {
+		border-right-width: 30px;
+	}
+}
+
+@media all and (min-width: 1701px) {
+
+	.ropc .panels-left {
+		float: right;
+	}
+	.ropc .panels-right {
+		float: left;
+	}
+}

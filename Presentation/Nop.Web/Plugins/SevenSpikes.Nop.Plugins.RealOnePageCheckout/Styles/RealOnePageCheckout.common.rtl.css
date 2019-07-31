@@ -1,0 +1,25 @@
+﻿* {
+	direction: rtl;
+}
+.panel-loader-effect .spinner > div {
+	float: right;
+}
+
+@media all and (min-width:769px) {
+	
+.ropc .panel-group-left {
+	float: right;
+}
+.ropc .panel-group-right-top,
+.ropc .panel-group-right-middle,
+.ropc .panel-group-right-bottom {
+	float: left;
+}
+.ropc .coupon-box-panel {
+	float: right;
+}
+.ropc .giftcard-box-panel {
+	float: left;
+}
+
+}

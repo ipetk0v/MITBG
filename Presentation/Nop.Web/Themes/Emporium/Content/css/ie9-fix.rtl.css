@@ -1,0 +1,63 @@
+.profile-menu-box,
+.mega-menu .dropdown.fullWidth,
+.category-navigation-list > li .dropdown {
+    display: none;
+}
+
+.profile-menu-box.open,
+.mega-menu .dropdown.active,
+.category-navigation-list > li:hover .dropdown{
+    display: block;
+}
+
+.order-details-page .shipments .data-table,
+.order-details-page .products .data-table,
+.shipment-details-page .data-table,
+.shipment-details-page .data-table tbody,
+.order-details-page .products tbody,
+.order-details-page .shipments tbody,
+.wishlist-page tbody,
+.shopping-cart-page .cart tbody {
+	display: table !important;
+}
+
+.order-details-page .shipments tr,
+.order-details-page .products tr,
+.order-list-page .recurring-payments tr,
+.shipment-details-page .data-table tr,
+.reward-points-history .data-table tr,
+.downloadable-products-page .data-table tr,
+.wishlist-page tr,
+.shopping-cart-page .cart tr {
+	display: table-row !important;
+}
+
+.order-details-page .shipments td,
+.order-details-page .products td,
+.order-list-page .recurring-payments td,
+.shipment-details-page .data-table td,
+.reward-points-history .data-table td,
+.downloadable-products-page .data-table td,
+.wishlist-page td,
+.shopping-cart-page .cart td {
+	display: table-cell !important;
+}
+
+@media all and (min-width: 769px) {
+	.product-selectors select {
+		padding: 0 20px 0 0 !important;
+		min-width: 80px;
+	}
+
+	.styled-select:after {
+		display: none;
+	}
+	.currency-selector.desktop:before, .language-selector.desktop:before {
+		display: none;
+	}
+
+	select {
+		background-image: none !important;
+		padding-left: 0 !important;
+	}
+}

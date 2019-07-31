@@ -1,0 +1,687 @@
+input.ng-invalid.ng-dirty,
+textarea.ng-invalid.ng-dirty, 
+.has-error {
+    border: 1px solid #ff0000 !important;
+}
+.panel-group .panel .section{
+    border:none;
+    margin: 0 !important;
+    padding: 0 !important; 
+}
+.panel-group .section.estimate-shipping{
+    border: none;
+    background: none;
+}
+.panel-group .section.coupon-box,
+.panel-group .section.giftcard-box {
+    background: #f6f6f6;
+    margin-bottom: 15px;
+}
+
+.fieldset .title, .section .title {
+    margin: 0;
+    padding: 10px;
+    font-size:16px;
+    font-weight:normal;
+}
+
+.billing-address-panel .section-body,
+.shipping-address-panel .section-body,
+.estimate-shipping-panel .section-body {
+    background: #f6f6f6;
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 15px;
+}
+.billing-address-panel .form-fields,
+.shipping-address-panel .form-fields {
+    background: none;
+    border: 0;
+    padding: 0;
+}
+.billing-address-panel .inputs label,
+.shipping-address-panel .inputs label{
+    display: inline-block;
+    font-weight: bold;
+    min-width:120px;
+    max-width: 300px;
+    white-space:nowrap;
+}
+.billing-address-panel .inputs input,
+.billing-address-panel .inputs select,
+.shipping-address-panel .inputs select,
+.shipping-address-panel .inputs input{
+    height: 32px;
+    padding: 0 5px;
+    width:300px;
+}
+.estimate-shipping .shipping-options, .shipping-results {
+    background: none;
+    border: none;
+    padding: 0;
+}
+.pickup-in-store{
+    border:none;
+}
+.ropc .panel .estimate-shipping {
+    padding:0 0 15px;
+}
+.ropc .panel .estimate-shipping .section-body{
+    padding:15px;
+}
+.ropc .panel .shipping-options label{
+    width:35%;
+    max-width:300px;
+}
+.ropc .panel .inputs{
+    margin: 0 auto 10px;
+    max-width: 100%;
+    overflow: visible;
+    position: relative;
+    width: 300px;
+}
+.ropc .shipping-options .inputs{
+    max-width:95%;
+    width:300px;
+    margin:0 auto 10px;
+    overflow:visible;
+}
+.ropc .panel .inputs > span{
+    float:none;
+    margin:0;
+}
+.ropc .panel .shipping-options select{
+    width:175px;
+    max-width:100%;
+    float:none;
+}
+.ropc .panel .shipping-options input{
+    max-width:100%;
+    width:300px;
+    line-height:30px;
+    padding:0 5px;
+}
+.estimate-shipping .shipping-options .inputs > span {
+    position: absolute;
+    right: -8px;
+    top:34px;
+}
+.ropc .pickup-points-map {
+    max-width: 100%;
+    margin: 15px auto 0;
+}
+.inputs .required{
+    position:absolute;
+    right:-8px;
+}     
+.panel-group-left .choose-address {
+    margin: 0 0 30px;
+}
+select {
+    max-width: 100%;
+    width:300px;
+    height: 32px;
+}
+.ropc table .quantity select{
+    width:40px;
+    height:36px;
+    border:1px solid #d6d6d6;
+}
+.estimate-shipping .hint {
+    margin: 0 0 10px;
+}
+.inputs span.ng-binding {
+    font-size: 12px;
+    display: block;
+    color: #c00;
+    margin: 5px 0 0;
+}
+.estimate-shipping .buttons {
+    margin: 20px 0 0;
+    text-align:center;
+}
+
+.estimate-shipping button[disabled] {
+    opacity: .5;
+    cursor: default;
+}
+
+.estimate-shipping button[disabled]:hover{
+    background: -moz-linear-gradient(top, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffffff', endColorstr='#00ffffff',GradientType=0 );
+    background-color: #d4d4d4;
+}
+.shipping-results {
+    margin: 15px 0 0;
+    padding:15px;
+    text-align: left;
+}
+
+.shipping-method .section-body,
+.payment-method .section-body,
+.checkout-attributes .section-body {
+    background: #f6f6f6;
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.checkout-page .payment-info td:first-child {
+    width: 100%;
+}
+
+.checkout-page .payment-info .info {
+    padding: 0;
+}
+.shipping-method .method-list,
+.payment-method .method-list {
+    margin: 0;
+    padding:0;
+    background: transparent;
+}
+.shipping-method .method-list li,
+.payment-method .method-list li {
+	margin: 10px 0;
+	display: block;
+	width: auto !important;
+	padding: 0 !important;
+}
+.payment-method .use-reward-points {
+	margin: 0;
+	padding: 10px;
+}
+.payment-method .payment-logo {
+    display: inline-block;
+    padding: 0 !important;
+    margin: 0 15px 0 0 !important;
+}
+.payment-method .payment-details {
+    display: inline-block !important;
+    min-width: 0;
+}
+.shipping-method .method-name {
+    padding: 0;
+    background: none !important;
+}
+.payment-info {
+    margin: 0;
+}
+.payment-info .info {
+    padding: 0;
+}
+.payment-info .info p {
+	text-align: left;
+}
+
+.footable td .td-title{
+    display:none;
+}
+
+.cart td.quantity input {
+    height: 32px;
+    text-align:center;
+}
+
+.attribute-list > li {
+    border: 0;
+    display: block;
+    padding: 0;
+    margin: 0 0 10px;
+}
+.attribute-list .hidden {
+    display: none;
+}
+.attribute-name{
+    margin:0 0 20px;
+}
+.attribute-values .option-list label{
+    padding:10px 0;
+    display:inline-block;
+}
+.coupon-box-panel,
+.giftcard-box-panel{
+    /*max-width:370px;*/
+    margin:0 auto;
+} 
+.coupon-box-panel .section-body,
+.giftcard-box-panel .section-body {
+    /*border-top: 1px solid #e6e6e6;*/
+    /*background-color: #f9f9f9;*/
+    padding: 15px 10px;    
+}
+.coupon-box-panel .section-title.title,
+.giftcard-box-panel .section-title.title{
+    margin:0;
+}
+.coupon-box-panel .hint,
+.giftcard-box-panel .hint {
+    margin: 0 0 10px;
+}
+.coupon-box-panel .coupon-code,
+.giftcard-box-panel .coupon-code {
+    display: inline-block;
+    width:300px;
+    max-width:100%;
+}
+.coupon-box-panel input[type="text"],
+.giftcard-box-panel input[type="text"] {
+    float: left;
+    height: 32px;
+    padding:5px;
+    margin:0 0 2px;
+}
+.coupon-box-panel .coupon-code button,
+.giftcard-box-panel .coupon-code button,
+.estimate-shipping button,
+.remove-from-cart button {
+    display: inline-block;
+    border: 1px solid #bbb;
+    border-top: 1px solid #ccc;
+    padding: 7px 10px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+    background: -moz-linear-gradient(top, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffffff', endColorstr='#00ffffff',GradientType=0 );
+    background-color: #d4d4d4;
+    font-weight: bold;
+    color: #666;
+    height: 32px;
+    text-shadow: 1px 1px 0 #eee;
+    cursor: pointer;
+}
+.coupon-box-panel .coupon-code button:hover,
+.giftcard-box-panel .coupon-code button:hover,
+.estimate-shipping button:hover,
+.remove-from-cart button:hover {
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 100%);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0.7) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.7) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#b3ffffff',GradientType=0 );
+    background-color: #d4d4d4;
+}
+.coupon-box-panel .message,
+.giftcard-box-panel .message {
+    margin: 5px 0 0;
+    color: #c00;
+    font-size: 12px;
+}
+.coupon-box-panel .current-code {
+    margin: 5px 0 0;
+}
+
+.order-totals-panel {
+    margin: 0 auto 20px;
+}
+.checkout-page .total-info {
+    background: #f6f6f6;
+    padding: 15px;
+    color: #000;
+}
+
+.checkout-page .cart-total {
+    margin-bottom: 0;
+}
+
+.checkout-page .product-price {
+    font-size:12px;
+    font-weight:normal;
+}
+.coupon-box-panel .current-code button,
+.coupon-box-panel .current-code span,
+.total-info button {
+    display: inline-block;
+    vertical-align: middle;
+}
+.coupon-box-panel .current-code button,
+.total-info button {
+    width: 16px;
+    height: 16px;
+    background: #f9f9f9 url(delete.png) no-repeat center;
+    border: 0;
+    font-size: 0;
+}
+.error-list {
+    color: #c00;
+    margin: 0 0 20px;
+}
+.checkout-page .buttons{
+    text-align:center;
+}
+.complete-button button {
+    display: inline-block;
+    padding: 7px 10px;
+    width: auto;
+    border: 1px solid rgba(148, 148, 148, .8);
+    box-shadow: inset 0 1px 3px rgba(148, 148, 148, .3);
+    color: #fff;
+    height: 32px;
+    min-width: 80px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ffffff', endColorstr='#00ffffff',GradientType=0 );
+    background-color: #111111;
+    vertical-align: top;
+}
+.complete-button button:hover {
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 100%);
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 100%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#99ffffff',GradientType=0 );
+    background-color: #111111;
+}
+.order-summary-content .section-body{
+    margin-left:1px;
+    background: #f6f6f6;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+.ropc .addon-buttons {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.ropc .addon-buttons > * {
+     margin: 0 0 5px 5px;
+}
+
+@media all and (max-width: 430px) {
+
+    .coupon-box-panel input[type="text"],
+    .giftcard-box-panel input[type="text"],
+    .coupon-box-panel .coupon-code button,
+    .giftcard-box-panel .coupon-code button {
+        width: 100%;
+    }
+
+}
+
+@media all and (max-width: 768px) {
+    .section-body {
+        display: none;
+        margin-bottom: 15px;
+    }
+    .section .title {
+        color: #fff;
+        background-color: #000;
+        background-image: url('filterGroupToggleOff.png'), url('filterGroupToggleOff.png');
+        background-repeat: no-repeat, no-repeat;
+        background-position: 3% center, 97% center;
+    }
+
+    .billing-address-panel .inputs label,
+    .shipping-address-panel .inputs label {
+        display: block;
+        width: 100%;
+    }
+
+    .ropc .panel .shipping-options label {
+        width: 100%;
+    }
+
+    .billing-address-panel .inputs input, 
+    .billing-address-panel .inputs select, 
+    .shipping-address-panel .inputs select, 
+    .shipping-address-panel .inputs input {
+        width: 100%;
+    }
+
+    .panel-group .panel .section {
+        margin: 0 0 5px !important;
+    }
+}
+
+@media all and (max-width: 1024px) {
+
+    .cart colgroup,
+    .cart thead, 
+    .cart .sku {
+        display: none;
+    }
+    .cart tr {
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        border-bottom: 1px solid #ccc;
+    }
+    .cart td,
+    .cart td.product {
+        display: block;
+        width: auto !important;
+        text-align: center;
+        border-bottom: none;
+    }
+    .cart td.subtotal,
+    .cart td.quantity {
+        border-top: none;
+    }
+    .cart td.subtotal {
+        height: 50px;
+    }
+    .cart td.quantity {
+        padding: 10px;
+    }
+
+    .ropc .addon-buttons {
+        text-align: center;
+    }
+
+    .ropc .addon-buttons > * {
+         margin: 0 5px 5px;
+    }
+
+}
+
+@media all and (min-width: 481px) {
+    
+    .cart tr {
+        margin-bottom: 2px;
+    }
+
+    .billing-address-panel .form-fields,
+    .shipping-address-panel .form-fields{
+        width:300px;
+        max-width:100%;
+        margin:0 auto;
+    }
+    .coupon-box-panel input[type="text"],
+    .giftcard-box-panel input[type="text"]{
+        width:190px;
+    } 
+}
+
+@media all and (min-width: 560px) and (max-width: 1024px){
+
+    .cart tr {
+        float: left;
+        width: 49.6%;
+        margin: 0 0.2% 2px;
+    }
+    .cart tr:nth-child(2n+1) {
+        clear: both;
+    }
+    .cart td.product {
+        height: 45px;
+    }
+}
+@media all and (min-width: 769px) {
+    .ropc .section-body {
+        display: block !important;
+    }
+    .fieldset .title, .section .title {
+        text-align: center;
+        padding: 5px;
+    }
+    .shipping-method .method-list, 
+    .payment-method .method-list {
+        text-align: left;
+    }
+    .coupon-box-panel input[type="text"], 
+    .giftcard-box-panel input[type="text"] {
+        width: -webkit-calc(100% - 120px);
+        width: calc(100% - 120px);
+    }
+    /*.coupon-box-panel .section-title.title, 
+    .giftcard-box-panel .section-title.title{
+        padding: 0;
+        margin-bottom: 5px;
+        text-align:left;
+    }*/
+    /*.coupon-box-panel .section-body, 
+    .giftcard-box-panel .section-body{
+        padding: 0;
+    }*/
+    .coupon-box-panel .coupon-code, 
+    .giftcard-box-panel .coupon-code{
+        width:100%;
+    }
+    .coupon-box-panel .coupon-code button, 
+    .giftcard-box-panel .coupon-code button{
+        width:110px;
+        overflow:hidden;
+        margin:0 0 0 5px;
+    }
+    .ropc .coupon-box-panel, 
+    .ropc .giftcard-box-panel {
+        width: 100%;
+        margin: 0 0 15px;
+    }
+    /*.ropc .coupon-box-panel .section.coupon-box, 
+    .ropc .giftcard-box-panel .section.giftcard-box {
+        padding: 15px !important;
+    }*/
+    .payment-info .info td:first-child {
+        text-align: left !important;
+        margin: 0 0 10px !important;
+        padding: 0;
+    }
+    .order-confirm {
+        text-align: center;
+    }
+
+    .billing-address-panel .inputs label,
+    .shipping-address-panel .inputs label {
+        width: 35%;
+        font-size: 11px;
+    }
+
+    .billing-address-panel .inputs input,
+    .billing-address-panel .inputs select,
+    .shipping-address-panel .inputs select,
+    .shipping-address-panel .inputs input {
+        width: 55%;
+    }
+
+    .coupon-box-panel .hint,
+    .giftcard-box-panel .hint {
+        text-align: left;
+    }
+
+}
+
+@media all and (min-width: 1025px) {
+	
+	.ropc .panel-group-left {
+		width: 33%;
+	}
+	.ropc .panel-group-right-top,
+	.ropc .panel-group-right-middle,
+	.ropc .panel-group-right-bottom {
+		float: right;
+		width: 65%;
+	}
+	.cart .sku {
+		display: none;
+	}
+    .inputs > * {
+        margin:0;
+    }
+    .inputs > input[type='text']{
+        margin:0 10px 0 0;
+    }
+	.inputs > select{
+        width:136px;
+        padding:5px;
+        font-size:13px;
+    }
+    .inputs label {
+        display: block;
+        text-align: left;
+        margin: 0 0 5px;
+        width: auto;
+        font-size:11px;
+        font-weight:bold;
+    }
+    .billing-address-panel .inputs label, 
+    .shipping-address-panel .inputs label{
+        width:35%;
+    }
+	.billing-address-panel .inputs input, 
+    .billing-address-panel .inputs select, 
+    .shipping-address-panel .inputs select, 
+    .shipping-address-panel .inputs input{
+        margin:0 0 0 5px;
+        padding:0;
+        min-width:0;
+        max-width:none;
+    }
+	.pickup-in-store .options{
+        margin:0 0 5px;
+    }
+	.ropc .panel .shipping-options input{
+        max-width:95%;
+        width: 175px;
+        margin: 0;
+    }
+	.payment-info .info tr {
+        text-align: left;
+        display: block;
+        margin: 0 0 5px;
+    }
+    .cart {
+        margin: 0 0 30px;
+    }
+	.td-title {
+        display: none !important;
+    }
+    .remove-product {
+        cursor: pointer;
+        border: none;
+        background: none;
+    }
+    .cart .product {
+        min-width: 0;
+    }
+	.footable-first-column .item-count {
+        display: none;
+    }
+	.ropc .giftcard-box-panel,
+    .ropc .coupon-box-panel{
+        width:49.2%;
+    }
+
+	.order-totals-panel {
+        max-width:none;
+        width:100%;
+        text-align: right;
+        float: right;
+    }
+    .terms-of-service {
+        padding: 0 !important;
+    }
+    .order-confirm,
+    .terms-of-service,
+    .complete-button {
+        clear: both;
+        text-align: right !important;
+    }  
+
+
+}

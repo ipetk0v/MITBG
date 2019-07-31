@@ -1,0 +1,47 @@
+﻿@model EmporiumThemeSettingsModel
+
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group theme-color">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="Preset_OverrideForStore" asp-input="Preset" asp-store-scope="Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="Preset" />
+                </div>
+                <div class="col-md-9 adminData">
+                    @Html.NopRadioButtonsForPresets(Model.Presets, Model.Preset)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="ShowLoginFormInHeader_OverrideForStore" asp-input="ShowLoginFormInHeader" asp-store-scope="Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="ShowLoginFormInHeader" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="ShowLoginFormInHeader" />
+                    <span asp-validation-for="ShowLoginFormInHeader"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="SaleOfTheDayBackgroundImageId_OverrideForStore" asp-input="SaleOfTheDayBackgroundImageId" asp-store-scope="Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="SaleOfTheDayBackgroundImageId" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="SaleOfTheDayBackgroundImageId" />
+                    <span asp-validation-for="SaleOfTheDayBackgroundImageId"></span>
+                </div>
+            </div>         
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="FooterLogoImageId_OverrideForStore" asp-input="FooterLogoImageId" asp-store-scope="Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="FooterLogoImageId" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="FooterLogoImageId" />
+                    <span asp-validation-for="FooterLogoImageId"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

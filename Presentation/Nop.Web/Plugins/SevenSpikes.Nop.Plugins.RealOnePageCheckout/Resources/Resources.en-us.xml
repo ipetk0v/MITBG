@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<Language Name="English">
+  <LocaleResource Name="SevenSpikes.Plugins.RealOnePageCheckout.Admin.Menu.MenuName">
+    <Value>One Page Checkout</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings">
+    <Value>Nop One Page Checkout plugin Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.GeneralSettings">
+    <Value>General Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.BillingAddressSettings">
+    <Value>Billing Address Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.ShippingAddressSettings">
+    <Value>Shipping Address Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PaymentMethodsAjaxSettings">
+    <Value>Payment Methods Update</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.ShippingMethodsAjaxSettings">
+    <Value>Shipping Methods Update</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.OrderTotalAjaxSettings">
+    <Value>Order Total Update</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.EnableRealOnePageCheckout">
+    <Value>Enable One Page Checkout plugin</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.EnableRealOnePageCheckout.Hint">
+    <Value>Enables/Disables the  One Page Checkout plugin</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.DisableShoppingCart">
+    <Value>Disable Shopping Cart</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.DisableShoppingCart.Hint">
+    <Value>Enables/Disables the Shopping cart</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.FlyoutCartPanelSelector">
+    <Value>Flyout Shopping Cart Element Selector</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.FlyoutCartPanelSelector.Hint">
+    <Value>The selector for the flyout shopping cart element. It is used by the Nop Ajax Cart plugin to update the flyout shopping cart after a product has been added to the shopping cart.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.ShoppingCartMenuLinkSelector">
+    <Value>Shopping Cart Menu Link Selector</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.ShoppingCartMenuLinkSelector.Hint">
+    <Value>The selector for the html element in the header link, which contains information about the number of items in the shopping cart.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PreselectLastBillingAddress">
+    <Value>Preselect Last Customer Billing Address</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PreselectLastBillingAddress.Hint">
+    <Value>Preselecting the last billing address base on his last order or from customer address book if he does not have orders.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PreselectLastShippingAddress">
+    <Value>Preselect Last Customer Shipping Address</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PreselectLastShippingAddress.Hint">
+    <Value>Preselecting the last shipping address base on his last order or from customer address book if he does not have orders.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.EnableShipToSameAddress">
+    <Value>Enable Ship To Same Address by default</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.EnableShipToSameAddress.Hint">
+    <Value>If enabled this setting will, by default select ship to same address option</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.DefaultBillingCountryId">
+    <Value>Default Billing Country</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.DefaultBillingCountryId.Hint">
+    <Value>Preselect the default billing country.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.DefaultShippingCountryId">
+    <Value>Default Shipping Country</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.DefaultShippingCountryId.Hint">
+    <Value>Preselect the default shipping country.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PersistedBillingAddressFields">
+    <Value>Saved billing address fields on change</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PersistedBillingAddressFields.Hint">
+    <Value>Select which billing address fields will be saved in the database on any of the above address fields change.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PersistedBillingAddressFields.SelectFields">
+    <Value>Select address fields...</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PersistedBillingAddressFields.RequiredField">
+    <Value>Required by the Payment Methods update panel.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PersistedShippingAddressFields">
+    <Value>Saved shipping address fields on change</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PersistedShippingAddressFields.Hint">
+    <Value>Select which shipping address fields will be saved in the database on any of the above address fields change.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PersistedShippingAddressFields.SelectFields">
+    <Value>Select address fields...</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.PersistedShippingAddressFields.RequiredField">
+    <Value>Required by the Shipping Methods update panel.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdatePaymentMethodsOnAddressFieldsUpdate">
+    <Value>Update for Billing Address fields</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdatePaymentMethodsOnAddressFieldsUpdate.Hint">
+    <Value>Update Payment methods panel when customer updates one of the above fields in the billing address.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdatePaymentMethodsOnAddressFieldsUpdate.SelectFields">
+    <Value>Select address fields...</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateShippingMethodsOnAddressFieldsUpdate">
+    <Value>Update for Shipping Address fields</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateShippingMethodsOnAddressFieldsUpdate.Hint">
+    <Value>Update Shipping methods panel when customer updates one of the above fields in the shipping address.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateShippingMethodsOnAddressFieldsUpdate.SelectFields">
+    <Value>Select address fields...</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateShippingMethodsOnCartUpdate">
+    <Value>Update for Cart item</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateShippingMethodsOnCartUpdate.Hint">
+    <Value>Update Shipping methods panel when customer updates cart item quantity.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateOrderTotalOnPaymentMethodsUpdate">
+    <Value>Payment Methods change</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateOrderTotalOnPaymentMethodsUpdate.Hint">
+    <Value>Update Order total panel when payment method is changed.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateOrderTotalOnShippingMethodsUpdate">
+    <Value>Shipping Methods change</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateOrderTotalOnShippingMethodsUpdate.Hint">
+    <Value>Update Order total panel when shipping method is changed.</Value>
+  </LocaleResource>
+  
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange">
+    <Value>Address field change, based on tax address</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange.Hint">
+    <Value>Update Order total panel when one of the above address fields is changed from the address that you have set in your Tax Settings. For example, if you set your taxes to be based on Billing Address, and you change one of the above address fields, the order total panel will be updated.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange.SelectFields">
+    <Value>Select address fields...</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.AjaxUpdateOrderTotalBasedOnTaxAddressOnAddressFieldsChange.RequiredField">
+    <Value>Required by the Order Total update panel.</Value>
+  </LocaleResource>
+  
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.ShowEstimateShipping">
+    <Value>Show estimate shipping</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.ShowEstimateShipping.Hint">
+    <Value>Check if you want the estimate shipping to be displayed on checkout page.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.ShowDiscountBox">
+    <Value>Show discount box</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.ShowDiscountBox.Hint">
+    <Value>Check if you want the discount box to be displayed on checkout page.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.ShowGiftCardBox">
+    <Value>Show gift card box</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Settings.ShowGiftCardBox.Hint">
+    <Value>Check if you want the gift card box to be displayed on checkout page.</Value>
+  </LocaleResource>
+  
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Submenus">
+    <Value>Submenu names</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Admin.Submenus.Settings">
+    <Value>Settings</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.NoShippingProvidersError">
+    <Value>Your order cannot be completed at this time as there are no shipping methods available for it or pick up in store is disabled.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.EmptyShoppingCart">
+    <Value>Your Shopping Cart is empty!</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.InvalidForm">
+    <Value>Some of the checkout fields are invalid!</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.TermsOfServiceNotChecked">
+    <Value>Please accept the terms of service before completing your order!</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.ProcessingButton">
+    <Value>processing...</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.CompleteButton">
+    <Value>Complete</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.CheckoutTitle">
+    <Value>Checkout</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.CheckoutAttributes">
+    <Value>Checkout Attributes</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.NoPaymentMethodsOrRequired">
+    <Value>No payment methods available or payment method is not required</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.VatNumber">
+    <Value>Vat Number</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.ShipToSameAddress">
+    <Value>Ship to same address</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.NoPaymentMethodAvailable">
+    <Value>Your order cannot be completed at this time as there are no payment methods available for it.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.NoCheckoutAttributesAvailable">
+    <Value>No checkout attributes available</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.NoShippingMethodAvailable">
+    <Value>Your order cannot be completed at this time as there are no shipping methods available for it. Please make necessary changes in your shipping address.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.OrderTotals">
+    <Value>Order Total</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.GoogleMaps.MissingApiKey">
+    <Value>You need to provide a google maps api key</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.Public.PickupInStore.Title">
+    <Value>Pickup in Store</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.FirstName">
+    <Value>First name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.LastName">
+    <Value>Last name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.Email">
+    <Value>Email is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.Company">
+    <Value>Company is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.Country">
+    <Value>Country is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.StateOrProvince">
+    <Value>State / province is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.City">
+    <Value>City is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.County">
+    <Value>County is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.Address1">
+    <Value>Address 1 is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.Address2">
+    <Value>Address 2 is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.ZipOrPostalCode">
+    <Value>Zip / postal code is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.PhoneNumber">
+    <Value>Phone number is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.FaxNumber">
+    <Value>Fax number field is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.VatNumber">
+    <Value>VAT number is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.BillingAddress.Error.CustomAttribute">
+    <Value>Field is required.</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.FirstName">
+    <Value>First name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.LastName">
+    <Value>Last name is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.Email">
+    <Value>Email is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.Company">
+    <Value>Company is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.Country">
+    <Value>Country is required</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.StateOrProvince">
+    <Value>State / province is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.City">
+    <Value>City is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.County">
+    <Value>County is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.Address1">
+    <Value>Address 1 is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.Address2">
+    <Value>Address 2 is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.ZipOrPostalCode">
+    <Value>Zip / postal code is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.PhoneNumber">
+    <Value>Phone number is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.FaxNumber">
+    <Value>Fax number is required.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.CustomAttribute">
+    <Value>Field is required.</Value>
+  </LocaleResource>
+  
+  <LocaleResource Name="Checkout.MinOrderPlacementAttemptInterval">
+    <Value>Please wait several seconds before placing a new order!</Value>
+  </LocaleResource>
+
+</Language>

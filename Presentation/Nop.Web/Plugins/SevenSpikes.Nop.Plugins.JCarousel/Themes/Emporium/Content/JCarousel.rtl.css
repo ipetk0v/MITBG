@@ -1,0 +1,107 @@
+/*
+* Copyright 2015 Seven Spikes Ltd. All rights reserved. (http://www.nop-templates.com)
+* http://www.nop-templates.com/t/licensinginfo
+*/
+
+.jCarouselMainWrapper .slick-next {
+    left: -16px;
+    right: auto;
+}
+
+.jCarouselMainWrapper .slick-prev {
+    right: -16px;
+    left: auto;
+}
+
+.jCarouselMainWrapper.small-products .slick-prev {
+    right: -20px;
+    left: auto;
+}
+
+.jCarouselMainWrapper.small-products .slick-next {
+    left: -20px;
+    right: auto;
+}
+
+.jCarouselMainWrapper .slick-prev:before {
+    content: "\6a";
+}
+
+.jCarouselMainWrapper .slick-next:before {
+    content: "\6b";
+}
+
+@media all and (min-width: 660px) {
+
+    .home-page .jCarouselMainWrapper.small-products .slick-prev {
+        right: -12px;
+        left: auto;
+    }
+
+    .home-page .jCarouselMainWrapper.small-products .slick-next {
+        left: -12px;
+        right: auto;
+    }
+
+
+    .jCarouselMainWrapper .slick-next {
+        left: -18px;
+        right: auto;
+    }
+
+    .jCarouselMainWrapper .slick-prev {
+        right: -18px;
+        left: auto;
+    }
+}
+
+
+@media all and (min-width:1024px) {
+
+
+    .center-2 .nop-jcarousel .carousel-title {
+        text-align: right;
+    }
+
+    .side-2 .nop-jcarousel .carousel-title {
+        text-align: right;
+    }
+
+    .side-2 .jCarouselMainWrapper .slick-next {
+        left: 10px;
+        right: auto;
+    }
+    .side-2 .jCarouselMainWrapper .slick-prev {
+        right: 10px;
+        left: auto;
+    }
+
+}
+
+
+@media all and (min-width: 1280px) {
+
+
+    .jCarouselMainWrapper .slick-next {
+        left: -20px;
+        right: auto;
+    }
+
+    .jCarouselMainWrapper .slick-prev {
+        right: -20px;
+        left: auto;
+    }
+
+    .center-1 .nop-jcarousel.product-grid .slick-carousel {
+        margin: 0 -6px 0 -1px;
+    }
+
+
+    /* SMALL CAROUSELS ON PRODUCT PAGES */
+ 
+
+    .carousel-wrapper .small-products + .small-products {
+        margin: 0 6% 0 0 !important;
+    }
+
+}

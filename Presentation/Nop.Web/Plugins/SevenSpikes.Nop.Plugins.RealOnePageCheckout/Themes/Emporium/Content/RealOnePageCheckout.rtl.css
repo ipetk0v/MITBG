@@ -1,0 +1,40 @@
+.ropc .section .title:after {
+    left: 20px;
+    right: auto;
+}
+.ropc .shipping-results,
+.ropc .payment-info,
+.ropc .payment-info .info p {
+    text-align: right;
+}
+
+.ropc .payment-info select {
+    padding: 0 20px 0 27px;
+    background: #fff url(images/select-arrow-dark.svg) no-repeat left 10px center;
+}
+
+.ropc .cart .remove-from-cart button:before {
+    margin-left: 8px;
+    margin-right: auto;
+}
+
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"] {
+    float: right;
+}
+
+.ropc .coupon-box-panel .coupon-code button,
+.ropc .giftcard-box-panel .coupon-code button {
+    float: right;
+    margin: 0 5px 0 0;
+}
+
+.ropc .coupon-box-panel .current-code button,
+.ropc .total-info .cart-total button {
+    margin-right: 5px;
+    margin-left: auto;
+}
+
+.ropc .order-totals-panel {
+    border-radius: 3px 0 0 3px;
+}

@@ -1,0 +1,119 @@
+.coupon-code input,
+.coupon-code button {
+	float: right;
+}
+.estimate-shipping-panel .shipping-results,
+.shipping-method .method-list,
+.payment-info .info,
+.cart-total-left {
+	text-align: right;
+}
+.cart-total-right {
+	text-align: left;
+}
+*{
+	direction: rtl;
+}
+.checkout-page .section-title strong:before{
+	background: url('arrow-right.png') center no-repeat;
+	margin: 0 0 0 5px;
+}
+.checkout-page .section-title strong:after{
+	background: url('arrow-left.png') center no-repeat;
+	margin: 0 5px 0 0;
+}
+.payment-method .method-list{
+	padding: 10px 10px 0 0;
+	text-align: right;
+}
+.checkout-attributes input[type=text],
+.checkout-attributes textarea{
+	margin-right: auto;
+	margin-left: auto;
+}
+.current-code input{
+	margin: 0 0 0 5px;
+}
+.cart-total button,
+.remove-product{
+	margin-left: -7px;
+	margin-right: 3px;
+}
+
+.ropc .addon-buttons {
+    text-align: center;
+}
+
+.ropc .addon-buttons > * {
+    margin: 0 5px 5px;
+}
+
+
+@media all and (min-width: 601px) and (max-width: 1024px) {
+    .ropc .cart tr {
+        float: right;
+    }
+    .ropc .cart tr:nth-child(2n+1) {
+        clear: both;
+    }
+    .ropc .cart td.subtotal {
+        border-bottom: 1px dotted #ddd;
+    }
+}
+
+@media all and (min-width: 769px) {
+    .checkout-page .attribute-list > li {
+        text-align: right;
+    }
+}
+
+@media all and (min-width: 1025px) {
+    .payment-method .method-list,
+    .ropc .coupon-code button,
+    .ropc .current-code button,
+    .ropc .current-code span,
+    .ropc .coupon-code input {
+        float: right;
+    }
+
+    .ropc .panel-group-right-top,
+    .ropc .panel-group-right-middle,
+    .ropc .panel-group-right-bottom {
+        float: left;
+    }
+    .terms-of-service,
+    .complete-button {
+        margin-left: 10px;
+	    margin-right: auto;
+        text-align: left;
+    }
+    .order-summary-content .section-body > .ng-binding,
+    .order-confirm .error-list,
+    .inputs label {
+        margin-right: auto;
+        margin-left: 10px; 
+        text-align: left;
+        
+    }
+
+    .terms-of-service,
+    .complete-button {
+        text-align: left;
+    }
+
+    .order-totals-panel {
+        margin: 0 auto 20px 0;
+    }
+
+    .checkout-attributes li {
+        margin: 0 0 0 10px;
+    }
+
+    .ropc .addon-buttons {
+        text-align: left;
+    }
+
+    .ropc .addon-buttons > * {
+        margin: 0 5px 5px;
+    }
+}

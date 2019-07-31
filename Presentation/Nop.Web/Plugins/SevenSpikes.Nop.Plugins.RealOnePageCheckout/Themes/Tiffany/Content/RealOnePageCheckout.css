@@ -1,0 +1,535 @@
+
+/***********************
+
+     COLOR PRESETS
+
+************************/
+
+/* sugar */
+
+.color-sugar .estimate-shipping-panel button,
+.color-sugar .coupon-code button,
+.color-sugar .complete-button button {
+    background-color: #ab9683;
+}
+.color-sugar .estimate-shipping-panel button:hover,
+.color-sugar .coupon-code button:hover,
+.color-sugar .complete-button button:hover {
+    background-color: #96806d;
+}
+
+/* dove */
+
+.color-dove .estimate-shipping-panel button,
+.color-dove .coupon-code button,
+.color-dove .complete-button button {
+    background-color: #999;
+}
+.color-dove .estimate-shipping-panel button:hover,
+.color-dove .coupon-code button:hover,
+.color-dove .complete-button button:hover {
+    background-color: #666;
+}
+
+
+
+/*** PLUGIN STYLES ***/
+
+.ropc .section-body {
+    display: none;
+    background: #fff;
+    padding: 20px 10px;
+}
+input.ng-invalid.ng-dirty, 
+textarea.ng-invalid.ng-dirty, 
+.has-error {
+    border: 1px solid red !important;
+}
+.checkout-page .page-title {
+    margin: 0 0 50px;
+}
+.checkout-page .page-title h1 {
+  font-size: 22px;
+}
+.ropc .section {
+    margin: 0 auto -1px;
+    border: 1px solid #ddd;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+.ropc .section-title {
+    position: relative;
+    margin: 0 0 -1px;
+    border-bottom: 1px solid #ddd;
+    padding: 16px;
+}
+.checkout-page .choose-address {
+    margin: 15px auto;
+    text-align: center;
+    width: 350px;
+    max-width: 95%;
+}
+.checkout-page .form-fields {
+    margin: 0 15px;
+}
+.panel-group-left .inputs {
+    width: 350px;
+    margin: 0 auto 10px;
+    max-width: 95%;
+}
+.panel-group-left .inputs > span.ng-binding {
+    display: block;
+    color: #c00;
+    margin: 7px 0 0;
+    font-size: 13px;
+}
+.checkout-page select {
+    vertical-align: middle;
+    background: #f9f9f9;
+    border: 1px solid #dddddd;
+    height: 40px;
+    line-height: 34px;
+    width: 350px;
+    max-width: 100%;
+}
+.checkout-page .inputs input[type="text"], 
+.checkout-page .inputs input[type="password"], 
+.checkout-page .inputs select, 
+.checkout-page .inputs textarea {
+	max-width: 100%;
+}
+.checkout-page .inputs .required {
+    margin: 0 0 0 6px;
+}
+.checkout-page .description {
+    margin: 5px 0;
+}
+.checkout-page .pickup-points select {
+    margin: 0 0 10px;
+}
+.pickup-in-store {
+	padding: 0 15px;
+}
+.pickup-points-map {
+    margin: 0 auto;
+}
+.estimate-shipping-panel .hint {
+    margin: 0 0 15px;
+    font-size: 13px;
+}
+.estimate-shipping-panel .shipping-options {
+    margin: 0 0 24px;
+}
+.estimate-shipping-panel .buttons {
+    margin: 20px 0 0;
+}
+.estimate-shipping-panel button {
+    padding: 10px 20px;
+    background: #a79c97;
+    color: #fff;
+    font-family: Arvo;
+    font-size: 14px;
+    text-transform: none;
+    border: none;
+}
+.estimate-shipping-panel button[disabled] {
+    opacity: .5;
+    cursor: default;
+}
+.estimate-shipping-panel .shipping-results {
+    margin: 0 auto 20px;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    text-align: left;
+    max-width: 420px;
+}
+.estimate-shipping-panel .shipping-results > li {
+    margin: 10px 0;
+}
+
+.shipping-method .method-list li,
+.payment-method .method-list li {
+    width: 100%;
+    max-width: 100%;
+    margin: -1px auto 0;
+	border: 1px solid #ddd;
+	padding: 0;
+	text-align: left;
+}
+.shipping-method .method-list li:first-child,
+.payment-method .method-list li:first-child {
+	margin-top: 0;
+}
+.shipping-method .method-name {
+    padding: 11px 15px;
+	font: normal 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #000;
+	text-transform: none;
+}
+.shipping-method .method-list li:nth-child(odd) .method-name,
+.shipping-method .method-list li:nth-child(odd) .method-name:hover {
+	background-color: #f9f9f9;
+}
+.shipping-method .method-list li:nth-child(even) .method-name,
+.shipping-method .method-list li:nth-child(even) .method-name:hover {
+	background-color: #fff;
+}
+.use-reward-points {
+  margin: 0 0 15px;
+}
+.payment-info .info {
+    margin: 0 auto 20px;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 13px;
+}
+.payment-info td {
+    padding: 5px 0;
+    min-width: 125px;
+}
+.checkout-page .payment-info select,
+.checkout-page .payment-info input {
+    width: auto;
+    max-width: 90%;
+}
+.cart .unit-price,
+.cart .subtotal,
+td .go-to-page,
+.shipments .data-table td a,
+.cart th, 
+.data-table th,
+.forums-table-section th {
+    white-space: normal;
+}
+.quantity .td-title {
+    display: none;
+}
+.cart .qty-input {
+    height: 40px;
+    border: 1px solid #ddd;
+}
+.ropc .quantity select {
+    width: 50px;
+    background: transparent;
+}
+.order-summary-content table {
+    margin: 0 0 25px;
+}
+.ropc .order-summary-content tr {
+    border: 1px solid #ddd;
+}
+.ropc .order-summary-content .subtotal,
+.ropc .order-summary-content .unit-price {
+    color: #666;
+    font-size: 15px;
+}
+.ropc .order-summary-content .subtotal span {
+    color: #333;
+    font-size: 16px;
+}
+.ropc .order-summary-content .discount  {
+    font-size: 14px;
+} 
+.cart .qty.nobr .qty-input {
+  height: 40px;
+}
+.order-summary-content .section-body > .ng-binding {
+    padding: 0 15px 5px;
+}
+.attributes-panel .section-body {
+	padding-bottom: 5px;
+}
+.checkout-attributes input[type=text],
+.checkout-attributes textarea {
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f9f9f9;
+    height: 40px;
+}
+.checkout-page .attribute-list {
+    margin: 0 10px;
+}
+.checkout-page .attribute-list > li {
+    margin: 0 0 15px;
+    vertical-align: top;
+    /*width: 50%;*/
+}
+.checkout-page .attribute-list input[type=text],
+.checkout-page .attribute-list textarea {
+    max-width: 100%;
+}
+.checkout-page .attribute-list .text-prompt {
+    margin: 0 0 5px;
+    font-size: 16px;
+}
+.coupon-box-panel .hint, 
+.giftcard-box-panel .hint {
+    margin: 0 0 10px;
+    font-size: 13px;
+}
+.coupon-code {
+    display: inline-block;
+    margin: 0 0 5px;
+}
+.coupon-code input {
+    float: left;
+    width: 140px;
+}
+.coupon-code button {
+    font-size: 13px;
+    float: left;
+    height: 36px;
+    background: #a79c97;
+    color: #fff;
+    font-family: Arvo;
+    text-transform: none;
+    border: 0;
+    padding: 0 10px;
+    margin-left: -1px;
+}
+.current-code span {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px 0 0;
+}
+.current-code button {
+    display: inline-block;
+    vertical-align: middle;
+	width: 16px;
+	height: 16px;
+	border: 1px solid #ccc;
+	background: #fff url(close.png) center no-repeat;
+	cursor: pointer;
+    font-size: 0;
+}
+.coupon-box-panel .message,
+.giftcard-box-panel .message {
+    color: #c03;
+}
+.order-totals-panel {
+    padding: 15px 25px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    margin: 0 auto 20px;
+    width: 100%;
+}
+.cart-total button,
+.remove-product {
+    display: inline-block;
+    vertical-align: middle;
+	width: 32px;
+	height: 32px;
+	border: 1px solid #ddd;
+	background: #fff url(close.png) center no-repeat;
+	cursor: pointer;
+    font-size: 0;
+    margin-right: -7px;
+    margin-left: 3px;
+    position: relative;
+    z-index: 1;
+}
+.remove-product {
+    margin: 0;
+}
+.order-confirm .error-list {
+    margin: 0 0 20px;
+}
+.order-confirm .error-list li {
+    margin: 0 0 10px;
+    color: #c00;
+    font-size: 14px;
+}
+.complete-button button {
+    height: 45px;
+    background: #8e807a;
+    width: 96%;
+    max-width: 300px;
+    color: #fff;
+    font-family: Arvo;
+    text-transform: uppercase;
+    border: none;
+    font-size: 19px;
+}
+.ropc .cart .sku {
+    display: none;
+}
+.options.ship-to-same-address {
+    padding: 10px;
+}
+
+.ropc .addon-buttons {
+    margin-top: 20px;
+}
+
+.ropc .addon-buttons > * {
+    display: inline-block;
+    margin: 0 0 5px 5px;
+}
+
+@media all and (max-width: 768px) {
+
+.section .title strong {
+    display: inline-block;
+    width: 80%;
+    font-family: "Arvo";
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #000;
+}
+.section .title strong:before,
+.section .title strong:after {
+    content: '';
+    position: absolute;
+    left: 6%;
+    bottom: 0;
+    top: 0;
+    width: 24px;
+    height: 20px;
+    margin: auto;
+    background: url(big-arrow-down.png) no-repeat center;
+}
+.section .title strong:after {
+    left: auto;
+    right: 6%;
+}
+}
+
+@media all and (max-width: 1024px) {
+    .ropc .cart thead,
+    .ropc .cart colgroup
+     {
+        display: none;
+    }
+    
+    .ropc .order-summary-content td  {
+        float: left;
+        width: 100%;
+        border: none;
+    }
+
+    .ropc .addon-buttons {
+        text-align: center;
+    }
+
+    .ropc .addon-buttons > * {
+        margin: 0 5px 5px;
+    }
+}
+@media all and (min-width: 600px) and (max-width: 1024px) {
+
+.ropc .order-summary-content tr  {
+    float: left;
+    width: 48%;
+    margin: 1%;
+}
+.ropc .order-summary-content tr:nth-child(2n+1) {
+    clear: both;
+}
+}
+
+@media all and (min-width: 769px) {
+
+.ropc .section-body {
+    display: block !important;
+    overflow: hidden;
+}
+.checkout-page .choose-address {
+    padding: 0 15px;
+}
+
+.checkout-page .attribute-list > li {
+    text-align: left;
+}
+.checkout-page .attribute-name {
+    display: block;
+    text-align: left;
+}
+
+.shipping-method .method-list {
+	margin: 15px 0;
+}
+.shipping-method .method-list li {
+	float: none;
+}
+
+/*.coupon-box-panel .section,
+.giftcard-box-panel .section {
+	border-bottom: none;
+}*/
+.coupon-box-panel .section-body,
+.giftcard-box-panel .section-body {
+	text-align: center;
+}
+.terms-of-service {
+	text-align: center;
+}
+
+.attribute-values li {
+	margin: 0 10px 0 0;
+}
+.ropc .coupon-box-panel,
+.ropc .giftcard-box-panel {
+    width: 50%;
+}
+.ropc .giftcard-box-panel > div {
+    border-left: none;
+}
+.ropc .coupon-code input {
+    width: 55%;
+}
+.ropc .coupon-code button {
+    width: 45%;
+}
+
+}
+
+@media all and (min-width: 1025px) {
+	
+.td-title {
+    display: none !important;
+}
+table.cart {
+	border-right: 1px solid #ddd;
+}
+.ropc .cart .product-name {
+    font-size: 13px;
+}
+.order-summary-content .section-body > .ng-binding,
+.checkout-page .attribute-list {
+	text-align: left;
+}
+.terms-of-service,
+.complete-button {
+	text-align: right;
+}
+.order-totals-panel {
+	margin: 0 0 20px auto;
+}
+.addon-buttons {
+	text-align: right;
+}
+.order-confirm .error-list {
+	text-align: right;
+}
+.inputs label {
+	display: block;
+	text-align: left;
+	width: auto !important;
+	margin: 0 0 5px;
+}
+.cart tr > *:first-child {
+	border-left: 1px solid #ddd;
+}
+.checkout-attributes {
+	float: none;
+	max-width: none;
+}
+
+.ropc .complete-order-panel {
+    padding-right: 20px;
+}
+
+}

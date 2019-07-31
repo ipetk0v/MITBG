@@ -1,0 +1,56 @@
+
+.ropc .section .title:after {
+	left: 15px;
+	right: auto;
+}
+.ropc input[type="radio"] {
+	margin: 0 0 0 5px;
+}
+.ropc .payment-method .method-list {
+	text-align: right;
+}
+.ropc .cart td span {
+	display: inline-block;
+}
+.ropc .coupon-box-panel .current-code button,
+.ropc .total-info .cart-total button {
+	margin: 0 0 0 -12px;
+}
+
+
+@media all and (max-width: 1024px) {
+	
+.ropc .cart .remove-product {
+	background-position: right center;
+	padding: 10px 35px 10px 15px;
+}
+}
+
+@media all and (min-width: 769px) {
+	
+.ropc .payment-method .payment-logo,
+.ropc .payment-method .payment-details {
+	margin: 0 0 0 10px;
+}
+}
+
+@media all and (min-width: 1025px) {
+
+.ropc .pickup-in-store {
+    text-align: right;
+}	
+.ropc .shipping-method .method-description {
+	padding-right: 22px;
+	padding-left: 0;
+}
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"] {
+	margin: 0 0 0 2%;
+}
+.ropc .order-totals-panel {
+	float: left;
+}
+.ropc .complete-order-panel {
+	float: left;
+}
+}

@@ -1,0 +1,148 @@
+/*
+* Copyright 2016 Seven Spikes Ltd. All rights reserved. (http://www.nop-templates.com)
+* http://www.nop-templates.com/t/licensinginfo
+*/
+
+.picture-thumbs .slick-list {
+    margin: 0 20px;
+}
+
+/* arrows nav */
+
+.picture-thumbs .slick-prev,
+.picture-thumbs .slick-next {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    text-align: left;
+    width: 20px;
+    height: 100%;
+    cursor: pointer;
+    font-size: 0;
+    border: 0;
+    background: transparent;
+    z-index: 1;
+    transition: all .2s ease;
+}
+
+.picture-thumbs .slick-next {
+    left: auto;
+    right: 0;
+    text-align: right;
+}
+
+.picture-thumbs .slick-prev:before,
+.picture-thumbs .slick-next:before {
+    font-family: "emporium-icons";
+    display: block;
+    font-size: 15px;
+    color: #8f8f8f;
+}
+
+.picture-thumbs .slick-prev:hover:before,
+.picture-thumbs .slick-next:hover:before {
+    color: #97c300;
+}
+
+.picture-thumbs .slick-prev:before {
+    content: "\6b";
+}
+.picture-thumbs .slick-next:before {
+    content: "\6a";
+}
+
+
+.picture-thumbs .slick-prev.slick-disabled,
+.picture-thumbs .slick-next.slick-disabled {
+    opacity: .6;
+    cursor: default;
+}
+
+
+
+/* dots nav */
+
+.slick-dots {
+    margin-top: 15px;
+}
+.slick-dots button {
+    background: #333;
+    opacity: .4;
+    font-size: 0;
+    width: 6px;
+    height: 6px;
+    border: none;
+    border-radius: 50%;
+}
+.slick-dots li {
+    display: inline-block;
+    margin: 0 3px;
+}
+.slick-dots .slick-active button {
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+}
+
+
+
+/* items */
+.picture-thumbs .picture-thumbs-item {
+    padding: 0 4px;
+}
+
+
+.picture-thumbs a.cloudzoom-gallery {
+    display: block;
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+.picture-thumbs a.cloudzoom-gallery:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+@media all and (min-width: 1601px) {
+
+
+    .picture-thumbs .slick-list {
+        margin: -5px 0;
+    }
+
+    .picture-thumbs button + .slick-list {
+        margin: 18px 0;
+    }
+
+    .picture-thumbs .slick-prev {
+        top: -18px;
+        width: 100%;
+        height: 20px;
+        text-align: center;
+    }
+
+    .picture-thumbs .slick-next {
+        top: auto;
+        bottom: -18px;
+        width: 100%;
+        height: 20px;
+        text-align: center;
+    }
+
+    .picture-thumbs .slick-prev:before {
+        content: "\49";
+    }
+
+    .picture-thumbs .slick-next:before {
+        content: "\48";
+    }
+    
+    /* items */
+
+    .picture-thumbs .picture-thumbs-item {
+        padding: 4px 0;
+        height: 95px !important;
+    }
+}

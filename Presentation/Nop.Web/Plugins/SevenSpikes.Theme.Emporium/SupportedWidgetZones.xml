@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SupportedWidgetZones>
+  <WidgetZone>emporium_theme_logo</WidgetZone>
+  <WidgetZone>emporium_footer_logo</WidgetZone>
+  <WidgetZone>emporium_home_page_info_boxes</WidgetZone>
+  <WidgetZone>head_html_tag_after_css_files_emporium</WidgetZone>
+</SupportedWidgetZones>

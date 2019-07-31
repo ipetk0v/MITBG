@@ -1,0 +1,134 @@
+/*
+* Copyright 2017 Seven Spikes Ltd. All rights reserved. (http://www.nop-templates.com)
+* http://www.nop-templates.com/t/licensinginfo
+*/
+
+
+.mfp-bg {
+    background-color: #444 !important;
+    opacity: .6 !important;
+}
+
+.gallery {
+    display: none;
+}
+.gallery.sevenspikes-cloudzoom-gallery {
+    display: block;
+}
+.gallery .picture-wrapper {
+    position: relative;
+}
+.gallery .picture-wrapper > img { /* Transitional image (on thumbnail click) */
+	top: 0;
+    right: 0;
+	left: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+/* Zoom Lens, Zoom Window, Zoom Caption */
+
+.cloudzoom-lens {
+	opacity: 0.7;
+    cursor:crosshair;
+    z-index: 9999;
+    border-radius: 3px;
+}
+
+.cloudzoom-tint {
+    border-radius: 3px;
+}
+
+.cloudzoom-lens:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+	z-index: 1;
+    background-color: rgba(255,255,255,.5);
+}
+.cloudzoom-zoom {
+	z-index: 1010;
+    top: 0 !important;
+    left: calc(100% + 25px) !important;
+    border-radius: 3px;
+}
+.cloudzoom-zoom-inside {
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0;
+	right: 0;
+	z-index: 1010;
+	margin: auto;
+    cursor: crosshair;
+}
+.cloudzoom-zoom-inside img + div { /*title-wrapper*/
+	top: auto !important;
+	bottom: 0 !important;
+}
+.cloudzoom-caption {
+    display: none;
+    text-align: left;
+    background-color: #444;
+    color: #fff;
+    font-weight: 700;
+    padding: 10px;
+    font-size: 11px;
+}
+
+/* Loading Images */
+
+.cloudzoom-blank {
+	top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAAA3NCSVQICAjb4U/gAAAABlBMVEUAAAD///+l2Z/dAAAAAnRSTlP/AOW3MEoAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDYvMzAvMTLNuPjnAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M1cbXjNgAAAAxJREFUCJlj+M+AAgE/0Af5DM23uwAAAABJRU5ErkJggg==');
+}
+
+
+.sevenspikes-cloudzoom-gallery .cloudzoom-ajax-loader {
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0;
+    margin: auto;
+}
+
+.cloudzoom-ajax-loader {
+    position: absolute;
+    z-index: 2;
+}
+
+.cloudzoom-ajax-loader:before,
+.cloudzoom-ajax-loader:after {
+	content:"";
+	position: absolute;
+	display: inline-block;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 0;
+	height: 0;
+	border: 0px solid #97c300;
+	border-radius: 50%;
+	-webkit-animation: loader 1.6s cubic-bezier(0, 0, 0.09, 0.99) infinite;
+	-moz-animation: loader 1.6s cubic-bezier(0, 0, 0.09, 0.99) infinite;
+	animation: loader 1.6s cubic-bezier(0, 0, 0.09, 0.99) infinite;
+}
+
+.cloudzoom-ajax-loader:after:after {
+	animation-delay: .8s;
+}
+
+@media all and (min-width:1281px) {
+    .gallery .thumb-item {
+        max-width: 100%;
+    }
+}

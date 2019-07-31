@@ -1,0 +1,65 @@
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"],
+.ropc .coupon-box-panel .coupon-code button,
+.ropc .giftcard-box-panel .coupon-code button {
+	float: right;
+}
+.ropc .section .title{
+	background: url('images/toggle.png') left center no-repeat,
+                url('images/toggle.png') left center no-repeat;
+}
+.ropc .cart .remove-product{
+	background: url('images/delete.png') right center no-repeat;
+	padding: 0 15px 0 0;
+}
+.ropc .attribute-list .attribute-values li {
+	margin: 0 0 0 10px;
+}
+
+@media all and (max-width: 1000px) {
+
+.ropc .cart tr {
+	float: right;
+}
+
+}
+
+@media all and (min-width: 481px) {
+
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"]{
+	margin: 0 0 0 -1px;
+}
+
+}
+
+@media all and (min-width: 1001px) {
+
+.ropc .terms-of-service {
+	float: left;
+}
+.ropc .complete-order-panel,
+.ropc .complete-order-panel .buttons {
+	text-align: left;
+}
+*{
+	direction: rtl;
+}
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"]{
+	margin: 0 0 0 -1px;
+}
+.ropc .order-totals-panel{
+	float: left;
+	text-align: left;
+}
+
+.ropc .addon-buttons {
+    text-align: left;
+}
+
+.ropc .addon-buttons > * {
+    margin: 0 5px 5px 0;
+}
+
+}

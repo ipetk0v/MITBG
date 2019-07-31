@@ -1,0 +1,161 @@
+﻿/*
+* Copyright 2015 Seven Spikes Ltd. All rights reserved. (http://www.nop-templates.com)
+* http://www.nop-templates.com/t/licensinginfo
+*/
+
+.clearFilterOptionsAll {
+    left: 25px;
+    right: auto;
+}
+
+.filter-block .toggleControl {
+    padding: 14px 50px 14px 35px;
+    text-align: right;
+}
+
+.filter-block.selected-options .toggleControl {
+    padding-left: 20px;
+    padding-right: 0;
+}
+
+.filter-block .toggleControl:before {
+    right: 25px;
+    left: auto;
+}
+
+.filter-block .toggleControl.closed:before {
+    -webkit-transform: translateY(-50%) rotate(90deg);
+    -ms-transform: translateY(-50%) rotate(90deg);
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.filter-block a.clearFilterOptions,
+.filter-block a.clearPriceRangeFilter {
+    left: 0;
+    right: auto;
+}
+
+.selected-options-list > li span:after {
+    margin-right: 10px;
+    margin-left: auto;
+}
+
+.priceRangeMinPanel,
+.specification-min-panel {
+    float: right;
+}
+.priceRangeMaxPanel,
+.specification-max-panel {
+    float: left;
+}
+
+.ui-slider-handle span {
+    left: auto;
+    right: 50%;
+    margin-right: -19px;
+    margin-left: auto;
+}
+
+.ui-slider-handle span:before {
+    right: 50%;
+    left: auto;
+    margin-right: -2px;
+    margin-left: auto;
+}
+
+.priceRangeCurrentPricesPanel,
+.specification-current-value-panel {
+    text-align: right;
+}
+.currentMaxPrice, .current-max-value {
+    float: left;
+}
+
+.filtersGroupPanel .checkbox-list label {
+    padding: 9px 27px 9px 0;
+    text-align: right;
+}
+
+.filtersGroupPanel .checkbox-list label:before {
+    right: 0;
+    left: auto;
+}
+
+.colorOptions .color {
+    right: 0;
+    left: auto;
+}
+
+.colorOptions .checked .color {
+    right: 1px;
+    left: auto;
+}
+
+/* NO RESULTS POPUP */
+
+.k-overlay {
+    right: 0;
+    left: auto;
+}
+
+.ajaxFilters .k-window-actions {
+    left: 25px;
+    right: auto;
+}
+
+
+@media all and (min-width:481px) and (max-width:1024px) {
+    .product-selectors.infinite-scroll-enabled .product-sorting {
+        margin-right: 8px;
+        margin-left: auto;
+    }
+}
+
+
+@media all and (max-width: 1024px) {
+    .nopAjaxFilters7Spikes {
+        right: -100%;
+        left: auto;
+    }
+
+    .nopAjaxFilters7Spikes.open {
+        right: 0;
+    }
+    .filters-button:before {
+        margin: 0 -25px 0 10px;
+    }
+
+    .clearFilterOptionsAll {
+        left: 50px;
+        right: auto;
+    }
+    .nopAjaxFilters7Spikes .close-btn {
+        left: 5px;
+        right: auto;
+    }
+
+}
+
+
+@media all and (min-width:1025px) {
+
+    .filter-block:first-of-type .toggleControl {
+        padding-left: 110px;
+        padding-right: 0;
+    }
+
+    .filter-block.selected-options:first-of-type .toggleControl {
+        padding-left: 100px;
+        padding-right: 0;
+    }
+
+    .selected-options .clearFilterOptionsAll {
+        left: 25px;
+        right: auto;
+    }
+
+    .clearFilterOptionsAll {
+        left: 40px;
+        right: auto;
+    }
+}

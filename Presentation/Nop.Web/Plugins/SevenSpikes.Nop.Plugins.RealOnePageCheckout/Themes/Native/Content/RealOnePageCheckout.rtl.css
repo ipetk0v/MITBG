@@ -1,0 +1,81 @@
+.ropc .coupon-code input[type="text"],
+.ropc .coupon-code button {
+	float: right;
+}
+.checkout-page .ropc .section .title,
+.shipping-results,
+.shipping-method,
+.payment-method,
+.payment-info .info p {
+	text-align: right;
+}
+*{
+	direction: rtl;
+}
+.checkout-page .ropc .section .title strong:after {
+	left: 0;
+	right: auto;
+}
+.payment-method .payment-logo {
+	margin: 0 0 0 15px !important;
+}
+.ropc .coupon-code input[type="text"] {
+    margin: 0 0 0 -1px;
+}
+
+@media all and (min-width: 769px) {
+    .fieldset .title, .section .title {
+        text-align: right;
+    }
+}
+
+@media all and (max-width: 1000px) {
+
+.ropc .cart tr {
+	float: right;
+}
+
+}
+
+@media all and (min-width: 1001px) {
+
+    .payment-info .info tr {
+        text-align: right;
+    }
+    .order-totals-panel {
+        text-align: left;
+        float: left;
+    }
+    .ropc .panel-group-right-top, 
+    .ropc .panel-group-right-middle, 
+    .ropc .panel-group-right-bottom {
+        float: left;
+    }
+    .order-confirm,
+    .terms-of-service,
+    .complete-button {
+        text-align: left !important;
+    }
+    .inputs label {
+        text-align: right;
+    }
+    .estimate-shipping button {
+        float: left;
+    }
+    .payment-info .info td:first-child {
+        text-align: right !important;
+    }
+    .ropc .checkout-attributes{
+        text-align: right;
+    }
+    .ropc .checkout-attributes li{
+        margin: 0 0 0 10px;
+    }
+    .ropc .addon-buttons {
+        text-align: left;
+    }
+
+    .ropc .addon-buttons > * {
+        margin: 0 0 5px 5px;
+    }
+}

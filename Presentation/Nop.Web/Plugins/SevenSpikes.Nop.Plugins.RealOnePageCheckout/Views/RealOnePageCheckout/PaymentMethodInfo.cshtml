@@ -1,0 +1,11 @@
+﻿@using Nop.Web.Models.Checkout;
+
+@model CheckoutPaymentInfoModel
+    
+@await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_payment_info_top" })
+
+<div class="info">
+    @await Component.InvokeAsync(Model.PaymentViewComponentName)
+</div>
+
+@await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_payment_info_bottom" })

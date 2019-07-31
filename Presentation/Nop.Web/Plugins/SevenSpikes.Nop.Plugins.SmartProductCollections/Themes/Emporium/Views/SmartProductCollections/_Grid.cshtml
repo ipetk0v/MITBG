@@ -1,0 +1,17 @@
+﻿@model IList<Nop.Web.Models.Catalog.ProductOverviewModel>
+
+@if (Model.Count > 0)
+{
+    foreach (var item in Model)
+    {
+        <div>
+            <div class="item-box">
+                @await Html.PartialAsync("_ProductBox", item)
+            </div>
+        </div>
+    }
+}
+else
+{
+    <span class="no-data">@T("SevenSpikes.SmartProductCollections.Public.NoProductsAvailable")</span>
+}

@@ -1,0 +1,126 @@
+
+/*** PLUGIN STYLES ***/
+
+
+
+.coupon-code input,
+.coupon-code button {
+	float: right;
+}
+.estimate-shipping-panel .shipping-results,
+.payment-info .info {
+	text-align: right;
+}
+*{
+	direction: rtl;
+}
+.checkout-page .page-body{
+	margin-right: auto!important;
+	margin-left: auto!important;
+}
+.payment-method .method-list{
+	padding: 10px 10px 0 0;
+	text-align: right;
+}
+.checkout-page .cart tbody tr td:first-child{
+	border-right: 1px dotted #d0d0d0;
+}
+.checkout-page .cart tbody tr td:last-child{
+	border-left: 1px dotted #d0d0d0;
+}
+.checkout-attributes input[type=text],
+.checkout-attributes textarea{
+	margin-right: auto;
+	margin-left: auto;
+}
+.current-code span{
+	margin: 0 0 0 5px;
+}
+.cart-total button,
+.remove-product{
+	margin-left: -7px;
+	margin-right: 3px;
+}
+.coupon-code button {
+    background: url("rtl-bg-button-big.png") no-repeat center center / 100% 100%;
+}
+.complete-button button {
+    background: rgba(0, 0, 0, 0) url("rtl-bg-button-big.png") no-repeat scroll center center / 100% 100%;
+}
+
+
+@media all and (max-width: 768px) {
+
+.ropc .section-title,
+.ropc .cart {
+	text-align: right;
+}
+.ropc .section-title strong {
+    background: rgba(0, 0, 0, 0) url("icon-dropdown.png") no-repeat scroll 5% center;
+    padding: 0 0 0 17%;
+}
+
+
+}
+
+
+@media all and (min-width: 769px) {
+
+.shipping-method .method-list li {
+	text-align: right;
+}
+.checkout-attributes li {
+	margin: 0 0 0 10px;
+}
+
+}
+
+
+@media all and (min-width: 1025px) {
+
+.payment-method .method-list {
+	float: right;
+}
+.payment-info {
+	float: right;
+}
+.payment-info .info {
+	border-width: 0 1px 0 0;
+	padding-right: 30px;
+    padding-left: 0;
+}
+.ropc .attribute-list {
+    text-align: right;
+} 
+.order-summary-content .section-body > .ng-binding {
+	text-align: right;
+}
+.terms-of-service,
+.complete-button {
+	text-align: left;
+}
+.inputs label {
+	text-align: right;
+}
+.order-confirm .error-list {
+    text-align: left;
+}
+.order-confirm {
+	text-align: right;
+}
+.panel-group.panel-group-right-bottom {
+    text-align: left;
+}
+.ropc .order-totals-panel {
+    margin: 0 auto 20px 0;
+}
+
+.ropc .addon-buttons {
+    text-align: left;
+}
+
+.ropc .addon-buttons > * {
+     margin: 0 5px 5px 0;
+}
+
+}

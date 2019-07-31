@@ -1,0 +1,79 @@
+﻿<div class="section checkout-attributes" ng-controller="CheckoutAttributesController as vm" ng-show="vm.checkoutAttributesData.length > 0 && vm.hasAvailableAttributes()">
+
+    @await Html.PartialAsync("_AjaxLoader", "checkout-attributes-loader")
+
+    <div class="section-title title">
+        <strong>@T("SevenSpikes.RealOnePageCheckout.Public.CheckoutAttributes")</strong>
+    </div>
+    <div class="section-body">
+        <ul class="attribute-list">
+            <li ng-repeat="attribute in vm.checkoutAttributesData" ng-show="{{attribute.customProperties.enabled && attribute.attributeControlType != 'FileUpload' && attribute.attributeControlType != 'ColorSquares'}}">
+                <div class="attribute-name">
+                    <label class="text-prompt">{{attribute | textPrompt }}</label>
+                    <span ng-show="attribute.isRequired" class="required">*</span>
+                </div>
+
+                <div class="attribute-values" ng-switch="attribute.attributeControlType">
+
+                    <select class="not-loaded" ng-switch-when="DropdownList" ng-change="attribute.updated = true;" ng-model="vm.modelsData[attribute.id].dropdownListModel" name="checkout_attribute_{{attribute.id}}" id="checkout_attribute_{{attribute.id}}" ng-required="attribute.isRequired" ng-options="attributeValue as (attributeValue | priceAdjustment) for attributeValue in attribute.values track by attributeValue.id">
+                        <option value="" ng-if="!attribute.isRequired">---</option>
+                    </select>
+
+                    <ul ng-switch-when="RadioList" class="option-list">
+                        <li ng-repeat="attributeValue in attribute.values">
+                            <input ng-change="attribute.updated = true; attributeValue.updated = true;" ng-model="vm.modelsData[attribute.id].radioListModel" id="checkout_attribute_{{attribute.id}}_{{attributeValue.id}}" type="radio" name="checkout_attribute_{{attribute.id}}" value="{{attributeValue.id}}" ng-checked="attributeValue.isPreSelected"/>
+                            <label for="checkout_attribute_{{attribute.id}}_{{attributeValue.id}}">
+                                {{attributeValue | priceAdjustment }}
+                            </label>
+                        </li>
+                        <li class="hidden">
+                            <input type="hidden" ng-required="attribute.haveRequiredOption" ng-model="vm.modelsData[attribute.id].radioListModel"/>
+                        </li>
+                    </ul>
+
+                    <ul ng-switch-when="Checkboxes" class="option-list">
+                        <li ng-repeat="attributeValue in attribute.values">
+                            <input ng-click="attribute.updated = true; attributeValue.updated = true;" ng-model="vm.modelsData[attribute.id][attributeValue.id].checkBoxListModel" id="checkout_attribute_{{attribute.id}}_{{attributeValue.id}}" type="checkbox" name="checkout_attribute_{{attribute.id}}" value="{{attributeValue.id}}" ng-checked="attributeValue.isPreSelected"/>
+                            <label for="checkout_attribute_{{attribute.id}}_{{attributeValue.id}}">
+                                {{attributeValue | priceAdjustment }}
+                            </label>
+                        </li>
+                        <li class="hidden">
+                            <input type="hidden" ng-required="attribute.haveRequiredOption" ng-model="vm.modelsData[attribute.id].checkboxModel"/>
+                        </li>
+                    </ul>
+
+                    <input ng-switch-when="TextBox" ng-blur="attribute.updated = true;" ng-model="attribute.defaultValue" name="checkout_attribute_{{attribute.id}}" type="text" class="textbox" id="checkout_attribute_{{attribute.id}}" value="{{attribute.defaultValue}}" ng-required="attribute.isRequired"/>
+
+                    <textarea ng-switch-when="MultilineTextbox" data-placeholder-attr="{{attribute.defaultValue}}" ng-blur="attribute.updated = true;" ng-model="attribute.defaultValue" id="checkout_attribute_{{attribute.id}}" name="checkout_attribute_{{attribute.id}}" ng-required="attribute.isRequired"></textarea>
+                  
+                    <div ng-switch-when="Datepicker">
+                        <select ng-change="attribute.updated = true; attribute.day = vm.modelsData[attribute.id].day;" ng-model="vm.modelsData[attribute.id].day" name="checkout_attribute_{{attribute.id}}_day" id="checkout_attribute_{{attribute.id}}_day" class="not-loaded" ng-required="attribute.isRequired" ng-options="d for d in vm.days track by d">
+                            <option value="">Day</option>
+                        </select>
+                        <select ng-change="attribute.updated = true; attribute.month = vm.modelsData[attribute.id].month;" ng-model="vm.modelsData[attribute.id].month" name="checkout_attribute_{{attribute.id}}_month" id="checkout_attribute_{{attribute.id}}_month" class="not-loaded" ng-required="attribute.isRequired" ng-options="m.name for m in vm.months track by m.id">
+                            <option value="">Month</option>
+                        </select>
+                        <select ng-change="attribute.updated = true; attribute.year = vm.modelsData[attribute.id].year;" ng-model="vm.modelsData[attribute.id].year" name="checkout_attribute_{{attribute.id}}_year" id="checkout_attribute_{{attribute.id}}_year" class="not-loaded" ng-required="attribute.isRequired" ng-options="y for y in vm.years track by y">
+                            <option value="">Year</option>
+                        </select>
+                    </div>
+
+                    <span ng-switch-when="FileUpload"> <!-- FileUpload is not supported --></span>
+
+                    <span ng-switch-when="ColorSquares"> <!-- ColorSquares is not supported --></span>
+
+                    <ul ng-switch-when="ReadonlyCheckboxes" class="option-list">
+                        <li ng-repeat="attributeValue in attribute.values">
+                            <input ng-model="vm.modelsData[attribute.id][attributeValue.id].readonlyCheckBoxListModel" id="checkout_attribute_{{attribute.id}}_{{attributeValue.id}}" type="checkbox" name="checkout_attribute_{{attribute.id}}" value="{{attributeValue.id}}" ng-checked="attributeValue.isPreSelected" disabled="disabled"/>
+                            <label for="checkout_attribute_{{attribute.id}}_{{attributeValue.id}}">
+                                {{attributeValue | priceAdjustment }}
+                            </label>
+                        </li>
+                    </ul>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

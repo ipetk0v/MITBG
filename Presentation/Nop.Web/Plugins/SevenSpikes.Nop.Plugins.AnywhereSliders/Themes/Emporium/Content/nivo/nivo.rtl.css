@@ -1,0 +1,33 @@
+
+.nivo-directionNav a {
+    text-indent: 0;
+}
+
+.nivo-prevNav {
+    right: 15px;
+    left: auto;
+}
+
+.nivo-nextNav {
+    left: 15px;
+    right: auto;
+}
+
+.nivo-directionNav a.nivo-prevNav:before {
+    content: "\6a";
+}
+
+.nivo-directionNav a.nivo-nextNav:before {
+    content: "\6b";
+}
+
+@media all and (min-width: 1025px) {
+    .theme-home-banners {
+        float: right;
+    }
+
+    .theme-home-banners + .theme-home-banners {
+        margin-left: auto !important;
+        margin-right: 20px !important;
+    }
+}

@@ -1,0 +1,45 @@
+﻿<div class="section payment-method" ng-controller="PaymentMethodsController as vm">
+
+    @await Html.PartialAsync("_AjaxLoader", "payment-methods-loader")
+
+    <div class="section-title title">
+        <strong>@T("Checkout.PaymentMethod")</strong>
+    </div>
+
+    <div class="section-body">
+        
+        @await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_payment_method_top" })
+
+        <div class="use-reward-points" ng-show="vm.paymentsData.displayRewardPoints">
+            <input type="checkbox" id="rewardsCheckbox" name="useRewardPoints" ng-model="vm.paymentsData.useRewardPoints" ng-checked="vm.paymentsData.useRewardPoints" />
+            <label for="rewardsCheckbox">{{vm.stringFormat('@T("Checkout.UseRewardPoints")', vm.paymentsData.rewardPointsBalance, vm.paymentsData.rewardPointsAmount) }}</label>
+        </div>
+
+        <ul class="method-list">
+            <li ng-repeat="payment in vm.paymentsData.paymentMethods">
+                <div class="method-name">
+                    <div class="payment-logo" ng-show="payment.logoUrl && payment.logoUrl.length > 0">
+                        <label for="paymentmethod_{{$index}}">
+                            <img ng-src="{{payment.logoUrl}}" alt="{{payment | prepareName: '@T("Checkout.SelectPaymentMethod.MethodAndFee")'}}" />
+                        </label>
+                    </div>
+
+                    <div class="payment-details">
+                        <input ng-required="true" id="paymentmethod_{{$index}}" type="radio" name="paymentmethod" ng-value="payment" ng-model="vm.paymentsData.selectedPaymentMethod" />
+                        <label for="paymentmethod_{{$index}}">{{payment | prepareName: '@T("Checkout.SelectPaymentMethod.MethodAndFee")'}}</label>
+                        <div class="payment-description" ng-show="payment.description">{{payment.description}}</div>
+                    </div>
+                </div>
+            </li>
+            <li ng-show="vm.paymentsData.paymentMethods && vm.paymentsData.paymentMethods.length == 0">
+                <div class="message-error">
+                    @T("SevenSpikes.RealOnePageCheckout.Public.NoPaymentMethodsOrRequired").
+                </div>
+            </li>
+        </ul>
+
+        <div class="payment-info" ng-bind-html="vm.renderPaymentInfo(vm.paymentsData.selectedPaymentMethod.customProperties['paymentInfo'])"></div>
+
+        @await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_payment_method_bottom" })
+    </div>
+</div>

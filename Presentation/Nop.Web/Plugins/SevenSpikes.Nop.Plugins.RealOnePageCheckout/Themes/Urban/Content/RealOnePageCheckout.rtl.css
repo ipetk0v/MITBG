@@ -1,0 +1,71 @@
+.ropc .inputs label {
+    text-align: right;
+}
+.ropc .payment-info td {
+    text-align:right;
+}
+.ropc .payment-info td:first-child {
+	text-align:left;
+}
+.ropc .cart .qty-input{
+    padding: 8px 8px 8px 0;
+}
+.ropc .attribute-values li {
+	text-align: right;
+}
+.ropc .total-info button {
+	margin: 0 3px 0 -3px;
+}
+.ropc .shipping-results {
+    text-align: right;
+}
+
+@media all and (min-width: 769px) {
+
+.ropc .payment-method li {
+	float: right;
+	margin: 0 2% 2% 0;
+}
+.ropc .shipping-method .method-list li{
+    float:right;
+    margin: 0 2% 2% 0;
+}
+
+}
+
+
+@media all and (min-width: 1001px){
+
+.ropc .total-info{
+    float:left;
+}
+.ropc .terms-of-service {
+    text-align:left;
+}
+.ropc .complete-button{
+    text-align:left;
+}
+.order-confirm{
+    text-align:left;
+}
+.order-confirm .error-list{
+    text-align:left;
+}
+.order-confirm .error-list .error-item{
+    float:none;
+    width: auto;
+    text-align: left;
+    margin: -5px 0 5px;
+    border: none;
+}
+
+.ropc .addon-buttons {
+    text-align: left;
+}
+
+.ropc .addon-buttons > * {
+    margin: 0 5px 5px 0;
+}
+
+
+}

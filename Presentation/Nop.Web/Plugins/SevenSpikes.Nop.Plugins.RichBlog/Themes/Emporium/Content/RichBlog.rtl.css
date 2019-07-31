@@ -1,0 +1,131 @@
+
+
+.rich-blog-homepage .view-all a:after {
+    margin-right: 7px;
+    margin-left: auto;
+}
+
+.blog-search-box span.search-box-text {
+    float: right;
+    margin: 0 0 0 -1px;
+}
+
+.blog-search-box .instant-search-busy {
+    background: #fff url('images/ajax-loader-small.gif') left center no-repeat !important;
+}
+
+.blog-search-box .search-box-button {
+    float: right;
+    border-radius: 3px 0 0 3px;
+    border-left: 1px solid #eee;
+    border-right: 0;
+}
+
+.blog-instant-search .k-item {
+    text-align: right;
+}
+
+.post-relations label {
+    margin: 0 0 0 3px;
+}
+
+.post-relations li.separator {
+    margin: 0 0 0 5px;
+}
+
+.share-post li {
+    margin-left: 10px;
+    margin-right: auto;
+}
+.post-navigation a:nth-child(2) {
+    margin-right: 6px;
+    margin-left: auto;
+}
+
+.post-navigation .prev {
+    float: right;
+    text-align: right;
+    padding-right: 30px;
+    padding-left: 10px;
+}
+
+.post-navigation .next {
+    float: left;
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 10px;
+}
+
+.post-navigation .prev:before {
+    content: "\57";
+    right: 10px;
+    left: auto;
+}
+
+.post-navigation .next:after {
+    content: "\56";
+    left: 10px;
+    right: auto;
+}
+
+@media all and (min-width: 481px) {
+	
+    .blog-page .post-actions .share-post {
+        float: left;
+    }
+    .blog-page .post-actions .share-post li {
+        margin: 0 10px 0 0;
+    }
+
+    .post-navigation .prev {
+        padding-right: 40px;
+    }
+
+    .post-navigation .next {
+        padding-left: 40px;
+    }
+
+    .post-navigation .prev:before {
+        right: 20px;
+    }
+
+    .post-navigation .next:after {
+        left: 20px;
+    }
+	
+}
+
+@media all and (min-width: 769px) {
+
+    .rich-blog-homepage .blog-post {
+        float: right;
+        margin-right: 2%;
+        margin-left: 0;
+    }
+
+    .rich-blog-homepage .blog-post:nth-child(3n+1) {
+        margin-right: 0;
+    }
+
+}
+
+@media all and (min-width: 1024px) {
+
+    .blog-search-results {
+        text-align: right;
+    }
+
+}
+
+@media all and (min-width: 1281px) {
+
+    .rich-blog-homepage .read-more {
+        right: 0;
+        left: auto;
+    }
+    .rich-blog-homepage .read-more:before {
+        margin-left: 10px;
+        margin-right: auto;
+    }
+
+}

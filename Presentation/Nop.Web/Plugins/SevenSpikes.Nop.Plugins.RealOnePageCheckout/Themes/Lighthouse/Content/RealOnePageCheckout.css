@@ -1,0 +1,511 @@
+
+input.ng-invalid.ng-dirty, 
+textarea.ng-invalid.ng-dirty, 
+.has-error {
+    border: 1px solid #c00 !important;
+}
+
+.ropc {
+	margin: 20px 0;
+}
+.ropc .section {
+	width: 100%;
+	min-height: 0;
+	margin: 0 0 10px;
+}
+.ropc .section .title {
+    margin: 0;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ccc #ccc #bbb;
+	background: #eee url('toggle.png') right center no-repeat; /* Old browsers */
+    background: url('toggle.png') right center no-repeat, -webkit-linear-gradient(top, #eeeeee 0%, #dddddd 100%); /* Chrome10+,Safari5.1+ */
+    background: url('toggle.png') right center no-repeat, linear-gradient(to bottom, #eeeeee 0%, #dddddd 100%); /* W3C */
+	box-shadow: inset 0 1px 0 #fff;
+	padding: 15px;
+	text-align: left;
+	text-shadow: 1px 1px 0 #fff;
+}
+.ropc .section-body {
+	display: none;
+	margin: -1px 0 20px;
+	border: 1px solid #bbb;
+    padding: 15px;
+}
+.ropc .billing-address-panel .form-fields,
+.ropc .shipping-address-panel .form-fields {
+    border: none;
+	background: none;
+    padding: 0;
+}
+
+.ropc .inputs {
+	display: block;
+	max-width: none;
+	overflow: visible;
+    text-align: center;
+	white-space: nowrap;
+}
+.ropc .inputs label {
+	display: block;
+}
+.ropc .inputs input[type="text"] {
+	max-width: 100%;
+	height: 32px;
+	background-color: #f9f9f9;
+	padding: 0 8px;
+}
+.ropc .inputs select,
+.ropc .choose-address select {
+    max-width: 100%;
+	height: 32px;
+	background-color: #f9f9f9;
+	padding: 0 5px;
+}
+.ropc .choose-address {
+    margin: 10px -15px 20px;
+	border-bottom: 1px dashed #bbb;
+	padding: 0 15px 20px;
+    text-align: center;
+}
+.ropc .choose-address select {
+	width: 320px;
+}
+.ropc .ship-to-same-address {
+	background-color: transparent;
+	padding: 10px 0 5px;
+	text-align: center;
+}
+
+.ropc .pickup-in-store {
+	background-color: transparent;
+	padding: 0;
+}
+.ropc .pickup-in-store .section-body {
+	text-align: center;
+}
+.ropc .pickup-in-store .options {
+	margin: 0 0 5px;
+}
+.ropc .pickup-points {
+	margin: 10px 0 0;
+}
+.ropc .pickup-points select {
+	height: 32px;
+	margin: 0 0 15px;
+}
+.ropc .pickup-points-map {
+	width: 100% !important;
+	height: 300px !important;
+}
+
+.ropc .estimate-shipping .hint {
+    margin: 0 0 10px;
+	text-align: center;
+}
+.ropc .estimate-shipping .buttons {
+    margin: 10px 0 0;
+    overflow: hidden;
+}
+.ropc .estimate-shipping button {
+    border: 1px solid #666;
+    background-color: #777;
+    box-shadow: inset 0 0 1px #fff;
+    padding: 8px 16px;
+	font-size: 13px;
+    color: #fff;
+}
+.ropc .estimate-shipping button:hover {
+    border-color: #777;
+    background-color: #888;
+}
+.ropc .estimate-shipping button[disabled] {
+    opacity: 0.3;
+    cursor: auto;
+} 
+.ropc .estimate-shipping button[disabled]:hover {
+    border-color: #666;
+    background-color: #777;
+} 
+.ropc .shipping-results {
+    margin: 30px 0 0;
+    text-align: center;
+}
+.ropc .shipping-results li {
+	margin: 5px 0;
+}
+.ropc .shipping-results strong {
+	margin: 0 3px 0 0;
+	color: #333;
+}
+
+.ropc .method-list {
+    margin: 0;
+	border: none;
+    padding: 10px;
+}
+.ropc .method-list li {
+	margin: 15px 0 0;
+}
+.ropc .use-reward-points {
+    margin: 0 0 10px;
+	padding: 5px 0;
+	text-align: left;
+}
+
+.ropc .payment-info {
+    margin: 20px -15px 0;
+	border-top: 1px dashed #bbb;
+	padding: 5px 15px 0;
+}
+.ropc .payment-info .info {
+	margin: 0;
+    border: none;
+	padding: 15px 10px 5px;
+}
+.ropc .payment-info td {
+	padding: 5px 0 !important;
+	text-align: left !important;
+}
+
+.ropc .remove-product {
+    display: inline-block;
+	width: 22px;
+	height: 22px;
+	border: 1px solid #bbb;
+	background: #fff url('delete.png') center no-repeat;
+	vertical-align: middle;
+    font-size: 0;
+	cursor: pointer;
+}
+.ropc .cart .sku {
+	display: none;
+}
+.ropc .cart .attributes {
+	margin: 10px 0;
+}
+.ropc .quantity label {
+    display: none;
+}
+.ropc .cart .qty-input {
+	text-align: center;
+}
+
+.ropc .attribute-list > li {
+    display: block;
+	margin: 0 0 10px;
+}
+.ropc .attribute-list > li:last-child {
+	margin: 0;
+}
+.ropc .attribute-list select,
+.ropc .attribute-list input[type="textbox"] {
+	width: 320px;
+    max-width: 100%;
+	border: 1px solid #bbb !important;
+}
+.ropc .attribute-list select:focus,
+.ropc .attribute-list input[type="textbox"]:focus {
+	border-color: #999 !important;
+}
+.ropc .attribute-list .hidden {
+    display: none;
+}
+
+.ropc .coupon-box-panel .hint,
+.ropc .giftcard-box-panel .hint {
+    margin: 0 0 10px;
+}
+.ropc .coupon-box-panel .coupon-code,
+.ropc .giftcard-box-panel .coupon-code {
+	display: inline-block;
+	font-size: 0;
+}
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"] {
+	float: left;
+	width: 160px;
+    height: 32px;
+	background-color: #f9f9f9;
+	vertical-align: middle;
+}
+.ropc .coupon-box-panel .coupon-code button,
+.ropc .giftcard-box-panel .coupon-code button {
+	float: left;
+	width: 100px;
+	height: 32px;
+	margin: 0 0 0 -2px;
+    border: 1px solid #999;
+    background-color: #bbb;
+    box-shadow: inset 0 0 1px #fff;
+	padding: 0;
+	vertical-align: middle;
+    font-size: 12px;
+    color: #fff;
+}
+.ropc .coupon-box-panel .coupon-code button:hover,
+.ropc .giftcard-box-panel .coupon-code button:hover {
+    border-color: #888;
+    background-color: #999;
+}
+.ropc .coupon-box-panel .message,
+.ropc .giftcard-box-panel .message {
+	clear: both;
+    padding: 5px 0 0;
+    font-size: 12px;
+}
+.ropc .coupon-box-panel .current-code {
+	clear: both;
+    padding: 5px 0 0;
+}
+
+.ropc .order-totals-panel {
+    max-width: 400px;
+    margin: 20px auto;
+	border: 1px solid #ddd;
+    padding: 10px;
+}
+.ropc .total-info td {
+	text-align: left;
+}
+.ropc .current-code button,
+.ropc .current-code span,
+.ropc .total-info button {
+    display: inline-block;
+    vertical-align: middle;
+}
+.ropc .current-code button,
+.ropc .total-info button {
+    width: 16px !important;
+    height: 16px;
+    background: #fff url('delete.png') no-repeat center;
+    border: 0;
+    font-size: 0;
+}
+.ropc .total-info button {
+    position: relative;
+    z-index: 1;
+	margin: -2px -4px 0 0;
+}
+.ropc .terms-of-service {
+	text-align: center;
+}
+.ropc .terms-of-service span {
+	margin: 0 3px;
+}
+.ropc .error-list {
+    margin: 0 0 15px;
+	text-align: center;
+	color: #c00;
+}
+.ropc .complete-button button {
+	height: 40px;
+    border: 1px solid #000;
+    background-color: #333;
+    box-shadow: inset 0 0 1px #ccc;
+    padding: 0 24px;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #fff;
+}
+.ropc .complete-button button:hover {
+    opacity: 0.9;
+}
+.ropc .addon-buttons {
+	margin: 20px 0 0;
+	text-align: center;
+}
+
+
+
+@media all and (max-width: 1024px) {
+
+.ropc .panel {
+	display: block;
+	max-width: 550px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.ropc .section-title {
+	cursor: pointer;
+}	
+.ropc .cart {
+	display: block;
+}
+.ropc .cart colgroup,
+.ropc .cart thead {
+	display: none;
+}
+.ropc .cart tbody {
+	display: block;
+	overflow: hidden;
+}
+.ropc .cart tr {
+	display: block;
+	float: left;
+	width: 99%;
+	margin: 25px auto 0;
+	border: 1px solid #bbb;
+	background-color: #fff;
+	text-align: center;
+}
+.ropc .cart tr:first-child {
+	margin-top: 15px;
+}
+.ropc .cart td {
+	display: block;
+	border: none;
+	padding: 10px;
+	text-align: center;
+}
+.ropc .cart td.remove-from-cart {
+    margin: 0 0 -1px;
+	border-bottom: 1px solid #ddd;
+	background-color: #eee;
+	padding: 10px;
+}
+.ropc .cart td.product-picture {
+	border-top: 1px solid #ddd;
+	padding: 15px 10px 5px;
+}
+.ropc .cart td.product {
+	min-width: 0;
+	border-bottom: 1px solid #ddd;
+	padding: 5px 10px 15px;
+	text-align: center;
+}
+.ropc .cart td.quantity {
+	display: inline-block;
+	padding: 0 10px;
+	vertical-align: middle;
+}
+.ropc .cart td.unit-price,
+.ropc .cart td.subtotal {
+	display: inline-block;
+	padding: 20px 10px;
+	vertical-align: middle;
+}
+.ropc .coupon-box-panel,
+.ropc .giftcard-box-panel {
+	float: none;
+	width: 100%;	
+}
+
+}
+
+@media all and (min-width: 481px) {
+
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"] {
+	width: 200px;
+}
+.ropc .coupon-box-panel .coupon-code button,
+.ropc .giftcard-box-panel .coupon-code button {
+	width: 110px;
+}
+
+}
+
+@media all and (min-width: 769px) {
+
+.ropc {
+	margin: 0;
+}
+.ropc .panel {
+	max-width: none;
+}
+.ropc .section {
+	margin: 0 0 25px;
+}
+.ropc .section .title {
+	margin: 0 0 10px;
+	border: none;
+	background-image: none;
+	padding: 0;
+}
+.ropc .section-body {
+	display: block !important;
+}
+.ropc .choose-address {
+	padding-bottom: 25px;
+}
+.ropc .choose-address select {
+	width: 380px;
+}
+.ropc .pickup-in-store .section-body {
+	text-align: left;
+}
+.ropc .pickup-in-store .description:before,
+.ropc .pickup-in-store .description:after {
+	display: none;
+}
+.ropc .method-list {
+	padding: 0;
+}
+.ropc .use-reward-points {
+    margin: 0 0 15px;
+}
+.ropc .payment-info .info {
+    padding: 10px 0 0;
+}
+.ropc .payment-info #PurchaseOrderNumber {
+	display: inline-block;
+}
+.ropc .attribute-list select,
+.ropc .attribute-list input[type="textbox"] {
+	width: auto;
+	min-width: 150px;
+}
+.ropc .order-summary-panel .section-body {
+	border: none;
+	padding: 0;
+}
+.ropc .order-totals-panel {
+	margin-top: 0;
+	border-color: #bbb;
+}
+
+}
+
+@media all and (min-width: 1025px) {
+
+.ropc .inputs label {
+	width: auto;
+	margin: 0 0 5px;
+	padding: 0;
+	text-align: center;
+	line-height: normal;
+}
+.ropc .coupon-box-panel,
+.ropc .giftcard-box-panel {
+	float: right;
+	clear: both;
+	width: 50%;
+}
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"] {
+	width: 170px;
+}
+.ropc .order-totals-panel {
+	width: 50%;
+	margin: 0 0 20px auto;
+}
+.ropc .order-confirm,
+.ropc .terms-of-service,
+.ropc .complete-button,
+.ropc .addon-buttons {
+	width: 48%;
+	margin-left: auto;
+	text-align: right;
+}
+
+}
+
+@media all and (min-width: 1281px) {
+
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"] {
+	width: 240px;
+}
+
+}

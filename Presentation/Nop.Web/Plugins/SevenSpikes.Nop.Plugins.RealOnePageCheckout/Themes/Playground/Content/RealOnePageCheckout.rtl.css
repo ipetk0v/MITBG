@@ -1,0 +1,72 @@
+
+.ropc .inputs .required {
+	margin: 0 0 0 -6px;
+}
+.ropc .payment-method .method-list {
+	text-align: right;
+}
+.ropc .payment-method .payment-logo {
+	margin: 0 0 0 15px !important;
+}
+.ropc .payment-info {
+	text-align: right;
+}
+.ropc .payment-info p {
+	text-align: right;
+}
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"] {
+	float: right;
+}
+
+
+@media all and (min-width:769px) {
+	
+.ropc .section-title {
+	text-align: right;
+}
+.ropc .inputs label {
+	text-align: right;
+}
+.ropc .shipping-method .method-list,
+.ropc .payment-method .method-list {
+	text-align: right;
+}
+
+}
+
+@media all and (min-width:1025px) {
+	
+.ropc .panel-group-right-top,
+.ropc .panel-group-right-middle,
+.ropc .panel-group-right-bottom {
+	float: left;
+}
+.ropc .inputs label {
+	text-align: right;
+}
+.ropc .order-totals-panel {
+	text-align: left;
+	float: left;
+}
+.ropc .payment-info .info tr {
+	text-align: right;
+}
+.ropc .payment-info .info td:first-child {
+	text-align: right !important;
+}
+.ropc .order-confirm,
+.ropc .terms-of-service,
+.ropc .complete-button {
+	text-align: left !important;
+}
+
+.ropc .addon-buttons {
+    text-align: left;
+}
+
+.ropc .addon-buttons > * {
+    margin: 0 5px 5px 0;
+}
+
+}

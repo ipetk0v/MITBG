@@ -1,0 +1,25 @@
+﻿@model List<SevenSpikes.Theme.Emporium.Models.InfoBoxModel>
+
+@if (Model.Count > 0)
+{
+    <div class="home-page-advantages">
+        @foreach (var infoBox in Model)
+        {
+            <div class="advantages-item">
+                <div class="picture">
+                    <a href="@infoBox.Url">
+                        <img src="@infoBox.PictureUrl" alt="advantage image" title="advantage image" />
+                    </a>
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a href="@infoBox.Url">@infoBox.Title</a>
+                    </div>
+                    <div class="description">
+                        <p>@infoBox.Text</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

@@ -1,0 +1,84 @@
+/*
+* Copyright 2012 Seven Spikes Ltd. All rights reserved. (http://www.nop-templates.com)
+* http://www.nop-templates.com/t/licensinginfo
+*/
+
+.section .title {
+	text-align: right;
+}
+.shipping-results {
+	text-align: right;
+}
+.shipping-method .method-list,
+.payment-method .method-list {
+	text-align: right;
+}
+.payment-method .use-reward-points {
+	text-align: right;
+}
+.payment-info {
+	text-align: right;
+}
+.payment-info .info p {
+	text-align: right;
+}
+.payment-info .info td:first-child p {
+	text-align: right !important;
+}
+.coupon-box-panel input[type="text"],
+.giftcard-box-panel input[type="text"] {
+	float: right;
+}
+.coupon-box-panel .coupon-code button,
+.giftcard-box-panel .coupon-code button {
+	float: right;
+}
+.total-info .cart-total button {
+	margin-left: -10px;
+}
+.choose-address select {
+    background-position: 4% center;
+}
+
+@media all and (min-width:769px) {
+	
+    .payment-method .payment-logo,
+    .payment-method .payment-details {
+	    margin: 0 0 0 10px;
+        text-align: right;
+    }
+    .checkout-attributes li *:first-child {
+	    margin-right: 0 !important;
+    }
+}
+
+@media all and (min-width:1025px) {
+	
+    .inputs label {
+	    text-align: right;
+    }
+    .ship-to-same-address {
+	    text-align: right !important;
+    }
+    .checkout-page .selected-checkout-attributes {
+	    text-align: left !important;
+    }
+    .payment-info .info tr {
+	    text-align: right;
+    }
+    .ropc .complete-order-panel,
+    .ropc .order-totals-panel {
+        float: left;
+        text-align: left;
+    }
+    .pickup-in-store .section-body {
+        text-align: right;
+    }
+    .addon-buttons {
+        text-align: left;
+    }
+    .addon-buttons > * {
+        margin: 0 5px 5px 20px;
+    }
+
+}

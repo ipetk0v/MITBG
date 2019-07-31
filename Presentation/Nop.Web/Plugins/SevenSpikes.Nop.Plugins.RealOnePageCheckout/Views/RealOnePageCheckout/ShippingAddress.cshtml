@@ -1,0 +1,244 @@
+﻿@{
+    int debounceTime = 1000;
+}
+
+<div class="section shipping-address" ng-controller="ShippingAddressController as vm" ng-show="vm.configData.isVisible">
+
+    @await Html.PartialAsync("_AjaxLoader", "shipping-address-loader")
+
+    <div class="section-title title">
+        <strong>@T("Checkout.ShippingAddress")</strong>
+    </div>
+
+    <div class="section-body">
+        
+        @await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_shipping_address_top" })
+
+        <div class="choose-address">
+            <select class="not-loaded" ng-model="vm.shippingData.selectedShippingAddress" ng-model-options="{ updateOn: 'default change' }" ng-options="address.customProperties.fullAddress for address in vm.shippingData.addresses track by address.id">
+                <option value="" ng-if="false"></option>
+            </select>
+        </div>
+        
+        @await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_shipping_address_middle" })
+
+    <div class="form-fields" ng-form="shippingForm">
+        <div class="inputs">
+            <label for="shippingFirstName">@T("Address.Fields.FirstName"):</label> <input type="text" ng-required="vm.requiredFields['firstName']" id="shippingFirstName" name="shippingFirstName" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-class="{'has-error' : shippingForm['shippingFirstName'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" ng-model="vm.shippingData.selectedShippingAddress.firstName" value="{{vm.shippingData.selectedShippingAddress.firstName}}" />
+            <span class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['firstName'] && shippingForm.shippingFirstName.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.FirstName")
+            </span>
+        </div>
+
+        <div class="inputs">
+            <label for="shippingLastName">
+                @T("Address.Fields.LastName"):
+            </label> <input type="text" ng-required="vm.requiredFields['lastName']" id="shippingLastName" name="shippingLastName" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-class="{'has-error' : shippingForm['shippingLastName'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" ng-model="vm.shippingData.selectedShippingAddress.lastName" value="{{vm.shippingData.selectedShippingAddress.lastName}}" />
+            <span class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['lastName'] && shippingForm.shippingLastName.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.LastName")
+            </span>
+        </div>
+
+        <div class="inputs">
+            <label for="shippingEmail">
+                @T("Address.Fields.Email"):
+            </label> <input type="text" id="shippingEmail" name="shippingEmail" ng-required="vm.requiredFields['email']" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-class="{'has-error' : shippingForm['shippingEmail'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" ng-model="vm.shippingData.selectedShippingAddress.email" value="{{vm.shippingData.selectedShippingAddress.email}}" />
+            <span class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['email'] && shippingForm.shippingEmail.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.Email")
+            </span>
+        </div>
+
+        <div class="inputs" ng-hide="vm.shippingData.settings.companyEnabled === false">
+            <label for="shippingCompany">
+                @T("Address.Fields.Company"):
+            </label> <input type="text" id="shippingCompany" name="shippingCompany" ng-required="vm.requiredFields['company']" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-class="{'has-error' : shippingForm['shippingCompany'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" ng-model="vm.shippingData.selectedShippingAddress.company" value="{{vm.shippingData.selectedShippingAddress.company}}" />
+            <span ng-show="vm.shippingData.settings.companyRequired" class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['company'] && shippingForm.shippingCompany.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.Company")
+            </span>
+        </div>
+
+        <div class="inputs" ng-hide="vm.shippingData.settings.countryEnabled === false">
+            <label for="shippingCountry">
+                @T("Address.Fields.Country"):
+            </label>
+            <select id="shippingCountry" class="not-loaded" name="shippingCountry" ng-required="vm.requiredFields['country']" make-first-value-invalid ng-model-options="{ updateOn: 'default change' }" ng-class="{'has-error' : shippingForm['shippingCountry'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" ng-model="vm.shippingData.selectedShippingAddress.country" ng-options="country.text for country in vm.shippingData.countries track by country.value">
+                <option value="" ng-if="false"></option>
+            </select>
+            <span ng-show="vm.shippingData.settings.countryEnabled" class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['country'] && shippingForm.shippingCountry.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.Country")
+            </span>
+        </div>
+
+        <div class="inputs" ng-hide="vm.shippingData.settings.countryEnabled === false || vm.shippingData.settings.stateProvinceEnabled === false">
+            <label for="shippingStateProvince">
+                @T("Address.Fields.StateProvince"):
+            </label>
+            <select class="not-loaded" ng-model="vm.shippingData.selectedShippingAddress.stateProvince" ng-required="vm.requiredFields['stateProvince']" id="shippingStateProvince" ng-model-options="{ updateOn: 'default change' }" ng-class="{'has-error' : shippingForm['shippingStateProvince'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" name="shippingStateProvince" ng-options="state.text for state in vm.shippingData.states track by state.value">
+                <option value="" ng-if="false"></option>
+            </select>
+            <span ng-show="vm.shippingData.settings.stateProvinceEnabled" class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['stateProvince'] && shippingForm.shippingStateProvince.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.StateOrProvince")
+            </span>
+        </div>
+
+        <div class="inputs" ng-hide="vm.shippingData.settings.cityEnabled === false">
+            <label for="shippingCity">
+                @T("Address.Fields.City"):
+            </label> <input type="text" id="shippingCity" name="shippingCity" ng-required="vm.requiredFields['city']" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-class="{'has-error' : shippingForm['shippingCity'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" ng-model="vm.shippingData.selectedShippingAddress.city" value="{{vm.shippingData.selectedShippingAddress.city}}" />
+            <span ng-show="vm.shippingData.settings.cityRequired" class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['city'] && shippingForm.shippingCity.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.City")
+            </span>
+        </div>
+
+        <div class="inputs" ng-hide="vm.shippingData.settings.countyEnabled === false">
+            <label for="shippingCounty">
+                @T("Address.Fields.County"):
+            </label> <input type="text" id="shippingCounty" name="shippingCounty" ng-required="vm.requiredFields['county']" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-class="{'has-error' : shippingForm['shippingCounty'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" ng-model="vm.shippingData.selectedShippingAddress.county" value="{{vm.shippingData.selectedShippingAddress.county}}" />
+            <span ng-show="vm.shippingData.settings.countyRequired" class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['county'] && shippingForm.shippingCounty.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.County")
+            </span>
+        </div>
+
+        <div class="inputs" ng-hide="vm.shippingData.settings.streetAddressEnabled === false">
+            <label for="shippingAddress1">
+                @T("Address.Fields.Address1"):
+            </label> <input type="text" id="shippingAddress1" name="shippingAddress1" ng-required="vm.requiredFields['address1']" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-model="vm.shippingData.selectedShippingAddress.address1" ng-class="{'has-error' : shippingForm['shippingAddress1'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" value="{{vm.shippingData.selectedShippingAddress.address1}}" />
+            <span ng-show="vm.shippingData.settings.streetAddressRequired" class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['address1'] && shippingForm.shippingAddress1.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.Address1")
+            </span>
+        </div>
+
+        <div class="inputs" ng-hide="vm.shippingData.settings.streetAddress2Enabled === false">
+            <label for="shippingAddress2">
+                @T("Address.Fields.Address2"):
+            </label> <input type="text" id="shippingAddress2" ng-required="vm.requiredFields['address2']" name="shippingAddress2" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-class="{'has-error' : shippingForm['shippingAddress2'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" ng-model="vm.shippingData.selectedShippingAddress.address2" value="{{vm.shippingData.selectedShippingAddress.address2}}" />
+            <span ng-show="vm.shippingData.settings.streetAddress2Required" class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['address2'] && shippingForm.shippingAddress2.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.Address2")
+            </span>
+        </div>
+
+        <div class="inputs" ng-hide="vm.shippingData.settings.zipPostalCodeEnabled === false">
+            <label for="shippingZipPostalCode">
+                @T("Address.Fields.ZipPostalCode"):
+            </label> <input type="text" id="shippingZipPostalCode" ng-required="vm.requiredFields['zipPostalCode']" name="shippingZipPostalCode" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-class="{'has-error' : shippingForm['shippingZipPostalCode'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" ng-model="vm.shippingData.selectedShippingAddress.zipPostalCode" value="{{vm.shippingData.selectedShippingAddress.zipPostalCode}}" />
+            <span ng-show="vm.shippingData.settings.zipPostalCodeRequired" class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['zipPostalCode'] && shippingForm.shippingZipPostalCode.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.ZipOrPostalCode")
+            </span>
+        </div>
+
+        <div class="inputs" ng-hide="vm.shippingData.settings.phoneEnabled === false">
+            <label for="shippingPhoneNumber">
+                @T("Address.Fields.PhoneNumber"):
+            </label> <input type="text" id="shippingPhoneNumber" ng-required="vm.requiredFields['phoneNumber']" name="shippingPhoneNumber" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-class="{'has-error' : shippingForm['shippingPhoneNumber'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" ng-model="vm.shippingData.selectedShippingAddress.phoneNumber" value="{{vm.shippingData.selectedShippingAddress.phoneNumber}}" />
+            <span ng-show="vm.shippingData.settings.phoneRequired" class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['phoneNumber'] && shippingForm.shippingPhoneNumber.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.PhoneNumber")
+            </span>
+        </div>
+
+        <div class="inputs" ng-hide="vm.shippingData.settings.faxEnabled === false">
+            <label for="shippingFaxNumber">
+                @T("Address.Fields.FaxNumber"):
+            </label> <input type="text" id="shippingFaxNumber" ng-required="vm.requiredFields['faxNumber']" name="shippingFaxNumber" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-class="{'has-error' : shippingForm['shippingFaxNumber'].$invalid && shippingForm.$$parentForm.sySubmitted, 'required' : field.required}" ng-model="vm.shippingData.selectedShippingAddress.faxNumber" value="{{vm.shippingData.selectedShippingAddress.faxNumber}}" />
+            <span ng-show="vm.shippingData.settings.faxRequired" class="required">*</span>
+            <span class="message-error" ng-show="vm.requiredFields['faxNumber'] && shippingForm.shippingFaxNumber.$invalid && shippingForm.$$parentForm.sySubmitted">
+                @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.FaxNumber")
+            </span>
+        </div>
+
+        <div class="inputs" ng-repeat="attribute in vm.shippingData.selectedShippingAddress.customAddressAttributes">
+            <div ng-switch="attribute.attributeControlType">
+                <label for="shipping_address_attribute_{{attribute.id}}">{{attribute.name}}</label>
+
+                <select class="not-loaded" ng-switch-when="DropdownList" name="shipping_address_attribute_{{attribute.id}}" ng-change="vm.addressAttributeChanged(vm.modelsData[attribute.id].dropdownListModel, attribute)" id="shipping_address_attribute_{{attribute.id}}" ng-required="attribute.isRequired" ng-model="vm.modelsData[attribute.id].dropdownListModel" ng-options="attributeValue.name for attributeValue in attribute.values track by attributeValue.id">
+                    <option value="" ng-if="!attribute.isRequired">---</option>
+                </select>
+
+                <ul ng-switch-when="Checkboxes" class="option-list">
+                    <li ng-repeat="attributeValue in attribute.values">
+                        <input id="shipping_address_attribute_{{attribute.id}}_{{attributeValue.id}}" type="checkbox" ng-change="vm.addressAttributeChanged(vm.modelsData[attribute.id].checkboxModel, attribute)" name="shipping_address_attribute_{{attribute.id}}" ng-model="vm.modelsData[attribute.id].checkboxModel[attributeValue.id]" value="{{attributeValue.id}}" />
+                        <label for="shipping_address_attribute_{{attribute.id}}_{{attributeValue.id}}">
+                            {{attributeValue.name}}
+                        </label>
+                    </li>
+                </ul>
+
+                <ul ng-switch-when="ReadonlyCheckboxes" class="option-list">
+                    <li ng-repeat="attributeValue in attribute.values">
+                        <input id="shipping_address_attribute_{{attribute.id}}_{{attributeValue.id}}" type="checkbox" name="shipping_address_attribute_{{attribute.id}}" value="{{attributeValue.id}}" ng-checked="attributeValue.isPreSelected" disabled="disabled" />
+                        <label for="shipping_address_attribute_{{attribute.id}}_{{attributeValue.id}}">
+                            {{attributeValue.name}}
+                        </label>
+                    </li>
+                </ul>
+
+                <ul ng-switch-when="RadioList" class="option-list">
+                    <li ng-repeat="attributeValue in attribute.values">
+                        <input id="shipping_address_attribute_{{attribute.id}}_{{attributeValue.id}}" ng-change="vm.addressAttributeChanged(attributeValue, attribute)" type="radio" name="shipping_address_attribute_{{attribute.id}}" ng-model="vm.modelsData[attribute.id].radioModel" value="{{attributeValue.id}}" />
+                        <label for="shipping_address_attribute_{{attribute.id}}_{{attributeValue.id}}">
+                            {{attributeValue.name}}
+                        </label>
+                    </li>
+                </ul>
+
+                <input ng-switch-when="TextBox" name="shipping_address_attribute_{{attribute.id}}" type="text" ng-change="vm.addressAttributeChanged(vm.modelsData[attribute.id].textBoxModel, attribute)" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-model="vm.modelsData[attribute.id].textBoxModel" ng-value="vm.modelsData[attribute.id].textBoxModel" class="textbox" id="shipping_address_attribute_{{attribute.id}}" ng-required="vm.configData.isVisible && attribute.isRequired" />
+
+                <textarea ng-switch-when="MultilineTextbox" id="shipping_address_attribute_{{attribute.id}}" ng-change="vm.addressAttributeChanged(vm.modelsData[attribute.id].multilineTextboxModel, attribute)" ng-model-options="{ updateOn: 'default blur', debounce: {'default': @debounceTime, 'blur': 0} }" ng-model="vm.modelsData[attribute.id].multilineTextboxModel" ng-value="vm.modelsData[attribute.id].multilineTextboxModel" name="shipping_address_attribute_{{attribute.id}}" ng-required="vm.configData.isVisible && attribute.isRequired"></textarea>
+
+                <span ng-show="attribute.isRequired" class="required">*</span>
+                <span class="message-error" ng-show="attribute.isRequired && shippingForm.shippingFirstName.$invalid && shippingForm.$$parentForm.sySubmitted">
+                    @T("SevenSpikes.RealOnePageCheckout.ShippingAddress.Error.CustomAttribute")
+                </span>
+            </div>
+        </div>
+
+    </div>
+        
+        @await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_shipping_address_bottom" })
+    </div>
+</div>
+
+<div class="section pickup-in-store" ng-controller="PickupInStoreController as vm" ng-show="vm.configData.pickupInStoreIsVisible">
+
+    <div class="section-title title" ng-hide="!vm.pickUpInStoreModel.pickUpInStoreOnly && (vm.pickUpInStoreModel.pickupPoints.length <= 0 && (vm.pickUpInStoreModel.apiKey.length == 0 && !vm.pickUpInStoreModel.displayPickupPointsOnMap))">
+        <strong>@T("SevenSpikes.RealOnePageCheckout.Public.PickupInStore.Title")</strong> @*Don't forget to add dynamic title*@
+    </div>
+
+    <div class="section-body" ng-hide="!vm.pickUpInStoreModel.pickUpInStoreOnly && (vm.pickUpInStoreModel.pickupPoints.length <= 0 && (vm.pickUpInStoreModel.apiKey.length == 0 && !vm.pickUpInStoreModel.displayPickupPointsOnMap))">
+         <div ng-hide="vm.pickUpInStoreModel.pickUpInStoreOnly" class="options">
+                <input ng-disabled="vm.pickUpInStoreModel.apiKey.length == 0 && vm.pickUpInStoreModel.displayPickupPointsOnMap"  name="pickupinstore" id="pickUpInStore" type="checkbox" value="{{vm.pickupInStoreData.pickupInStore}}" ng-model="vm.pickupInStoreData.pickupInStore">
+                <label for="pickUpInStore">@T("checkout.pickuppoints")</label>
+            </div>
+            <div class="description">
+                <p>@T("checkout.pickuppoints.description")</p>
+            </div>
+            <div ng-if="vm.pickUpInStoreModel.pickupPoints.length > 0 && vm.pickupInStoreData.pickupInStore">
+                <div class="pickup-points">
+                    <select class="address-select not-loaded" id="pickup-points-select" ng-change="vm.pickUpPointChanged(true)" ng-model-options="{ updateOn: 'default change' }" ng-model="vm.selectedPickupPoint" ng-options="point.CustomProperties.addressLine for point in vm.pickUpInStoreModel.pickupPoints track by (point.Id + '___' + point.ProviderSystemName)">
+                        <option value="" ng-if="false"></option>
+                    </select>
+                    <div class="pickup-points-map" id="map" style="width: 396px; height: 300px;" ng-if="vm.pickUpInStoreModel.displayPickupPointsOnMap">
+                        <map pickup-points="vm.pickUpInStoreModel.pickupPoints" api-key="vm.pickUpInStoreModel.apiKey"></map>
+                    </div>
+                </div>
+            </div>
+        <div class="errors" ng-if="vm.pickUpInStoreModel.warnings.length > 0">
+            <ul class="error-list">
+                <li class="error-item" ng-repeat="warning in vm.pickUpInStoreModel.warnings track by $index">
+                    <span class="error-text">{{warning}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

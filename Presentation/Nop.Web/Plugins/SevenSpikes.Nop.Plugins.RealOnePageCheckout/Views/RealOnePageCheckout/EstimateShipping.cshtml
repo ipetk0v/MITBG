@@ -1,0 +1,64 @@
+﻿<div class="section estimate-shipping" ng-controller="EstimateShippingController as vm" ng-show="vm.estimateShippingData.isVisible">
+
+    <div class="section-title title">
+        <strong>@T("ShoppingCart.EstimateShipping")</strong>
+    </div>
+
+    <div class="section-body">
+
+        <div class="hint">@T("ShoppingCart.EstimateShipping.Tooltip")</div>
+
+        <div class="shipping-options">
+            <div class="inputs">
+                <label for="estimateShippingCountry">
+                    @T("Address.Fields.Country"):
+                </label>
+                <select name="estimateShippingCountry" id="estimateShippingCountry" class="not-loaded" ng-model-options="{ updateOn: 'change' }" ng-model="vm.estimateShippingData.selectedEstimateShippingCountry" ng-options="country.text for country in vm.estimateShippingData.availableCountries track by country.value">
+                    <option value="" ng-if="false"></option>
+                </select>
+                <span class="required">*</span>
+            </div>
+
+
+            <div class="inputs">
+                <label for="estimateShippingStateProvince">
+                    @T("Address.Fields.StateProvince"):
+                </label>
+                <select name="estimateShippingStateProvince" id="estimateShippingStateProvince" class="not-loaded" ng-model-options="{ updateOn: 'change' }" ng-model="vm.estimateShippingData.selectedStateProvince" ng-options="state.text for state in vm.estimateShippingData.availableStates track by state.value">
+                    <option value="" ng-if="false"></option>
+                </select>
+            </div>
+
+            <div class="inputs">
+                <label for="estimateShippingZipPostalCode">
+                    @T("Address.Fields.ZipPostalCode"):
+                </label>
+                <input type="text" name="estimateShippingZipPostalCode" id="estimateShippingZipPostalCode" ng-model-options="{ updateOn: 'blur' }" ng-model="vm.estimateShippingData.selectedEstimateShippingZipPostalCode" />
+                <span class="required">*</span>
+            </div>
+
+            <div class="buttons">
+                <button type="button" ng-disabled="!vm.estimateShippingData.isButtonEnabled" ng-click="vm.estimateShippingData.estimateShipping = true">@T("ShoppingCart.EstimateShipping.Button")</button>
+            </div>
+        </div>
+
+        <div class="estimate-shipping-result">
+            <ul class="shipping-results" ng-show="vm.estimateShippingData.shippingOptions.length > 0">
+                <li class="shipping-option-item" ng-repeat="shippingOption in vm.estimateShippingData.shippingOptions">
+                    <strong class="option-name">
+                        {{vm.stringFormat('@T("ShoppingCart.EstimateShipping.ShippingOptionWithRate")', shippingOption.name, shippingOption.price) }}
+                    </strong>
+                    <span class="option-description" ng-bind-html="vm.renderHtml(shippingOption.description)"></span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="message-error" ng-show="vm.estimateShippingData.warnings.length > 0">
+            <ul>
+                <li ng-repeat="error in vm.estimateShippingData.warnings">{{error}}</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

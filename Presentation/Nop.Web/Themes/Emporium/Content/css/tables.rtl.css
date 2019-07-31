@@ -1,0 +1,442 @@
+@media all and (max-width: 480px) {
+	.private-messages-page thead {
+		display: none;
+	}
+
+	.private-messages-page .data-table,
+	.private-messages-page tbody,
+	.private-messages-page tr,
+	.private-messages-page td {
+		display: block;
+	}
+
+	.private-messages-page tr {
+		margin: 0 0 20px;
+		border: 1px solid #eee !important;
+		border-radius: 3px;
+	}
+
+	.private-messages-page tr:last-child {
+		margin: 0;
+	}
+
+	.private-messages-page td {
+		border-left: none !important;
+		border-right: none !important;
+		background-color: #fff;
+		text-align: center;
+	}
+
+	.private-messages-page td:first-child {
+		border-radius: 3px 3px 0 0 !important;
+		border-top: 0 !important;
+	}
+
+	.private-messages-page td:last-child {
+		border-radius: 0 0 3px 3px !important;
+		border-bottom: 0;
+	}
+
+	.private-messages-page .select label {
+		margin: 0 auto;
+	}
+
+	.private-messages-page .select input[type="checkbox"]:checked + label {
+		margin-right: auto;
+		margin-bottom: 1px;
+	}
+	.private-messages-page .td-title {
+		display: inline-block;
+	}
+}
+
+
+@media all and (max-width: 1024px) {
+
+
+	/*.order-details-page .data-table .attributes,
+	.shipment-details-page .data-table .sku,*/
+	.order-details-page .shipments thead,
+	.order-details-page .products thead,
+	.order-list-page .recurring-payments thead,
+	.return-request-page .data-table thead,
+	.shipment-details-page .data-table thead,
+	.downloadable-products-page .data-table thead,
+	.reward-points-history .data-table thead,
+	.wishlist-page thead,
+	.cart thead {
+	    display: none;
+	}
+
+	.order-details-page .shipments .data-table,
+	.order-details-page .shipments tbody,
+	.order-details-page .shipments tr,
+	.order-details-page .shipments td,
+	.order-details-page .products .data-table,
+	.order-details-page .products tbody,
+	.order-details-page .products tr,
+	.order-details-page .products td,
+	.order-list-page .recurring-payments td,
+	.order-list-page .recurring-payments tr,
+	.return-request-page .data-table tbody,
+	.return-request-page .data-table tr,
+	.return-request-page .data-table td,
+	.shipment-details-page .data-table,
+	.shipment-details-page .data-table tbody,
+	.shipment-details-page .data-table tr,
+	.shipment-details-page .data-table td,
+	.reward-points-history .data-table tr,
+	.reward-points-history .data-table td,
+	.downloadable-products-page .data-table tr,
+	.downloadable-products-page .data-table td,
+	.wishlist-page tbody,
+	.wishlist-page tr,
+	.wishlist-page td,
+	.cart tbody,
+	.cart tr,
+	.cart td {
+		display: block;
+	}
+
+	.order-details-page .shipments tr,
+	.order-details-page .products tr,
+	.return-request-page .data-table tr,
+	.shipment-details-page .data-table tr,
+	.order-list-page .recurring-payments tr,
+	.reward-points-history .data-table tr,
+	.downloadable-products-page .data-table tr,
+	.wishlist-page tr,
+	.cart tr {
+		margin: 0 0 20px;
+		border: 1px solid #eee !important;
+		border-radius: 3px;
+	}
+
+	.downloadable-products-page .data-table td.product,
+	.reward-points-history .data-table td.message {
+		text-align: center;
+	}
+
+	.order-details-page .products tr,
+	.cart tr,
+	.wishlist-page tr {
+		position: relative;
+		background-color: #fff;
+		overflow: hidden;
+		padding-bottom: 70px;
+	}
+
+	.order-details-page .shipments tr:last-child,
+	.order-details-page .products tr:last-child,
+	.shipment-details-page .data-table tr:last-child,
+	.return-request-page .data-table tr:last-child,
+	.order-list-page .recurring-payments tr:last-child,
+	.reward-points-history .data-table tr:last-child,
+	.downloadable-products-page .data-table tr:last-child
+	.wishlist-page tr:last-child,
+	.cart tr:last-child {
+		margin-bottom: 0;
+	}
+
+	.order-details-page .shipments td,
+	.shipment-details-page .data-table td,
+	.order-details-page .products td,
+	.return-request-page .data-table td,
+	.order-list-page .recurring-payments td,
+	.reward-points-history .data-table td,
+	.downloadable-products-page .data-table td,
+	.wishlist-page td,
+	.cart td {
+		border-left: none !important;
+		border-right: none !important;
+		background-color: #fff;
+		text-align: center;
+	}
+
+
+	.order-details-page .shipments td:first-child,
+	.order-details-page .products td:first-child,
+	.return-request-page .data-table td:first-child,
+	.shipment-details-page .data-table td:first-child,
+	.order-list-page .recurring-payments td:first-child,
+	.reward-points-history .data-table td:first-child,
+	.downloadable-products-page .data-table td:first-child,
+	.wishlist-page td:first-child,
+	.cart td:first-child {
+		border-radius: 3px 3px 0 0 !important;
+		border-top: 0 !important;
+	}
+
+	.order-details-page .shipments td:last-child,
+	.order-details-page .products td:last-child,
+	.shipment-details-page .data-table td:last-child,
+	.return-request-page .data-table td:last-child,
+	.order-list-page .recurring-payments td:last-child,
+	.reward-points-history .data-table td:last-child,
+	.downloadable-products-page .data-table td:last-child,
+	.wishlist-page td:last-child,
+	.cart td:last-child {
+		border-radius: 0 0 3px 3px !important;
+		border-bottom: 0;
+	}
+
+
+	.order-details-page .products td.unit-price,
+	.cart td.unit-price,
+	.wishlist-page td.unit-price {
+		position: absolute;
+		top: auto;
+		right: auto;
+		bottom: 35px;
+		left: 0;
+		float: left;
+		background-color: #f6f6f6 !important;
+		padding: 9px 10px 2px 20px;
+		width: 65%;
+		height: 35px;
+		border-top: 1px solid #eee !important;
+		border-bottom: 0 !important;
+		text-align: left;
+		overflow: hidden;
+	}
+	.order-details-page .products td.unit-price *,
+	.cart td.unit-price *,
+	.wishlist-page td.unit-price * {
+		color: #8c8c8c !important;
+		font-weight: 700 !important;
+		font-size: 15px !important;
+	}
+
+
+
+	.order-details-page .products td.total,
+	.order-details-page .products td.subtotal,
+	.cart td.total,
+	.cart td.subtotal,
+	.wishlist-page td.total,
+	.wishlist-page td.subtotal {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: auto;
+		top: auto;
+		background-color: #f6f6f6 !important;
+		width: 62%;
+		height: 35px;
+		border: none !important;
+		padding: 0px 10px 9px 20px;
+		text-align: left;
+		overflow: hidden;
+	}
+
+	.order-details-page .products td.total *,
+	.order-details-page .products td.subtotal *,
+	.cart td.total *,
+	.cart td.subtotal *,
+	.wishlist-page td.total *,
+	.wishlist-page td.subtotal * {
+		font-weight: 700 !important;
+		color: #444 !important;
+	}
+
+
+	.order-details-page .products td.quantity,
+	.cart td.quantity,
+	.wishlist-page td.quantity {
+		position: absolute;
+		top: auto;
+		right: 0;
+		bottom: 0;
+		width: 38%;
+		height: 70px;
+		padding: 20px 20px 20px 5px;
+		overflow: hidden;
+		border-top: 1px solid #eee !important;
+		border-bottom: 0 !important;
+		background-color: #f6f6f6 !important;
+		text-align: right;
+	}
+
+	.order-details-page .products td.quantity,
+	.cart td.quantity,
+	.wishlist-page td.quantity {
+		color: #8c8c8c !important;
+	}
+
+	.order-details-page .products td.quantity span,
+	.cart td.quantity span,
+	.wishlist-page td.quantity span {
+		line-height: 30px;
+	}
+
+
+	td.shipment-id {
+		background-color: #f6f6f6 !important;
+	}
+
+	td.quantity label.td-title {
+		display: inline-block;
+		max-width: calc(100% - 45px);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+
+	td label {
+		color: #8c8c8c;
+		font-weight: 300;
+	}
+
+	td .attributes {
+		padding: 7px 0;
+		margin: 0;
+	}
+
+	td.remove-from-cart,
+	td.add-to-cart {
+		padding: 10px;
+		font-size: 0;
+	}
+
+	td.remove-from-cart input[type="checkbox"] + label,
+	td.add-to-cart input[type="checkbox"] + label {
+		font-size: 13px;
+		text-transform: uppercase;
+		font-weight: 700;
+		user-select: none;
+	}
+
+	td.remove-from-cart input[type="checkbox"] + label:before,
+	td.add-to-cart input[type="checkbox"] + label:before {
+		vertical-align: bottom;
+	}
+
+	td.product-picture {
+		padding: 4px !important;
+		float: right;
+		width: 90px;
+		border: none !important;
+	}
+
+	td.product {
+		border: none !important;
+		padding: 15px;
+	}
+
+	td.product-picture + td.product {
+		margin-right: 90px;
+		text-align: right;
+	}
+}
+
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+
+	.order-details-page .products tr,
+	.shipment-details-page .data-table tr,
+	.return-request-page .data-table tr,
+	.reward-points-history .data-table tr,
+	.downloadable-products-page .data-table tr,
+	.wishlist-page tr,
+	.cart tr {
+		display: inline-block;
+		vertical-align: top;
+		width: calc(50% - 10px);
+		margin-right: 20px;
+	}
+
+
+	.order-details-page .products tr:nth-child(2n+1),
+	.return-request-page .data-table tr:nth-child(2n+1),
+	.shipment-details-page .data-table tr:nth-child(2n+1),
+	.reward-points-history .data-table tr:nth-child(2n+1),
+	.downloadable-products-page .data-table tr:nth-child(2n+1),
+	.wishlist-page tr:nth-child(2n+1),
+	.cart tr:nth-child(2n+1) {
+		margin-right: 0;
+	}
+
+	.shipment-details-page .data-table,
+	.return-request-page .data-table,
+	.order-details-page .products .data-table,
+	.account-page .cart,
+	.account-page .data-table,
+	.account-page .compare-products-table,
+	.account-page .forums-table-section table,
+	.wishlist-page .cart,
+	.cart {
+		text-align: right;
+		font-size: 0;
+	}
+
+	.cart td.product,
+	.data-table td.product,
+	.data-table td.message,
+	.data-table td.info,
+	.data-table td.name,
+	.forum-table td.forum-details,
+	.forum-table td.topic-details {
+		text-align: right;
+	}
+
+
+}
+
+
+@media all and (min-width: 769px) and (max-width: 1600px) {
+
+
+	.account-page .recurring-payments .data-table td label {
+		display: inline-block;
+	}
+
+	.account-page .recurring-payments .data-table thead {
+		display: none;
+	}
+
+	.account-page .recurring-payments .data-table tbody,
+	.account-page .recurring-payments .data-table tr,
+	.account-page .recurring-payments .data-table td {
+		display: block;
+	}
+
+
+	.order-list-page .recurring-payments tr {
+		display: inline-block;
+		vertical-align: top;
+		width: calc(50% - 12.5px);
+		margin-right: 25px;
+	}
+
+
+	.order-list-page .recurring-payments tr:nth-child(2n+1) {
+		margin-right: 0;
+	}
+
+}
+
+@media all and (min-width: 1025px) and (max-width: 1600px)  {
+
+
+	.order-list-page .recurring-payments td {
+		border-left: none !important;
+		border-right: none !important;
+	}
+	.order-list-page .recurring-payments td:first-child {
+		border-radius: 3px 3px 0 0 !important;
+		border-top: 1px solid #eee;
+	}
+
+	.compare-products-table td {
+		vertical-align: top;
+	}
+
+	.cart td,
+	.compare-products-table td,
+	.forums-table-section td {
+		font-size: 16px;
+	}
+
+
+}

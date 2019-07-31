@@ -1,0 +1,50 @@
+
+.ropc .cart .remove-product {
+    background-position: right 7px;
+    padding: 0 20px 0 0;
+}
+.ropc .coupon-box-panel .current-code button,
+.ropc .total-info .cart-total button {
+    margin: -1px 5px 0 0;
+}
+
+
+@media all and (max-width: 1024px) {
+
+.ropc .cart td label {
+	margin-right: 0;
+	margin-left: 5px;
+}
+}
+
+@media all and (min-width: 769px) {
+
+.ropc .shipping-method .method-list li,
+.ropc .payment-method .method-list li {
+	text-align: right;
+}
+.ropc .payment-method .use-reward-points {
+	text-align: right;
+}
+.ropc .payment-method .method-list li {
+	padding-right: 80px;
+	padding-left: 20px;
+}
+}
+
+@media all and (min-width: 1281px) {
+
+.ropc .coupon-box-panel {
+	float: left;
+	margin-right: 2%;
+	margin-left: 0;
+}
+.ropc .giftcard-box-panel {
+	float: left;
+}
+.ropc .order-totals-panel,
+.ropc .complete-order-panel {
+	margin-right: auto;
+	margin-left: 0;
+}
+}

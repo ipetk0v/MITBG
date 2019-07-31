@@ -1,0 +1,20 @@
+﻿<div class="section giftcard-box" ng-controller="GiftCardBoxController as vm" ng-hide="!vm.config['showGiftCardBox']">
+
+    @await Html.PartialAsync("_AjaxLoader", "gift-card-box-loader")
+
+    <div class="section-title title">
+        <strong>@T("ShoppingCart.GiftCardCouponCode")</strong>
+    </div>
+
+    <div class="section-body">
+        <div class="hint">
+            @T("ShoppingCart.GiftCardCouponCode.Tooltip")
+        </div>
+        <div class="coupon-code">
+            <input ng-model="vm.giftCardBoxData.giftCardCouponCode" name="giftCardCouponCode" type="text" class="gift-card-coupon-code" />
+            <button class="button-2" type="button" ng-click="vm.giftCardBoxData.applyGiftCard = true">@T("ShoppingCart.GiftCardCouponCode.Button")</button>
+        </div>
+
+        <div class="message" ng-class="vm.giftCardBoxData.isApplied ? 'success' : 'error'" ng-show="vm.giftCardBoxData.message">{{vm.giftCardBoxData.message}}</div>
+    </div>
+</div>

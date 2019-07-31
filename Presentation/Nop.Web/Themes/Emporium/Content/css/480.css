@@ -1,0 +1,269 @@
+﻿/*=====================================================
+    
+    TABLETS PORTRAIT & SMARTPHONES LANDSCAPE
+
+=====================================================*/
+
+@media all and (min-width: 481px) {
+	
+/* GLOBAL STYLES */
+
+.side-2:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+/* FOOTER */
+
+
+.footer-middle {
+	text-align: center;
+	font-size: 0;
+}
+
+.footer-block {
+	display: inline-block;
+	border-bottom: 0;
+	width: 31.33%;
+	margin: 0 1%;
+	vertical-align: top;
+}
+
+.footer-block .title {
+	padding: 0 15px 5px;
+	border: none;
+}
+
+.footer-block:first-child {
+	border-top: none;
+}
+
+.footer-block ul {
+	display: block;
+	background-color: transparent;
+}
+.footer-block .title:before,
+.footer-block .title:after {
+	display: none;
+}
+
+.social-icons {
+	padding-top: 35px;
+	border-top: 1px solid #eeeeee;
+}
+
+.newsletter-email  {
+	max-width: 355px;
+}
+
+/* LEFT/RIGHT COLUMN */
+
+.block {
+	float: left;
+	width: 48%;
+	margin: 0 1% 2%;
+	text-align: left;
+}
+
+.block:nth-of-type(2n+1) {
+	clear: left;
+}
+
+
+.block .tags li,
+.product-tags-all-page li {
+	margin: 0 5px;
+}
+
+
+
+/* CATEGORY PAGE & GRIDS */
+
+.item-box {
+	width: 32%;
+	text-align: center;
+}
+
+.item-box:nth-child(2n+1) {
+	margin-left: 2%;
+	clear: none;
+}
+
+.item-box:nth-child(3n+1) {
+	margin-left: 0;
+	clear: both;
+}
+
+
+
+/* PRODUCT PAGE */
+
+.attributes-wrapper {
+	max-width: 560px;
+	margin: 0 auto 30px;
+}
+
+.product-additional  {
+	margin: 0 -10px 60px;
+}
+
+.attributes select + .qty-box {
+	margin-top: 0;
+	vertical-align: top;
+}
+
+
+/* REVIEW PAGE */
+/* WISHLIST & COMPARE LIST */
+/* TOPICS */
+
+.enter-password-form input[type="password"] {
+	width: 300px !important;
+}
+
+/* CONTACT PAGE & EMAILaFRIEND */
+/* REGISTRATION, LOGIN, MY ACCOUNT */
+
+.login-page .title strong,
+.registration-page .title strong {
+	font-size: 18px;
+}
+.date-of-birth .date-picker-wrapper select {
+	padding: 0 35px 0 20px;
+	background: #fff url(../img/select-arrow-dark.svg) no-repeat right 15px center;
+}
+
+.account-page {
+	padding: 40px 20px;
+}
+
+.customer-info-page .page-body,
+.change-password-page .page-body,
+.check-gift-card-balance-page .page-body,
+.avatar-page .page-body,
+.address-edit-page .page-body,
+.vendorinfo-page .page-body {
+	padding: 50px;
+}
+
+.date-of-birth .date-picker-wrapper select,
+.date-of-birth .date-picker-wrapper select:first-child,
+.date-of-birth .date-picker-wrapper select:last-child {
+	width: 33.33%;
+}
+
+.address-item .title,
+.order-item .title,
+.request-item .title {
+	text-align: center;
+}
+
+.address-item:first-child,
+.add-button:first-child,
+.order-item:first-child,
+.request-item:first-child {
+	margin-top: 0;
+}
+
+
+/* SHOPPING CART & CHECKOUT */
+
+
+.cart-collaterals > div > .list {
+	padding: 30px;
+}
+
+.order-review-data,
+.order-details-area,
+.shipment-details-area {
+	font-size: 0;
+	margin: 0 0 30px;
+	text-align: center;
+}
+.order-review-data > div,
+.order-details-area > div,
+.shipment-details-area > div {
+	display: inline-block;
+	vertical-align: top;
+	width: calc(50% - 12.5px);
+	margin-left: 25px;
+	max-width: 590px;
+}
+
+.order-review-data > div:nth-child(2n + 1),
+.order-details-area > div:nth-child(2n + 1),
+.shipment-details-area > div:nth-child(2n + 1) {
+	margin-left: 0;
+}
+
+.checkout-page .edit-address {
+	padding: 40px 20px 0;
+}
+
+
+.payment-logo {
+	display: inline-block;
+	margin: 0 15px 0 0;
+	vertical-align: middle;
+}
+
+
+.payment-logo + .payment-details {
+	display: inline-block;
+	vertical-align: middle;
+	max-width: calc(100% - 90px);
+}
+
+.shipping-method .method-list li,
+.payment-method .method-list li {
+	padding: 22px 22px 22px 85px;
+}
+.shipping-method .method-list input[type="radio"] + label:before,
+.shipping-method .method-list input[type="checkbox"] + label:before,
+.payment-method .method-list input[type="radio"] + label:before,
+.payment-method .method-list input[type="checkbox"] + label:before {
+	left: 35px;
+}
+
+
+/* SEARCH PAGE & SITEMAP */
+/* BLOG & NEWS */
+/* FORUM & PROFILE */
+
+
+
+.forum-actions .actions a,
+.forum-actions .actions a:nth-child(2n+1) {
+	padding: 0 20px;
+	margin: 0 3px;
+	width: auto;
+}
+
+.topic-post .post-info {
+	padding: 30px 30px 25px;
+}
+
+.topic-post .avatar {
+	width: 160px;
+}
+
+.topic-post .user-info {
+	padding-left: 175px;
+	min-height: 160px;
+}
+
+.topic-post .username {
+	margin: 5px 0;
+}
+.topic-post .post-content {
+	padding: 0 30px 30px;
+}
+
+
+.topic-post .post-vote > span {
+	width: 30px;
+}
+
+
+}

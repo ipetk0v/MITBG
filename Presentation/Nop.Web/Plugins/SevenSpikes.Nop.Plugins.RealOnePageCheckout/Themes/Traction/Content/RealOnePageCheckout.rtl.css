@@ -1,0 +1,53 @@
+.coupon-code input,
+.coupon-code button {
+	float: right;
+}
+.estimate-shipping-panel .shipping-results,
+.cart-total-left {
+	text-align: right;
+}
+.cart-total-right {
+	text-align: left;
+}
+.checkout-attributes input[type=text],
+.checkout-attributes textarea{
+	margin-right: auto;
+	margin-left: auto;
+}
+.current-code span{
+	margin: 0 0 0 5px;
+}
+.cart-total button,
+.remove-product{
+	margin-left: -7px;
+	margin-right: 3px;
+}
+
+@media all and (min-width: 1025px) {
+	
+.checkout-page .attribute-list > li,
+.checkout-page .attribute-name,
+.inputs label {
+	text-align: right;
+}
+.attribute-values li {
+	margin: 0 0 0 10px;
+}
+.order-totals-panel {
+	margin: 0 auto 20px 0 !important;
+}
+.error-list,
+.terms-of-service,
+.complete-button {
+	text-align: left;
+}
+
+.ropc .addon-buttons {
+    text-align: left;
+}
+
+.ropc .addon-buttons > * {
+    margin: 0 5px 5px 0;
+}
+
+}

@@ -1,0 +1,76 @@
+
+.ropc input[type="checkbox"],
+.ropc input[type="radio"] {
+	margin: 0 0 0 5px;
+}
+.ropc .payment-logo {
+	margin: 0 0 0 10px;
+}
+.ropc .payment-details {
+	text-align: right;
+}
+.ropc .coupon-code input {
+	border-right: 1px solid #c9c9c9;
+}
+.ropc .current-code button {
+	float: right;
+	margin: 0 0 0 8px;
+}
+.ropc .cart-total-left {
+	text-align: left;
+}
+.ropc .total-info button {
+	margin: -2px 0 0 -3px;
+}
+.ropc .error-list {
+	text-align: left;
+}
+.ropc .terms-of-service {
+	text-align: left;
+}
+.ropc .complete-button {
+	text-align: left !important;
+}
+
+.ropc .addon-buttons {
+    text-align: left;
+}
+
+.ropc .addon-buttons > * {
+     margin: 0 5px 5px 0;
+}
+
+@media all and (min-width:769px) {
+	
+.ropc .method-list {
+	text-align: right;
+}
+.ropc .attribute-list li {
+	text-align: right;
+}
+}
+
+@media all and (min-width:1025px) {
+	
+.ropc .inputs label {
+	margin: 0 0 0 10px;
+	text-align: left;
+}
+.ropc .estimate-shipping .buttons {
+	text-align: left;
+}
+.ropc .payment-method ul {
+	float: right;
+}
+.ropc .payment-info {
+	float: left;
+}
+.ropc .coupon-box-panel input[type="text"],
+.ropc .giftcard-box-panel input[type="text"] {
+	border-right: 1px solid #c9c9c9;
+	border-left: none;
+}
+.ropc .buttons {
+	text-align: left !important;
+}
+}

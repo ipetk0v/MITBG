@@ -1,0 +1,117 @@
+.section .title {
+	text-align: right;
+}
+.section .title:before {
+	left: 16px;
+	right: auto;
+}
+.panel-loader-effect .spinner {
+	right: 50%;
+	left: auto;
+	margin: 0 -50px 0 0;
+}
+.panel-loader-effect .spinner:before {
+	right: 5px;
+	left: 5px;
+}
+.panel-loader-effect .spinner:after {
+	right: 15px;
+	left: 15px;
+}
+.section .panel-loader-effect .spinner {
+	margin: -50px -50px 0 0;
+}
+.ship-to-same-address input[type='checkbox'],
+.pickup-in-store .options input[type='checkbox'] {
+	right: 10px;
+	left: auto;
+}
+.ship-to-same-address input[type='checkbox'] ~ label,
+.pickup-in-store .options input[type='checkbox'] ~ label {
+	padding: 9px 40px 9px 9px;
+	text-align: right;
+}
+.ship-to-same-address input[type='checkbox'] ~ label:before,
+.pickup-in-store .options input[type='checkbox'] ~ label:before {
+	right: 10px;
+	left: auto;
+}
+.ship-to-same-address input[type='checkbox']:checked ~ label:after,
+.pickup-in-store .options input[type='checkbox']:checked ~ label:after {
+	right: 13px;
+	left: auto;
+}
+.total-info .cart-total button {
+	margin-left: -10px;
+	margin-right: 0;
+}
+.coupon-box-panel .current-code button {
+    margin: 0 5px 0 0;
+}
+
+@media all and (min-width: 768px) {
+	.payment-method .payment-logo,
+.payment-method .payment-details {
+		margin: 0 0 0 10px;
+		text-align: right;
+	}
+	.estimate-shipping .buttons {
+		text-align: right;
+	}
+	.checkout-attributes li *:first-child {
+		margin-right: 0 !important;
+		margin-left: 0;
+	}
+	.coupon-box-panel input[type="text"], 
+.giftcard-box-panel input[type="text"] {
+		float: right;
+	}
+	.coupon-box-panel .coupon-code button, 
+.giftcard-box-panel .coupon-code button {
+		float: left;
+		margin: 0 2% 0 0;
+	}
+}
+@media all and (min-width: 1201px) {
+	.remove-product:before {
+		right: 0;
+		left: 0;
+	}
+	.checkout-page .selected-checkout-attributes {
+		text-align: left !important;
+	}
+	.payment-info .info tr {
+		text-align: right;
+	}
+	.addon-buttons {
+		text-align: left;
+	}
+	.addon-buttons > * {
+		margin: 0 5px 5px 0;
+	}
+	.pickup-in-store .section-body {
+		text-align: right;
+	}
+}
+@media all and (max-width: 1200px) {
+	.cart .remove-from-cart button {
+		right: 0;
+		left: 0;
+	}
+}
+@media all and (min-width: 768px) and (max-width: 1200px) {
+}
+@media all and (min-width: 901px) and (max-width: 1200px) {
+	.cart tr {
+		float: right;
+		margin: 0 2% 2% 0;
+	}
+	.cart tr:nth-child(3n+1) {
+		margin-right: 2%;
+		margin-left: 0;
+	}
+	.cart tr:nth-child(2n+1) {
+		margin-right: 0;
+		margin-left: 0;
+	}
+}

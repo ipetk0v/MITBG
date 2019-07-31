@@ -1,0 +1,25 @@
+﻿<div class="section coupon-box" ng-controller="DiscountBoxController as vm" ng-hide="!vm.config['showDiscountBox']">
+
+    @await Html.PartialAsync("_AjaxLoader", "discount-box-loader")
+
+    <div class="section-title title">
+        <strong>@T("ShoppingCart.DiscountCouponCode")</strong>
+    </div>
+
+    <div class="section-body">
+        <div class="hint">
+            @T("ShoppingCart.DiscountCouponCode.Tooltip")
+        </div>
+        <div class="coupon-code">
+            <input ng-model="vm.discountBoxData.discountCouponCode" ng-model-options="{ updateOn: 'blur' }" name="discountCouponCode" type="text" class="discount-coupon-code" />
+            <button type="button" ng-click="vm.discountBoxData.applyDiscountCode = true">@T("ShoppingCart.DiscountCouponCode.Button")</button>
+        </div>
+
+        <div ng-repeat="message in vm.discountBoxData.messages" class="message" ng-class="vm.discountBoxData.isApplied ? 'message-success' : 'message-failure'" ng-show="message">{{message}}</div>
+
+        <div ng-repeat="discountCode in vm.discountBoxData.appliedDiscountsWithCodes" class="current-code">
+            <span>{{vm.stringFormat('@T("ShoppingCart.DiscountCouponCode.CurrentCode")', discountCode.couponCode) }}</span>
+            <button type="button" ng-confirm-message="@T("Common.AreYouSure")" ng-confirm-click="vm.discountBoxData.removeDiscountCodeWithId = discountCode.id">@T("Common.Remove")</button>
+        </div>
+    </div>
+</div>

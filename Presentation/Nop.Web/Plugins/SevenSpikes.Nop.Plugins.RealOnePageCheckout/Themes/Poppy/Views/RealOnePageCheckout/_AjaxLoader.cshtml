@@ -1,0 +1,18 @@
+﻿@model string
+
+@{
+    //On the initial load we want only the main loader to be active, so we disable the the overlays of the other panels.
+    var displayNoneText = string.Empty;
+
+    if (Model != "confirm-order-loader")
+    {
+        displayNoneText = "display:none;";
+    }
+}    
+
+<div class="panel-loader-effect @Model" style="@displayNoneText" >
+    <div class="loader-circle"></div>
+    <div class="loader-line-mask">
+        <div class="loader-line"></div>
+    </div>
+</div>
