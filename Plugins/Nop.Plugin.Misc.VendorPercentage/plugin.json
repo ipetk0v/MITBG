@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "Vendor percentage table",
+  "SystemName": "Misc.VendorPercentage",
+  "Version": "1.0",
+  "SupportedVersions": [ "4.20" ],
+  "Author": "Tsaplinov Evgeny",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.VendorPercentage.dll",
+  "Description": "This plugin for calculate comission by vendors"
+}

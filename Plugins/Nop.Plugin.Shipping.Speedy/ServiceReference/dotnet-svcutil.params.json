@@ -1,0 +1,15 @@
+{
+  "providerId": "Microsoft.Tools.ServiceModel.Svcutil",
+  "version": "2.0.0",
+  "options": {
+    "inputs": [
+      "https://www.speedy.bg/eps/main01.wsdl"
+    ],
+    "namespaceMappings": [
+      "Speedy, speedy"
+    ],
+    "outputFile": "Reference.cs",
+    "targetFramework": "netcoreapp2.2",
+    "typeReuseMode": "All"
+  }
+}

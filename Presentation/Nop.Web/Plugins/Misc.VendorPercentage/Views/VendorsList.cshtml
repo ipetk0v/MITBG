@@ -1,0 +1,127 @@
+﻿@using Nop.Plugin.Misc.VendorPercentage.Models
+@using Nop.Web.Framework.Models.DataTables
+@using Nop.Web.Framework.UI
+@model Nop.Plugin.Misc.VendorPercentage.Models.VendorsComissionSearchModel
+
+@{
+    Layout = "_AdminLayout";
+
+    //page title
+    ViewBag.Title = T("VendorPercentage.VendorsList.Title").ToString();
+    //active menu item (system name)
+    Html.SetActiveMenuItemSystemName("VendorComissions");
+}
+
+<nop-antiforgery-token />
+<div class="content-header clearfix">
+    <h1 class="pull-left">
+        @T("VendorPercentage.VendorsList.Title")
+    </h1>
+</div>
+<div class="content">
+    <div class="form-horizontal">
+        <div class="panel-group">
+            @*hide the entire search block if no elements are displayed*@
+            <div class="panel panel-default panel-search">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <nop-label asp-for="VendorName" />
+                                </div>
+                                <div class="col-md-8">
+                                    <nop-editor asp-for="VendorName" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <nop-label asp-for="DateFrom" />
+                                </div>
+                                <div class="col-md-8">
+                                    <nop-editor asp-for="DateFrom" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <nop-label asp-for="DateTo" />
+                                </div>
+                                <div class="col-md-8">
+                                    <nop-editor asp-for="DateTo" />
+                                    <span class="help-block alert alert-info" style="width: 300px;padding: 5px;border-radius: 3px; cursor: help;">@T("VendorPercentage.VendorsList.Dates.hint").Text</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7 col-md-offset-5">
+                            <button type="button" id="search-vendors" class="btn btn-primary btn-search">
+                                <i class="fa fa-search"></i>
+                                @T("Admin.Common.Search")
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="panel-body">
+                        @{
+                            var gridModel = new DataTablesModel
+                            {
+                                Name = "vendors-grid",
+                                UrlRead = new DataUrl("VendorsList", "ComissionCalculator", null),
+                                SearchButtonId = "search-vendors",
+                                Length = Model.PageSize,
+                                LengthMenu = Model.AvailablePageSizes,
+                                Filters = new List<FilterParameter>
+                                {
+                                    new FilterParameter(nameof(Model.VendorName)),
+                                    new FilterParameter(nameof(Model.DateFrom)),
+                                    new FilterParameter(nameof(Model.DateTo)),
+                                },
+                                ColumnCollection = new List<ColumnProperty>
+                                {
+
+                                    new ColumnProperty(nameof(VendorComissionModel.VendorName))
+                                    {
+                                        Title = T("VendorPercentage.VendorsList.VendorName").Text,
+                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                        Render = new RenderLink(new DataUrl("~/Admin/Vendor/Edit", nameof(VendorComissionModel.VendorId)))
+                                    },
+                                    new ColumnProperty(nameof(VendorComissionModel.ComissionPercentage))
+                                    {
+                                        Title = T("VendorPercentage.VendorsList.VendorComissionPercentage").Text,
+                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                    },
+                                    new ColumnProperty(nameof(VendorComissionModel.TotalSumText))
+                                    {
+                                        Title = T("VendorPercentage.VendorsList.VendorTotalAmountOfSales").Text,
+                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                    },
+                                    new ColumnProperty(nameof(VendorComissionModel.ComissionText))
+                                    {
+                                        Title = T("VendorPercentage.VendorsList.VendorComission").Text,
+                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                    },
+                                    new ColumnProperty(nameof(VendorComissionModel.TransactionText))
+                                    {
+                                        Title = T("VendorPercentage.VendorsList.VendorTransaction").Text,
+                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                    },
+                                    new ColumnProperty(nameof(VendorComissionModel.FreeShippingSumText))
+                                    {
+                                        Title = T("VendorPercentage.VendorsList.FreeShippingSum").Text,
+                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                    }
+                                }
+                            };
+                        }
+                        @await Html.PartialAsync("Table", gridModel)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

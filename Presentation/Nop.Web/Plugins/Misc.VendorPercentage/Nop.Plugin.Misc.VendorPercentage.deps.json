@@ -6,14 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.2": {
-      "Nop.Plugin.Shipping.Speedy/1.0.0": {
+      "Nop.Plugin.Misc.VendorPercentage/1.0.0": {
         "dependencies": {
-          "Nop.Core": "4.2.0",
+          "Nop.Plugin.Shipping.Speedy": "1.0.0",
+          "Nop.Services": "4.2.0",
           "Nop.Web": "4.2.0",
           "Nop.Web.Framework": "4.2.0"
         },
         "runtime": {
-          "Nop.Plugin.Shipping.Speedy.dll": {}
+          "Nop.Plugin.Misc.VendorPercentage.dll": {}
         }
       },
       "Autofac/4.9.1": {
@@ -4708,6 +4709,16 @@
           "Nop.Data.dll": {}
         }
       },
+      "Nop.Plugin.Shipping.Speedy/1.0.0": {
+        "dependencies": {
+          "Nop.Core": "4.2.0",
+          "Nop.Web": "4.2.0",
+          "Nop.Web.Framework": "4.2.0"
+        },
+        "runtime": {
+          "Nop.Plugin.Shipping.Speedy.dll": {}
+        }
+      },
       "Nop.Services/4.2.0": {
         "dependencies": {
           "EPPlus": "4.5.3.1",
@@ -4752,7 +4763,7 @@
     }
   },
   "libraries": {
-    "Nop.Plugin.Shipping.Speedy/1.0.0": {
+    "Nop.Plugin.Misc.VendorPercentage/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -7402,6 +7413,11 @@
       "sha512": ""
     },
     "Nop.Data/4.2.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nop.Plugin.Shipping.Speedy/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
