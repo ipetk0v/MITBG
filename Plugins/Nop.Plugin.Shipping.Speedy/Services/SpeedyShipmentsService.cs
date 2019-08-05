@@ -154,7 +154,7 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                             shipment.OrderId));
 
 
-                    var amount = (double)orderItems.Sum(s => s.PriceInclTax * s.Quantity);
+                    var amount = (double)orderItems.Sum(s => s.PriceInclTax);
                     amount += (double)order.OrderShippingInclTax;
                     amount += (double)order.PaymentMethodAdditionalFeeInclTax;
 
