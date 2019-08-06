@@ -2226,6 +2226,65 @@ namespace Nop.Services.Orders
         /// </summary>
         /// <param name="order">Order</param>
         /// <param name="notifyCustomer">True to notify customer</param>
+        public virtual void CancelVendorOrder(Order order, bool notifyCustomer)
+        {
+            if (order == null)
+                throw new ArgumentNullException(nameof(order));
+
+            if (!CanCancelOrder(order))
+                throw new NopException("Cannot do cancel for order.");
+
+            //cancel order
+            SetOrderStatus(order, OrderStatus.CancelledVendor, notifyCustomer);
+
+            //add a note
+            AddOrderNote(order, "Order has been cancelled");
+
+            //return (add) back redeemded reward points
+            ReturnBackRedeemedRewardPoints(order);
+
+            //delete gift card usage history
+            if (_orderSettings.DeleteGiftCardUsageHistory)
+            {
+                _giftCardService.DeleteGiftCardUsageHistory(order);
+            }
+
+            //cancel recurring payments
+            var recurringPayments = _orderService.SearchRecurringPayments(initialOrderId: order.Id);
+            foreach (var rp in recurringPayments)
+            {
+                CancelRecurringPayment(rp);
+            }
+
+            //Adjust inventory for already shipped shipments
+            //only products with "use multiple warehouses"
+            foreach (var shipment in order.Shipments)
+            {
+                foreach (var shipmentItem in shipment.ShipmentItems)
+                {
+                    var orderItem = _orderService.GetOrderItemById(shipmentItem.OrderItemId);
+                    if (orderItem == null)
+                        continue;
+
+                    _productService.ReverseBookedInventory(orderItem.Product, shipmentItem,
+                        string.Format(_localizationService.GetResource("Admin.StockQuantityHistory.Messages.CancelOrder"), order.Id));
+                }
+            }
+            //Adjust inventory
+            foreach (var orderItem in order.OrderItems)
+            {
+                _productService.AdjustInventory(orderItem.Product, orderItem.Quantity, orderItem.AttributesXml,
+                    string.Format(_localizationService.GetResource("Admin.StockQuantityHistory.Messages.CancelOrder"), order.Id));
+            }
+
+            _eventPublisher.Publish(new OrderCancelledEvent(order));
+        }
+
+        /// <summary>
+        /// Cancels order
+        /// </summary>
+        /// <param name="order">Order</param>
+        /// <param name="notifyCustomer">True to notify customer</param>
         public virtual void CancelOrder(Order order, bool notifyCustomer)
         {
             if (order == null)

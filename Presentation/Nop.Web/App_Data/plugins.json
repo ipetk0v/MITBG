@@ -33,7 +33,9 @@
     "SevenSpikes.Theme.Emporium",
     "ExternalAuth.Facebook",
     "Shipping.Speedy",
-    "SevenSpikes.Nop.Plugins.RealOnePageCheckout"
+    "SevenSpikes.Nop.Plugins.RealOnePageCheckout",
+    "Misc.VendorPercentage",
+    "Payments.ePayEasyPay"
   ],
   "PluginNamesToUninstall": [],
   "PluginNamesToDelete": [],

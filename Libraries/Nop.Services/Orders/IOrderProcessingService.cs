@@ -95,6 +95,13 @@ namespace Nop.Services.Orders
         void CancelOrder(Order order, bool notifyCustomer);
 
         /// <summary>
+        /// Cancels order
+        /// </summary>
+        /// <param name="order">Order</param>
+        /// <param name="notifyCustomer">True to notify customer</param>
+        void CancelVendorOrder(Order order, bool notifyCustomer);
+
+        /// <summary>
         /// Gets a value indicating whether order can be marked as authorized
         /// </summary>
         /// <param name="order">Order</param>

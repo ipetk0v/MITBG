@@ -1049,8 +1049,20 @@ namespace Nop.Web.Areas.Admin.Controllers
 
             try
             {
-                order.OrderStatusId = model.OrderStatusId;
-                _orderService.UpdateOrder(order);
+                //custom i.petkov
+                switch (model.OrderStatusId)
+                {
+                    case (int) OrderStatus.CancelledVendor:
+                        _orderProcessingService.CancelVendorOrder(order, true);
+                        break;
+                    case (int) OrderStatus.Cancelled:
+                        _orderProcessingService.CancelOrder(order, true);
+                        break;
+                    default:
+                        order.OrderStatusId = model.OrderStatusId;
+                        _orderService.UpdateOrder(order);
+                        break;
+                }
 
                 //add a note
                 order.OrderNotes.Add(new OrderNote

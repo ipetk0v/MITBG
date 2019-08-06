@@ -25,6 +25,14 @@
                 </ul>
             </div>
         }
+        @if (Model.Items.Select(x => x.VendorName).Distinct().Count() > 1)
+         {
+             <div class="message-error" style="text-align:left;margin-bottom:10px;">
+                 <ul>
+                     <li>@T("Order.Summary.Items.ByVendor.Count.Message")</li> @*Внимание! В кошницата има продукти, които се предлагат от два или повече търговеца. Възможнa е доставка, в различен ден или час.*@
+                 </ul>
+             </div>   
+         }
         @*we add enctype = "multipart/form-data" because "File upload" attribute control type requires it*@
         <form asp-route="ShoppingCart" method="post" enctype="multipart/form-data" id="shopping-cart-form">
             <div class="table-wrapper">
