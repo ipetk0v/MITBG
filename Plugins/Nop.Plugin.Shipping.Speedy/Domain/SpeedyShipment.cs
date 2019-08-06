@@ -21,8 +21,12 @@ namespace Nop.Plugin.Shipping.Speedy.Domain
         public long? OfficeId { get; set; }
         public long ServiceId { get; set; }
 
-
+        public bool IsFreeShipping { get; set; }
         public bool UseCod { get; set; }
+
+        public decimal ShippingCost { get; set; }
+        public decimal CodComission { get; set; }
+
 
         #region Customer
 
@@ -50,9 +54,7 @@ namespace Nop.Plugin.Shipping.Speedy.Domain
         public CourierStatus CourierStatus { get; set; }
         public long CountryId { get; set; }
         public string BolCreatingErrorMessage { get; set; }
-        public bool IsFreeShipping { get; set; }
-
-        public decimal ShippingCost { get; set; }
+        
 
         #endregion
 

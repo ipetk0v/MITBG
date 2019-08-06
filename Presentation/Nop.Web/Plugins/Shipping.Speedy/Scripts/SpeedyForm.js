@@ -6,6 +6,7 @@
         $(document).on("change", "input[name='shippingoption']", checkFormVisible);
         var initialized = false;
         var selectedSiteId;
+        var selectedSiteName;
         var deliveryOption = "";
         var officeId = -1;
         var streetName = "";
@@ -13,6 +14,8 @@
         var streetId = 0;
         var quarter = "";
         var quarterId = 0;
+        var quarterType = "";
+        var quarterName = "";
         var formIsComplete = false;
         var isSaved = false;
         var T;
@@ -88,7 +91,9 @@
                 $("#speedy_form").show();
                 if (!initialized) {
 
-                    $(".js_siteInpit").autocomplete({
+                    var $siteInput = $(".js_siteInpit");
+
+                    $siteInput.autocomplete({
                         source: function (request, response) {
                             $.ajax({
                                 url: "/Plugins/SpeedyShipping/GetSites",
@@ -111,15 +116,21 @@
                                 }
                             });
                         },
+
                         minLength: 2,
                         select: function (event, ui) {
-                            var siteId = ui.item.value;
+                            var siteId = ui.item.value,
+                                siteName = ui.item.label;
                             selectedSiteId = siteId;
-                            $(".js_siteInpit").val(ui.item.label);
+                            selectedSiteName = siteName;
+                            $siteInput.val(ui.item.label);
                             reloadForm();
                             return false;
                         }
-                    });
+                    }).autocomplete("instance")._resizeMenu = function () {
+                        this.menu.element.css("width", "");
+                        this.menu.element.attr('style', function (i, s) { return s + 'width: ' + $siteInput.outerWidth() + 'px !important;' });
+                    };
 
                     initialized = true;
                 }
@@ -132,7 +143,8 @@
                 entrance = $("#inputEntrance").val(),
                 floor = $("#inputEntrance").val(),
                 apNumber = $("#inputApNumber").val(),
-                block = $("#inputBlock").val();
+                block = $("#inputBlock").val(),
+                comment = $("#inputComment").val();
 
             if (validate()) {
                 $.ajax({
@@ -140,17 +152,21 @@
                     data: {
                         OfficeId: officeId,
                         SiteId: selectedSiteId,
+                        SiteName: selectedSiteName,
                         DeliveryOption: deliveryOption,
                         StreetName: streetName,
                         StreetNo: streetNo,
                         StreetId: streetId,
                         QuarterId: quarterId,
-                        Quarter: quarter,
+                        QuarterText: quarter,
+                        QuarterName: quarterName.length > 0 ? quarterName : quarter,
+                        QuarterType: quarterType,
                         Floor: floor,
                         Block: block,
                         ApNumber: apNumber,
                         Entrance: entrance,
-                        AddressNote: addressNote
+                        AddressNote: addressNote,
+                        Comment: comment
                     },
                     dataType: 'html',
                     type: 'POST',
@@ -227,7 +243,10 @@
                         $inputStreetName.val(ui.item.label);
                         return false;
                     }
-                });
+                }).autocomplete("instance")._resizeMenu = function () {
+                    this.menu.element.css("width", "");
+                    this.menu.element.attr('style', function (i, s) { return s + 'width: ' + $inputStreetName.outerWidth() + 'px !important;' });
+                };;
 
                 $inputQuarter.autocomplete({
                     source: function (request, response) {
@@ -241,23 +260,34 @@
                                     function (item) {
                                         return {
                                             label: item.text,
-                                            value: item.id
+                                            value: item.id,
+                                            type: item.type,
+                                            name: item.name
                                         };
                                     }));
                             },
                             beforeSend: function () {
+                                quarterId = 0;
+                                quarterName = "";
+                                quarterType = "";
                                 $("#speedy_form").block({ message: T("Speedy.AddressForm.LoadingFormData") });
                             }
                         });
                     },
                     minLength: 2,
                     select: function (event, ui) {
+                        console.log(ui.item);
                         quarterId = ui.item.value;
                         quarter = ui.item.label;
+                        quarterName = ui.item.name;
+                        quarterType = ui.item.type;
                         $inputQuarter.val(ui.item.label);
                         return false;
                     }
-                });
+                }).autocomplete("instance")._resizeMenu = function () {
+                    this.menu.element.css("width", "");
+                    this.menu.element.attr('style', function (i, s) { return s + 'width: ' + $inputQuarter.outerWidth() + 'px !important;' });
+                };
 
             }
 
@@ -289,14 +319,37 @@
 
                 streetName = $("input[name='StreetName']").val() || "";
                 streetNo = $("input[name='StreetNo']").val() || "";
+                quarter = $("input[name='Quarter']").val() || "";
 
-                if (streetName.length < 2) {
-                    console.log("Invalid streetName");
+                var comment = ($("input[name='Comment']").val() || "").trim();
+
+                if (comment.length > 0 && comment.length < 5) {
+                    console.log("Invalid comment lenght");
                     result = false;
                 }
-                if (streetNo.length <= 0) {
-                    console.log("Invalid streetNo");
-                    result = false;
+
+                var entrance = $("#inputEntrance").val() || "",
+                    floor = $("#inputEntrance").val() || "",
+                    apNumber = $("#inputApNumber").val() || "",
+                    block = $("#inputBlock").val() || "";
+
+                if (quarter.length > 0 &&
+                    block.length > 0 &&
+                    entrance.length > 0 &&
+                    floor.length > 0 &&
+                    apNumber.length > 0) {
+                    result = true;
+                } else {
+                    console.log("Invalid quarter data (quarter, block, entrance, floor, apNumber)");
+
+                    if (streetName.length < 2) {
+                        console.log("Invalid streetName");
+                        result = false;
+                    }
+                    if (streetNo.length <= 0) {
+                        console.log("Invalid streetNo");
+                        result = false;
+                    }
                 }
 
             } else {

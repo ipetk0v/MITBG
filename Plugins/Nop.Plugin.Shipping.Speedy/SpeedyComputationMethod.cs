@@ -122,7 +122,7 @@ namespace Nop.Plugin.Shipping.Speedy
         {
             _speedySrv.RunCheckingShipmentsList();
         }
-
+        
 
         public override void Install()
         {
@@ -169,8 +169,19 @@ namespace Nop.Plugin.Shipping.Speedy
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.OrderId", "Order ID");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CustomerName", "Customer Name");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.DateCreated", "Date Created");
+
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus", "Creating status");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.Pending", "Pending");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.BolIsCreated", "BolIsCreated");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.ErrorBolCreating", "ErrorBolCreating");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.Cancelled", "Cancelled");
+
+
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus", "Courier Status");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.NotRequested", "NotRequested");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.Requested", "Requested");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.BringToOffice", "BringToOffice");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.ErrorRequested", "ErrorRequested");
 
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CancelBolConfirmTitle", "BillOfLading cancelling");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CancelBolConfirmMessage", "You want to cancel BillOfLading. Type comment, please!");
@@ -182,9 +193,11 @@ namespace Nop.Plugin.Shipping.Speedy
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingContactName", "Contact Name");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingPhoneNumber", "Phone Number");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.Cancel", "Cancel");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CancelBtnText", "Cancel");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CloseBtnText", "Close");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.RequestForCourier", "Request For Courier");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.ShippingCost", "Shipping Cost");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CodComission", "CoD comission");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.IsFreeShipping", "Is FreeShipping");
 
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.Login", "Login");
@@ -254,6 +267,16 @@ namespace Nop.Plugin.Shipping.Speedy
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CourierStatus");
 
+            _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.Pending");
+            _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.BolIsCreated");
+            _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.ErrorBolCreating");
+            _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.Cancelled");
+
+            _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.NotRequested");
+            _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.Requested");
+            _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.BringToOffice");
+            _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.ErrorRequested");
+
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CancelBolConfirmTitle");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CancelBolConfirmMessage");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.ErrorOperationTitle");
@@ -265,8 +288,10 @@ namespace Nop.Plugin.Shipping.Speedy
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CourierPickingPhoneNumber");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.Cancel");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CloseBtnText");
+            _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CancelBtnText");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.RequestForCourier");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.ShippingCost");
+            _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CodComission");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.IsFreeShipping");
 
             _localizationService.DeletePluginLocaleResource("Speedy.Admin.ConfigurationFields.Login");

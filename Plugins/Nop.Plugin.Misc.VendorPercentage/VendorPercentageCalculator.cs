@@ -66,6 +66,7 @@ namespace Nop.Plugin.Misc.VendorPercentage
             _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorComission", "Comission Amount");
             _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorTransaction", "Transaction");
             _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.FreeShippingSum", "Free Shipping");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.CodComissionSum", "CoD comission");
 
             _permissionService.InstallPermissions(new Permission());
 
@@ -90,6 +91,7 @@ namespace Nop.Plugin.Misc.VendorPercentage
             _localizationService.DeletePluginLocaleResource("VendorPercentage.VendorsList.VendorComission");
             _localizationService.DeletePluginLocaleResource("VendorPercentage.VendorsList.VendorTransaction");
             _localizationService.DeletePluginLocaleResource("VendorPercentage.VendorsList.FreeShippingSum");
+            _localizationService.DeletePluginLocaleResource("VendorPercentage.VendorsList.CodComissionSum");
 
             _permissionService.UninstallPermissions(new Permission());
 
