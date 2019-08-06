@@ -98,7 +98,9 @@ namespace Nop.Plugin.Misc.VendorPercentage.Controllers
 
 
             ordersItemsQuery =
-                ordersItemsQuery.Where(w => w.Note == "Order status has been edited. New status: Завършена");
+                ordersItemsQuery.Where(w => w.Note == "Order status has been edited. New status: Завършена" ||
+                                            w.Note == "Order status has been edited. New status: Отказана - Търговец" ||
+                                            w.Note == "Order status has been edited. New status: Cancelled Vendor");
 
             var ordersIds = ordersItemsQuery.Where(w => w.Order.OrderStatus == OrderStatus.Complete && !w.Order.Deleted)
                 .Select(w => w.OrderId).ToList();
@@ -118,7 +120,7 @@ namespace Nop.Plugin.Misc.VendorPercentage.Controllers
             {
                 w.TotalSum = vendorTotals.ContainsKey(w.VendorId) ? vendorTotals[w.VendorId] : 0;
                 w.TotalShippingSum = speedyShipments.ContainsKey(w.VendorId) ? speedyShipments[w.VendorId].Sum(ww => ww.ShippingCost) : 0;
-                w.FreeShippingSum = speedyShipments.ContainsKey(w.VendorId) ? speedyShipments[w.VendorId].Where(ww => ww.IsFreeShipping).Sum(ww => ww.ShippingCost) : 0;
+                w.FreeShippingSum = speedyShipments.ContainsKey(w.VendorId) ? speedyShipments[w.VendorId].Where(ww => ww.IsFreeShipping).Sum(ww => ww.ShippingCost + ww.CodComission) : 0;
                 w.TotalSumText = _priceFormatter.FormatPrice(w.TotalSum, true, primaryStoreCurrency, _workContext.WorkingLanguage, false, false);
                 w.FreeShippingSumText = _priceFormatter.FormatPrice(w.FreeShippingSum, true, primaryStoreCurrency, _workContext.WorkingLanguage, false, false);
                 w.ComissionText = _priceFormatter.FormatPrice(w.Comission, true, primaryStoreCurrency, _workContext.WorkingLanguage, false, false);

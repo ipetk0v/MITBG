@@ -100,8 +100,8 @@ namespace Nop.Plugin.Shipping.Speedy
                                 _genericAttributeService.DeleteAttribute(bolInfoAttribute);
 
 
-                            _logger.InsertLog(LogLevel.Information, "Shipment created",
-                                JsonConvert.SerializeObject(shipmentData, Formatting.Indented));
+                            //_logger.InsertLog(LogLevel.Information, "Shipment created",
+                            //    JsonConvert.SerializeObject(shipmentData, Formatting.Indented));
                         }
 
                     }

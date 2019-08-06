@@ -290,7 +290,7 @@ namespace Nop.Plugin.Shipping.Speedy.Services
 
                     var barcode = resultCreateBol.generatedParcels.First().parcelId;
 
-                    _logger.InsertLog(LogLevel.Information, string.Format(@"Bill of Landing created. TrackNumber={0}", barcode));
+                    //  _logger.InsertLog(LogLevel.Information, string.Format(@"Bill of Landing created. TrackNumber={0}", barcode));
 
 
                     shipment.BolCreatingStatus = BolCreatingStatus.BolIsCreated;
@@ -301,6 +301,7 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                     shipment.BarCode = barcode.ToString();
 
                     shipment.ShippingCost = (decimal)resultCreateBol.amounts.total;
+                    shipment.CodComission = (decimal)resultCreateBol.amounts.codPremium;
 
                     _speedyShipmentRep.Update(shipment);
 

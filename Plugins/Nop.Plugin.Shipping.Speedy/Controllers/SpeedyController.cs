@@ -194,12 +194,14 @@ namespace Nop.Plugin.Shipping.Speedy.Controllers
                 DateCreated = s.DateCreated,
                 IsFreeShipping = s.IsFreeShipping,
                 ShippingCostText = _priceFormatter.FormatPrice(s.ShippingCost, true, primaryStoreCurrency, _workContext.WorkingLanguage, false, false),
+                CodComissionText = _priceFormatter.FormatPrice(s.CodComission, true, primaryStoreCurrency, _workContext.WorkingLanguage, false, false),
                 OrderId = s.OrderId,
                 BarCode = s.BarCode,
                 BolCreatingStatus = s.BolCreatingStatus,
-                BolCreatingStatusText = s.BolCreatingStatus.ToString(),
-                CourierStatus = CourierStatus.NotRequested,
-                CourierStatusText = CourierStatus.NotRequested.ToString(),
+                BolCreatingStatusText = _localizationService.GetResource("Speedy.ShipmentsList.BolCreatingStatus." + s.BolCreatingStatus),
+                CourierStatus = s.CourierStatus,
+                CourierStatusText = _localizationService.GetResource("Speedy.ShipmentsList.CourierStatus." + s.CourierStatus),
+
                 ErrorMessage = s.BolCreatingStatus == BolCreatingStatus.ErrorBolCreating ? s.BolCreatingErrorMessage : string.Empty
 
             }).OrderByDescending(w => w.Id);

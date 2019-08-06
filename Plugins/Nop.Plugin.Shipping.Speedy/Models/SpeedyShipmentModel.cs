@@ -11,6 +11,7 @@ namespace Nop.Plugin.Shipping.Speedy.Models
         public string CustomerName { get; set; }
         public int OrderId { get; set; }
         public string ShippingCostText { get; set; }
+        public string CodComissionText { get; set; }
         public bool IsFreeShipping { get; set; }
         public DateTime DateCreated { get; set; }
         public string BarCode { get; set; }
