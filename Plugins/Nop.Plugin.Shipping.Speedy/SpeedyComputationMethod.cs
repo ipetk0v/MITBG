@@ -193,6 +193,7 @@ namespace Nop.Plugin.Shipping.Speedy
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingContactName", "Contact Name");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingPhoneNumber", "Phone Number");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.Cancel", "Cancel");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.PickCourierBtnText", "Pick the courier");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CancelBtnText", "Cancel");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CloseBtnText", "Close");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.RequestForCourier", "Request For Courier");
@@ -287,6 +288,7 @@ namespace Nop.Plugin.Shipping.Speedy
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CourierPickingContactName");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CourierPickingPhoneNumber");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.Cancel");
+            _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.PickCourierBtnText");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CloseBtnText");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.CancelBtnText");
             _localizationService.DeletePluginLocaleResource("Speedy.ShipmentsList.RequestForCourier");
