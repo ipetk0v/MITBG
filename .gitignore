@@ -332,3 +332,4 @@ ASALocalRun/
 
 
 /Presentation/Nop.Web/Plugins
+/Presentation/Nop.Web/App_Data/plugins.json
