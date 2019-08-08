@@ -15,6 +15,7 @@ using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Vendors;
 using Nop.Core.Infrastructure;
 using Nop.Plugin.Shipping.Speedy.Domain;
+using Nop.Plugin.Shipping.Speedy.Models;
 using Nop.Services.Configuration;
 using Nop.Services.Logging;
 using Nop.Services.Shipping;
@@ -241,7 +242,7 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                         amountCodBase = amount,
                         amountCodBaseSpecified = shipment.UseCod,
 
-                        optionsBeforePayment = shipment.UseCod && (_speedySettings.OptionsOpen || _speedySettings.OptionsTest) ? new paramOptionsBeforePayment
+                        optionsBeforePayment = shipment.DeliveryOption != DeliveryOption.Automat && shipment.UseCod && (_speedySettings.OptionsOpen || _speedySettings.OptionsTest) ? new paramOptionsBeforePayment
                         {
                             open = _speedySettings.OptionsOpen,
                             openSpecified = _speedySettings.OptionsOpen,
