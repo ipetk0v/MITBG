@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
@@ -301,6 +302,7 @@ namespace Nop.Plugin.Payments.ePay
         /// <returns>Additional handling fee</returns>
         public decimal GetAdditionalHandlingFee(IList<ShoppingCartItem> cart)
         {
+            cart = cart.Where(w => !w.Product.IsFreeShipping).ToList();
             var result = _paymentService.CalculateAdditionalFee(cart, _ePayPaymentSettings.AdditionalFee, _ePayPaymentSettings.AdditionalFeePercentage);
             return result;
         }
