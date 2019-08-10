@@ -17,6 +17,7 @@ using Nop.Web.Areas.Admin.Controllers;
 using Nop.Web.Framework;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Mvc.Filters;
+using NUglify.Helpers;
 
 namespace Nop.Plugin.Misc.VendorPercentage.Controllers
 {
@@ -97,18 +98,21 @@ namespace Nop.Plugin.Misc.VendorPercentage.Controllers
                 ordersItemsQuery = ordersItemsQuery.Where(w => w.CreatedOnUtc <= endDateValue);
 
 
-            ordersItemsQuery =
-                ordersItemsQuery.Where(w => w.Note == "Order status has been edited. New status: Завършена" ||
+            var oiq = ordersItemsQuery.Where(w => w.Note == "Order status has been edited. New status: Завършена" ||
                                             w.Note == "Order status has been edited. New status: Отказана - Търговец" ||
-                                            w.Note == "Order status has been edited. New status: Cancelled Vendor");
+                                            w.Note == "Order status has been edited. New status: Cancelled Vendor")
+                                            .AsEnumerable()
+                                            .DistinctBy(x => x.OrderId)
+                                            .ToList();
 
-            var ordersIds = ordersItemsQuery.Where(w => w.Order.OrderStatus == OrderStatus.Complete && !w.Order.Deleted)
-                .Select(w => w.OrderId).ToList();
+            var ordersIds = oiq
+                .Where(w => !w.Order.Deleted && (w.Order.OrderStatus == OrderStatus.Complete || w.Order.OrderStatus == OrderStatus.CancelledVendor))
+                .Select(w => w.OrderId)
+                .ToList();
 
             var speedyShipments = _speedyShipmentRep.Table.Where(w => ordersIds.Contains(w.OrderId)).GroupBy(w => w.VendorId).ToDictionary(w => w.Key, w => w);
 
-            var totalsQuery = ordersItemsQuery
-                .Where(w => w.Order.OrderStatus == OrderStatus.Complete && !w.Order.Deleted)
+            var totalsQuery = oiq.Where(w => !w.Order.Deleted && (w.Order.OrderStatus == OrderStatus.Complete || w.Order.OrderStatus == OrderStatus.CancelledVendor))
                 .SelectMany(w => w.Order.OrderItems.Where(ww => ww.Product.VendorId > 0));
 
             var vendorTotals = totalsQuery.GroupBy(w => w.Product.VendorId)

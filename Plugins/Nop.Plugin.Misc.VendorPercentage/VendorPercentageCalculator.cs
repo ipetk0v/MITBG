@@ -52,21 +52,21 @@ namespace Nop.Plugin.Misc.VendorPercentage
         public override void Install()
         {
             //locales
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.MenuTitle", "Vendors comission");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.Title", "Vendors comission");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.DateFrom", "Date from");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.DateFrom.hint", "The start date the order received the status Completed.");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.DateTo", "Date to");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.DateTo.hint", "The final date the order received the status Completed.");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.Dates.hint", "Date the order received the status Completed");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorName", "Vendor Name");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.MenuTitle", "Търговец комисионна");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.Title", "Търговец комисионна");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.DateFrom", "От дата");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.DateFrom.hint", "Датата включва всички поръчки със статус Завършена или Отказана - търговец. ");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.DateTo", "До дата");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.DateTo.hint", "Датата включва всички поръчки със статус Завършена или Отказана - търговец.");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.Dates.hint", "Датите включва всички поръчки със статус Завършена или Отказана - търговец.");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorName", "Име");
             _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorId", "ID");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorComissionPercentage", "Comission %");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorTotalAmountOfSales", "Total amount of vendor sales");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorComission", "Comission Amount");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorTransaction", "Transaction");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.FreeShippingSum", "Free Shipping");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.CodComissionSum", "CoD comission");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorComissionPercentage", "Комисионна %");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorTotalAmountOfSales", "Оборот за периода");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorComission", "Комисионна");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.VendorTransaction", "За превод");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.FreeShippingSum", "Безплатна доставка");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.CodComissionSum", "Наложен платеж");
 
             _permissionService.InstallPermissions(new Permission());
 
