@@ -99,25 +99,28 @@
                                 </div>
                                 @if (!string.IsNullOrEmpty(Model.TrackingNumberUrl))
                                 {
-                                <a href="@Model.TrackingNumberUrl" target="_blank" class="margin-l-10">@T("Admin.Orders.Shipments.TrackingNumber.ViewOnline")</a>
+                                    <a href="@Model.TrackingNumberUrl" target="_blank" class="margin-l-10">@T("Admin.Orders.Shipments.TrackingNumber.ViewOnline")</a>
                                 }
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-3">
-                                <nop-label asp-for="AdminComment" />
-                            </div>
-                            <div class="col-md-9">
-                                <div class="input-group">
-                                    <nop-editor asp-for="AdminComment" />
-                                    <span class="input-group-btn">
-                                        <button type="submit" name="setadmincomment" class="btn btn-info">
-                                            @T("Admin.Orders.Shipments.AdminComment.Button")
-                                        </button>
-                                    </span>
+                        @if (EngineContext.Current.Resolve<IWorkContext>().CurrentVendor == null)
+                        {
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <nop-label asp-for="AdminComment" />
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <nop-editor asp-for="AdminComment" />
+                                        <span class="input-group-btn">
+                                            <button type="submit" name="setadmincomment" class="btn btn-info">
+                                                @T("Admin.Orders.Shipments.AdminComment.Button")
+                                            </button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                         <div class="form-group">
                             <div class="col-md-3">
                                 <nop-label asp-for="TotalWeight" />
