@@ -6,12 +6,14 @@ using Nop.Core.Data;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Directory;
 using Nop.Core.Domain.Orders;
+using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Vendors;
 using Nop.Plugin.Misc.VendorPercentage.Models;
 using Nop.Plugin.Shipping.Speedy.Domain;
 using Nop.Services.Catalog;
 using Nop.Services.Directory;
 using Nop.Services.Helpers;
+using Nop.Services.Orders;
 using Nop.Services.Security;
 using Nop.Web.Areas.Admin.Controllers;
 using Nop.Web.Framework;
@@ -33,8 +35,22 @@ namespace Nop.Plugin.Misc.VendorPercentage.Controllers
         private readonly ICurrencyService _currencyService;
         private readonly CurrencySettings _currencySettings;
         private readonly IWorkContext _workContext;
+        private readonly IRepository<Shipment> _shipmentRepository;
+        private readonly IOrderService _orderService;
 
-        public ComissionCalculatorController(IRepository<Vendor> vendorsRep, IPriceFormatter priceFormatter, IRepository<OrderItem> orderItemsRep, IDateTimeHelper dateTimeHelper, ICurrencyService currencyService, CurrencySettings currencySettings, IWorkContext workContext, IRepository<OrderNote> orderNotesRep, IPermissionService permissionService, IRepository<SpeedyShipment> speedyShipmentRep)
+        public ComissionCalculatorController(
+            IRepository<Vendor> vendorsRep,
+            IPriceFormatter priceFormatter,
+            IRepository<OrderItem> orderItemsRep,
+            IDateTimeHelper dateTimeHelper,
+            ICurrencyService currencyService,
+            CurrencySettings currencySettings,
+            IWorkContext workContext,
+            IRepository<OrderNote> orderNotesRep,
+            IPermissionService permissionService,
+            IRepository<SpeedyShipment> speedyShipmentRep,
+            IRepository<Shipment> shipmentRepository, 
+            IOrderService orderService)
         {
             _vendorsRep = vendorsRep;
             _priceFormatter = priceFormatter;
@@ -45,6 +61,8 @@ namespace Nop.Plugin.Misc.VendorPercentage.Controllers
             _orderNotesRep = orderNotesRep;
             _permissionService = permissionService;
             _speedyShipmentRep = speedyShipmentRep;
+            _shipmentRepository = shipmentRepository;
+            _orderService = orderService;
         }
 
 
@@ -84,7 +102,38 @@ namespace Nop.Plugin.Misc.VendorPercentage.Controllers
             var totalCount = vendorsQuery.Count();
             var vendors = vendorsQuery.ToList();
 
-            var ordersItemsQuery = _orderNotesRep.Table;
+            //var ordersItemsQuery = _orderNotesRep.Table;
+
+            //var startDateValue = !searchModel.DateFrom.HasValue ? null
+            //    : (DateTime?)_dateTimeHelper.ConvertToUtcTime(searchModel.DateFrom.Value, _dateTimeHelper.CurrentTimeZone);
+            //var endDateValue = !searchModel.DateTo.HasValue ? null
+            //    : (DateTime?)_dateTimeHelper.ConvertToUtcTime(searchModel.DateTo.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
+
+            //if (startDateValue.HasValue)
+            //    ordersItemsQuery = ordersItemsQuery.Where(w => w.CreatedOnUtc >= startDateValue);
+
+            //if (endDateValue.HasValue)
+            //    ordersItemsQuery = ordersItemsQuery.Where(w => w.CreatedOnUtc <= endDateValue);
+
+
+            //var oiq = ordersItemsQuery.Where(w => w.Note == "Order status has been edited. New status: Завършена" ||
+            //                                w.Note == "Order status has been edited. New status: Отказана - Търговец" ||
+            //                                w.Note == "Order status has been edited. New status: Cancelled Vendor")
+            //                                .AsEnumerable()
+            //                                .DistinctBy(x => x.OrderId)
+            //                                .ToList();
+
+            //var ordersIds = oiq
+            //    .Where(w => !w.Order.Deleted)
+            //    .Select(w => w.OrderId)
+            //    .ToList();
+
+            //var speedyShipments = _speedyShipmentRep.Table.Where(w => ordersIds.Contains(w.OrderId)).GroupBy(w => w.VendorId).ToDictionary(w => w.Key, w => w);
+
+            //var totalsQuery = oiq.Where(w => !w.Order.Deleted && (w.Order.OrderStatus == OrderStatus.Complete || w.Order.OrderStatus == OrderStatus.CancelledVendor))
+            //    .SelectMany(w => w.Order.OrderItems.Where(ww => ww.Product.VendorId > 0));
+
+            var shipmentQuery = _shipmentRepository.Table;
 
             var startDateValue = !searchModel.DateFrom.HasValue ? null
                 : (DateTime?)_dateTimeHelper.ConvertToUtcTime(searchModel.DateFrom.Value, _dateTimeHelper.CurrentTimeZone);
@@ -92,28 +141,22 @@ namespace Nop.Plugin.Misc.VendorPercentage.Controllers
                 : (DateTime?)_dateTimeHelper.ConvertToUtcTime(searchModel.DateTo.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
 
             if (startDateValue.HasValue)
-                ordersItemsQuery = ordersItemsQuery.Where(w => w.CreatedOnUtc >= startDateValue);
+                shipmentQuery = shipmentQuery.Where(w => w.Order.CreatedOnUtc >= startDateValue);
 
             if (endDateValue.HasValue)
-                ordersItemsQuery = ordersItemsQuery.Where(w => w.CreatedOnUtc <= endDateValue);
+                shipmentQuery = shipmentQuery.Where(w => w.Order.CreatedOnUtc <= endDateValue);
 
+            var shipments = shipmentQuery.Where(a => !a.Order.Deleted && (a.AdminComment == "1" || a.AdminComment == "2")).ToList();
 
-            var oiq = ordersItemsQuery.Where(w => w.Note == "Order status has been edited. New status: Завършена" ||
-                                            w.Note == "Order status has been edited. New status: Отказана - Търговец" ||
-                                            w.Note == "Order status has been edited. New status: Cancelled Vendor")
-                                            .AsEnumerable()
-                                            .DistinctBy(x => x.OrderId)
-                                            .ToList();
+            var trackNumbers = shipments.Select(x => x.TrackingNumber);
+            var speedyShipments = _speedyShipmentRep.Table.Where(w => trackNumbers.Contains(w.BarCode)).GroupBy(w => w.VendorId).ToDictionary(w => w.Key, w => w);
 
-            var ordersIds = oiq
-                .Where(w => !w.Order.Deleted && (w.Order.OrderStatus == OrderStatus.Complete || w.Order.OrderStatus == OrderStatus.CancelledVendor))
-                .Select(w => w.OrderId)
-                .ToList();
+            //admin commnet 1 = shipment complete; admin comment 2 = shipment canceled by vendor
+            //var totalsQuery = oiq.SelectMany(x => x.Order.Shipments.Where(a => !a.Order.Deleted && (a.AdminComment == "1" || a.AdminComment == "2"))
+            //.SelectMany(w => w.Order.OrderItems.Where(ww => ww.Product.VendorId > 0)));
 
-            var speedyShipments = _speedyShipmentRep.Table.Where(w => ordersIds.Contains(w.OrderId)).GroupBy(w => w.VendorId).ToDictionary(w => w.Key, w => w);
-
-            var totalsQuery = oiq.Where(w => !w.Order.Deleted && (w.Order.OrderStatus == OrderStatus.Complete || w.Order.OrderStatus == OrderStatus.CancelledVendor))
-                .SelectMany(w => w.Order.OrderItems.Where(ww => ww.Product.VendorId > 0));
+            var totalsQuery = shipments.SelectMany(x =>
+                x.ShipmentItems.Select(s => _orderService.GetOrderItemById(s.OrderItemId)));
 
             var vendorTotals = totalsQuery.GroupBy(w => w.Product.VendorId)
                 .ToDictionary(w => w.Key, w => w.Sum(s => s.PriceExclTax));

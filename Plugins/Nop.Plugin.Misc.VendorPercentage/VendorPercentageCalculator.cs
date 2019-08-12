@@ -52,8 +52,8 @@ namespace Nop.Plugin.Misc.VendorPercentage
         public override void Install()
         {
             //locales
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.MenuTitle", "Търговец комисионна");
-            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.Title", "Търговец комисионна");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.MenuTitle", "Търговци комисионна");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.Title", "Търговци комисионна");
             _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.DateFrom", "От дата");
             _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.DateFrom.hint", "Датата включва всички поръчки със статус Завършена или Отказана - търговец. ");
             _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.DateTo", "До дата");
