@@ -91,11 +91,14 @@
                             <div class="col-md-9">
                                 <div class="input-group input-group-short pull-left">
                                     <nop-editor asp-for="TrackingNumber" />
-                                    <span class="input-group-btn">
-                                        <button type="submit" name="settrackingnumber" class="btn btn-info">
-                                            @T("Admin.Orders.Shipments.TrackingNumber.Button")
-                                        </button>
-                                    </span>
+                                    @if (EngineContext.Current.Resolve<IWorkContext>().CurrentVendor == null)
+                                    {
+                                        <span class="input-group-btn">
+                                            <button type="submit" name="settrackingnumber" class="btn btn-info">
+                                                @T("Admin.Orders.Shipments.TrackingNumber.Button")
+                                            </button>
+                                        </span>   
+                                    }
                                 </div>
                                 @if (!string.IsNullOrEmpty(Model.TrackingNumberUrl))
                                 {
@@ -152,7 +155,7 @@
                                             @T("Admin.Orders.Shipments.ShippedDate.Button")
                                         </button>
                                         }
-                                        @if (Model.ShippedDateUtc.HasValue)
+                                        @if (Model.ShippedDateUtc.HasValue && EngineContext.Current.Resolve<IWorkContext>().CurrentVendor == null)
                                         {
                                         <button type="submit" onclick="toggleShippedDate(true);return false;" id="btnEditShippedDate" class="btn btn-primary">
                                             @T("Admin.Common.Edit")
@@ -195,7 +198,7 @@
                                             @T("Admin.Orders.Shipments.DeliveryDate.Button")
                                         </button>
                                         }
-                                        @if (Model.DeliveryDateUtc.HasValue)
+                                        @if (Model.DeliveryDateUtc.HasValue && EngineContext.Current.Resolve<IWorkContext>().CurrentVendor == null)
                                         {
 
                                         <button type="submit" onclick="toggleDeliveryDate(true);return false;" id="btnEditDeliveryDate" class="btn btn-primary">
