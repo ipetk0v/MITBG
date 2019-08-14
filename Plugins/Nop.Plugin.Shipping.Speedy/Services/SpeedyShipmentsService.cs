@@ -248,11 +248,12 @@ namespace Nop.Plugin.Shipping.Speedy.Services
 
                         optionsBeforePayment = shipment.DeliveryOption != DeliveryOption.Automat && shipment.UseCod && (_speedySettings.OptionsOpen || _speedySettings.OptionsTest) ? new paramOptionsBeforePayment
                         {
+                            
                             open = _speedySettings.OptionsOpen,
                             openSpecified = _speedySettings.OptionsOpen,
                             test = _speedySettings.OptionsTest,
                             testSpecified = _speedySettings.OptionsTest,
-                            returnPayerType = 1,
+                            returnPayerType = 0, //1. Ако искате получателя на правата товарителницата да е платец и на връщащата в случай на отказ трябва да подадете в ParamOptionsBeforePayment - 0 Sender, защото при генериране на товарителница при отказ местата на подателя и получателя се разменя, т.е. подател става клиента на който сте изпратили пратката.
                             returnPayerTypeSpecified = true,
                             returnServiceTypeId = shipment.ServiceId,
                             returnServiceTypeIdSpecified = true
