@@ -29,7 +29,7 @@ namespace Nop.Plugin.Misc.VendorPercentage.Controllers
         private readonly IRepository<Vendor> _vendorsRep;
         private readonly IRepository<SpeedyShipment> _speedyShipmentRep;
         private readonly IPermissionService _permissionService;
-        private readonly IRepository<OrderNote> _orderNotesRep;
+        private readonly IRepository<OrderItem> _orderItemsRep;
         private readonly IPriceFormatter _priceFormatter;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly ICurrencyService _currencyService;
@@ -46,10 +46,9 @@ namespace Nop.Plugin.Misc.VendorPercentage.Controllers
             ICurrencyService currencyService,
             CurrencySettings currencySettings,
             IWorkContext workContext,
-            IRepository<OrderNote> orderNotesRep,
             IPermissionService permissionService,
             IRepository<SpeedyShipment> speedyShipmentRep,
-            IRepository<Shipment> shipmentRepository, 
+            IRepository<Shipment> shipmentRepository,
             IOrderService orderService)
         {
             _vendorsRep = vendorsRep;
@@ -58,7 +57,7 @@ namespace Nop.Plugin.Misc.VendorPercentage.Controllers
             _currencyService = currencyService;
             _currencySettings = currencySettings;
             _workContext = workContext;
-            _orderNotesRep = orderNotesRep;
+            _orderItemsRep = orderItemsRep;
             _permissionService = permissionService;
             _speedyShipmentRep = speedyShipmentRep;
             _shipmentRepository = shipmentRepository;
@@ -155,8 +154,8 @@ namespace Nop.Plugin.Misc.VendorPercentage.Controllers
             //var totalsQuery = oiq.SelectMany(x => x.Order.Shipments.Where(a => !a.Order.Deleted && (a.AdminComment == "1" || a.AdminComment == "2"))
             //.SelectMany(w => w.Order.OrderItems.Where(ww => ww.Product.VendorId > 0)));
 
-            var totalsQuery = shipments.SelectMany(x =>
-                x.ShipmentItems.Select(s => _orderService.GetOrderItemById(s.OrderItemId)));
+            var orderItemsIds = shipments.SelectMany(x => x.ShipmentItems.Select(s => s.OrderItemId)).ToList();
+            var totalsQuery = _orderItemsRep.Table.Where(w => orderItemsIds.Contains(w.Id) && w.Product.VendorId > 0);
 
             var vendorTotals = totalsQuery.GroupBy(w => w.Product.VendorId)
                 .ToDictionary(w => w.Key, w => w.Sum(s => s.PriceExclTax));
