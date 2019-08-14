@@ -11,6 +11,7 @@ using Nop.Core.Data;
 using Nop.Core.Domain.Common;
 using Nop.Core.Domain.Logging;
 using Nop.Core.Domain.Orders;
+using Nop.Core.Domain.Payments;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Vendors;
 using Nop.Core.Infrastructure;
@@ -143,6 +144,9 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                     if (order == null)
                         throw new Exception(string.Format("Order with ID=[{0}] not found", shipment.OrderId));
 
+                    if (!shipment.UseCod && order.PaymentStatus != PaymentStatus.Authorized && order.PaymentStatus != PaymentStatus.Paid)
+                        return;
+
 
                     var orderItems = _orderItemsRep.Table.Where(w =>
                         w.OrderId == shipment.OrderId
@@ -248,7 +252,7 @@ namespace Nop.Plugin.Shipping.Speedy.Services
 
                         optionsBeforePayment = shipment.DeliveryOption != DeliveryOption.Automat && shipment.UseCod && (_speedySettings.OptionsOpen || _speedySettings.OptionsTest) ? new paramOptionsBeforePayment
                         {
-                            
+
                             open = _speedySettings.OptionsOpen,
                             openSpecified = _speedySettings.OptionsOpen,
                             test = _speedySettings.OptionsTest,
