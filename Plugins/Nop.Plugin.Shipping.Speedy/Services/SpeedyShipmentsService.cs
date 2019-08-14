@@ -310,7 +310,9 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                     shipment.BolDateCreated = DateTime.Now;
                     shipment.BarCode = barcode.ToString();
 
-                    shipment.ShippingCost = (decimal)resultCreateBol.amounts.total;
+                    shipment.ShippingCost = (decimal)resultCreateBol.amounts.total + 1; //Add 1 bgn
+                    shipment.ShippingCost = Math.Ceiling(shipment.ShippingCost * 2) / 2;  //Round to 0.5
+
                     shipment.CodComission = (decimal)resultCreateBol.amounts.codPremium;
 
                     _speedyShipmentRep.Update(shipment);
@@ -438,7 +440,8 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                     };
 
                     var resultCalculate = srv.calculate(sessionGuid, calcData);
-                    return (decimal)resultCalculate.amounts.total;
+                    var totalAmount = (decimal)resultCalculate.amounts.total + 1; //Add 1 bgn;
+                    return Math.Ceiling(totalAmount * 2) / 2;  //Round to 0.5
                 }
                 catch (Exception e)
                 {
