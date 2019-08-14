@@ -240,7 +240,11 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                         amountInsuranceBase = amount,
                         amountInsuranceBaseSpecified = _speedySettings.UseInsurance,
                         amountCodBase = amount,
-                        amountCodBaseSpecified = shipment.UseCod,
+                        amountCodBaseSpecified = shipment.UseCod && _speedySettings.CodMethod == CodMethod.NP,
+
+                        retMoneyTransferReqAmount = amount,
+                        retMoneyTransferReqAmountSpecified = shipment.UseCod && _speedySettings.CodMethod == CodMethod.PPP,
+
 
                         optionsBeforePayment = shipment.DeliveryOption != DeliveryOption.Automat && shipment.UseCod && (_speedySettings.OptionsOpen || _speedySettings.OptionsTest) ? new paramOptionsBeforePayment
                         {

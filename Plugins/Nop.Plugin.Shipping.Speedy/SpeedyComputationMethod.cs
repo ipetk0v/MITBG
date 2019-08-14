@@ -122,7 +122,7 @@ namespace Nop.Plugin.Shipping.Speedy
         {
             _speedySrv.RunCheckingShipmentsList();
         }
-        
+
 
         public override void Install()
         {
@@ -210,6 +210,10 @@ namespace Nop.Plugin.Shipping.Speedy
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.UseInsurance", "Use Insurance");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.OptionsOpen", "Use Open option");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.OptionsTest", "Use Test option");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.CodMethod", "Начин на плащане");
+
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.CodMethod.NP", "Наложен платеж");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.CodMethod.PPP", "Пощенски платежен превод");
 
 
 
@@ -305,6 +309,10 @@ namespace Nop.Plugin.Shipping.Speedy
             _localizationService.DeletePluginLocaleResource("Speedy.Admin.ConfigurationFields.UseInsurance");
             _localizationService.DeletePluginLocaleResource("Speedy.Admin.ConfigurationFields.OptionsOpen");
             _localizationService.DeletePluginLocaleResource("Speedy.Admin.ConfigurationFields.OptionsTest");
+            _localizationService.DeletePluginLocaleResource("Speedy.Admin.ConfigurationFields.CodMethod");
+
+            _localizationService.DeletePluginLocaleResource("Speedy.Admin.ConfigurationFields.CodMethod.NP");
+            _localizationService.DeletePluginLocaleResource("Speedy.Admin.ConfigurationFields.CodMethod.PPP");
 
             base.Uninstall();
         }

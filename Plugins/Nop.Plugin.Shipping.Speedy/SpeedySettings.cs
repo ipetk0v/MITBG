@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Nop.Plugin.Shipping.Speedy.Domain;
 
 namespace Nop.Plugin.Shipping.Speedy
 {
@@ -19,5 +20,6 @@ namespace Nop.Plugin.Shipping.Speedy
         public bool UseInsurance { get; set; }
         public bool OptionsOpen { get; set; }
         public bool OptionsTest { get; set; }
+        public CodMethod CodMethod { get; set; }
     }
 }

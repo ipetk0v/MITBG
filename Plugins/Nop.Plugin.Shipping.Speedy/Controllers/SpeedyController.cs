@@ -108,6 +108,7 @@ namespace Nop.Plugin.Shipping.Speedy.Controllers
                 UseInsurance = _speedySettings.UseInsurance,
                 OptionsOpen = _speedySettings.OptionsOpen,
                 OptionsTest = _speedySettings.OptionsTest,
+                CodMethod = _speedySettings.CodMethod
             };
 
 
@@ -133,6 +134,7 @@ namespace Nop.Plugin.Shipping.Speedy.Controllers
             _speedySettings.UseInsurance = model.UseInsurance;
             _speedySettings.OptionsOpen = model.OptionsOpen;
             _speedySettings.OptionsTest = model.OptionsTest;
+            _speedySettings.CodMethod = model.CodMethod;
 
 
             _settingService.SaveSetting(_speedySettings);

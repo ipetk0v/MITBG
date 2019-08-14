@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Nop.Plugin.Shipping.Speedy.Domain;
 
 namespace Nop.Plugin.Shipping.Speedy.Models
 {
@@ -33,5 +34,8 @@ namespace Nop.Plugin.Shipping.Speedy.Models
 
         [NopResourceDisplayName("Speedy.Admin.ConfigurationFields.OptionsTest")]
         public bool OptionsTest { get; set; }
+
+        [NopResourceDisplayName("Speedy.Admin.ConfigurationFields.CodMethod")]
+        public CodMethod CodMethod { get; set; }
     }
 }
