@@ -195,7 +195,7 @@ namespace Nop.Plugin.Shipping.Speedy.Controllers
                 CustomerName = s.CustomerName,
                 DateCreated = s.DateCreated,
                 IsFreeShipping = s.IsFreeShipping,
-                ShippingCostText = _priceFormatter.FormatPrice(s.ShippingCost - s.CodComission, true, primaryStoreCurrency, _workContext.WorkingLanguage, false, false),
+                ShippingCostText = _priceFormatter.FormatPrice(s.ShippingCost, true, primaryStoreCurrency, _workContext.WorkingLanguage, false, false),
                 CodComissionText = _priceFormatter.FormatPrice(s.CodComission, true, primaryStoreCurrency, _workContext.WorkingLanguage, false, false),
                 OrderId = s.OrderId,
                 BarCode = s.BarCode,

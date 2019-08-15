@@ -310,7 +310,7 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                     shipment.BolDateCreated = DateTime.Now;
                     shipment.BarCode = barcode.ToString();
 
-                    shipment.ShippingCost = (decimal)resultCreateBol.amounts.total + 1; //Add 1 bgn
+                    shipment.ShippingCost = (decimal)resultCreateBol.amounts.total - ((decimal)resultCreateBol.amounts.codPremium * 1.2m) + 1; //Add 1 bgn
                     shipment.ShippingCost = Math.Ceiling(shipment.ShippingCost * 2) / 2;  //Round to 0.5
 
                     shipment.CodComission = (decimal)resultCreateBol.amounts.codPremium * 1.2m;
