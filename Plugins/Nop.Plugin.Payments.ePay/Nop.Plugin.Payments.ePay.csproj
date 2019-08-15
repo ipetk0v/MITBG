@@ -66,7 +66,9 @@
  <ItemGroup>
    <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
    <ProjectReference Include="..\..\Presentation\Nop.Web\Nop.Web.csproj" />
-   <ProjectReference Include="..\Nop.Plugin.Shipping.Speedy\Nop.Plugin.Shipping.Speedy.csproj" />
+   <ProjectReference Include="..\Nop.Plugin.Shipping.Speedy\Nop.Plugin.Shipping.Speedy.csproj">
+     <Private>false</Private>
+   </ProjectReference>
  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.App" Version="2.2.0" />
