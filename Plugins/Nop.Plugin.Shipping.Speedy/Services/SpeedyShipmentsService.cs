@@ -313,7 +313,7 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                     shipment.ShippingCost = (decimal)resultCreateBol.amounts.total + 1; //Add 1 bgn
                     shipment.ShippingCost = Math.Ceiling(shipment.ShippingCost * 2) / 2;  //Round to 0.5
 
-                    shipment.CodComission = (decimal)resultCreateBol.amounts.codPremium;
+                    shipment.CodComission = (decimal)resultCreateBol.amounts.codPremium * 1.2m;
 
                     _speedyShipmentRep.Update(shipment);
 
