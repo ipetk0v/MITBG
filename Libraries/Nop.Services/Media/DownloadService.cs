@@ -121,7 +121,7 @@ namespace Nop.Services.Media
 
             //order status
             if (order.OrderStatus == OrderStatus.Cancelled
-                || order.OrderStatus == OrderStatus.CancelledVendor)
+                /*|| order.OrderStatus == OrderStatus.CancelledVendor*/)
                 return false;
 
             var product = orderItem.Product;

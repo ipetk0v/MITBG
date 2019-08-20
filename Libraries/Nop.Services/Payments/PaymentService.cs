@@ -109,8 +109,8 @@ namespace Nop.Services.Payments
             if (order.Deleted)
                 return false;  //do not allow for deleted orders
 
-            if (order.OrderStatus == OrderStatus.Cancelled
-                || order.OrderStatus == OrderStatus.CancelledVendor)
+            if (order.OrderStatus == OrderStatus.Cancelled)
+                //|| order.OrderStatus == OrderStatus.CancelledVendor)
                 return false;  //do not allow for cancelled orders
 
             if (order.PaymentStatus != PaymentStatus.Pending)

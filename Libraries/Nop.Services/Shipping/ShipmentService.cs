@@ -289,11 +289,11 @@ namespace Nop.Services.Shipping
                 return 0;
 
             const int cancelledOrderStatusId = (int)OrderStatus.Cancelled;
-            const int cancelledByVendorOrderStatusId = (int) OrderStatus.CancelledVendor;
+            //const int cancelledByVendorOrderStatusId = (int) OrderStatus.CancelledVendor;
 
             var query = _siRepository.Table;
             query = query.Where(si => !si.Shipment.Order.Deleted);
-            query = query.Where(si => si.Shipment.Order.OrderStatusId != cancelledOrderStatusId && si.Shipment.Order.OrderStatusId != cancelledByVendorOrderStatusId);
+            query = query.Where(si => si.Shipment.Order.OrderStatusId != cancelledOrderStatusId/* && si.Shipment.Order.OrderStatusId != cancelledByVendorOrderStatusId*/);
             if (warehouseId > 0)
                 query = query.Where(si => si.WarehouseId == warehouseId);
             if (ignoreShipped)

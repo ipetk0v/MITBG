@@ -25,9 +25,9 @@ namespace Nop.Core.Domain.Orders
         /// </summary>
         Cancelled = 40,
 
-        /// <summary>
-        /// Cancelled Vendor
-        /// </summary>
-        CancelledVendor = 50
+        ///// <summary>
+        ///// Cancelled Vendor
+        ///// </summary>
+        //CancelledVendor = 50
     }
 }

@@ -1037,9 +1037,7 @@ namespace Nop.Services.Orders
                     AddOrderNote(order, $"\"Order completed\" email (to customer) has been queued. Queued email identifiers: {string.Join(", ", orderCompletedCustomerNotificationQueuedEmailIds)}.");
             }
 
-            if ((prevOrderStatus != OrderStatus.Cancelled && os == OrderStatus.Cancelled) 
-                || ( prevOrderStatus != OrderStatus.CancelledVendor && os == OrderStatus.CancelledVendor)
-                && notifyCustomer)
+            if (prevOrderStatus != OrderStatus.Cancelled && os == OrderStatus.Cancelled && notifyCustomer)
             {
                 //notification
                 var orderCancelledCustomerNotificationQueuedEmailIds = _workflowMessageService.SendOrderCancelledCustomerNotification(order, order.CustomerLanguageId);
@@ -1058,10 +1056,10 @@ namespace Nop.Services.Orders
                 ReduceRewardPoints(order);
             }
 
-            if (order.OrderStatus == OrderStatus.CancelledVendor)
-            {
-                ReduceRewardPoints(order);
-            }
+            //if (order.OrderStatus == OrderStatus.CancelledVendor)
+            //{
+            //    ReduceRewardPoints(order);
+            //}
 
             //gift cards activation
             if (_orderSettings.ActivateGiftCardsAfterCompletingOrder && order.OrderStatus == OrderStatus.Complete)
@@ -1076,7 +1074,7 @@ namespace Nop.Services.Orders
             }
 
             //gift cards deactivation
-            if (_orderSettings.DeactivateGiftCardsAfterCancellingOrder && order.OrderStatus == OrderStatus.CancelledVendor)
+            if (_orderSettings.DeactivateGiftCardsAfterCancellingOrder /*&& order.OrderStatus == OrderStatus.CancelledVendor*/)
             {
                 SetActivatedValueForPurchasedGiftCards(order, false);
             }
@@ -1499,7 +1497,7 @@ namespace Nop.Services.Orders
                     break;
                 //is order complete?
                 case OrderStatus.Cancelled:
-                case OrderStatus.CancelledVendor:
+                //case OrderStatus.CancelledVendor:
                 case OrderStatus.Complete:
                     return;
             }
@@ -1720,7 +1718,7 @@ namespace Nop.Services.Orders
             //if it already was cancelled, then there's no need to make the following adjustments
             //(such as reward points, inventory, recurring payments)
             //they already was done when cancelling the order
-            if (order.OrderStatus != OrderStatus.Cancelled && order.OrderStatus != OrderStatus.CancelledVendor)
+            if (order.OrderStatus != OrderStatus.Cancelled /*&& order.OrderStatus != OrderStatus.CancelledVendor*/)
             {
                 //return (add) back redeemded reward points
                 ReturnBackRedeemedRewardPoints(order);
@@ -2066,8 +2064,8 @@ namespace Nop.Services.Orders
             if (initialOrder.OrderStatus == OrderStatus.Cancelled)
                 return false;
 
-            if (initialOrder.OrderStatus == OrderStatus.CancelledVendor)
-                return false;
+            //if (initialOrder.OrderStatus == OrderStatus.CancelledVendor)
+            //    return false;
 
             if (!customerToValidate.IsAdmin())
             {
@@ -2092,7 +2090,7 @@ namespace Nop.Services.Orders
             if (recurringPayment == null || customer == null)
                 return false;
 
-            if (recurringPayment.InitialOrder == null || recurringPayment.InitialOrder.OrderStatus == OrderStatus.Cancelled || recurringPayment.InitialOrder.OrderStatus == OrderStatus.CancelledVendor)
+            if (recurringPayment.InitialOrder == null || recurringPayment.InitialOrder.OrderStatus == OrderStatus.Cancelled /*|| recurringPayment.InitialOrder.OrderStatus == OrderStatus.CancelledVendor*/)
                 return false;
 
             if (!recurringPayment.LastPaymentFailed || _paymentService.GetRecurringPaymentType(recurringPayment.InitialOrder.PaymentMethodSystemName) != RecurringPaymentType.Manual)
@@ -2215,8 +2213,8 @@ namespace Nop.Services.Orders
             if (order.OrderStatus == OrderStatus.Cancelled)
                 return false;
 
-            if (order.OrderStatus == OrderStatus.CancelledVendor)
-                return false;
+            //if (order.OrderStatus == OrderStatus.CancelledVendor)
+            //    return false;
 
             return true;
         }
@@ -2293,8 +2291,8 @@ namespace Nop.Services.Orders
             if (order.OrderStatus == OrderStatus.Cancelled)
                 return false;
 
-            if (order.OrderStatus == OrderStatus.CancelledVendor)
-                return false;
+            //if (order.OrderStatus == OrderStatus.CancelledVendor)
+            //    return false;
 
             if (order.PaymentStatus == PaymentStatus.Pending)
                 return true;
@@ -2332,7 +2330,7 @@ namespace Nop.Services.Orders
                 throw new ArgumentNullException(nameof(order));
 
             if (order.OrderStatus == OrderStatus.Cancelled 
-                || order.OrderStatus == OrderStatus.CancelledVendor
+                //|| order.OrderStatus == OrderStatus.CancelledVendor
                 || order.OrderStatus == OrderStatus.Pending)
                 return false;
 
@@ -2428,8 +2426,8 @@ namespace Nop.Services.Orders
             if (order.OrderStatus == OrderStatus.Cancelled)
                 return false;
 
-            if (order.OrderStatus == OrderStatus.CancelledVendor)
-                return false;
+            //if (order.OrderStatus == OrderStatus.CancelledVendor)
+            //    return false;
 
             if (order.PaymentStatus == PaymentStatus.Paid ||
                 order.PaymentStatus == PaymentStatus.Refunded ||

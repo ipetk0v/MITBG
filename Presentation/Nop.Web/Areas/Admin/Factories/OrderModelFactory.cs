@@ -1709,8 +1709,8 @@ namespace Nop.Web.Areas.Admin.Factories
                 _orderReportService.OrderAverageReport(0, OrderStatus.Pending),
                 _orderReportService.OrderAverageReport(0, OrderStatus.Processing),
                 _orderReportService.OrderAverageReport(0, OrderStatus.Complete),
-                _orderReportService.OrderAverageReport(0, OrderStatus.Cancelled),
-                _orderReportService.OrderAverageReport(0, OrderStatus.CancelledVendor)
+                _orderReportService.OrderAverageReport(0, OrderStatus.Cancelled)
+                /*_orderReportService.OrderAverageReport(0, OrderStatus.CancelledVendor*/
             };
 
             var pagedList = new PagedList<OrderAverageReportLineSummary>(report, 0, int.MaxValue);
@@ -1746,7 +1746,7 @@ namespace Nop.Web.Areas.Admin.Factories
             var urlHelper = _urlHelperFactory.GetUrlHelper(_actionContextAccessor.ActionContext);
 
             //not paid
-            var orderStatuses = Enum.GetValues(typeof(OrderStatus)).Cast<int>().Where(os => os != (int)OrderStatus.Cancelled && os != (int)OrderStatus.CancelledVendor).ToList();
+            var orderStatuses = Enum.GetValues(typeof(OrderStatus)).Cast<int>().Where(os => os != (int)OrderStatus.Cancelled /*&& os != (int)OrderStatus.CancelledVendor*/).ToList();
             var paymentStatuses = new List<int> { (int)PaymentStatus.Pending };
             var psPending = _orderReportService.GetOrderAverageReportLine(psIds: paymentStatuses, osIds: orderStatuses);
             orderIncompleteReportModels.Add(new OrderIncompleteReportModel
