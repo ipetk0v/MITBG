@@ -320,7 +320,7 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                     var nopShipment = new Shipment
                     {
                         OrderId = order.Id,
-                        AdminComment = "Shipment over Speedy",
+                        AdminComment = "0",
                         CreatedOnUtc = DateTime.Now,
                         TotalWeight = (decimal)weight,
                         TrackingNumber = barcode.ToString(),

@@ -139,77 +139,77 @@ namespace Nop.Plugin.Shipping.Speedy
             });
 
             //locales
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShippingMethod.Title", "Speedy shipping");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShippingMethod.Description", "Shipping over Speedy");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.LoadingFormData", "Data loading");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.StreetName", "StreetName");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.Quarter", "Quarter");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.StreetNo", "Street No");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.BlockNo", "Block No");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.EntranceNo", "Entrance No");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.FloorNo", "Floor No");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.ApNumber", "Ap Number");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.City", "City");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.ShippingOver", "Shipping Over");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.Comment", "Comment");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShippingMethod.Title", "Доставка");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShippingMethod.Description", "Доставка с куриерска фирма 'Speedy'");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.LoadingFormData", "Зареждане ...");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.StreetName", "Улица");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.Quarter", "Квартал");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.StreetNo", "Номер");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.BlockNo", "Блок");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.EntranceNo", "Вход");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.FloorNo", "Етаж");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.ApNumber", "Ап.");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.City", "Град");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.ShippingOver", "Доставка");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.Comment", "Коментар");
 
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.ToAutomat", "ToAutomat");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.ToOffice", "To Office");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.ToAddress", "To Address");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.ToAutomat", "Автомат");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.ToOffice", "Офис");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.ToAddress", "Адрес");
 
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.Save", "Save");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.Save", "Запази");
 
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.UnsavedFormError", "Please, save form data!");
-
-
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.SpeedyShippingTitle", "Speedy shipping");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speydy.ShipmentsList", "Shipments list");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.RequestForCourier", "Request for Courier");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BarCode", "BarCode");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.OrderId", "Order ID");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CustomerName", "Customer Name");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.DateCreated", "Date Created");
-
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus", "Creating status");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.Pending", "Pending");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.BolIsCreated", "BolIsCreated");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.ErrorBolCreating", "ErrorBolCreating");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.Cancelled", "Cancelled");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.AddressForm.UnsavedFormError", "Моля запазете данните от формата!");
 
 
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus", "Courier Status");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.NotRequested", "NotRequested");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.Requested", "Requested");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.BringToOffice", "BringToOffice");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.ErrorRequested", "ErrorRequested");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.SpeedyShippingTitle", "Доставка");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speydy.ShipmentsList", "Списък с доставки и товарителници");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.RequestForCourier", "Заяви куриер");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BarCode", "Баркод");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.OrderId", "Поръчка");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CustomerName", "Потребител");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.DateCreated", "Дата създаване");
 
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CancelBolConfirmTitle", "BillOfLading cancelling");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CancelBolConfirmMessage", "You want to cancel BillOfLading. Type comment, please!");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.ErrorOperationTitle", "Operation Error!");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus", "Статус");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.Pending", "Обработване");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.BolIsCreated", "Създадена");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.ErrorBolCreating", "Грешка при създаване");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.BolCreatingStatus.Cancelled", "Отказана");
+
+
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus", "Статус куриер");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.NotRequested", "Не е заявен");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.Requested", "Заявен");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.BringToOffice", "От офис");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierStatus.ErrorRequested", "Грешка при заявка");
+
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CancelBolConfirmTitle", "Анулирана товарителница");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CancelBolConfirmMessage", "Ако искате да анулирате товарителницата, моля оставете причина за това!");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.ErrorOperationTitle", "Грешка при извършване на операцията!");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.ErrorOperationMessage", "An error occurred during the operation. Check the logs, please!");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingConfirmTitle", "Courier picking");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingConfirmMessage", "Courier picking. Input nessesary data");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingDate", "Picking Date");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingContactName", "Contact Name");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingPhoneNumber", "Phone Number");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.Cancel", "Cancel");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.PickCourierBtnText", "Pick the courier");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CancelBtnText", "Cancel");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CloseBtnText", "Close");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.RequestForCourier", "Request For Courier");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.ShippingCost", "Shipping Cost");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CodComission", "CoD comission");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.IsFreeShipping", "Is FreeShipping");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingConfirmTitle", "Заявка куриер");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingConfirmMessage", "Заявка куриер. Въведете необходимата информация.");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingDate", "Дата за взимане");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingContactName", "Лице за контакт");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CourierPickingPhoneNumber", "Тел.номер");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.Cancel", "Откажи");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.PickCourierBtnText", "Завка куриер");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CancelBtnText", "Откажи");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CloseBtnText", "Затвори");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.RequestForCourier", "Заяви куриер");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.ShippingCost", "Разход доставка");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.CodComission", "Разход наложен платеж");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.ShipmentsList.IsFreeShipping", "Безплатна доставка");
 
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.Login", "Login");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.Password", "Password");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.DefaultWeight", "Default weight");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.DefaultContent", "Default content");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.DefaultPackage", "Default package");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.DefaultPackage", "Sender phone number");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.UseInsurance", "Use Insurance");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.OptionsOpen", "Use Open option");
-            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.OptionsTest", "Use Test option");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.Login", "Потребител");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.Password", "Парола");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.DefaultWeight", "КГ по подразбиране");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.DefaultContent", "Съдържание по подразбиране");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.DefaultPackage", "Опаковка по подразбиране");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.DefaultPackage", "Изпращач тел. номер");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.UseInsurance", "Застраховка");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.OptionsOpen", "Опция преглед");
+            _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.OptionsTest", "Опция Тест");
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.CodMethod", "Начин на плащане");
 
             _localizationService.AddOrUpdatePluginLocaleResource("Speedy.Admin.ConfigurationFields.CodMethod.NP", "Наложен платеж");
@@ -332,7 +332,7 @@ namespace Nop.Plugin.Shipping.Speedy
             var subMenuItem = new SiteMapNode()
             {
                 SystemName = "SpeedyShipments",
-                Title = "Speedy shipments list",
+                Title = "Списък доставки и товарителници",
                 ControllerName = "Speedy",
                 ActionName = "ShipmentsList",
                 IconClass = "fa-dot-circle-o",
