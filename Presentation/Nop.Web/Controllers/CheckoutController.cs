@@ -146,7 +146,7 @@ namespace Nop.Web.Controllers
             //in order to avoid any possible limitations by payment gateway we reset GUID periodically
             var previousPaymentRequest = HttpContext.Session.Get<ProcessPaymentRequest>("OrderPaymentInfo");
             if (_paymentSettings.RegenerateOrderGuidInterval > 0 &&
-                previousPaymentRequest != null && 
+                previousPaymentRequest != null &&
                 previousPaymentRequest.OrderGuidGeneratedOnUtc.HasValue)
             {
                 var interval = DateTime.UtcNow - previousPaymentRequest.OrderGuidGeneratedOnUtc.Value;
@@ -653,22 +653,26 @@ namespace Nop.Web.Controllers
             var selectedName = splittedOption[0];
             var shippingRateComputationMethodSystemName = splittedOption[1];
 
+            //да не взима от кеш-а, а да пресмята на ново
+            var shippingOptions = _shippingService.GetShippingOptions(cart, _workContext.CurrentCustomer.ShippingAddress,
+                _workContext.CurrentCustomer, shippingRateComputationMethodSystemName, _storeContext.CurrentStore.Id).ShippingOptions.ToList();
+
             //find it
             //performance optimization. try cache first
-            var shippingOptions = _genericAttributeService.GetAttribute<List<ShippingOption>>(_workContext.CurrentCustomer,
-                NopCustomerDefaults.OfferedShippingOptionsAttribute, _storeContext.CurrentStore.Id);
-            if (shippingOptions == null || !shippingOptions.Any())
-            {
-                //not found? let's load them using shipping service
-                shippingOptions = _shippingService.GetShippingOptions(cart, _workContext.CurrentCustomer.ShippingAddress,
-                    _workContext.CurrentCustomer, shippingRateComputationMethodSystemName, _storeContext.CurrentStore.Id).ShippingOptions.ToList();
-            }
-            else
-            {
-                //loaded cached results. let's filter result by a chosen shipping rate computation method
-                shippingOptions = shippingOptions.Where(so => so.ShippingRateComputationMethodSystemName.Equals(shippingRateComputationMethodSystemName, StringComparison.InvariantCultureIgnoreCase))
-                    .ToList();
-            }
+            //var shippingOptions = _genericAttributeService.GetAttribute<List<ShippingOption>>(_workContext.CurrentCustomer,
+            //    NopCustomerDefaults.OfferedShippingOptionsAttribute, _storeContext.CurrentStore.Id);
+            //if (shippingOptions == null || !shippingOptions.Any())
+            //{
+            //    //not found? let's load them using shipping service
+            //    shippingOptions = _shippingService.GetShippingOptions(cart, _workContext.CurrentCustomer.ShippingAddress,
+            //        _workContext.CurrentCustomer, shippingRateComputationMethodSystemName, _storeContext.CurrentStore.Id).ShippingOptions.ToList();
+            //}
+            //else
+            //{
+            //    //loaded cached results. let's filter result by a chosen shipping rate computation method
+            //    shippingOptions = shippingOptions.Where(so => so.ShippingRateComputationMethodSystemName.Equals(shippingRateComputationMethodSystemName, StringComparison.InvariantCultureIgnoreCase))
+            //        .ToList();
+            //}
 
             var shippingOption = shippingOptions
                 .Find(so => !string.IsNullOrEmpty(so.Name) && so.Name.Equals(selectedName, StringComparison.InvariantCultureIgnoreCase));
