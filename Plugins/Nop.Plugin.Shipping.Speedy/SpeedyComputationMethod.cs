@@ -81,7 +81,7 @@ namespace Nop.Plugin.Shipping.Speedy
             var bolInfo = _genericAttributeService.GetAttribute<SpeedyBolInfo>(_workContext.CurrentCustomer, SpeedyDefaults.SpeedyShipmentConfiguresAttribute, _storeContext.CurrentStore.Id);
             if (bolInfo == null)
             {
-                if (!string.IsNullOrEmpty(getShippingOptionRequest.ShippingAddress.ZipPostalCode))
+                if (!string.IsNullOrEmpty(getShippingOptionRequest.ShippingAddress?.ZipPostalCode))
                 {
                     var site = _speedySrv.GetSiteInfoByBarCode(getShippingOptionRequest.ShippingAddress.ZipPostalCode);
                     if (site != null)
