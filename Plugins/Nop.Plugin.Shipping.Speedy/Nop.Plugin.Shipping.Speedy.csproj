@@ -13,13 +13,14 @@
   
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Presentation\Nop.Web\Plugins\Shipping.Speedy</OutputPath>
+    <OutputPath>..\..\Presentation\Nop.Web\Plugins\Shipping.Speedy\</OutputPath>
     <OutDir>$(OutputPath)</OutDir>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\..\Presentation\Nop.Web\Plugins\Shipping.Speedy\</OutputPath>
     <OutDir>$(OutputPath)</OutDir>
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <ItemGroup>

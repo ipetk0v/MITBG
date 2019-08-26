@@ -81,12 +81,16 @@ namespace Nop.Plugin.Shipping.Speedy
             var bolInfo = _genericAttributeService.GetAttribute<SpeedyBolInfo>(_workContext.CurrentCustomer, SpeedyDefaults.SpeedyShipmentConfiguresAttribute, _storeContext.CurrentStore.Id);
             if (bolInfo == null)
             {
-                if (!string.IsNullOrEmpty(getShippingOptionRequest.ShippingAddress?.ZipPostalCode))
+                if (getShippingOptionRequest.ShippingAddress != null)
                 {
-                    var site = _speedySrv.GetSiteInfoByBarCode(getShippingOptionRequest.ShippingAddress.ZipPostalCode);
-                    if (site != null)
-                        return _speedySrv.CalculateShippingByCartAndBol(505, getShippingOptionRequest.Items.Where(w => !w.ShoppingCartItem.Product.IsFreeShipping).ToList(), null, site.id);
+                    if (!string.IsNullOrEmpty(getShippingOptionRequest.ShippingAddress.ZipPostalCode))
+                    {
+                        var site = _speedySrv.GetSiteInfoByBarCode(getShippingOptionRequest.ShippingAddress.ZipPostalCode);
+                        if (site != null)
+                            return _speedySrv.CalculateShippingByCartAndBol(505, getShippingOptionRequest.Items.Where(w => !w.ShoppingCartItem.Product.IsFreeShipping).ToList(), null, site.id);
+                    }
                 }
+
                 return null;
             }
 

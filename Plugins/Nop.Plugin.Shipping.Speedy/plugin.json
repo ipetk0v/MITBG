@@ -2,7 +2,7 @@
   "Group": "Shipping rate computation",
   "FriendlyName": "Speedy shipping",
   "SystemName": "Shipping.Speedy",
-  "Version": "1.0",
+  "Version": "1.01",
   "SupportedVersions": [ "4.20" ],
   "Author": "Tsaplinov Evgeny",
   "DisplayOrder": 1,
