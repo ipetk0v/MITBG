@@ -653,22 +653,26 @@ namespace Nop.Web.Controllers
             var selectedName = splittedOption[0];
             var shippingRateComputationMethodSystemName = splittedOption[1];
 
+            //махаме кеша, не ни трябва в нашата бизнес логика 
+            var shippingOptions = _shippingService.GetShippingOptions(cart, _workContext.CurrentCustomer.ShippingAddress,
+                _workContext.CurrentCustomer, shippingRateComputationMethodSystemName, _storeContext.CurrentStore.Id).ShippingOptions.ToList();
+
             //find it
             //performance optimization. try cache first
-            var shippingOptions = _genericAttributeService.GetAttribute<List<ShippingOption>>(_workContext.CurrentCustomer,
-                NopCustomerDefaults.OfferedShippingOptionsAttribute, _storeContext.CurrentStore.Id);
-            if (shippingOptions == null || !shippingOptions.Any())
-            {
-                //not found? let's load them using shipping service
-                shippingOptions = _shippingService.GetShippingOptions(cart, _workContext.CurrentCustomer.ShippingAddress,
-                    _workContext.CurrentCustomer, shippingRateComputationMethodSystemName, _storeContext.CurrentStore.Id).ShippingOptions.ToList();
-            }
-            else
-            {
-                //loaded cached results. let's filter result by a chosen shipping rate computation method
-                shippingOptions = shippingOptions.Where(so => so.ShippingRateComputationMethodSystemName.Equals(shippingRateComputationMethodSystemName, StringComparison.InvariantCultureIgnoreCase))
-                    .ToList();
-            }
+            //var shippingOptions = _genericAttributeService.GetAttribute<List<ShippingOption>>(_workContext.CurrentCustomer,
+            //    NopCustomerDefaults.OfferedShippingOptionsAttribute, _storeContext.CurrentStore.Id);
+            //if (shippingOptions == null || !shippingOptions.Any())
+            //{
+            //    //not found? let's load them using shipping service
+            //    shippingOptions = _shippingService.GetShippingOptions(cart, _workContext.CurrentCustomer.ShippingAddress,
+            //        _workContext.CurrentCustomer, shippingRateComputationMethodSystemName, _storeContext.CurrentStore.Id).ShippingOptions.ToList();
+            //}
+            //else
+            //{
+            //    //loaded cached results. let's filter result by a chosen shipping rate computation method
+            //    shippingOptions = shippingOptions.Where(so => so.ShippingRateComputationMethodSystemName.Equals(shippingRateComputationMethodSystemName, StringComparison.InvariantCultureIgnoreCase))
+            //        .ToList();
+            //}
 
             var shippingOption = shippingOptions
                 .Find(so => !string.IsNullOrEmpty(so.Name) && so.Name.Equals(selectedName, StringComparison.InvariantCultureIgnoreCase));
