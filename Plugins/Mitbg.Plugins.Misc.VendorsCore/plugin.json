@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Mitbg",
+  "FriendlyName": "Vendors Core",
+  "SystemName": "Misc.VendorsCore",
+  "Version": "1.0",
+  "SupportedVersions": [ "4.20" ],
+  "Author": "Tsaplinov Evgeny",
+  "DisplayOrder": 1,
+  "FileName": "Mitbg.Plugin.Misc.VendorsCore.dll",
+  "Description": "Core plugin for vendor extensions functionality"
+}

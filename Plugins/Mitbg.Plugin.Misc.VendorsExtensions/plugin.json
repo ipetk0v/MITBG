@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Mitbg",
+  "FriendlyName": "Vendor percentage table",
+  "SystemName": "Misc.VendorsExtensions",
+  "Version": "1.0",
+  "SupportedVersions": [ "4.20" ],
+  "Author": "Tsaplinov Evgeny",
+  "DisplayOrder": 1,
+  "FileName": "Mitbg.Plugin.Misc.VendorsExtensions.dll",
+  "Description": "This plugin for calculate comission by vendors"
+}
