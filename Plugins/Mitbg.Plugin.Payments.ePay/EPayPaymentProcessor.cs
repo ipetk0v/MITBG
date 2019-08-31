@@ -475,10 +475,10 @@ namespace Nop.Plugin.Payments.ePay
 
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.ePay.Fields.Configure.NoPaymentMethodAvailable", "No payment method is available.");
 
-            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.ePay.Fields.Configure.EpayName", "Pay with ePay");
-            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.ePay.Fields.Configure.EasyPayName", "Pay with EasyPay");
-            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.ePay.Fields.Configure.DirectCreditCard", "Pay with DirectCreditCard");
-            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.ePay.Fields.Configure.CashOnDelivery", "Pay with CashOnDelivery");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.ePay.Fields.Configure.EpayName", "Плати с ePay");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.ePay.Fields.Configure.EasyPayName", "Плати с EasyPay");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.ePay.Fields.Configure.DirectCreditCard", "Плати с карта");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.ePay.Fields.Configure.CashOnDelivery", "Плати с Наложен платеж");
 
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.ePay.Fields.Configure.EasyPayError", "There was an error with the easy pay provider. Please check if the ePay settings are configured correctly. And are set for the selected enviroment (Sandbox or production)");
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.ePay.Fields.Title.Error", "Error");
