@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <OutputPath>..\..\Presentation\Nop.Web\Plugins\Mitbg.Plugins.Misc.VendorsExtensions\</OutputPath>
+    <OutputPath>..\..\Presentation\Nop.Web\Plugins\Mitbg.Plugin.Misc.VendorsExtensions\</OutputPath>
     <OutDir>$(OutputPath)</OutDir>
     <!--Set this parameter to true to get the dlls copied from the NuGet cache to the output of your project. You need to set this parameter to true if your plugin has a nuget package to ensure that the dlls copied from the NuGet cache to the output of your project-->
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
@@ -10,11 +10,30 @@
 
 
   <ItemGroup>
+    <None Remove="Views\ComissionsConfigure\ComissionsList.cshtml" />
+    <None Remove="Views\ComissionsConfigure\Create.cshtml" />
+    <None Remove="Views\ComissionsConfigure\Edit.cshtml" />
+    <None Remove="Views\ComissionsConfigure\_CreateOrUpdate.cshtml" />
     <None Remove="Views\VendorsList.cshtml" />
     <None Remove="Views\_ViewImports.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Views\ComissionsConfigure\ComissionsList.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ComissionsConfigure\Create.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ComissionsConfigure\Edit.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ComissionsConfigure\_CreateOrUpdate.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\VendorsList.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -27,7 +46,7 @@
     <ProjectReference Include="..\..\Libraries\Nop.Services\Nop.Services.csproj" />
     <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
     <ProjectReference Include="..\..\Presentation\Nop.Web\Nop.Web.csproj" />
-    <ProjectReference Include="..\MITBG.Plugins.Misc.VendorsCore\Mitbg.Plugin.Misc.VendorsCore.csproj">
+    <ProjectReference Include="..\Mitbg.Plugin.Misc.VendorsCore\Mitbg.Plugin.Misc.VendorsCore.csproj">
       <Private>false</Private>
     </ProjectReference>
   </ItemGroup>

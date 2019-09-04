@@ -1,5 +1,5 @@
 ﻿using System;
-using Mitbg.Plugins.Misc.VendorsCore.Domain;
+using Mitbg.Plugin.Misc.VendorsCore.Domain;
 using Nop.Web.Framework.Models;
 
 namespace Nop.Plugin.Shipping.Speedy.Models

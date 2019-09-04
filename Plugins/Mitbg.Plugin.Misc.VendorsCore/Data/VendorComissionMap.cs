@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Mitbg.Plugins.Misc.VendorsCore.Domain.Entities;
-using Nop.Core.Domain.Orders;
+using Mitbg.Plugin.Misc.VendorsCore.Domain.Entities;
 using Nop.Data.Mapping;
-namespace Mitbg.Plugins.Misc.VendorsCore.Data
+
+namespace Mitbg.Plugin.Misc.VendorsCore.Data
 {
     public partial class VendorComissionMap : NopEntityTypeConfiguration<VendorComission>
     {

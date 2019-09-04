@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-using Mitbg.Plugins.Misc.VendorsCore.Data;
+using Mitbg.Plugin.Misc.VendorsCore.Data;
 using Nop.Core;
 using Nop.Data;
 using Nop.Data.Extensions;

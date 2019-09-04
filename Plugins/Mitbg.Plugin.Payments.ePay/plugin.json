@@ -1,11 +1,11 @@
 ﻿{
-  "Group": "Payment methods",
+  "Group": "Mitbg",
   "FriendlyName": "Payment ePay EasyPay",
   "SystemName": "Payments.ePayEasyPay",
   "Version": "4.2",
   "SupportedVersions": [ "4.20" ],
   "Author": "Nop-Templates.com",
   "DisplayOrder": 1,
-  "FileName": "Nop.Plugin.Payments.ePay.dll",
+  "FileName": "Mitbg.Plugin.Payments.ePay.dll",
   "Description": "This plugin allows paying with ePay.bg and EasyPay."
 }

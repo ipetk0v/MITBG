@@ -2,25 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <Copyright>Copyright © Nop Solutions, Ltd</Copyright> 
-    <Company>Nop Solutions, Ltd</Company> 
+    <Copyright>Copyright © Nop Solutions, Ltd</Copyright>
+    <Company>Nop Solutions, Ltd</Company>
     <Authors>Nop Solutions, Ltd</Authors>
-    <PackageLicenseUrl></PackageLicenseUrl> 
-    <PackageProjectUrl>http://www.nopcommerce.com/</PackageProjectUrl> 
-    <RepositoryUrl>https://github.com/nopSolutions/nopCommerce</RepositoryUrl> 
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageProjectUrl>http://www.nopcommerce.com/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nopSolutions/nopCommerce</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-  </PropertyGroup>
-  
-  
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Presentation\Nop.Web\Plugins\Mitbg.Plugin.Shipping.Speedy</OutputPath>
-<OutDir>$(OutputPath)</OutDir>
-  </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\Presentation\Nop.Web\Plugins\Mitbg.Plugin.Shipping.Speedy\</OutputPath>
+    <OutputPath>..\..\Presentation\Nop.Web\Plugins\Mitbg.Plugin.Shipping.Speedy</OutputPath>
     <OutDir>$(OutputPath)</OutDir>
-    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
@@ -58,7 +49,7 @@
     <ProjectReference Include="..\..\Libraries\Nop.Core\Nop.Core.csproj" />
     <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
     <ProjectReference Include="..\..\Presentation\Nop.Web\Nop.Web.csproj" />
-    <ProjectReference Include="..\MITBG.Plugins.Misc.VendorsCore\Mitbg.Plugin.Misc.VendorsCore.csproj">
+    <ProjectReference Include="..\Mitbg.Plugin.Misc.VendorsCore\Mitbg.Plugin.Misc.VendorsCore.csproj">
       <Private>false</Private>
     </ProjectReference>
   </ItemGroup>
@@ -74,7 +65,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  
+
   <!-- This target execute after "Build" target -->
   <Target Name="NopTarget" AfterTargets="Build">
     <!-- Delete unnecessary libraries from plugins path -->

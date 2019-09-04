@@ -1,0 +1,44 @@
+﻿@using Mitbg.Plugin.Misc.VendorsExtensions.Models
+@model VendorComissionCreateEditModel
+
+@{
+}
+
+<div asp-validation-summary="All"></div>
+<input asp-for="Id" type="hidden" />
+
+<div class="content">
+    <div class="form-horizontal">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="VendorId" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-select asp-for="VendorId" asp-items="Model.AvailableVendors" />
+                        <span asp-validation-for="VendorId"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="CategoryId" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-select asp-for="CategoryId" asp-items="Model.AvailableCategories" />
+                        <span asp-validation-for="CategoryId"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="ComissionPercentage" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ComissionPercentage" />
+                        <span asp-validation-for="ComissionPercentage"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

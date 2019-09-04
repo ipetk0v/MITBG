@@ -2,7 +2,7 @@
 using Nop.Core;
 
 
-namespace Mitbg.Plugins.Misc.VendorsCore.Domain.Entities
+namespace Mitbg.Plugin.Misc.VendorsCore.Domain.Entities
 {
     public class ShipmentTask : BaseEntity
     {

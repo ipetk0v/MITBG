@@ -2,15 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="plugin.json" />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <OutputPath>..\..\Presentation\Nop.Web\Plugins\Mitbg.Plugins.Misc.VendorsCore</OutputPath>
+    <OutputPath>..\..\Presentation\Nop.Web\Plugins\Mitbg.Plugin.Misc.VendorsCore</OutputPath>
     <OutDir>$(OutputPath)</OutDir>
   </PropertyGroup>
 
@@ -25,19 +17,13 @@
     <ProjectReference Include="..\..\Libraries\Nop.Data\Nop.Data.csproj" />
     <ProjectReference Include="..\..\Libraries\Nop.Services\Nop.Services.csproj" />
     <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
-    <ProjectReference Include="..\..\Presentation\Nop.Web\Nop.Web.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.EntityFrameworkCore">
-      <HintPath>C:\Users\Evgeny\.nuget\packages\microsoft.entityframeworkcore\2.2.4\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
-    </Reference>
+    <ClearPluginAssemblies Include="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" />
   </ItemGroup>
 
   <!-- This target execute after "Build" target -->
   <Target Name="NopTarget" AfterTargets="Build">
     <!-- Delete unnecessary libraries from plugins path -->
-    <MSBuild Projects="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" Properties="PluginPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NopClear" />
+    <MSBuild Projects="@(ClearPluginAssemblies)" Properties="PluginPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NopClear" />
   </Target>
 
 

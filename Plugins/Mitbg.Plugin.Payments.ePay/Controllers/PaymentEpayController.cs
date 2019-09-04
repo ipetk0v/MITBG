@@ -97,7 +97,7 @@ namespace Nop.Plugin.Payments.ePay.Controllers
                 model.EnableCashOnDelivery_OverrideForStore = _settingService.SettingExists(ePaySettings, x => x.EnableCashOnDelivery, storeScope);
             }
 
-            return View("~/Plugins/Payments.ePay/Views/PaymentEpay/Configure.cshtml", model);
+            return View("~/Plugins/Mitbg.Plugin.Payments.ePay/Views/PaymentEpay/Configure.cshtml", model);
         }
 
         [HttpPost]
@@ -206,7 +206,7 @@ namespace Nop.Plugin.Payments.ePay.Controllers
                     EasyPayCode = easyPayCode
                 };
 
-                return View("~/Plugins/Payments.ePay/Views/PaymentEpay/Completed.cshtml", model);
+                return View("~/Plugins/Mitbg.Plugin.Payments.ePay/Views/PaymentEpay/Completed.cshtml", model);
 
             }
 
@@ -221,7 +221,7 @@ namespace Nop.Plugin.Payments.ePay.Controllers
                 OrderId = orderId
             };
 
-            return View("~/Plugins/Payments.ePay/Views/PaymentEpay/EasyPayError.cshtml", model);
+            return View("~/Plugins/Mitbg.Plugin.Payments.ePay/Views/PaymentEpay/EasyPayError.cshtml", model);
         }
 
         [HttpPost]

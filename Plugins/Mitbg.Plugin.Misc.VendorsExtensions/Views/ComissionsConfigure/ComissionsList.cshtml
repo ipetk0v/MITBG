@@ -1,0 +1,116 @@
+﻿@using Mitbg.Plugin.Misc.VendorsExtensions.Models
+@using Nop.Web.Framework.Models.DataTables
+@using Nop.Web.Framework.UI
+@model ComissionsListSearchModel
+
+@{
+    Layout = "_AdminLayout";
+
+    //page title
+    ViewBag.Title = T("VendorPercentage.VendorsList.Title").ToString();
+    //active menu item (system name)
+    Html.SetActiveMenuItemSystemName("VendorComissions");
+}
+
+<nop-antiforgery-token />
+<div class="content-header clearfix">
+    <h1 class="pull-left">
+        @T("VendorPercentage.VendorsList.Title")
+    </h1>
+    <div class="pull-right">
+        <a asp-action="Create" class="btn bg-blue">
+            <i class="fa fa-plus-square"></i>
+            @T("Admin.Common.AddNew")
+        </a>
+    </div>
+</div>
+<div class="content">
+    <div class="form-horizontal">
+        <div class="panel-group">
+            @*hide the entire search block if no elements are displayed*@
+            <div class="panel panel-default panel-search">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <nop-label asp-for="VendorId" />
+                                </div>
+                                <div class="col-md-8">
+                                    <nop-editor asp-for="VendorId" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <nop-label asp-for="CategoryId" />
+                                </div>
+                                <div class="col-md-8">
+                                    <nop-editor asp-for="CategoryId" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7 col-md-offset-5">
+                            <button type="button" id="search-comissions" class="btn btn-primary btn-search">
+                                <i class="fa fa-search"></i>
+                                @T("Admin.Common.Search")
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="panel-body">
+                        @{
+                            var gridModel = new DataTablesModel
+                            {
+                                Name = "comissions-grid",
+                                UrlRead = new DataUrl("ComissionsList", "ComissionsConfigure", null),
+                                SearchButtonId = "search-comissions",
+                                Length = Model.PageSize,
+                                LengthMenu = Model.AvailablePageSizes,
+                                Filters = new List<FilterParameter>
+                                                {
+                                                    new FilterParameter(nameof(Model.VendorId)),
+                                                    new FilterParameter(nameof(Model.CategoryId)),
+                                                },
+                                ColumnCollection = new List<ColumnProperty>
+                                                {
+
+                                                    new ColumnProperty(nameof(ComissionConfigureModel.VendorName))
+                                                    {
+                                                        Title = T("VendorPercentage.VendorsList.VendorName").Text,
+                                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                                        Render = new RenderLink(new DataUrl("~/Admin/Vendor/Edit", nameof(ComissionConfigureModel.VendorId)))
+                                                    },
+                                                    new ColumnProperty(nameof(ComissionConfigureModel.CategoryName))
+                                                    {
+                                                        Title = T("VendorPercentage.VendorsList.VendorTotalAmountOfSales").Text,
+                                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                                        Render = new RenderLink(new DataUrl("~/Admin/Category/Edit", nameof(ComissionConfigureModel.CategoryId)))
+                                                    },
+                                                    new ColumnProperty(nameof(ComissionConfigureModel.Comission))
+                                                    {
+                                                        Title = T("VendorPercentage.VendorsList.VendorComission").Text,
+                                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                                    },
+                                                    new ColumnProperty(nameof(ComissionConfigureModel.Id))
+                                                    {
+                                                        Title = T("Admin.Common.Edit").Text,
+                                                        Width = "100",
+                                                        ClassName = NopColumnClassDefaults.Button,
+                                                        Render = new RenderButtonEdit(new DataUrl("Edit"))
+                                                    }
+                                                }
+                            };
+                        }
+                        @await Html.PartialAsync("Table", gridModel)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

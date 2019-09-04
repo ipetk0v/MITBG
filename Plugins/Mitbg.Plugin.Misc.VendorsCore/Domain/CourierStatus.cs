@@ -1,5 +1,5 @@
 ﻿
-namespace Mitbg.Plugins.Misc.VendorsCore.Domain
+namespace Mitbg.Plugin.Misc.VendorsCore.Domain
 {
     public enum CourierStatus : int
     {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Mitbg.Plugins.Misc.VendorsCore;
-using Mitbg.Plugins.Misc.VendorsCore.Domain;
+using Mitbg.Plugin.Misc.VendorsCore;
+using Mitbg.Plugin.Misc.VendorsCore.Domain;
 using Nop.Core;
 using Nop.Core.Domain.Orders;
 using Nop.Plugin.Payments.ePay.Models;

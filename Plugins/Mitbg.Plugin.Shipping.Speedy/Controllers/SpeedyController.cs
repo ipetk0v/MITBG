@@ -4,14 +4,11 @@ using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Mitbg.Plugin.Misc.VendorsCore;
-using Mitbg.Plugins.Misc.VendorsCore;
-using Mitbg.Plugins.Misc.VendorsCore.Domain;
-using Mitbg.Plugins.Misc.VendorsCore.Domain.Entities;
-using Newtonsoft.Json;
+using Mitbg.Plugin.Misc.VendorsCore.Domain;
+using Mitbg.Plugin.Misc.VendorsCore.Domain.Entities;
 using Nop.Core;
 using Nop.Core.Data;
 using Nop.Core.Domain.Common;
@@ -32,7 +29,6 @@ using Nop.Services.Orders;
 using Nop.Services.Security;
 using Nop.Services.Shipping;
 using Nop.Services.Tasks;
-using Nop.Web.Areas.Admin.Models.Messages;
 using Nop.Web.Framework;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Models;
@@ -302,8 +298,8 @@ namespace Nop.Plugin.Shipping.Speedy.Controllers
                     {
                         s.id,
                         text = string.Format("{0} {1}", s.type, s.name).Trim(),
-                        name = s.name,
-                        type = s.type
+                        s.name,
+                        s.type
                     }).ToArray() : new object[] { },
                     pagination = new
                     {

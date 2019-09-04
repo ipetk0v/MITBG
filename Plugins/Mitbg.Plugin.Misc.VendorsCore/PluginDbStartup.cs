@@ -5,7 +5,7 @@ using Nop.Core.Infrastructure;
 using Nop.Plugin.Shipping.Speedy.Data;
 using Nop.Web.Framework.Infrastructure.Extensions;
 
-namespace Mitbg.Plugins.Misc.VendorsCore
+namespace Mitbg.Plugin.Misc.VendorsCore
 {
     /// <summary>
     /// Represents object for the configuring plugin DB context on application startup

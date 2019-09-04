@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
-using Mitbg.Plugins.Misc.VendorsCore.Domain;
+
+using Mitbg.Plugin.Misc.VendorsCore.Domain;
 
 namespace Mitbg.Plugin.Misc.VendorsCore
 {

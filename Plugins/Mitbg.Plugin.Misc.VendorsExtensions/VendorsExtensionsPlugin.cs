@@ -45,7 +45,19 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions
                 RouteValues = new RouteValueDictionary() { { "area", "Admin" } },
             };
 
+            var subMenuEditorItem = new SiteMapNode()
+            {
+                SystemName = "VendorComissionsEditor",
+                Title = _localizationService.GetResource("VendorComissionsEditor.MenuTitle"),
+                ControllerName = "ComissionsConfigure",
+                ActionName = "ComissionsList",
+                IconClass = "fa-dot-circle-o",
+                Visible = visible,
+                RouteValues = new RouteValueDictionary() { { "area", "Admin" } },
+            };
+
             ordersNode.ChildNodes.Add(subMenuItem);
+            ordersNode.ChildNodes.Add(subMenuEditorItem);
         }
 
 

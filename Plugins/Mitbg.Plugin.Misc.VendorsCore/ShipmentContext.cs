@@ -4,7 +4,7 @@ using System.Text;
 using Mitbg.Plugin.Misc.VendorsCore;
 
 
-namespace Mitbg.Plugins.Misc.VendorsCore
+namespace Mitbg.Plugin.Misc.VendorsCore
 {
     public class ShipmentContext : IShipmentContext
     {
@@ -42,8 +42,7 @@ namespace Mitbg.Plugins.Misc.VendorsCore
 
         public ShipmentInfo GetBillInfo(int customerId)
         {
-            ShipmentInfo bol;
-            return BillInfoes.TryGetValue(customerId, out bol) ? bol : null;
+            return BillInfoes.TryGetValue(customerId, out var bol) ? bol : null;
         }
 
         public void SetListOfficies(int siteId, List<KeyValuePair<long, string>> officies)
@@ -53,8 +52,7 @@ namespace Mitbg.Plugins.Misc.VendorsCore
 
         public List<KeyValuePair<long, string>> GetListOfficies(int siteId)
         {
-            List<KeyValuePair<long, string>> result;
-            return OfficiesDictionary.TryGetValue(siteId, out result) ? result : null;
+            return OfficiesDictionary.TryGetValue(siteId, out var result) ? result : null;
         }
     }
 

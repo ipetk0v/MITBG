@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Autofac.Core;
-using Mitbg.Plugins.Misc.VendorsCore;
-using Mitbg.Plugins.Misc.VendorsCore.Domain.Entities;
+using Mitbg.Plugin.Misc.VendorsCore.Domain.Entities;
 using Nop.Core.Configuration;
 using Nop.Core.Data;
 using Nop.Core.Infrastructure;

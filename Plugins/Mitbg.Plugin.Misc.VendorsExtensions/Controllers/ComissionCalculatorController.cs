@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Linq;
-using AutoMapper.Mappers;
 using Microsoft.AspNetCore.Mvc;
-using Mitbg.Plugin.Misc.VendorsExtensions;
 using Mitbg.Plugin.Misc.VendorsExtensions.Models;
-using Mitbg.Plugins.Misc.VendorsCore.Domain.Entities;
+using Mitbg.Plugin.Misc.VendorsCore.Domain.Entities;
 using Nop.Core;
 using Nop.Core.Data;
 using Nop.Core.Domain.Customers;
@@ -19,9 +17,7 @@ using Nop.Services.Orders;
 using Nop.Services.Security;
 using Nop.Web.Areas.Admin.Controllers;
 using Nop.Web.Framework;
-using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Mvc.Filters;
-using NUglify.Helpers;
 
 namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
 {
@@ -78,7 +74,7 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
                 return AccessDeniedView();
 
             var model = new VendorsComissionSearchModel();
-            return View("~/Plugins/Mitbg.Plugins.Misc.VendorsExtensions/Views/VendorsList.cshtml", model);
+            return View("~/Plugins/Mitbg.Plugin.Misc.VendorsExtensions/Views/VendorsList.cshtml", model);
         }
 
         [HttpPost]

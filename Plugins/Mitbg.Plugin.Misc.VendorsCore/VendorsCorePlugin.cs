@@ -2,7 +2,7 @@
 using Nop.Plugin.Shipping.Speedy.Data;
 using Nop.Services.Plugins;
 
-namespace Mitbg.Plugins.Misc.VendorsCore
+namespace Mitbg.Plugin.Misc.VendorsCore
 {
     public class VendorsCorePlugin : BasePlugin
     {
