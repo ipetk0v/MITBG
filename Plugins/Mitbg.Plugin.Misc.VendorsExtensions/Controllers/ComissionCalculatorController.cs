@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Mitbg.Plugin.Misc.VendorsExtensions.Models;
 using Mitbg.Plugin.Misc.VendorsCore.Domain.Entities;
 using Nop.Core;
 using Nop.Core.Data;
+using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Directory;
 using Nop.Core.Domain.Orders;
@@ -25,6 +27,7 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
     public partial class ComissionCalculatorController : BaseAdminController
     {
         private readonly IRepository<Vendor> _vendorsRep;
+        private readonly IRepository<Category> _categoriesRep;
         private readonly IRepository<ShipmentTask> _shipmentTasksRep;
         private readonly IRepository<VendorComission> _comissionsRep;
         private readonly IPermissionService _permissionService;
@@ -48,7 +51,7 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
             IPermissionService permissionService,
             IRepository<ShipmentTask> shipmentTasksRep,
             IRepository<Shipment> shipmentRepository,
-            IOrderService orderService, IRepository<VendorComission> comissionsRep)
+            IOrderService orderService, IRepository<VendorComission> comissionsRep, IRepository<Category> categoriesRep)
         {
             _vendorsRep = vendorsRep;
             _priceFormatter = priceFormatter;
@@ -62,6 +65,7 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
             _shipmentRepository = shipmentRepository;
             _orderService = orderService;
             _comissionsRep = comissionsRep;
+            _categoriesRep = categoriesRep;
         }
 
 
@@ -126,6 +130,7 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
             var totalsQuery = _orderItemsRep.Table.Where(w => orderItemsIds.Contains(w.Id) && w.Product.VendorId > 0);
 
             var primaryStoreCurrency = _currencyService.GetCurrencyById(_currencySettings.PrimaryStoreCurrencyId);
+            var categoriesTree = _categoriesRep.Table.Where(w => !w.Deleted).ToList().BuildTree();
 
             vendors.ForEach(w =>
             {
@@ -135,12 +140,12 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
 
                 var baseComission = comissions.Where(ww => ww.VendorId == w.VendorId && ww.CategoryId == null).Select(s => s.ComissionPercentage).SingleOrDefault();
 
+                var categoryComissions = GetCategoryComissions(categoriesTree,
+                    comissions.Where(ww => ww.VendorId == w.VendorId).ToList(), baseComission);
+
                 var totalComission = totalSumByCategories.Select(s =>
                 {
-
-                    var percentageConfig = comissions.SingleOrDefault(ww => ww.VendorId == w.VendorId && ww.CategoryId == (s.Key == 0 ? null : (int?)s.Key));
-                    var percentage = percentageConfig == null ? baseComission : percentageConfig.ComissionPercentage;
-
+                    var percentage = categoryComissions[s.Key];
                     return s.Value * (percentage / 100m);
                 }).Sum(s => s);
 
@@ -164,5 +169,24 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
 
             return Json(model);
         }
+
+        private Dictionary<int, decimal> GetCategoryComissions(IList<CategoryTreeItem> treeItems, IList<VendorComission> comissions, decimal parentComission)
+        {
+            var result = new Dictionary<int, decimal>();
+            foreach (var item in treeItems)
+            {
+                var comissionConfig = comissions.SingleOrDefault(w => w.CategoryId == item.Id);
+                var comission = comissionConfig == null ? parentComission : comissionConfig.ComissionPercentage;
+                result.Add(item.Id, comission);
+                foreach (var subItem in GetCategoryComissions(item.Child, comissions, comission))
+                {
+                    result.Add(subItem.Key, subItem.Value);
+                }
+
+            }
+            return result;
+        }
+
+
     }
 }

@@ -3,18 +3,18 @@
 @{
     Layout = "_AdminLayout";
     //page title
-    ViewBag.Title = T("Admin.Vendors.EditVendorDetails").Text;
+    ViewBag.Title = T("VendorComissionsEditor.Editor.Edit").Text;
     //active menu item (system name)
-    Html.SetActiveMenuItemSystemName("Vendors");
+    Html.SetActiveMenuItemSystemName("VendorComissions");
 }
 
 <form asp-controller="ComissionsConfigure" asp-action="Edit" method="post">
     <div class="content-header clearfix">
         <h1 class="pull-left">
-            @T("Admin.Vendors.EditVendorDetails")
+            @T("VendorComissionsEditor.Editor.Edit")
             <small>
                 <i class="fa fa-arrow-circle-left"></i>
-                <a asp-action="List">@T("Admin.Vendors.BackToList")</a>
+                <a asp-action="ComissionsList">@T("VendorComissionsEditor.Editor.BackToList")</a>
             </small>
         </h1>
         <div class="pull-right">

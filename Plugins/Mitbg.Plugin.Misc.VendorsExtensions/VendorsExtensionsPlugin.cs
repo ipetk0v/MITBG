@@ -80,6 +80,28 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions
             _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.FreeShippingSum", "Безплатна доставка");
             _localizationService.AddOrUpdatePluginLocaleResource("VendorPercentage.VendorsList.CodComissionSum", "Наложен платеж");
 
+
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.MenuTitle", "Настройка на Комисията");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.ComissionsList.Filter.Vendor", "Търговец");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.ComissionsList.Filter.Category", "Категория");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.ComissionsList.Vendor", "Търговец");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.ComissionsList.Category", "Категория");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.ComissionsList.Comission", "Комисионна");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.ComissionsList.BasicComission", "Базова комисионна");
+
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.Editor.Vendor", "Търговец");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.Editor.AllVendors", "Всички търговци");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.Editor.Category", "Категория");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.Editor.AllCategories", "Всички категории");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.Editor.Comission", "Комисионна");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.Editor.AddNew", "Добавяне на ново");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.Editor.Edit", "Изменят");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.Editor.BackToList", "назад към списъка");
+            _localizationService.AddOrUpdatePluginLocaleResource("VendorComissionsEditor.Editor.Deleted", "Комисията е премахната");
+
+
+
+
             _permissionService.InstallPermissions(new Permission());
 
             base.Install();
@@ -104,6 +126,25 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions
             _localizationService.DeletePluginLocaleResource("VendorPercentage.VendorsList.VendorTransaction");
             _localizationService.DeletePluginLocaleResource("VendorPercentage.VendorsList.FreeShippingSum");
             _localizationService.DeletePluginLocaleResource("VendorPercentage.VendorsList.CodComissionSum");
+
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.MenuTitle");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.ComissionsList.Filter.Vendor");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.ComissionsList.Filter.Category");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.ComissionsList.Vendor");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.ComissionsList.Category");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.ComissionsList.Comission");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.ComissionsList.BasicComission");
+
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.Editor.Vendor");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.Editor.AllVendors");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.Editor.Category");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.Editor.AllCategories");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.Editor.Comission");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.Editor.AddNew");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.Editor.Edit");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.Editor.BackToList");
+            _localizationService.DeletePluginLocaleResource("VendorComissionsEditor.Editor.Deleted");
+
 
             _permissionService.UninstallPermissions(new Permission());
 

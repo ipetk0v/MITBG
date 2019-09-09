@@ -1,6 +1,7 @@
 ﻿@using Mitbg.Plugin.Misc.VendorsExtensions.Models
 @using Nop.Web.Framework.Models.DataTables
 @using Nop.Web.Framework.UI
+@using StackExchange.Profiling.Internal
 @model ComissionsListSearchModel
 
 @{
@@ -38,7 +39,7 @@
                                     <nop-label asp-for="VendorId" />
                                 </div>
                                 <div class="col-md-8">
-                                    <nop-editor asp-for="VendorId" />
+                                    <nop-select asp-for="VendorId" asp-items="Model.Vendors" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -46,7 +47,7 @@
                                     <nop-label asp-for="CategoryId" />
                                 </div>
                                 <div class="col-md-8">
-                                    <nop-editor asp-for="CategoryId" />
+                                    <nop-select asp-for="CategoryId" asp-items="Model.Categories" />
                                 </div>
                             </div>
                         </div>
@@ -73,40 +74,46 @@
                                 Length = Model.PageSize,
                                 LengthMenu = Model.AvailablePageSizes,
                                 Filters = new List<FilterParameter>
-                                                {
-                                                    new FilterParameter(nameof(Model.VendorId)),
-                                                    new FilterParameter(nameof(Model.CategoryId)),
-                                                },
+                                                                {
+                                                                    new FilterParameter(nameof(Model.VendorId)),
+                                                                    new FilterParameter(nameof(Model.CategoryId)),
+                                                                },
                                 ColumnCollection = new List<ColumnProperty>
-                                                {
+                                                                {
 
-                                                    new ColumnProperty(nameof(ComissionConfigureModel.VendorName))
-                                                    {
-                                                        Title = T("VendorPercentage.VendorsList.VendorName").Text,
-                                                        ClassName = NopColumnClassDefaults.CenterAll,
-                                                        Render = new RenderLink(new DataUrl("~/Admin/Vendor/Edit", nameof(ComissionConfigureModel.VendorId)))
-                                                    },
-                                                    new ColumnProperty(nameof(ComissionConfigureModel.CategoryName))
-                                                    {
-                                                        Title = T("VendorPercentage.VendorsList.VendorTotalAmountOfSales").Text,
-                                                        ClassName = NopColumnClassDefaults.CenterAll,
-                                                        Render = new RenderLink(new DataUrl("~/Admin/Category/Edit", nameof(ComissionConfigureModel.CategoryId)))
-                                                    },
-                                                    new ColumnProperty(nameof(ComissionConfigureModel.Comission))
-                                                    {
-                                                        Title = T("VendorPercentage.VendorsList.VendorComission").Text,
-                                                        ClassName = NopColumnClassDefaults.CenterAll,
-                                                    },
-                                                    new ColumnProperty(nameof(ComissionConfigureModel.Id))
-                                                    {
-                                                        Title = T("Admin.Common.Edit").Text,
-                                                        Width = "100",
-                                                        ClassName = NopColumnClassDefaults.Button,
-                                                        Render = new RenderButtonEdit(new DataUrl("Edit"))
-                                                    }
-                                                }
+                                                                    new ColumnProperty(nameof(ComissionConfigureModel.VendorName))
+                                                                    {
+                                                                        Title = T("VendorComissionsEditor.ComissionsList.Vendor").Text,
+                                                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                                                        Render = new RenderLink(new DataUrl("~/Admin/Vendor/Edit", nameof(ComissionConfigureModel.VendorId)))
+                                                                    },
+                                                                    new ColumnProperty(nameof(ComissionConfigureModel.CategoryName))
+                                                                    {
+                                                                        Title = T("VendorComissionsEditor.ComissionsList.Category").Text,
+                                                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                                                        Render = new RenderCustom("renderCategoryLink")
+                                                                    },
+                                                                    new ColumnProperty(nameof(ComissionConfigureModel.Comission))
+                                                                    {
+                                                                        Title = T("VendorComissionsEditor.ComissionsList.Comission").Text,
+                                                                        ClassName = NopColumnClassDefaults.CenterAll,
+                                                                    },
+                                                                    new ColumnProperty(nameof(ComissionConfigureModel.Id))
+                                                                    {
+                                                                        Title = T("Admin.Common.Edit").Text,
+                                                                        Width = "100",
+                                                                        ClassName = NopColumnClassDefaults.Button,
+                                                                        Render = new RenderButtonEdit(new DataUrl("Edit"))
+                                                                    }
+                                                                }
                             };
                         }
+                        <script>
+                            function renderCategoryLink(data, type, row, meta) {
+                                return row.CategoryId == null || row.CategoryId <= 0 ? "@(T("VendorComissionsEditor.ComissionsList.BasicComission").Text)" : '<a target="_blank" href="/Admin/Category/Edit/' + row.CategoryId + '">'+row.CategoryName+'</a>';
+                            }
+
+                        </script>
                         @await Html.PartialAsync("Table", gridModel)
                     </div>
                 </div>

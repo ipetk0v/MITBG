@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Web.Framework.Models;
 
 namespace Mitbg.Plugin.Misc.VendorsExtensions.Models
@@ -15,5 +16,8 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Models
         public int? CategoryId { get; set; }
         public decimal Comission { get; set; }
         public DateTime DateCreate { get; set; }
+
+
+       
     }
 }
