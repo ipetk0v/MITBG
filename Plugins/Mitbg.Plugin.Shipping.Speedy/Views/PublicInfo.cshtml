@@ -6,14 +6,14 @@
     if (Model)
     {
         <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/css/bootstrap.min.css")" />
-        <script src="@Url.Content("~/Plugins/Shipping.Speedy/Scripts/jquery.blockUI.js")" type="text/javascript"></script>
-        <script src="@Url.Content("~/Plugins/Shipping.Speedy/Scripts/SpeedyForm.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Plugins/Mitbg.Plugin.Shipping.Speedy/Scripts/jquery.blockUI.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Plugins/Mitbg.Plugin.Shipping.Speedy/Scripts/SpeedyForm.js")" type="text/javascript"></script>
     }
     else
     {
         Html.AddCssFileParts("~/lib/bootstrap/css/bootstrap.min.css");
-        Html.AddScriptParts(ResourceLocation.Footer, "~/Plugins/Shipping.Speedy/Scripts/jquery.blockUI.js");
-        Html.AddScriptParts(ResourceLocation.Footer, "~/Plugins/Shipping.Speedy/Scripts/SpeedyForm.js");
+        Html.AddScriptParts(ResourceLocation.Footer, "~/Plugins/Mitbg.Plugin.Shipping.Speedy/Scripts/jquery.blockUI.js");
+        Html.AddScriptParts(ResourceLocation.Footer, "~/Plugins/Mitbg.Plugin.Shipping.Speedy/Scripts/SpeedyForm.js");
     }
 
 }

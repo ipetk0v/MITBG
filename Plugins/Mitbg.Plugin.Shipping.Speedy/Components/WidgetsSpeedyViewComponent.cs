@@ -32,7 +32,7 @@ namespace Nop.Plugin.Shipping.Speedy.Controllers
             {
                 enabledOpc = enabledOpcSetting.Value.Equals("true", StringComparison.CurrentCultureIgnoreCase);
             }
-            return View("~/Plugins/Shipping.Speedy/Views/PublicInfo.cshtml", enabledOpc);
+            return View("~/Plugins/Mitbg.Plugin.Shipping.Speedy/Views/PublicInfo.cshtml", enabledOpc);
         }
 
     }

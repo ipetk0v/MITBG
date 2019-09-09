@@ -56,7 +56,7 @@ namespace Nop.Plugin.Payments.ePay.Components
                 model.PaymentType = PaymentType.EasyPay;
             }
 
-            return View("~/Plugins/Payments.ePay/Views/PaymentEpay/PaymentInfo.cshtml", model);
+            return View("~/Plugins/Mitbg.Plugin.Payments.ePay/Views/PaymentEpay/PaymentInfo.cshtml", model);
         }
     }
 }
