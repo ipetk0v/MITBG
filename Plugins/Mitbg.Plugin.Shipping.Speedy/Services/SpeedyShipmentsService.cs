@@ -237,6 +237,8 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                         payerRefInsuranceIdSpecified = _speedySettings.UseInsurance && payerType == 2,
                         payerTypePackings = payerType,
                         payerTypePackingsSpecified = true,
+                        payerRefPackingsId = payerType == 2 ? login.clientId : 0,
+                        payerRefPackingsIdSpecified = payerType == 2,
                         payCodToThirdParty = payerType == 2,
                         payCodToThirdPartySpecified = payerType == 2,
                         amountInsuranceBase = amount,
