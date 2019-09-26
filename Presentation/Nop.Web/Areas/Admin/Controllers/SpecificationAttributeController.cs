@@ -388,7 +388,7 @@ namespace Nop.Web.Areas.Admin.Controllers
             if (string.IsNullOrEmpty(attributeId))
                 throw new ArgumentNullException(nameof(attributeId));
 
-            var options = _specificationAttributeService.GetSpecificationAttributeOptionsBySpecificationAttribute(Convert.ToInt32(attributeId));
+            var options = _specificationAttributeService.GetSpecificationAttributeOptionsBySpecificationAttribute(Convert.ToInt32(attributeId)).OrderBy(x => x.Name);
             var result = (from o in options
                           select new { id = o.Id, name = o.Name }).ToList();
             return Json(result);
