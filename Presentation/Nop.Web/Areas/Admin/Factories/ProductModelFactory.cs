@@ -327,22 +327,22 @@ namespace Nop.Web.Areas.Admin.Factories
                             case AttributeControlType.Checkboxes:
                             case AttributeControlType.ColorSquares:
                             case AttributeControlType.ImageSquares:
-                            {
-                                if (!string.IsNullOrEmpty(productAttributeMapping.ConditionAttributeXml))
                                 {
-                                    //clear default selection
-                                    foreach (var item in attributeModel.Values)
-                                        item.IsPreSelected = false;
-
-                                    //select new values
-                                    var selectedValues = _productAttributeParser.ParseProductAttributeValues(productAttributeMapping.ConditionAttributeXml);
-                                    foreach (var attributeValue in selectedValues)
+                                    if (!string.IsNullOrEmpty(productAttributeMapping.ConditionAttributeXml))
+                                    {
+                                        //clear default selection
                                         foreach (var item in attributeModel.Values)
-                                            if (attributeValue.Id == item.Id)
-                                                item.IsPreSelected = true;
+                                            item.IsPreSelected = false;
+
+                                        //select new values
+                                        var selectedValues = _productAttributeParser.ParseProductAttributeValues(productAttributeMapping.ConditionAttributeXml);
+                                        foreach (var attributeValue in selectedValues)
+                                            foreach (var item in attributeModel.Values)
+                                                if (attributeValue.Id == item.Id)
+                                                    item.IsPreSelected = true;
+                                    }
                                 }
-                            }
-                            break;
+                                break;
                             case AttributeControlType.ReadonlyCheckboxes:
                             case AttributeControlType.TextBox:
                             case AttributeControlType.MultilineTextbox:
@@ -1430,6 +1430,7 @@ namespace Nop.Web.Areas.Admin.Factories
                     {
                         return _specificationAttributeService.GetSpecificationAttributesWithOptions()
                             .Select(attributeWithOption => new SelectListItem(attributeWithOption.Name, attributeWithOption.Id.ToString()))
+                            .OrderBy(x => x.Text)
                             .ToList();
                     }),
                     ProductId = productId,
@@ -1459,12 +1460,14 @@ namespace Nop.Web.Areas.Admin.Factories
             {
                 return _specificationAttributeService.GetSpecificationAttributesWithOptions()
                     .Select(attributeWithOption => new SelectListItem(attributeWithOption.Name, attributeWithOption.Id.ToString()))
+                    .OrderBy(x => x.Text)
                     .ToList();
             });
 
             model.AvailableOptions = _specificationAttributeService
                 .GetSpecificationAttributeOptionsBySpecificationAttribute(model.AttributeId)
                 .Select(option => new SelectListItem { Text = option.Name, Value = option.Id.ToString() })
+                .OrderBy(x => x.Text)
                 .ToList();
 
             switch (attribute.AttributeType)

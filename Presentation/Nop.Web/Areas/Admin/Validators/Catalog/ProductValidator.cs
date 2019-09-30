@@ -21,7 +21,7 @@ namespace Nop.Web.Areas.Admin.Validators.Catalog
             RuleFor(x => x.SelectedCategoryIds).NotNull().WithMessage(localizationService.GetResource("Admin.Catalog.Products.Fields.SelectedCategoryIds.Required"));
             RuleFor(x => x.Price).NotEqual(0).WithMessage(localizationService.GetResource("Admin.Catalog.Products.Fields.Price.Required"));
             RuleFor(x => x.Weight).NotEqual(0).WithMessage(localizationService.GetResource("Admin.Catalog.Products.Fields.Weight.Required"));
-            RuleFor(x => x.DeliveryDateId).NotEqual(0).WithMessage(localizationService.GetResource("Admin.Catalog.Products.Fields.Weight.Required"));
+            RuleFor(x => x.DeliveryDateId).NotEqual(0).WithMessage(localizationService.GetResource("Admin.Catalog.Products.Fields.DeliveryDate.Required"));
 
             SetDatabaseValidationRules<Product>(dbContext);
         }
