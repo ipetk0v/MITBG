@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Mitbg",
+  "FriendlyName": "External export",
+  "SystemName": "Misc.ExternalExport",
+  "Version": "1.0",
+  "SupportedVersions": [ "4.20" ],
+  "Author": "Tsaplinov Evgeny",
+  "DisplayOrder": 1,
+  "FileName": "Mitbg.Plugin.Misc.ExternalExport.dll",
+  "Description": "Export data to pazaruvaj.com"
+}
