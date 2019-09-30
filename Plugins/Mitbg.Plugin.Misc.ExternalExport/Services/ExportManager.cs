@@ -46,7 +46,7 @@ namespace Mitbg.Plugin.Misc.ExternalExport.Services
 
         public void GenerateFile()
         {
-            var productIds = _productsRep.Table.Where(w => !w.Deleted && w.Published).Select(w => w.Id).ToList();
+            var productIds = _productsRep.Table.Where(w => !w.Deleted && w.Published&&w.ProductManufacturers.Any()).Select(w => w.Id).ToList();
             var page = 1;
             var pageSize = 100;
             var xProducts = new XElement("Products");
@@ -72,7 +72,7 @@ namespace Mitbg.Plugin.Misc.ExternalExport.Services
                             ));
                     }
 
-                    xProducts.Add(new XElement("Product",
+                    var xProduct = new XElement("Product",
                         new XElement("Identifier", product.Id.ToString("00000000")),
                         new XElement("Productid", product.ManufacturerPartNumber),
                         new XElement("Manufacturer", manufacturer != null ? manufacturer.Manufacturer.Name : ""),
@@ -85,12 +85,12 @@ namespace Mitbg.Plugin.Misc.ExternalExport.Services
                         new XElement("Delivery_Time", "3 дни"),
                         new XElement("Delivery_Cost", "5 лв"),
                         new XElement("EAN_code", product.Gtin)
-                    ));
+                    );
+                    
                     if (product.ProductSpecificationAttributes.Any())
-                    {
-                        xProducts.Add(xAttributes);
-
-                    }
+                        xProduct.Add(xAttributes);
+                    
+                    xProducts.Add(xProduct);
 
                 }
 
