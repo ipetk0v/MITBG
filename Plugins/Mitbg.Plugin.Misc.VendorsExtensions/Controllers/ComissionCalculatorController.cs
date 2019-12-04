@@ -94,8 +94,6 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
                 VendorName = s.Name
             });
 
-
-
             if (!string.IsNullOrEmpty(searchModel.VendorName))
                 vendorsQuery = vendorsQuery.Where(w => w.VendorName.Contains(searchModel.VendorName));
 
@@ -123,11 +121,19 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
 
             var shipments = shipmentQuery.Where(a => !a.Order.Deleted && (a.AdminComment == "1" || a.AdminComment == "2")).ToList();
 
+            //transaction
+            var shipmentsForTrans = shipmentQuery.Where(a => !a.Order.Deleted && (a.AdminComment == "1")).ToList();
+
             var trackNumbers = shipments.Select(x => x.TrackingNumber);
             var shipmentTasks = _shipmentTasksRep.Table.Where(w => trackNumbers.Contains(w.BarCode)).GroupBy(w => w.VendorId).ToDictionary(w => w.Key, w => w);
 
             var orderItemsIds = shipments.SelectMany(x => x.ShipmentItems.Select(s => s.OrderItemId)).ToList();
+            //transaction
+            var orderItemsForTransIds = shipmentsForTrans.SelectMany(x => x.ShipmentItems.Select(s => s.OrderItemId)).ToList();
             var totalsQuery = _orderItemsRep.Table.Where(w => orderItemsIds.Contains(w.Id) && w.Product.VendorId > 0);
+
+            //transaction
+            var totalsForTransQuery = _orderItemsRep.Table.Where(w => orderItemsForTransIds.Contains(w.Id) && w.Product.VendorId > 0);
 
             var primaryStoreCurrency = _currencyService.GetCurrencyById(_currencySettings.PrimaryStoreCurrencyId);
             var categoriesTree = _categoriesRep.Table.Where(w => !w.Deleted).ToList().BuildTree();
@@ -135,6 +141,10 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
             vendors.ForEach(w =>
             {
                 var totalSumByCategories = totalsQuery.Where(ww => ww.Product.VendorId == w.VendorId)
+                    .GroupBy(g => g.Product.ProductCategories.Select(ss => ss.CategoryId).FirstOrDefault())
+                    .ToDictionary(ww => ww.Key, ww => ww.Sum(s => s.PriceExclTax));
+
+                var totalForTransaction = totalsForTransQuery.Where(ww => ww.Product.VendorId == w.VendorId)
                     .GroupBy(g => g.Product.ProductCategories.Select(ss => ss.CategoryId).FirstOrDefault())
                     .ToDictionary(ww => ww.Key, ww => ww.Sum(s => s.PriceExclTax));
 
@@ -149,7 +159,11 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
                     return s.Value * (percentage / 100m);
                 }).Sum(s => s);
 
+                var totalTrans = totalForTransaction.Select(x => x.Value).Sum();
+                var totalTransaction = totalTrans - w.Comission - w.FreeShippingSum;
+
                 w.Comission = totalComission;
+                w.Transaction = totalTransaction;
                 w.TotalSum = totalSumByCategories.Sum(s => s.Value);
                 w.TotalShippingSum = shipmentTasks.ContainsKey(w.VendorId) ? shipmentTasks[w.VendorId].Sum(ww => ww.ShippingCost + ww.CodComission) : 0;
                 w.FreeShippingSum = shipmentTasks.ContainsKey(w.VendorId) ? shipmentTasks[w.VendorId].Where(ww => ww.IsFreeShipping).Sum(ww => ww.ShippingCost + ww.CodComission) : 0;

@@ -921,6 +921,7 @@ namespace Nop.Web.Areas.Admin.Controllers
                 return RedirectToAction("Edit", new { id = product.Id });
             }
 
+            var oldPrice = decimal.Zero;
             if (ModelState.IsValid)
             {
                 //a vendor should have access only to his products
@@ -942,8 +943,19 @@ namespace Nop.Web.Areas.Admin.Controllers
                 var previousStockQuantity = product.StockQuantity;
                 var previousWarehouseId = product.WarehouseId;
 
+                // hardcode everytime
+                product.IsShipEnabled = true;
+
+                //price Ivan
+                var priceIsWithDiscounted = product.Price > model.Price;
+                if (priceIsWithDiscounted)
+                    oldPrice = product.Price;
+
                 //product
                 product = model.ToEntity(product);
+
+                if (priceIsWithDiscounted)
+                    product.OldPrice = oldPrice;
 
                 product.UpdatedOnUtc = DateTime.UtcNow;
                 product.LowStockActivityId = (int)LowStockActivity.Unpublish;

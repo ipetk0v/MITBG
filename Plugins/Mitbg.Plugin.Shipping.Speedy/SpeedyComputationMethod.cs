@@ -28,7 +28,6 @@ namespace Nop.Plugin.Shipping.Speedy
 {
     public class SpeedyComputationMethod : BasePlugin, IShippingRateComputationMethod, IWidgetPlugin, IScheduleTask, IAdminMenuPlugin
     {
-
         private readonly IScheduleTaskService _scheduleTaskService;
         private readonly ISpeedyShipmentsService _speedySrv;
         private readonly WidgetSettings _widgetSettings;

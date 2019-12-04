@@ -14,22 +14,22 @@
 @inject StoreInformationSettings storeInformationSettings
 @inject Nop.Services.Localization.ILanguageService languageService
 @{
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.countryselect.js");
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.ajaxcart.js");
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.common.js");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.countryselect.js", isAsync: true);
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.ajaxcart.js", isAsync: true);
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.common.js", isAsync: true);
     //when jQuery migrate script logging is active you will see the log in the browser console
     if (commonSettings.JqueryMigrateScriptLoggingActive)
     {
-        Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-migrate/jquery-migrate-3.0.1.js");
+        Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-migrate/jquery-migrate-3.0.1.js", isAsync: true);
     }
     else
     {
-        Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-migrate/jquery-migrate-3.0.1.min.js");
+        Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-migrate/jquery-migrate-3.0.1.min.js", isAsync: true);
     }
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-ui/jquery-ui-1.12.1.custom/jquery-ui.min.js");
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-validate/jquery.validate.unobtrusive-v3.2.10/jquery.validate.unobtrusive.min.js");
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-validate/jquery.validate-v1.17.0/jquery.validate.min.js");
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery/jquery-3.3.1.min.js");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-ui/jquery-ui-1.12.1.custom/jquery-ui.min.js", isAsync: true);
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-validate/jquery.validate.unobtrusive-v3.2.10/jquery.validate.unobtrusive.min.js", isAsync: true);
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-validate/jquery.validate-v1.17.0/jquery.validate.min.js", isAsync: true);
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery/jquery-3.3.1.min.js", isAsync: true);
     //X-UA-Compatible tag
     if (commonSettings.RenderXuaCompatible)
     {
@@ -55,8 +55,8 @@
         <meta name="description" content="@(Html.NopMetaDescription())" />
         <meta name="keywords" content="@(Html.NopMetaKeywords())" />
         <meta name="generator" content="nopCommerce" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic-ext,greek-ext" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link async href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic-ext,greek-ext" rel="stylesheet">
         @Html.NopHeadCustom()
         @*This is used so that themes can inject content into the header*@
         @await Html.PartialAsync("Head")
@@ -74,7 +74,6 @@
             <mini-profiler />
         }
     	@Html.NopInlineScripts(ResourceLocation.Head)
-    	<!--Powered by nopCommerce - https://www.nopCommerce.com-->
     </head>
 	<body class="@currentPageClass">
         @RenderBody()

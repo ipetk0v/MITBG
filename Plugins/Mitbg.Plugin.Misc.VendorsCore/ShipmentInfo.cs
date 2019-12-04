@@ -16,9 +16,6 @@ namespace Mitbg.Plugin.Misc.VendorsCore
             ServiceId = 505; //Preselected default "СТАНДАРТ 24 ЧАСА "
         }
 
-
-      
-
         public int ServiceId { get; set; }
         //  public bool UseCod { get; set; }
         public long? OfficeId { get; set; }

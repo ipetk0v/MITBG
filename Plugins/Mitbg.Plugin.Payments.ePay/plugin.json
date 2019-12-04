@@ -2,7 +2,7 @@
   "Group": "Mitbg",
   "FriendlyName": "Payment ePay EasyPay",
   "SystemName": "Payments.ePayEasyPay",
-  "Version": "4.2",
+  "Version": "4.21",
   "SupportedVersions": [ "4.20" ],
   "Author": "Nop-Templates.com",
   "DisplayOrder": 1,

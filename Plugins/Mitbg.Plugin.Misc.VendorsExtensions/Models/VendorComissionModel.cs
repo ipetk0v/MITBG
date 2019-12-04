@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
 
 namespace Mitbg.Plugin.Misc.VendorsExtensions.Models
 {
@@ -15,7 +12,8 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Models
         public decimal FreeShippingSum { get; set; }
 
         public decimal Comission { get; set; }
-        public decimal Transaction => TotalSum - Comission - FreeShippingSum;
+        //public decimal Transaction => TotalSum - Comission - FreeShippingSum;
+        public decimal Transaction { get; set; }
 
         public string TotalSumText { get; set; }
         public string ComissionText { get; set; }

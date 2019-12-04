@@ -1687,4 +1687,10 @@ var AjaxCart = {
             }
         }
     });
+
+    displayAjaxLoading(true);
+
+    $(window).on('load', function () {
+        displayAjaxLoading(false);
+    });
 })(jQuery);

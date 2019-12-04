@@ -355,8 +355,7 @@ namespace Nop.Plugin.Shipping.Speedy.Controllers
             var customer = _workContext.CurrentCustomer;
             var bol = _speedyContext.GetBillInfo(customer.Id) ?? new ShipmentInfo();
 
-
-            model.DisableAutomats = false;
+            model.DisableAutomats = true;
             model.DisableOfficies = false;
 
             if (model.SiteId != bol.SiteId || bol.AllOfficies == null)
@@ -365,8 +364,8 @@ namespace Nop.Plugin.Shipping.Speedy.Controllers
 
                 bol.AllOfficies = listOfficies;
 
-                model.DisableAutomats = !listOfficies.Any(w => w.IsAutomat);
-                model.DisableOfficies = listOfficies.All(w => w.IsAutomat);
+                //model.DisableAutomats = !listOfficies.Any(w => w.IsAutomat);
+                //model.DisableOfficies = listOfficies.All(w => w.IsAutomat);
 
                 bol.SiteId = model.SiteId;
                 bol.SiteName = model.SiteName;
@@ -417,6 +416,7 @@ namespace Nop.Plugin.Shipping.Speedy.Controllers
                     }
                     break;
             }
+
             bol.SiteId = model.SiteId;
             bol.SiteName = model.SiteName;
 
@@ -455,8 +455,6 @@ namespace Nop.Plugin.Shipping.Speedy.Controllers
         public ActionResult SaveForm(FormViewModel model)
         {
             var customer = _workContext.CurrentCustomer;
-
-
 
             var bol = _speedyContext.GetBillInfo(customer.Id) ?? new ShipmentInfo();
 

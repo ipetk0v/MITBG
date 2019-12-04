@@ -603,10 +603,1003 @@ var AjaxCart = {
         });
     }
 }(jQuery); 
-/*! Magnific Popup - v1.1.0 - 2016-02-20
-* http://dimsemenov.com/plugins/magnific-popup/
-* Copyright (c) 2016 Dmitry Semenov; */
-!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):a("object"==typeof exports?require("jquery"):window.jQuery||window.Zepto)}(function(a){var b,c,d,e,f,g,h="Close",i="BeforeClose",j="AfterClose",k="BeforeAppend",l="MarkupParse",m="Open",n="Change",o="mfp",p="."+o,q="mfp-ready",r="mfp-removing",s="mfp-prevent-close",t=function(){},u=!!window.jQuery,v=a(window),w=function(a,c){b.ev.on(o+a+p,c)},x=function(b,c,d,e){var f=document.createElement("div");return f.className="mfp-"+b,d&&(f.innerHTML=d),e?c&&c.appendChild(f):(f=a(f),c&&f.appendTo(c)),f},y=function(c,d){b.ev.triggerHandler(o+c,d),b.st.callbacks&&(c=c.charAt(0).toLowerCase()+c.slice(1),b.st.callbacks[c]&&b.st.callbacks[c].apply(b,a.isArray(d)?d:[d]))},z=function(c){return c===g&&b.currTemplate.closeBtn||(b.currTemplate.closeBtn=a(b.st.closeMarkup.replace("%title%",b.st.tClose)),g=c),b.currTemplate.closeBtn},A=function(){a.magnificPopup.instance||(b=new t,b.init(),a.magnificPopup.instance=b)},B=function(){var a=document.createElement("p").style,b=["ms","O","Moz","Webkit"];if(void 0!==a.transition)return!0;for(;b.length;)if(b.pop()+"Transition"in a)return!0;return!1};t.prototype={constructor:t,init:function(){var c=navigator.appVersion;b.isLowIE=b.isIE8=document.all&&!document.addEventListener,b.isAndroid=/android/gi.test(c),b.isIOS=/iphone|ipad|ipod/gi.test(c),b.supportsTransition=B(),b.probablyMobile=b.isAndroid||b.isIOS||/(Opera Mini)|Kindle|webOS|BlackBerry|(Opera Mobi)|(Windows Phone)|IEMobile/i.test(navigator.userAgent),d=a(document),b.popupsCache={}},open:function(c){var e;if(c.isObj===!1){b.items=c.items.toArray(),b.index=0;var g,h=c.items;for(e=0;e<h.length;e++)if(g=h[e],g.parsed&&(g=g.el[0]),g===c.el[0]){b.index=e;break}}else b.items=a.isArray(c.items)?c.items:[c.items],b.index=c.index||0;if(b.isOpen)return void b.updateItemHTML();b.types=[],f="",c.mainEl&&c.mainEl.length?b.ev=c.mainEl.eq(0):b.ev=d,c.key?(b.popupsCache[c.key]||(b.popupsCache[c.key]={}),b.currTemplate=b.popupsCache[c.key]):b.currTemplate={},b.st=a.extend(!0,{},a.magnificPopup.defaults,c),b.fixedContentPos="auto"===b.st.fixedContentPos?!b.probablyMobile:b.st.fixedContentPos,b.st.modal&&(b.st.closeOnContentClick=!1,b.st.closeOnBgClick=!1,b.st.showCloseBtn=!1,b.st.enableEscapeKey=!1),b.bgOverlay||(b.bgOverlay=x("bg").on("click"+p,function(){b.close()}),b.wrap=x("wrap").attr("tabindex",-1).on("click"+p,function(a){b._checkIfClose(a.target)&&b.close()}),b.container=x("container",b.wrap)),b.contentContainer=x("content"),b.st.preloader&&(b.preloader=x("preloader",b.container,b.st.tLoading));var i=a.magnificPopup.modules;for(e=0;e<i.length;e++){var j=i[e];j=j.charAt(0).toUpperCase()+j.slice(1),b["init"+j].call(b)}y("BeforeOpen"),b.st.showCloseBtn&&(b.st.closeBtnInside?(w(l,function(a,b,c,d){c.close_replaceWith=z(d.type)}),f+=" mfp-close-btn-in"):b.wrap.append(z())),b.st.alignTop&&(f+=" mfp-align-top"),b.fixedContentPos?b.wrap.css({overflow:b.st.overflowY,overflowX:"hidden",overflowY:b.st.overflowY}):b.wrap.css({top:v.scrollTop(),position:"absolute"}),(b.st.fixedBgPos===!1||"auto"===b.st.fixedBgPos&&!b.fixedContentPos)&&b.bgOverlay.css({height:d.height(),position:"absolute"}),b.st.enableEscapeKey&&d.on("keyup"+p,function(a){27===a.keyCode&&b.close()}),v.on("resize"+p,function(){b.updateSize()}),b.st.closeOnContentClick||(f+=" mfp-auto-cursor"),f&&b.wrap.addClass(f);var k=b.wH=v.height(),n={};if(b.fixedContentPos&&b._hasScrollBar(k)){var o=b._getScrollbarSize();o&&(n.marginRight=o)}b.fixedContentPos&&(b.isIE7?a("body, html").css("overflow","hidden"):n.overflow="hidden");var r=b.st.mainClass;return b.isIE7&&(r+=" mfp-ie7"),r&&b._addClassToMFP(r),b.updateItemHTML(),y("BuildControls"),a("html").css(n),b.bgOverlay.add(b.wrap).prependTo(b.st.prependTo||a(document.body)),b._lastFocusedEl=document.activeElement,setTimeout(function(){b.content?(b._addClassToMFP(q),b._setFocus()):b.bgOverlay.addClass(q),d.on("focusin"+p,b._onFocusIn)},16),b.isOpen=!0,b.updateSize(k),y(m),c},close:function(){b.isOpen&&(y(i),b.isOpen=!1,b.st.removalDelay&&!b.isLowIE&&b.supportsTransition?(b._addClassToMFP(r),setTimeout(function(){b._close()},b.st.removalDelay)):b._close())},_close:function(){y(h);var c=r+" "+q+" ";if(b.bgOverlay.detach(),b.wrap.detach(),b.container.empty(),b.st.mainClass&&(c+=b.st.mainClass+" "),b._removeClassFromMFP(c),b.fixedContentPos){var e={marginRight:""};b.isIE7?a("body, html").css("overflow",""):e.overflow="",a("html").css(e)}d.off("keyup"+p+" focusin"+p),b.ev.off(p),b.wrap.attr("class","mfp-wrap").removeAttr("style"),b.bgOverlay.attr("class","mfp-bg"),b.container.attr("class","mfp-container"),!b.st.showCloseBtn||b.st.closeBtnInside&&b.currTemplate[b.currItem.type]!==!0||b.currTemplate.closeBtn&&b.currTemplate.closeBtn.detach(),b.st.autoFocusLast&&b._lastFocusedEl&&a(b._lastFocusedEl).focus(),b.currItem=null,b.content=null,b.currTemplate=null,b.prevHeight=0,y(j)},updateSize:function(a){if(b.isIOS){var c=document.documentElement.clientWidth/window.innerWidth,d=window.innerHeight*c;b.wrap.css("height",d),b.wH=d}else b.wH=a||v.height();b.fixedContentPos||b.wrap.css("height",b.wH),y("Resize")},updateItemHTML:function(){var c=b.items[b.index];b.contentContainer.detach(),b.content&&b.content.detach(),c.parsed||(c=b.parseEl(b.index));var d=c.type;if(y("BeforeChange",[b.currItem?b.currItem.type:"",d]),b.currItem=c,!b.currTemplate[d]){var f=b.st[d]?b.st[d].markup:!1;y("FirstMarkupParse",f),f?b.currTemplate[d]=a(f):b.currTemplate[d]=!0}e&&e!==c.type&&b.container.removeClass("mfp-"+e+"-holder");var g=b["get"+d.charAt(0).toUpperCase()+d.slice(1)](c,b.currTemplate[d]);b.appendContent(g,d),c.preloaded=!0,y(n,c),e=c.type,b.container.prepend(b.contentContainer),y("AfterChange")},appendContent:function(a,c){b.content=a,a?b.st.showCloseBtn&&b.st.closeBtnInside&&b.currTemplate[c]===!0?b.content.find(".mfp-close").length||b.content.append(z()):b.content=a:b.content="",y(k),b.container.addClass("mfp-"+c+"-holder"),b.contentContainer.append(b.content)},parseEl:function(c){var d,e=b.items[c];if(e.tagName?e={el:a(e)}:(d=e.type,e={data:e,src:e.src}),e.el){for(var f=b.types,g=0;g<f.length;g++)if(e.el.hasClass("mfp-"+f[g])){d=f[g];break}e.src=e.el.attr("data-mfp-src"),e.src||(e.src=e.el.attr("href"))}return e.type=d||b.st.type||"inline",e.index=c,e.parsed=!0,b.items[c]=e,y("ElementParse",e),b.items[c]},addGroup:function(a,c){var d=function(d){d.mfpEl=this,b._openClick(d,a,c)};c||(c={});var e="click.magnificPopup";c.mainEl=a,c.items?(c.isObj=!0,a.off(e).on(e,d)):(c.isObj=!1,c.delegate?a.off(e).on(e,c.delegate,d):(c.items=a,a.off(e).on(e,d)))},_openClick:function(c,d,e){var f=void 0!==e.midClick?e.midClick:a.magnificPopup.defaults.midClick;if(f||!(2===c.which||c.ctrlKey||c.metaKey||c.altKey||c.shiftKey)){var g=void 0!==e.disableOn?e.disableOn:a.magnificPopup.defaults.disableOn;if(g)if(a.isFunction(g)){if(!g.call(b))return!0}else if(v.width()<g)return!0;c.type&&(c.preventDefault(),b.isOpen&&c.stopPropagation()),e.el=a(c.mfpEl),e.delegate&&(e.items=d.find(e.delegate)),b.open(e)}},updateStatus:function(a,d){if(b.preloader){c!==a&&b.container.removeClass("mfp-s-"+c),d||"loading"!==a||(d=b.st.tLoading);var e={status:a,text:d};y("UpdateStatus",e),a=e.status,d=e.text,b.preloader.html(d),b.preloader.find("a").on("click",function(a){a.stopImmediatePropagation()}),b.container.addClass("mfp-s-"+a),c=a}},_checkIfClose:function(c){if(!a(c).hasClass(s)){var d=b.st.closeOnContentClick,e=b.st.closeOnBgClick;if(d&&e)return!0;if(!b.content||a(c).hasClass("mfp-close")||b.preloader&&c===b.preloader[0])return!0;if(c===b.content[0]||a.contains(b.content[0],c)){if(d)return!0}else if(e&&a.contains(document,c))return!0;return!1}},_addClassToMFP:function(a){b.bgOverlay.addClass(a),b.wrap.addClass(a)},_removeClassFromMFP:function(a){this.bgOverlay.removeClass(a),b.wrap.removeClass(a)},_hasScrollBar:function(a){return(b.isIE7?d.height():document.body.scrollHeight)>(a||v.height())},_setFocus:function(){(b.st.focus?b.content.find(b.st.focus).eq(0):b.wrap).focus()},_onFocusIn:function(c){return c.target===b.wrap[0]||a.contains(b.wrap[0],c.target)?void 0:(b._setFocus(),!1)},_parseMarkup:function(b,c,d){var e;d.data&&(c=a.extend(d.data,c)),y(l,[b,c,d]),a.each(c,function(c,d){if(void 0===d||d===!1)return!0;if(e=c.split("_"),e.length>1){var f=b.find(p+"-"+e[0]);if(f.length>0){var g=e[1];"replaceWith"===g?f[0]!==d[0]&&f.replaceWith(d):"img"===g?f.is("img")?f.attr("src",d):f.replaceWith(a("<img>").attr("src",d).attr("class",f.attr("class"))):f.attr(e[1],d)}}else b.find(p+"-"+c).html(d)})},_getScrollbarSize:function(){if(void 0===b.scrollbarSize){var a=document.createElement("div");a.style.cssText="width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;",document.body.appendChild(a),b.scrollbarSize=a.offsetWidth-a.clientWidth,document.body.removeChild(a)}return b.scrollbarSize}},a.magnificPopup={instance:null,proto:t.prototype,modules:[],open:function(b,c){return A(),b=b?a.extend(!0,{},b):{},b.isObj=!0,b.index=c||0,this.instance.open(b)},close:function(){return a.magnificPopup.instance&&a.magnificPopup.instance.close()},registerModule:function(b,c){c.options&&(a.magnificPopup.defaults[b]=c.options),a.extend(this.proto,c.proto),this.modules.push(b)},defaults:{disableOn:0,key:null,midClick:!1,mainClass:"",preloader:!0,focus:"",closeOnContentClick:!1,closeOnBgClick:!0,closeBtnInside:!0,showCloseBtn:!0,enableEscapeKey:!0,modal:!1,alignTop:!1,removalDelay:0,prependTo:null,fixedContentPos:"auto",fixedBgPos:"auto",overflowY:"auto",closeMarkup:'<button title="%title%" type="button" class="mfp-close">&#215;</button>',tClose:"Close (Esc)",tLoading:"Loading...",autoFocusLast:!0}},a.fn.magnificPopup=function(c){A();var d=a(this);if("string"==typeof c)if("open"===c){var e,f=u?d.data("magnificPopup"):d[0].magnificPopup,g=parseInt(arguments[1],10)||0;f.items?e=f.items[g]:(e=d,f.delegate&&(e=e.find(f.delegate)),e=e.eq(g)),b._openClick({mfpEl:e},d,f)}else b.isOpen&&b[c].apply(b,Array.prototype.slice.call(arguments,1));else c=a.extend(!0,{},c),u?d.data("magnificPopup",c):d[0].magnificPopup=c,b.addGroup(d,c);return d};var C,D,E,F="inline",G=function(){E&&(D.after(E.addClass(C)).detach(),E=null)};a.magnificPopup.registerModule(F,{options:{hiddenClass:"hide",markup:"",tNotFound:"Content not found"},proto:{initInline:function(){b.types.push(F),w(h+"."+F,function(){G()})},getInline:function(c,d){if(G(),c.src){var e=b.st.inline,f=a(c.src);if(f.length){var g=f[0].parentNode;g&&g.tagName&&(D||(C=e.hiddenClass,D=x(C),C="mfp-"+C),E=f.after(D).detach().removeClass(C)),b.updateStatus("ready")}else b.updateStatus("error",e.tNotFound),f=a("<div>");return c.inlineElement=f,f}return b.updateStatus("ready"),b._parseMarkup(d,{},c),d}}});var H,I="ajax",J=function(){H&&a(document.body).removeClass(H)},K=function(){J(),b.req&&b.req.abort()};a.magnificPopup.registerModule(I,{options:{settings:null,cursor:"mfp-ajax-cur",tError:'<a href="%url%">The content</a> could not be loaded.'},proto:{initAjax:function(){b.types.push(I),H=b.st.ajax.cursor,w(h+"."+I,K),w("BeforeChange."+I,K)},getAjax:function(c){H&&a(document.body).addClass(H),b.updateStatus("loading");var d=a.extend({url:c.src,success:function(d,e,f){var g={data:d,xhr:f};y("ParseAjax",g),b.appendContent(a(g.data),I),c.finished=!0,J(),b._setFocus(),setTimeout(function(){b.wrap.addClass(q)},16),b.updateStatus("ready"),y("AjaxContentAdded")},error:function(){J(),c.finished=c.loadError=!0,b.updateStatus("error",b.st.ajax.tError.replace("%url%",c.src))}},b.st.ajax.settings);return b.req=a.ajax(d),""}}});var L,M=function(c){if(c.data&&void 0!==c.data.title)return c.data.title;var d=b.st.image.titleSrc;if(d){if(a.isFunction(d))return d.call(b,c);if(c.el)return c.el.attr(d)||""}return""};a.magnificPopup.registerModule("image",{options:{markup:'<div class="mfp-figure"><div class="mfp-close"></div><figure><div class="mfp-img"></div><figcaption><div class="mfp-bottom-bar"><div class="mfp-title"></div><div class="mfp-counter"></div></div></figcaption></figure></div>',cursor:"mfp-zoom-out-cur",titleSrc:"title",verticalFit:!0,tError:'<a href="%url%">The image</a> could not be loaded.'},proto:{initImage:function(){var c=b.st.image,d=".image";b.types.push("image"),w(m+d,function(){"image"===b.currItem.type&&c.cursor&&a(document.body).addClass(c.cursor)}),w(h+d,function(){c.cursor&&a(document.body).removeClass(c.cursor),v.off("resize"+p)}),w("Resize"+d,b.resizeImage),b.isLowIE&&w("AfterChange",b.resizeImage)},resizeImage:function(){var a=b.currItem;if(a&&a.img&&b.st.image.verticalFit){var c=0;b.isLowIE&&(c=parseInt(a.img.css("padding-top"),10)+parseInt(a.img.css("padding-bottom"),10)),a.img.css("max-height",b.wH-c)}},_onImageHasSize:function(a){a.img&&(a.hasSize=!0,L&&clearInterval(L),a.isCheckingImgSize=!1,y("ImageHasSize",a),a.imgHidden&&(b.content&&b.content.removeClass("mfp-loading"),a.imgHidden=!1))},findImageSize:function(a){var c=0,d=a.img[0],e=function(f){L&&clearInterval(L),L=setInterval(function(){return d.naturalWidth>0?void b._onImageHasSize(a):(c>200&&clearInterval(L),c++,void(3===c?e(10):40===c?e(50):100===c&&e(500)))},f)};e(1)},getImage:function(c,d){var e=0,f=function(){c&&(c.img[0].complete?(c.img.off(".mfploader"),c===b.currItem&&(b._onImageHasSize(c),b.updateStatus("ready")),c.hasSize=!0,c.loaded=!0,y("ImageLoadComplete")):(e++,200>e?setTimeout(f,100):g()))},g=function(){c&&(c.img.off(".mfploader"),c===b.currItem&&(b._onImageHasSize(c),b.updateStatus("error",h.tError.replace("%url%",c.src))),c.hasSize=!0,c.loaded=!0,c.loadError=!0)},h=b.st.image,i=d.find(".mfp-img");if(i.length){var j=document.createElement("img");j.className="mfp-img",c.el&&c.el.find("img").length&&(j.alt=c.el.find("img").attr("alt")),c.img=a(j).on("load.mfploader",f).on("error.mfploader",g),j.src=c.src,i.is("img")&&(c.img=c.img.clone()),j=c.img[0],j.naturalWidth>0?c.hasSize=!0:j.width||(c.hasSize=!1)}return b._parseMarkup(d,{title:M(c),img_replaceWith:c.img},c),b.resizeImage(),c.hasSize?(L&&clearInterval(L),c.loadError?(d.addClass("mfp-loading"),b.updateStatus("error",h.tError.replace("%url%",c.src))):(d.removeClass("mfp-loading"),b.updateStatus("ready")),d):(b.updateStatus("loading"),c.loading=!0,c.hasSize||(c.imgHidden=!0,d.addClass("mfp-loading"),b.findImageSize(c)),d)}}});var N,O=function(){return void 0===N&&(N=void 0!==document.createElement("p").style.MozTransform),N};a.magnificPopup.registerModule("zoom",{options:{enabled:!1,easing:"ease-in-out",duration:300,opener:function(a){return a.is("img")?a:a.find("img")}},proto:{initZoom:function(){var a,c=b.st.zoom,d=".zoom";if(c.enabled&&b.supportsTransition){var e,f,g=c.duration,j=function(a){var b=a.clone().removeAttr("style").removeAttr("class").addClass("mfp-animated-image"),d="all "+c.duration/1e3+"s "+c.easing,e={position:"fixed",zIndex:9999,left:0,top:0,"-webkit-backface-visibility":"hidden"},f="transition";return e["-webkit-"+f]=e["-moz-"+f]=e["-o-"+f]=e[f]=d,b.css(e),b},k=function(){b.content.css("visibility","visible")};w("BuildControls"+d,function(){if(b._allowZoom()){if(clearTimeout(e),b.content.css("visibility","hidden"),a=b._getItemToZoom(),!a)return void k();f=j(a),f.css(b._getOffset()),b.wrap.append(f),e=setTimeout(function(){f.css(b._getOffset(!0)),e=setTimeout(function(){k(),setTimeout(function(){f.remove(),a=f=null,y("ZoomAnimationEnded")},16)},g)},16)}}),w(i+d,function(){if(b._allowZoom()){if(clearTimeout(e),b.st.removalDelay=g,!a){if(a=b._getItemToZoom(),!a)return;f=j(a)}f.css(b._getOffset(!0)),b.wrap.append(f),b.content.css("visibility","hidden"),setTimeout(function(){f.css(b._getOffset())},16)}}),w(h+d,function(){b._allowZoom()&&(k(),f&&f.remove(),a=null)})}},_allowZoom:function(){return"image"===b.currItem.type},_getItemToZoom:function(){return b.currItem.hasSize?b.currItem.img:!1},_getOffset:function(c){var d;d=c?b.currItem.img:b.st.zoom.opener(b.currItem.el||b.currItem);var e=d.offset(),f=parseInt(d.css("padding-top"),10),g=parseInt(d.css("padding-bottom"),10);e.top-=a(window).scrollTop()-f;var h={width:d.width(),height:(u?d.innerHeight():d[0].offsetHeight)-g-f};return O()?h["-moz-transform"]=h.transform="translate("+e.left+"px,"+e.top+"px)":(h.left=e.left,h.top=e.top),h}}});var P="iframe",Q="//about:blank",R=function(a){if(b.currTemplate[P]){var c=b.currTemplate[P].find("iframe");c.length&&(a||(c[0].src=Q),b.isIE8&&c.css("display",a?"block":"none"))}};a.magnificPopup.registerModule(P,{options:{markup:'<div class="mfp-iframe-scaler"><div class="mfp-close"></div><iframe class="mfp-iframe" src="//about:blank" frameborder="0" allowfullscreen></iframe></div>',srcAction:"iframe_src",patterns:{youtube:{index:"youtube.com",id:"v=",src:"//www.youtube.com/embed/%id%?autoplay=1"},vimeo:{index:"vimeo.com/",id:"/",src:"//player.vimeo.com/video/%id%?autoplay=1"},gmaps:{index:"//maps.google.",src:"%id%&output=embed"}}},proto:{initIframe:function(){b.types.push(P),w("BeforeChange",function(a,b,c){b!==c&&(b===P?R():c===P&&R(!0))}),w(h+"."+P,function(){R()})},getIframe:function(c,d){var e=c.src,f=b.st.iframe;a.each(f.patterns,function(){return e.indexOf(this.index)>-1?(this.id&&(e="string"==typeof this.id?e.substr(e.lastIndexOf(this.id)+this.id.length,e.length):this.id.call(this,e)),e=this.src.replace("%id%",e),!1):void 0});var g={};return f.srcAction&&(g[f.srcAction]=e),b._parseMarkup(d,g,c),b.updateStatus("ready"),d}}});var S=function(a){var c=b.items.length;return a>c-1?a-c:0>a?c+a:a},T=function(a,b,c){return a.replace(/%curr%/gi,b+1).replace(/%total%/gi,c)};a.magnificPopup.registerModule("gallery",{options:{enabled:!1,arrowMarkup:'<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>',preload:[0,2],navigateByImgClick:!0,arrows:!0,tPrev:"Previous (Left arrow key)",tNext:"Next (Right arrow key)",tCounter:"%curr% of %total%"},proto:{initGallery:function(){var c=b.st.gallery,e=".mfp-gallery";return b.direction=!0,c&&c.enabled?(f+=" mfp-gallery",w(m+e,function(){c.navigateByImgClick&&b.wrap.on("click"+e,".mfp-img",function(){return b.items.length>1?(b.next(),!1):void 0}),d.on("keydown"+e,function(a){37===a.keyCode?b.prev():39===a.keyCode&&b.next()})}),w("UpdateStatus"+e,function(a,c){c.text&&(c.text=T(c.text,b.currItem.index,b.items.length))}),w(l+e,function(a,d,e,f){var g=b.items.length;e.counter=g>1?T(c.tCounter,f.index,g):""}),w("BuildControls"+e,function(){if(b.items.length>1&&c.arrows&&!b.arrowLeft){var d=c.arrowMarkup,e=b.arrowLeft=a(d.replace(/%title%/gi,c.tPrev).replace(/%dir%/gi,"left")).addClass(s),f=b.arrowRight=a(d.replace(/%title%/gi,c.tNext).replace(/%dir%/gi,"right")).addClass(s);e.click(function(){b.prev()}),f.click(function(){b.next()}),b.container.append(e.add(f))}}),w(n+e,function(){b._preloadTimeout&&clearTimeout(b._preloadTimeout),b._preloadTimeout=setTimeout(function(){b.preloadNearbyImages(),b._preloadTimeout=null},16)}),void w(h+e,function(){d.off(e),b.wrap.off("click"+e),b.arrowRight=b.arrowLeft=null})):!1},next:function(){b.direction=!0,b.index=S(b.index+1),b.updateItemHTML()},prev:function(){b.direction=!1,b.index=S(b.index-1),b.updateItemHTML()},goTo:function(a){b.direction=a>=b.index,b.index=a,b.updateItemHTML()},preloadNearbyImages:function(){var a,c=b.st.gallery.preload,d=Math.min(c[0],b.items.length),e=Math.min(c[1],b.items.length);for(a=1;a<=(b.direction?e:d);a++)b._preloadItem(b.index+a);for(a=1;a<=(b.direction?d:e);a++)b._preloadItem(b.index-a)},_preloadItem:function(c){if(c=S(c),!b.items[c].preloaded){var d=b.items[c];d.parsed||(d=b.parseEl(c)),y("LazyLoad",d),"image"===d.type&&(d.img=a('<img class="mfp-img" />').on("load.mfploader",function(){d.hasSize=!0}).on("error.mfploader",function(){d.hasSize=!0,d.loadError=!0,y("LazyLoadError",d)}).attr("src",d.src)),d.preloaded=!0}}}});var U="retina";a.magnificPopup.registerModule(U,{options:{replaceSrc:function(a){return a.src.replace(/\.\w+$/,function(a){return"@2x"+a})},ratio:1},proto:{initRetina:function(){if(window.devicePixelRatio>1){var a=b.st.retina,c=a.ratio;c=isNaN(c)?c():c,c>1&&(w("ImageHasSize."+U,function(a,b){b.img.css({"max-width":b.img[0].naturalWidth/c,width:"100%"})}),w("ElementParse."+U,function(b,d){d.src=a.replaceSrc(d,c)}))}}}}),A()});
+/*!
+ * jQuery blockUI plugin
+ * Version 2.70.0-2014.11.23
+ * Requires jQuery v1.7 or later
+ *
+ * Examples at: http://malsup.com/jquery/block/
+ * Copyright (c) 2007-2013 M. Alsup
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Thanks to Amir-Hossein Sobhi for some excellent contributions!
+ */
+
+; (function () {
+    /*jshint eqeqeq:false curly:false latedef:false */
+    "use strict";
+
+    function setup($) {
+        $.fn._fadeIn = $.fn.fadeIn;
+
+        var noOp = $.noop || function () { };
+
+        // this bit is to ensure we don't call setExpression when we shouldn't (with extra muscle to handle
+        // confusing userAgent strings on Vista)
+        var msie = /MSIE/.test(navigator.userAgent);
+        var ie6 = /MSIE 6.0/.test(navigator.userAgent) && ! /MSIE 8.0/.test(navigator.userAgent);
+        var mode = document.documentMode || 0;
+        var setExpr = $.isFunction(document.createElement('div').style.setExpression);
+
+        // global $ methods for blocking/unblocking the entire page
+        $.blockUI = function (opts) { install(window, opts); };
+        $.unblockUI = function (opts) { remove(window, opts); };
+
+        // convenience method for quick growl-like notifications  (http://www.google.com/search?q=growl)
+        $.growlUI = function (title, message, timeout, onClose) {
+            var $m = $('<div class="growlUI"></div>');
+            if (title) $m.append('<h1>' + title + '</h1>');
+            if (message) $m.append('<h2>' + message + '</h2>');
+            if (timeout === undefined) timeout = 3000;
+
+            // Added by konapun: Set timeout to 30 seconds if this growl is moused over, like normal toast notifications
+            var callBlock = function (opts) {
+                opts = opts || {};
+
+                $.blockUI({
+                    message: $m,
+                    fadeIn: typeof opts.fadeIn !== 'undefined' ? opts.fadeIn : 700,
+                    fadeOut: typeof opts.fadeOut !== 'undefined' ? opts.fadeOut : 1000,
+                    timeout: typeof opts.timeout !== 'undefined' ? opts.timeout : timeout,
+                    centerY: false,
+                    showOverlay: false,
+                    onUnblock: onClose,
+                    css: $.blockUI.defaults.growlCSS
+                });
+            };
+
+            callBlock();
+            var nonmousedOpacity = $m.css('opacity');
+            $m.mouseover(function () {
+                callBlock({
+                    fadeIn: 0,
+                    timeout: 30000
+                });
+
+                var displayBlock = $('.blockMsg');
+                displayBlock.stop(); // cancel fadeout if it has started
+                displayBlock.fadeTo(300, 1); // make it easier to read the message by removing transparency
+            }).mouseout(function () {
+                $('.blockMsg').fadeOut(1000);
+            });
+            // End konapun additions
+        };
+
+        // plugin method for blocking element content
+        $.fn.block = function (opts) {
+            if (this[0] === window) {
+                $.blockUI(opts);
+                return this;
+            }
+            var fullOpts = $.extend({}, $.blockUI.defaults, opts || {});
+            this.each(function () {
+                var $el = $(this);
+                if (fullOpts.ignoreIfBlocked && $el.data('blockUI.isBlocked'))
+                    return;
+                $el.unblock({ fadeOut: 0 });
+            });
+
+            return this.each(function () {
+                if ($.css(this, 'position') == 'static') {
+                    this.style.position = 'relative';
+                    $(this).data('blockUI.static', true);
+                }
+                this.style.zoom = 1; // force 'hasLayout' in ie
+                install(this, opts);
+            });
+        };
+
+        // plugin method for unblocking element content
+        $.fn.unblock = function (opts) {
+            if (this[0] === window) {
+                $.unblockUI(opts);
+                return this;
+            }
+            return this.each(function () {
+                remove(this, opts);
+            });
+        };
+
+        $.blockUI.version = 2.70; // 2nd generation blocking at no extra cost!
+
+        // override these in your code to change the default behavior and style
+        $.blockUI.defaults = {
+            // message displayed when blocking (use null for no message)
+            message: '<h1>Please wait...</h1>',
+
+            title: null,		// title string; only used when theme == true
+            draggable: true,	// only used when theme == true (requires jquery-ui.js to be loaded)
+
+            theme: false, // set to true to use with jQuery UI themes
+
+            // styles for the message when blocking; if you wish to disable
+            // these and use an external stylesheet then do this in your code:
+            // $.blockUI.defaults.css = {};
+            css: {
+                padding: 0,
+                margin: 0,
+                width: '30%',
+                top: '40%',
+                left: '35%',
+                textAlign: 'center',
+                color: '#000',
+                border: '3px solid #aaa',
+                backgroundColor: '#fff',
+                cursor: 'wait'
+            },
+
+            // minimal style set used when themes are used
+            themedCSS: {
+                width: '30%',
+                top: '40%',
+                left: '35%'
+            },
+
+            // styles for the overlay
+            overlayCSS: {
+                backgroundColor: '#000',
+                opacity: 0.6,
+                cursor: 'wait'
+            },
+
+            // style to replace wait cursor before unblocking to correct issue
+            // of lingering wait cursor
+            cursorReset: 'default',
+
+            // styles applied when using $.growlUI
+            growlCSS: {
+                width: '350px',
+                top: '10px',
+                left: '',
+                right: '10px',
+                border: 'none',
+                padding: '5px',
+                opacity: 0.6,
+                cursor: 'default',
+                color: '#fff',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                'border-radius': '10px'
+            },
+
+            // IE issues: 'about:blank' fails on HTTPS and javascript:false is s-l-o-w
+            // (hat tip to Jorge H. N. de Vasconcelos)
+            /*jshint scripturl:true */
+            iframeSrc: /^https/i.test(window.location.href || '') ? 'javascript:false' : 'about:blank',
+
+            // force usage of iframe in non-IE browsers (handy for blocking applets)
+            forceIframe: false,
+
+            // z-index for the blocking overlay
+            baseZ: 1000,
+
+            // set these to true to have the message automatically centered
+            centerX: true, // <-- only effects element blocking (page block controlled via css above)
+            centerY: true,
+
+            // allow body element to be stetched in ie6; this makes blocking look better
+            // on "short" pages.  disable if you wish to prevent changes to the body height
+            allowBodyStretch: true,
+
+            // enable if you want key and mouse events to be disabled for content that is blocked
+            bindEvents: true,
+
+            // be default blockUI will supress tab navigation from leaving blocking content
+            // (if bindEvents is true)
+            constrainTabKey: true,
+
+            // fadeIn time in millis; set to 0 to disable fadeIn on block
+            fadeIn: 200,
+
+            // fadeOut time in millis; set to 0 to disable fadeOut on unblock
+            fadeOut: 400,
+
+            // time in millis to wait before auto-unblocking; set to 0 to disable auto-unblock
+            timeout: 0,
+
+            // disable if you don't want to show the overlay
+            showOverlay: true,
+
+            // if true, focus will be placed in the first available input field when
+            // page blocking
+            focusInput: true,
+
+            // elements that can receive focus
+            focusableElements: ':input:enabled:visible',
+
+            // suppresses the use of overlay styles on FF/Linux (due to performance issues with opacity)
+            // no longer needed in 2012
+            // applyPlatformOpacityRules: true,
+
+            // callback method invoked when fadeIn has completed and blocking message is visible
+            onBlock: null,
+
+            // callback method invoked when unblocking has completed; the callback is
+            // passed the element that has been unblocked (which is the window object for page
+            // blocks) and the options that were passed to the unblock call:
+            //	onUnblock(element, options)
+            onUnblock: null,
+
+            // callback method invoked when the overlay area is clicked.
+            // setting this will turn the cursor to a pointer, otherwise cursor defined in overlayCss will be used.
+            onOverlayClick: null,
+
+            // don't ask; if you really must know: http://groups.google.com/group/jquery-en/browse_thread/thread/36640a8730503595/2f6a79a77a78e493#2f6a79a77a78e493
+            quirksmodeOffsetHack: 4,
+
+            // class name of the message block
+            blockMsgClass: 'blockMsg',
+
+            // if it is already blocked, then ignore it (don't unblock and reblock)
+            ignoreIfBlocked: false
+        };
+
+        // private data and functions follow...
+
+        var pageBlock = null;
+        var pageBlockEls = [];
+
+        function install(el, opts) {
+            var css, themedCSS;
+            var full = (el == window);
+            var msg = (opts && opts.message !== undefined ? opts.message : undefined);
+            opts = $.extend({}, $.blockUI.defaults, opts || {});
+
+            if (opts.ignoreIfBlocked && $(el).data('blockUI.isBlocked'))
+                return;
+
+            opts.overlayCSS = $.extend({}, $.blockUI.defaults.overlayCSS, opts.overlayCSS || {});
+            css = $.extend({}, $.blockUI.defaults.css, opts.css || {});
+            if (opts.onOverlayClick)
+                opts.overlayCSS.cursor = 'pointer';
+
+            themedCSS = $.extend({}, $.blockUI.defaults.themedCSS, opts.themedCSS || {});
+            msg = msg === undefined ? opts.message : msg;
+
+            // remove the current block (if there is one)
+            if (full && pageBlock)
+                remove(window, { fadeOut: 0 });
+
+            // if an existing element is being used as the blocking content then we capture
+            // its current place in the DOM (and current display style) so we can restore
+            // it when we unblock
+            if (msg && typeof msg != 'string' && (msg.parentNode || msg.jquery)) {
+                var node = msg.jquery ? msg[0] : msg;
+                var data = {};
+                $(el).data('blockUI.history', data);
+                data.el = node;
+                data.parent = node.parentNode;
+                data.display = node.style.display;
+                data.position = node.style.position;
+                if (data.parent)
+                    data.parent.removeChild(node);
+            }
+
+            $(el).data('blockUI.onUnblock', opts.onUnblock);
+            var z = opts.baseZ;
+
+            // blockUI uses 3 layers for blocking, for simplicity they are all used on every platform;
+            // layer1 is the iframe layer which is used to supress bleed through of underlying content
+            // layer2 is the overlay layer which has opacity and a wait cursor (by default)
+            // layer3 is the message content that is displayed while blocking
+            var lyr1, lyr2, lyr3, s;
+            if (msie || opts.forceIframe)
+                lyr1 = $('<iframe class="blockUI" style="z-index:' + (z++) + ';display:none;border:none;margin:0;padding:0;position:absolute;width:100%;height:100%;top:0;left:0" src="' + opts.iframeSrc + '"></iframe>');
+            else
+                lyr1 = $('<div class="blockUI" style="display:none"></div>');
+
+            if (opts.theme)
+                lyr2 = $('<div class="blockUI blockOverlay ui-widget-overlay" style="z-index:' + (z++) + ';display:none"></div>');
+            else
+                lyr2 = $('<div class="blockUI blockOverlay" style="z-index:' + (z++) + ';display:none;border:none;margin:0;padding:0;width:100%;height:100%;top:0;left:0"></div>');
+
+            if (opts.theme && full) {
+                s = '<div class="blockUI ' + opts.blockMsgClass + ' blockPage ui-dialog ui-widget ui-corner-all" style="z-index:' + (z + 10) + ';display:none;position:fixed">';
+                if (opts.title) {
+                    s += '<div class="ui-widget-header ui-dialog-titlebar ui-corner-all blockTitle">' + (opts.title || '&nbsp;') + '</div>';
+                }
+                s += '<div class="ui-widget-content ui-dialog-content"></div>';
+                s += '</div>';
+            }
+            else if (opts.theme) {
+                s = '<div class="blockUI ' + opts.blockMsgClass + ' blockElement ui-dialog ui-widget ui-corner-all" style="z-index:' + (z + 10) + ';display:none;position:absolute">';
+                if (opts.title) {
+                    s += '<div class="ui-widget-header ui-dialog-titlebar ui-corner-all blockTitle">' + (opts.title || '&nbsp;') + '</div>';
+                }
+                s += '<div class="ui-widget-content ui-dialog-content"></div>';
+                s += '</div>';
+            }
+            else if (full) {
+                s = '<div class="blockUI ' + opts.blockMsgClass + ' blockPage" style="z-index:' + (z + 10) + ';display:none;position:fixed"></div>';
+            }
+            else {
+                s = '<div class="blockUI ' + opts.blockMsgClass + ' blockElement" style="z-index:' + (z + 10) + ';display:none;position:absolute"></div>';
+            }
+            lyr3 = $(s);
+
+            // if we have a message, style it
+            if (msg) {
+                if (opts.theme) {
+                    lyr3.css(themedCSS);
+                    lyr3.addClass('ui-widget-content');
+                }
+                else
+                    lyr3.css(css);
+            }
+
+            // style the overlay
+            if (!opts.theme /*&& (!opts.applyPlatformOpacityRules)*/)
+                lyr2.css(opts.overlayCSS);
+            lyr2.css('position', full ? 'fixed' : 'absolute');
+
+            // make iframe layer transparent in IE
+            if (msie || opts.forceIframe)
+                lyr1.css('opacity', 0.0);
+
+            //$([lyr1[0],lyr2[0],lyr3[0]]).appendTo(full ? 'body' : el);
+            var layers = [lyr1, lyr2, lyr3], $par = full ? $('body') : $(el);
+            $.each(layers, function () {
+                this.appendTo($par);
+            });
+
+            if (opts.theme && opts.draggable && $.fn.draggable) {
+                lyr3.draggable({
+                    handle: '.ui-dialog-titlebar',
+                    cancel: 'li'
+                });
+            }
+
+            // ie7 must use absolute positioning in quirks mode and to account for activex issues (when scrolling)
+            var expr = setExpr && (!$.support.boxModel || $('object,embed', full ? null : el).length > 0);
+            if (ie6 || expr) {
+                // give body 100% height
+                if (full && opts.allowBodyStretch && $.support.boxModel)
+                    $('html,body').css('height', '100%');
+
+                // fix ie6 issue when blocked element has a border width
+                if ((ie6 || !$.support.boxModel) && !full) {
+                    var t = sz(el, 'borderTopWidth'), l = sz(el, 'borderLeftWidth');
+                    var fixT = t ? '(0 - ' + t + ')' : 0;
+                    var fixL = l ? '(0 - ' + l + ')' : 0;
+                }
+
+                // simulate fixed position
+                $.each(layers, function (i, o) {
+                    var s = o[0].style;
+                    s.position = 'absolute';
+                    if (i < 2) {
+                        if (full)
+                            s.setExpression('height', 'Math.max(document.body.scrollHeight, document.body.offsetHeight) - (jQuery.support.boxModel?0:' + opts.quirksmodeOffsetHack + ') + "px"');
+                        else
+                            s.setExpression('height', 'this.parentNode.offsetHeight + "px"');
+                        if (full)
+                            s.setExpression('width', 'jQuery.support.boxModel && document.documentElement.clientWidth || document.body.clientWidth + "px"');
+                        else
+                            s.setExpression('width', 'this.parentNode.offsetWidth + "px"');
+                        if (fixL) s.setExpression('left', fixL);
+                        if (fixT) s.setExpression('top', fixT);
+                    }
+                    else if (opts.centerY) {
+                        if (full) s.setExpression('top', '(document.documentElement.clientHeight || document.body.clientHeight) / 2 - (this.offsetHeight / 2) + (blah = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) + "px"');
+                        s.marginTop = 0;
+                    }
+                    else if (!opts.centerY && full) {
+                        var top = (opts.css && opts.css.top) ? parseInt(opts.css.top, 10) : 0;
+                        var expression = '((document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) + ' + top + ') + "px"';
+                        s.setExpression('top', expression);
+                    }
+                });
+            }
+
+            // show the message
+            if (msg) {
+                if (opts.theme)
+                    lyr3.find('.ui-widget-content').append(msg);
+                else
+                    lyr3.append(msg);
+                if (msg.jquery || msg.nodeType)
+                    $(msg).show();
+            }
+
+            if ((msie || opts.forceIframe) && opts.showOverlay)
+                lyr1.show(); // opacity is zero
+            if (opts.fadeIn) {
+                var cb = opts.onBlock ? opts.onBlock : noOp;
+                var cb1 = (opts.showOverlay && !msg) ? cb : noOp;
+                var cb2 = msg ? cb : noOp;
+                if (opts.showOverlay)
+                    lyr2._fadeIn(opts.fadeIn, cb1);
+                if (msg)
+                    lyr3._fadeIn(opts.fadeIn, cb2);
+            }
+            else {
+                if (opts.showOverlay)
+                    lyr2.show();
+                if (msg)
+                    lyr3.show();
+                if (opts.onBlock)
+                    opts.onBlock.bind(lyr3)();
+            }
+
+            // bind key and mouse events
+            bind(1, el, opts);
+
+            if (full) {
+                pageBlock = lyr3[0];
+                pageBlockEls = $(opts.focusableElements, pageBlock);
+                if (opts.focusInput)
+                    setTimeout(focus, 20);
+            }
+            else
+                center(lyr3[0], opts.centerX, opts.centerY);
+
+            if (opts.timeout) {
+                // auto-unblock
+                var to = setTimeout(function () {
+                    if (full)
+                        $.unblockUI(opts);
+                    else
+                        $(el).unblock(opts);
+                }, opts.timeout);
+                $(el).data('blockUI.timeout', to);
+            }
+        }
+
+        // remove the block
+        function remove(el, opts) {
+            var count;
+            var full = (el == window);
+            var $el = $(el);
+            var data = $el.data('blockUI.history');
+            var to = $el.data('blockUI.timeout');
+            if (to) {
+                clearTimeout(to);
+                $el.removeData('blockUI.timeout');
+            }
+            opts = $.extend({}, $.blockUI.defaults, opts || {});
+            bind(0, el, opts); // unbind events
+
+            if (opts.onUnblock === null) {
+                opts.onUnblock = $el.data('blockUI.onUnblock');
+                $el.removeData('blockUI.onUnblock');
+            }
+
+            var els;
+            if (full) // crazy selector to handle odd field errors in ie6/7
+                els = $('body').children().filter('.blockUI').add('body > .blockUI');
+            else
+                els = $el.find('>.blockUI');
+
+            // fix cursor issue
+            if (opts.cursorReset) {
+                if (els.length > 1)
+                    els[1].style.cursor = opts.cursorReset;
+                if (els.length > 2)
+                    els[2].style.cursor = opts.cursorReset;
+            }
+
+            if (full)
+                pageBlock = pageBlockEls = null;
+
+            if (opts.fadeOut) {
+                count = els.length;
+                els.stop().fadeOut(opts.fadeOut, function () {
+                    if (--count === 0)
+                        reset(els, data, opts, el);
+                });
+            }
+            else
+                reset(els, data, opts, el);
+        }
+
+        // move blocking element back into the DOM where it started
+        function reset(els, data, opts, el) {
+            var $el = $(el);
+            if ($el.data('blockUI.isBlocked'))
+                return;
+
+            els.each(function (i, o) {
+                // remove via DOM calls so we don't lose event handlers
+                if (this.parentNode)
+                    this.parentNode.removeChild(this);
+            });
+
+            if (data && data.el) {
+                data.el.style.display = data.display;
+                data.el.style.position = data.position;
+                data.el.style.cursor = 'default'; // #59
+                if (data.parent)
+                    data.parent.appendChild(data.el);
+                $el.removeData('blockUI.history');
+            }
+
+            if ($el.data('blockUI.static')) {
+                $el.css('position', 'static'); // #22
+            }
+
+            if (typeof opts.onUnblock == 'function')
+                opts.onUnblock(el, opts);
+
+            // fix issue in Safari 6 where block artifacts remain until reflow
+            var body = $(document.body), w = body.width(), cssW = body[0].style.width;
+            body.width(w - 1).width(w);
+            body[0].style.width = cssW;
+        }
+
+        // bind/unbind the handler
+        function bind(b, el, opts) {
+            var full = el == window, $el = $(el);
+
+            // don't bother unbinding if there is nothing to unbind
+            if (!b && (full && !pageBlock || !full && !$el.data('blockUI.isBlocked')))
+                return;
+
+            $el.data('blockUI.isBlocked', b);
+
+            // don't bind events when overlay is not in use or if bindEvents is false
+            if (!full || !opts.bindEvents || (b && !opts.showOverlay))
+                return;
+
+            // bind anchors and inputs for mouse and key events
+            var events = 'mousedown mouseup keydown keypress keyup touchstart touchend touchmove';
+            if (b)
+                $(document).bind(events, opts, handler);
+            else
+                $(document).unbind(events, handler);
+
+            // former impl...
+            //		var $e = $('a,:input');
+            //		b ? $e.bind(events, opts, handler) : $e.unbind(events, handler);
+        }
+
+        // event handler to suppress keyboard/mouse events when blocking
+        function handler(e) {
+            // allow tab navigation (conditionally)
+            if (e.type === 'keydown' && e.keyCode && e.keyCode == 9) {
+                if (pageBlock && e.data.constrainTabKey) {
+                    var els = pageBlockEls;
+                    var fwd = !e.shiftKey && e.target === els[els.length - 1];
+                    var back = e.shiftKey && e.target === els[0];
+                    if (fwd || back) {
+                        setTimeout(function () { focus(back); }, 10);
+                        return false;
+                    }
+                }
+            }
+            var opts = e.data;
+            var target = $(e.target);
+            if (target.hasClass('blockOverlay') && opts.onOverlayClick)
+                opts.onOverlayClick(e);
+
+            // allow events within the message content
+            if (target.parents('div.' + opts.blockMsgClass).length > 0)
+                return true;
+
+            // allow events for content that is not being blocked
+            return target.parents().children().filter('div.blockUI').length === 0;
+        }
+
+        function focus(back) {
+            if (!pageBlockEls)
+                return;
+            var e = pageBlockEls[back === true ? pageBlockEls.length - 1 : 0];
+            if (e)
+                e.focus();
+        }
+
+        function center(el, x, y) {
+            var p = el.parentNode, s = el.style;
+            var l = ((p.offsetWidth - el.offsetWidth) / 2) - sz(p, 'borderLeftWidth');
+            var t = ((p.offsetHeight - el.offsetHeight) / 2) - sz(p, 'borderTopWidth');
+            if (x) s.left = l > 0 ? (l + 'px') : '0';
+            if (y) s.top = t > 0 ? (t + 'px') : '0';
+        }
+
+        function sz(el, p) {
+            return parseInt($.css(el, p), 10) || 0;
+        }
+
+    }
+
+
+    /*global define:true */
+    if (typeof define === 'function' && define.amd && define.amd.jQuery) {
+        define(['jquery'], setup);
+    } else {
+        setup(jQuery);
+    }
+
+})();
+window.SpeedyForm = (function () {
+
+    function SpeedyForm() {
+        var self = this;
+
+        $(document).on("change", "input[name='shippingoption']", checkFormVisible);
+        var initialized = false;
+        var selectedSiteId;
+        var selectedSiteName;
+        var deliveryOption = "";
+        var officeId = -1;
+        var streetName = "";
+        var streetNo = "";
+        var streetId = 0;
+        var quarter = "";
+        var quarterId = 0;
+        var quarterType = "";
+        var quarterName = "";
+        var formIsComplete = false;
+        var isSaved = false;
+        var T;
+
+
+        self.init = function () {
+            T = window.SpeedyResources.T;
+
+            if (window.ShippingMethod != undefined) { //if onepagecheckout
+                //override OnePageCheckout object
+                window.ShippingMethod = (function (shippingMethod) {
+
+                    var save = shippingMethod.save;
+
+                    shippingMethod.save = function () {
+
+                        if (!isSaved &&
+                            $("input[name='shippingoption']:checked").length > 0 &&
+                            $("input[name='shippingoption']:checked").val().indexOf("Shipping.Speedy") >= 0) {
+                            var _this = this;
+                            saveForm(function () {
+                                save.call(_this);
+                            });
+                        } else {
+                            save.call(this);
+                        }
+
+                    }
+                    return shippingMethod;
+                })(window.ShippingMethod);
+            } else {
+                $(".shipping-method-next-step-button").on("click",
+                    function (e) {
+
+                        if (!isSaved &&
+                            $("input[name='shippingoption']:checked").length > 0 &&
+                            $("input[name='shippingoption']:checked").val().indexOf("Shipping.Speedy") >= 0) {
+
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            saveForm(function () {
+                                $(".shipping-method-next-step-button").trigger("click");
+                            });
+                            return false;
+                        }
+                    });
+            }
+
+            checkFormVisible();
+
+            $(document).on("change",
+                "input[name='receivetype']",
+                function () {
+                    if (selectedSiteId > 0)
+                        reloadForm();
+                });
+
+
+            $(document).on("change",
+                "#officeId",
+                function () {
+                    reloadForm();
+                });
+        }
+
+
+
+        function checkFormVisible() {
+            console.log("checkVisible");
+
+            if ($("input[name='shippingoption']:checked").val().indexOf("Shipping.Speedy") >= 0) {
+                $("#speedy_form").show();
+                if (!initialized) {
+
+                    var $siteInput = $(".js_siteInpit");
+
+                    $siteInput.autocomplete({
+                        source: function (request, response) {
+                            $.ajax({
+                                url: "/Plugins/SpeedyShipping/GetSites",
+                                dataType: "json",
+                                data: "term=" + request.term,
+                                success: function (data) {
+                                    $("#speedy_form").unblock();
+                                    response($.map(data.results,
+                                        function (item) {
+                                            return {
+                                                label: item.text,
+                                                value: item.id
+                                            };
+                                        }));
+                                },
+                                beforeSend: function () {
+                                    $("#speedy_form").block({
+                                        message: T("Speedy.AddressForm.LoadingFormData")
+                                    });
+                                }
+                            });
+                        },
+
+                        minLength: 2,
+                        select: function (event, ui) {
+                            var siteId = ui.item.value,
+                                siteName = ui.item.label;
+                            selectedSiteId = siteId;
+                            selectedSiteName = siteName;
+                            $siteInput.val(ui.item.label);
+                            reloadForm();
+                            return false;
+                        }
+                    }).autocomplete("instance")._resizeMenu = function () {
+                        this.menu.element.css("width", "");
+                        this.menu.element.attr('style', function (i, s) { return s + 'width: ' + $siteInput.outerWidth() + 'px !important;' });
+                    };
+
+                    initialized = true;
+                }
+            } else
+                $("#speedy_form").hide();
+        }
+
+        function saveForm(calbackSuccess) {
+            var addressNote = $("input[name='AddressNote']").val(),
+                entrance = $("#inputEntrance").val(),
+                floor = $("#inputEntrance").val(),
+                apNumber = $("#inputApNumber").val(),
+                block = $("#inputBlock").val(),
+                comment = $("#inputComment").val();
+
+            if (validate()) {
+                $.ajax({
+                    url: "/Plugins/SpeedyShipping/SaveForm",
+                    data: {
+                        OfficeId: officeId,
+                        SiteId: selectedSiteId,
+                        SiteName: selectedSiteName,
+                        DeliveryOption: deliveryOption,
+                        StreetName: streetName,
+                        StreetNo: streetNo,
+                        StreetId: streetId,
+                        QuarterId: quarterId,
+                        QuarterText: quarter,
+                        QuarterName: quarterName.length > 0 ? quarterName : quarter,
+                        QuarterType: quarterType,
+                        Floor: floor,
+                        Block: block,
+                        ApNumber: apNumber,
+                        Entrance: entrance,
+                        AddressNote: addressNote,
+                        Comment: comment
+                    },
+                    dataType: 'html',
+                    type: 'POST',
+                    beforeSend: function () {
+                        $("#speedy_form").block({ message: T("Speedy.AddressForm.LoadingFormData") });
+                    }
+                })
+                    .done(function () {
+                        isSaved = true;
+                        $("#speedy_form").unblock();
+                        calbackSuccess();
+                    });
+
+                return true;
+            }
+            return false;
+        }
+
+        function reloadForm() {
+            var officeId = $("#officeId").val(),
+                siteId = selectedSiteId,
+                deliveryOption = $("input[name='receivetype']:checked").val();
+
+            isSaved = false;
+
+            $.ajax({
+                url: "/Plugins/SpeedyShipping/SpeedyForm",
+                data: { OfficeId: officeId, SiteId: siteId, DeliveryOption: deliveryOption },
+                dataType: 'html',
+                type: 'POST',
+                beforeSend: function () {
+                    $("#speedy_form").block({ message: T("Speedy.AddressForm.LoadingFormData") });
+                }
+            })
+                .done(function (html) {
+                    $("#changableForm").html(html);
+                    $("#speedy_form").unblock();
+                    initAddressForm();
+                    validate();
+                });
+        }
+
+        function initAddressForm() {
+            var $inputStreetName = $("#inputStreetName"),
+                $inputQuarter = $("#inputQuarter");
+
+            if ($inputStreetName.length > 0 && $inputQuarter.length > 0) {
+
+                $inputStreetName.autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "/Plugins/SpeedyShipping/GetStreets",
+                            dataType: "json",
+                            data: "term=" + request.term,
+                            success: function (data) {
+                                $("#speedy_form").unblock();
+                                response($.map(data.results,
+                                    function (item) {
+                                        return {
+                                            label: item.text,
+                                            value: item.id
+                                        };
+                                    }));
+                            },
+                            beforeSend: function () {
+                                $("#speedy_form").block({ message: T("Speedy.AddressForm.LoadingFormData") });
+                            }
+                        });
+                    },
+                    minLength: 2,
+                    select: function (event, ui) {
+                        streetId = ui.item.value;
+                        streetName = ui.item.label;
+                        $inputStreetName.val(ui.item.label);
+                        return false;
+                    }
+                }).autocomplete("instance")._resizeMenu = function () {
+                    this.menu.element.css("width", "");
+                    this.menu.element.attr('style', function (i, s) { return s + 'width: ' + $inputStreetName.outerWidth() + 'px !important;' });
+                };;
+
+                $inputQuarter.autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "/Plugins/SpeedyShipping/GetQuarters",
+                            dataType: "json",
+                            data: "term=" + request.term,
+                            success: function (data) {
+                                $("#speedy_form").unblock();
+                                response($.map(data.results,
+                                    function (item) {
+                                        return {
+                                            label: item.text,
+                                            value: item.id,
+                                            type: item.type,
+                                            name: item.name
+                                        };
+                                    }));
+                            },
+                            beforeSend: function () {
+                                quarterId = 0;
+                                quarterName = "";
+                                quarterType = "";
+                                $("#speedy_form").block({ message: T("Speedy.AddressForm.LoadingFormData") });
+                            }
+                        });
+                    },
+                    minLength: 2,
+                    select: function (event, ui) {
+                        console.log(ui.item);
+                        quarterId = ui.item.value;
+                        quarter = ui.item.label;
+                        quarterName = ui.item.name;
+                        quarterType = ui.item.type;
+                        $inputQuarter.val(ui.item.label);
+                        return false;
+                    }
+                }).autocomplete("instance")._resizeMenu = function () {
+                    this.menu.element.css("width", "");
+                    this.menu.element.attr('style', function (i, s) { return s + 'width: ' + $inputQuarter.outerWidth() + 'px !important;' });
+                };
+
+            }
+
+        }
+
+        function validate() {
+
+            /*
+             *  Если выбран наш метод, то проверяем:
+             *  1. Наличие SiteId
+             *  2. В зависимости от выбранного типа доставки проверяем:
+             *      2.1 Автомат или Офис
+             *          Должен быть выбран офис (OfficeId)
+             *      2.2 Доставка на адрес
+             *          Должна быть указана улица и номер дома (StreetName, StreetNo)
+             * 3. Выбраный метод доставки (ServiceId)
+             *    Метод доставки появляется после выбора SiteId и OfficeId. В случае если выбран адрес, то сразу после выбора SiteId
+             */
+            var result = true;
+
+            deliveryOption = $("input[name='receivetype']:checked").val() || 0;
+
+            if (selectedSiteId == null || selectedSiteId == 0) {
+                console.log("Invalid siteId");
+                result = false;
+            }
+
+            if (deliveryOption == "Address") {
+
+                streetName = $("input[name='StreetName']").val() || "";
+                streetNo = $("input[name='StreetNo']").val() || "";
+                quarter = $("input[name='Quarter']").val() || "";
+
+                var comment = ($("input[name='Comment']").val() || "").trim();
+
+                if (comment.length > 0 && comment.length < 5) {
+                    console.log("Invalid comment lenght");
+                    result = false;
+                }
+
+                var entrance = $("#inputEntrance").val() || "",
+                    floor = $("#inputEntrance").val() || "",
+                    apNumber = $("#inputApNumber").val() || "",
+                    block = $("#inputBlock").val() || "";
+
+                if (quarter.length > 0 &&
+                    block.length > 0 &&
+                    entrance.length > 0 &&
+                    floor.length > 0 &&
+                    apNumber.length > 0) {
+                    result = true;
+                } else {
+                    console.log("Invalid quarter data (quarter, block, entrance, floor, apNumber)");
+
+                    if (streetName.length < 2) {
+                        console.log("Invalid streetName");
+                        result = false;
+                    }
+                    if (streetNo.length <= 0) {
+                        console.log("Invalid streetNo");
+                        result = false;
+                    }
+                }
+
+            } else {
+                officeId = $("#officeId").val() || 0;
+
+                if (officeId <= 0) {
+                    console.log("Invalid officeId");
+                    result = false;
+                }
+            }
+            formIsComplete = result;
+            return result;
+        }
+
+        return self;
+    }
+
+    var form = SpeedyForm();
+
+    $(function () {
+        form.init();
+    });
+
+}());
+
 (function ($) {
 
     $(document).ready(function () {

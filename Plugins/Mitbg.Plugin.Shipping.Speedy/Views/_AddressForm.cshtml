@@ -7,13 +7,13 @@
     <label class="col-sm-2 control-label">@T("Speedy.AddressForm.ShippingOver")</label>
     <div class="col-md-10">
         <ul class="checkbox-list">
-            <li class="checkbox-item" style="float: left;">
+            @*<li class="checkbox-item" style="float: left;">
                 <input id="receive-input-1" name="receivetype" value="@(DeliveryOption.Automat)"
                        @if (Model.DisableAutomats) { <text> disabled="disabled" </text> }
                        type="radio"
                        @if (Model.DeliveryOption == DeliveryOption.Automat) { <text> checked="checked" </text> } />
                 <label for="receive-input-1" class="filter-item-name">@T("Speedy.AddressForm.ToAutomat")</label>
-            </li>
+            </li>*@
             <li class="checkbox-item" style="float: left; margin-left: 20px;">
                 <input id="receive-input-2" name="receivetype" value="@(DeliveryOption.Office)"
                        @if (Model.DisableOfficies) { <text> disabled="disabled" </text> }
@@ -61,7 +61,7 @@ else
 
                 <label for="inputStreetNo" class="col-sm-1 control-label">@T("Speedy.AddressForm.StreetNo")</label>
                 <div class="col-sm-3">
-                    <input id="inputStreetNo" class="col-sm-12" name="StreetNo" type="text" />
+                    <input id="inputStreetNo" class="col-sm-12" name="StreetNo" type="number" style="min-height:45px;" />
                 </div>
             </div>
         </div>

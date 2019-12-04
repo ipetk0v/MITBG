@@ -35,6 +35,7 @@ namespace Nop.Plugin.Shipping.Speedy.Models
 
         public bool UseCod { get; set; }
 
+        public List<KeyValuePair<long, string>> Sites { get; set; }
         public DeliveryOption DeliveryOption { get; set; }
         public List<KeyValuePair<long, string>> Officies { get; set; }
         public int? ServiceId { get; set; }

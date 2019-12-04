@@ -13,8 +13,10 @@ using Nop.Core.Domain.Orders;
 using Nop.Core.Domain.Payments;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Vendors;
+using Nop.Core.Infrastructure;
 using Nop.Plugin.Shipping.Speedy.Domain;
 using Nop.Services.Logging;
+using Nop.Services.Orders;
 using Nop.Services.Shipping;
 using Nop.Services.Shipping.Tracking;
 using NUglify.Helpers;
@@ -33,7 +35,6 @@ namespace Nop.Plugin.Shipping.Speedy.Services
         private readonly IRepository<OrderItem> _orderItemsRep;
         private readonly IShipmentService _shipmentService;
         private readonly SpeedySettings _speedySettings;
-
 
         private Binding binding = new BasicHttpsBinding(BasicHttpsSecurityMode.Transport)
         {
@@ -143,7 +144,6 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                     if (!shipment.UseCod && order.PaymentStatus != PaymentStatus.Authorized && order.PaymentStatus != PaymentStatus.Paid)
                         return;
 
-
                     var orderItems = _orderItemsRep.Table.Where(w =>
                         w.OrderId == shipment.OrderId
                         && w.Product.VendorId == shipment.VendorId
@@ -154,10 +154,36 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                         throw new Exception(string.Format("Positions for order with ID=[{0}] not found",
                             shipment.OrderId));
 
+                    var vendorCount = _orderItemsRep.Table.Where(w =>
+                            w.OrderId == shipment.OrderId
+                            && w.Product.IsFreeShipping == shipment.IsFreeShipping)
+                            .ToList()
+                            .Select(x => x.Product.VendorId)
+                            .Distinct()
+                            .Count();
 
-                    var amount = (double)orderItems.Sum(s => s.PriceInclTax);
-                    amount += (double)order.OrderShippingInclTax;
-                    amount += (double)order.PaymentMethodAdditionalFeeInclTax;
+                    decimal amount;
+
+                    // Custom logic from I.Petkov
+                    if (order.OrderDiscount > 0)
+                    {
+                        if (order.OrderTotal > 0)
+                        {
+                            var dividedAmount = order.OrderTotal / vendorCount;
+                            amount = dividedAmount;
+                        }
+                        else
+                        {
+                            amount = 0;
+                        }
+                    }
+                    else
+                    {
+                        amount = orderItems.Sum(s => s.PriceInclTax);
+                        amount += order.OrderShippingInclTax > 0 ? order.OrderShippingInclTax / vendorCount : order.OrderShippingInclTax;
+                        amount += order.PaymentMethodAdditionalFeeInclTax > 0 ? order.PaymentMethodAdditionalFeeInclTax / vendorCount : order.PaymentMethodAdditionalFeeInclTax;
+                    }
+
 
                     var weight = (double)orderItems.Sum(s => s.ItemWeight ?? 0);
                     var payerType = 0;
@@ -228,8 +254,7 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                         fragile = false,
                         palletized = false,
 
-                        payerType = payerType,                                                         //
-                        payerTypeInsurance = payerType,
+                        payerType = payerType, //payerTypeInsurance = payerType,
                         payerTypeInsuranceSpecified = _speedySettings.UseInsurance,
                         payerRefId = payerType == 2 ? login.clientId : 0,
                         payerRefIdSpecified = payerType == 2,
@@ -239,14 +264,14 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                         payerTypePackingsSpecified = true,
                         payerRefPackingsId = payerType == 2 ? login.clientId : 0,
                         payerRefPackingsIdSpecified = payerType == 2,
-                        payCodToThirdParty = payerType == 2,
-                        payCodToThirdPartySpecified = payerType == 2,
-                        amountInsuranceBase = amount,
+                        payCodToThirdParty = payerType == 2 && amount > 0,
+                        payCodToThirdPartySpecified = payerType == 2 && amount > 0,
+                        amountInsuranceBase = (double)amount,
                         amountInsuranceBaseSpecified = _speedySettings.UseInsurance,
-                        amountCodBase = amount,
+                        amountCodBase = (double)amount,
                         amountCodBaseSpecified = shipment.UseCod && _speedySettings.CodMethod == CodMethod.NP,
 
-                        retMoneyTransferReqAmount = amount,
+                        retMoneyTransferReqAmount = (double)amount,
                         retMoneyTransferReqAmountSpecified = shipment.UseCod && _speedySettings.CodMethod == CodMethod.PPP,
 
 
@@ -310,7 +335,7 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                     shipment.BolDateCreated = DateTime.Now;
                     shipment.BarCode = barcode.ToString();
 
-                    shipment.ShippingCost = (decimal)resultCreateBol.amounts.total - ((decimal)resultCreateBol.amounts.codPremium * 1.2m) + 1; //Add 1 bgn
+                    shipment.ShippingCost = (decimal)resultCreateBol.amounts.total - ((decimal)resultCreateBol.amounts.codPremium * 1.2m); /*+ 1;*/ //Add 1 bgn
                     shipment.ShippingCost = Math.Ceiling(shipment.ShippingCost * 2) / 2;  //Round to 0.5
 
                     shipment.CodComission = (decimal)resultCreateBol.amounts.codPremium * 1.2m;
@@ -356,7 +381,6 @@ namespace Nop.Plugin.Shipping.Speedy.Services
             cartItemsSplited.Where(w => !w.Key.IsFreeShipping).ForEach(w => { result += Calculate(serviceId, w.ToList(), w.Key.VendorId, !officeId.HasValue || officeId < 0 ? 0 : officeId.Value, siteId); });
 
             return result;
-
         }
 
 
@@ -443,7 +467,7 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                     };
 
                     var resultCalculate = srv.calculate(sessionGuid, calcData);
-                    var totalAmount = (decimal)resultCalculate.amounts.total + 1; //Add 1 bgn;
+                    var totalAmount = (decimal)resultCalculate.amounts.total; /*+ 1;*/ //Add 1 bgn;
                     return Math.Ceiling(totalAmount * 2) / 2;  //Round to 0.5
                 }
                 catch (Exception e)
@@ -541,7 +565,6 @@ namespace Nop.Plugin.Shipping.Speedy.Services
                 return site.site;
             }
         }
-
 
         private EPSProviderClient GetSpeedyClient()
         {

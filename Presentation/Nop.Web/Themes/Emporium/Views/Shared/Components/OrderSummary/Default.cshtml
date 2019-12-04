@@ -25,6 +25,10 @@
                 </ul>
             </div>
         }
+        if (Model.Items.Select(x => x.VendorName).Distinct().Count() > 1)
+        {
+            <div style="color:red;padding:10px 0;font-size:14px;">Внимание! В количката има добавени продукти от различни търговци, възможно е продуктите да бъдат доставени в различен ден и час и ще бъдете таксувани за всяка доставка.</div>
+        }
         @*we add enctype = "multipart/form-data" because "File upload" attribute control type requires it*@
         <form asp-route="ShoppingCart" method="post" enctype="multipart/form-data" id="shopping-cart-form">
             <div class="table-wrapper">
@@ -35,9 +39,9 @@
                             <col width="1" />
                         }
                         @*@if (Model.ShowSku)
-                        {
-                            <col width="1" />
-                        }*@
+                            {
+                                <col width="1" />
+                            }*@
                         @if (Model.ShowProductImages)
                         {
                             <col width="1" />
@@ -60,11 +64,11 @@
                                 </th>
                             }
                             @*@if (Model.ShowSku)
-                            {
-                                <th class="sku" data-hide="w410, w480">
-                                    @T("ShoppingCart.SKU")
-                                </th>
-                            }*@
+                                {
+                                    <th class="sku" data-hide="w410, w480">
+                                        @T("ShoppingCart.SKU")
+                                    </th>
+                                }*@
                             @if (Model.ShowProductImages)
                             {
                                 <th class="product-picture">
@@ -112,19 +116,19 @@
                                     </td>
                                 }
                                 @*@if (Model.ShowSku)
-                                {
-                                    <td class="sku">
-                                        <label class="td-title">@T("ShoppingCart.SKU"):</label>
-                                        <span class="sku-number">@item.Sku</span>
-                                    </td>
-                                }*@
+                                    {
+                                        <td class="sku">
+                                            <label class="td-title">@T("ShoppingCart.SKU"):</label>
+                                            <span class="sku-number">@item.Sku</span>
+                                        </td>
+                                    }*@
                                 @if (Model.ShowProductImages)
                                 {
                                     <td class="product-picture">
                                         <a href="@Url.RouteUrl("Product", new {SeName = item.ProductSeName})">
                                             @if (viewComponentSelector.SelectComponent("LazyLoadImage") != null)
                                             {
-                                                @await Component.InvokeAsync("LazyLoadImage", new(string Key, string Value)[] 
+                                                @await Component.InvokeAsync("LazyLoadImage", new(string Key, string Value)[]
                                                 {
                                                     ("src", item.Picture.ImageUrl),
                                                     ("alt", item.Picture.AlternateText),
@@ -204,7 +208,7 @@
                                         }
                                         else
                                         {
-                                            <input name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" type="text" value="@(item.Quantity)" class="qty-input"/>
+                                            <input name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" type="text" value="@(item.Quantity)" class="qty-input" />
                                         }
 
                                     }
@@ -261,14 +265,14 @@
                             <div class="list">
                                 @await Html.PartialAsync("_DiscountBox", Model.DiscountBox)
                                 @await Html.PartialAsync("_GiftCardBox", Model.GiftCardBox)
-                            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OrderSummaryContentDeals })
+                                @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OrderSummaryContentDeals })
                             </div>
                         </div>
                         @await Component.InvokeAsync("EstimateShipping")
                     </div>
                 }
                 <div class="cart-options">
-                
+
                     @if (Model.IsEditable)
                     {
                         @await Html.PartialAsync("_CheckoutAttributes", Model)

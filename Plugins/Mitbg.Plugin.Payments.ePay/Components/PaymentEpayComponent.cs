@@ -47,13 +47,20 @@ namespace Nop.Plugin.Payments.ePay.Components
                 EnableCashOnDelivery = _ePayPaymentSettings.EnableCashOnDelivery && (bol.DeliveryOption != DeliveryOption.Automat || sumWithComission <= 2000)
             };
 
-            if (_ePayPaymentSettings.EnableEpay)
+            if (_ePayPaymentSettings.EnableCashOnDelivery)
             {
-                model.PaymentType = PaymentType.Epay;
+                model.PaymentType = PaymentType.CashOnDelivery;
             }
             else
             {
-                model.PaymentType = PaymentType.EasyPay;
+                if (_ePayPaymentSettings.EnableEpay)
+                {
+                    model.PaymentType = PaymentType.Epay;
+                }
+                else
+                {
+                    model.PaymentType = PaymentType.EasyPay;
+                }
             }
 
             return View("~/Plugins/Mitbg.Plugin.Payments.ePay/Views/PaymentEpay/PaymentInfo.cshtml", model);

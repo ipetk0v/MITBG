@@ -2,7 +2,7 @@
   "Group": "Mitbg",
   "FriendlyName": "Speedy shipping",
   "SystemName": "Shipping.Speedy",
-  "Version": "1.01",
+  "Version": "1.02",
   "SupportedVersions": [ "4.20" ],
   "Author": "Tsaplinov Evgeny",
   "DisplayOrder": 1,
