@@ -100,7 +100,8 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
             vendorsQuery = vendorsQuery.OrderBy(w => w.VendorName);
 
             var totalCount = vendorsQuery.Count();
-            var vendors = vendorsQuery.ToList();
+            //var vendors = vendorsQuery.ToList();
+            var vendors = vendorsQuery.Skip(searchModel.Start).Take(searchModel.PageSize).ToList();
 
             var vendorIds = vendors.Select(s => s.VendorId).ToList();
             var comissions = _comissionsRep.Table
