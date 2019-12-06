@@ -160,14 +160,16 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
                     return s.Value * (percentage / 100m);
                 }).Sum(s => s);
 
-                var totalTrans = totalForTransaction.Select(x => x.Value).Sum();
-                var totalTransaction = totalTrans - w.Comission - w.FreeShippingSum;
-
                 w.Comission = totalComission;
+                w.FreeShippingSum = shipmentTasks.ContainsKey(w.VendorId) ? shipmentTasks[w.VendorId].Where(ww => ww.IsFreeShipping).Sum(ww => ww.ShippingCost + ww.CodComission) : 0;
+
+                var totalTrans = totalForTransaction.Select(x => x.Value).Sum();
+                var tt = totalTrans - w.Comission - w.FreeShippingSum;
+                var totalTransaction = tt > 0 ? tt : 0;
+
                 w.Transaction = totalTransaction;
                 w.TotalSum = totalSumByCategories.Sum(s => s.Value);
                 w.TotalShippingSum = shipmentTasks.ContainsKey(w.VendorId) ? shipmentTasks[w.VendorId].Sum(ww => ww.ShippingCost + ww.CodComission) : 0;
-                w.FreeShippingSum = shipmentTasks.ContainsKey(w.VendorId) ? shipmentTasks[w.VendorId].Where(ww => ww.IsFreeShipping).Sum(ww => ww.ShippingCost + ww.CodComission) : 0;
                 w.TotalSumText = _priceFormatter.FormatPrice(w.TotalSum, true, primaryStoreCurrency, _workContext.WorkingLanguage, false, false);
                 w.FreeShippingSumText = _priceFormatter.FormatPrice(w.FreeShippingSum, true, primaryStoreCurrency, _workContext.WorkingLanguage, false, false);
                 w.ComissionText = _priceFormatter.FormatPrice(w.Comission, true, primaryStoreCurrency, _workContext.WorkingLanguage, false, false);
