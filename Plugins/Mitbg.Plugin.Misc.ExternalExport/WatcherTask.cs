@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Mitbg.Plugin.Misc.ExternalExport.Services;
+using Nop.Core.Infrastructure;
+using System;
 using System.Threading;
-using Mitbg.Plugin.Misc.ExternalExport.Services;
-using Nop.Services.Tasks;
 
 namespace Mitbg.Plugin.Misc.ExternalExport
 {
-    public class WatcherTask : IScheduleTask
+    public class WatcherTask : IStartupTask
     {
         private readonly IExportManager _exportManager;
 
@@ -29,5 +27,7 @@ namespace Mitbg.Plugin.Misc.ExternalExport
 
             _fileGeneratorTimer = new Timer((object p) => { _exportManager.GenerateFile(); }, null, (long)startDelay, taskPeriod);
         }
+
+        public int Order => 0;
     }
 }

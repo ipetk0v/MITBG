@@ -68,13 +68,6 @@
     </div>
     <div class="page-body">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsTop, additionalData = Model })
-        @*description*@
-        @if (!string.IsNullOrWhiteSpace(Model.Description))
-        {
-            <div class="category-description">
-                @Html.Raw(Model.Description)
-            </div>
-        }
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBeforeSubcategories, additionalData = Model })
         @*subcategories*@
         @if (Model.SubCategories.Count > 0)
@@ -85,16 +78,16 @@
                     {
                         <div class="item-box">
                             <div class="sub-category-item">
-                                <h2 class="title">
-                                    <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
-                                        @item.Name
-                                    </a>
-                                </h2>
                                 <div class="picture">
                                     <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
                                         <img alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title" />
                                     </a>
                                 </div>
+                                <h2 class="title">
+                                    <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                                        @item.Name
+                                    </a>
+                                </h2>
                             </div>
                         </div>
                     }
@@ -159,6 +152,13 @@
         {
             <div class="pager">
                 @pager
+            </div>
+        }
+        @*description*@
+        @if (!string.IsNullOrWhiteSpace(Model.Description))
+        {
+            <div class="category-description" style="padding-top:5%; text-align: left;">
+                @Html.Raw(Model.Description)
             </div>
         }
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBottom, additionalData = Model })

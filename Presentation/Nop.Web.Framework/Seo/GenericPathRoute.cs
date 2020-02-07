@@ -143,6 +143,33 @@ namespace Nop.Web.Framework.Seo
 
             //since we are here, all is ok with the slug, so process URL
             var currentRouteData = new RouteData(context.RouteData);
+
+            var requestPathValue = context.HttpContext.Request.Path.Value;
+            if (requestPathValue.Last() == '/'
+                || requestPathValue.Last() == '\\')
+            {
+                var redirectionRouteData = new RouteData(context.RouteData);
+                redirectionRouteData.Values[NopPathRouteDefaults.ControllerFieldKey] = "Common";
+                redirectionRouteData.Values[NopPathRouteDefaults.ActionFieldKey] = "InternalRedirect";
+                redirectionRouteData.Values[NopPathRouteDefaults.UrlFieldKey] = $"{pathBase}/{urlRecord.Slug}";
+                redirectionRouteData.Values[NopPathRouteDefaults.PermanentRedirectFieldKey] = true;
+                context.HttpContext.Items["nop.RedirectFromGenericPathRoute"] = true;
+                context.RouteData = redirectionRouteData;
+                return _target.RouteAsync(context);
+            }
+
+            if (requestPathValue.Any(char.IsUpper))
+            {
+                var redirectionRouteData = new RouteData(context.RouteData);
+                redirectionRouteData.Values[NopPathRouteDefaults.ControllerFieldKey] = "Common";
+                redirectionRouteData.Values[NopPathRouteDefaults.ActionFieldKey] = "InternalRedirect";
+                redirectionRouteData.Values[NopPathRouteDefaults.UrlFieldKey] = $"{pathBase}/{urlRecord.Slug}";
+                redirectionRouteData.Values[NopPathRouteDefaults.PermanentRedirectFieldKey] = true;
+                context.HttpContext.Items["nop.RedirectFromGenericPathRoute"] = true;
+                context.RouteData = redirectionRouteData;
+                return _target.RouteAsync(context);
+            }
+
             switch (urlRecord.EntityName.ToLowerInvariant())
             {
                 case "product":

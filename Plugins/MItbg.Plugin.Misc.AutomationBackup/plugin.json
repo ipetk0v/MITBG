@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Mitbg",
+  "FriendlyName": "AutomationBackup",
+  "SystemName": "MItbg.Plugin.Misc.AutomationBackup",
+  "Version": "1.0",
+  "SupportedVersions": [ "4.20" ],
+  "Author": "Ivan Petkov",
+  "DisplayOrder": 1,
+  "FileName": "MItbg.Plugin.Misc.AutomationBackup.dll",
+  "Description": "Automation backup"
+}

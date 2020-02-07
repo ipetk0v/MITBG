@@ -1,0 +1,33 @@
+@using Nop.Web.Framework.Infrastructure
+@model Mitbg.Plugin.Misc.XmlAutomationImport.Models.XmlAutomationImportTemplateCreateEditModel
+
+@{
+    Layout = "_AdminLayout";
+    //page title
+    ViewBag.Title = T("XmlAutomationImportTemplate.Editor.AddNew").Text;
+    //active menu item (system name)
+    Html.SetActiveMenuItemSystemName("XmlAutomationImport");
+}
+
+<form asp-controller="XmlAutomationImport" asp-action="CreateTemplate" method="post">
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("XmlAutomationImportTemplate.Editor.AddNew")
+            <small>
+                <i class="fa fa-arrow-circle-left"></i>
+                <a asp-action="TemplateList">@T("XmlAutomationImportTemplate.Editor.BackToList")</a>
+            </small>
+        </h1>
+        <div class="pull-right">
+            <button type="submit" name="save" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.Save")
+            </button>
+            <button type="submit" name="save-continue" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.SaveContinue")
+            </button>
+        </div>
+    </div>
+    @await Html.PartialAsync("~/Plugins/Mitbg.Plugin.Misc.XmlAutomationImport/Views/XmlAutomationImport/_CreateOrUpdate.cshtml", Model)
+</form>

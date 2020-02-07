@@ -22,6 +22,10 @@
     if (seoSettings.CanonicalUrlsEnabled)
     {
         var categoryUrl = Url.RouteUrl("Category", new { SeName = Model.SeName }, webHelper.CurrentRequestProtocol).ToLowerInvariant();
+        if (!categoryUrl.StartsWith("https:"))
+        {
+            categoryUrl = "https:" + categoryUrl;
+        }
         Html.AddCanonicalUrlParts(categoryUrl, seoSettings.QueryStringInCanonicalUrlsEnabled);
     }
 
@@ -71,12 +75,12 @@
     <div class="page-body">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsTop, additionalData = Model })
         @*description*@
-        @if (!string.IsNullOrWhiteSpace(Model.Description))
+        @*@if (!string.IsNullOrWhiteSpace(Model.Description))
         {
             <div class="category-description">
                 @Html.Raw(Model.Description)
             </div>
-        }
+        }*@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBeforeSubcategories, additionalData = Model })
         @*subcategories*@
         @if (Model.SubCategories.Count > 0)
@@ -176,6 +180,12 @@
             </div>
         }
         <div class="returned-products-marker"></div>
+        @if (!string.IsNullOrWhiteSpace(Model.Description))
+        {
+            <div class="category-description">
+                @Html.Raw(Model.Description)
+            </div>
+        }
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBottom, additionalData = Model })
     </div>
 </div>

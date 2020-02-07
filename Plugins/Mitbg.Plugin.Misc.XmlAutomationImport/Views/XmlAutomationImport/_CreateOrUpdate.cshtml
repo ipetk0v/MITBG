@@ -1,0 +1,179 @@
+﻿@using Mitbg.Plugin.Misc.XmlAutomationImport.Models
+@model XmlAutomationImportTemplateCreateEditModel
+
+@{
+}
+
+<div asp-validation-summary="All"></div>
+<input asp-for="Id" type="hidden" />
+
+<div class="content">
+    <div class="form-horizontal">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="IsActive" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="IsActive" />
+                        <span asp-validation-for="IsActive"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="VendorId" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-select asp-for="VendorId" asp-items="Model.AvailableVendors" />
+                        <span asp-validation-for="VendorId"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="XmlLink" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="XmlLink" />
+                        <span asp-validation-for="XmlLink"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="ProductForImport" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ProductForImport" />
+                        <span asp-validation-for="ProductForImport"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="ProductTemplate" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ProductTemplate" />
+                        <span asp-validation-for="ProductTemplate"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="Prefix" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Prefix" />
+                        <span asp-validation-for="Prefix"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="Name" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Name" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="ShortDescription" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ShortDescription" />
+                        <span asp-validation-for="ShortDescription"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="FullDescription" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="FullDescription" />
+                        <span asp-validation-for="FullDescription"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="Category" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Category" />
+                        <span asp-validation-for="Category"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="Manufacturer" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Manufacturer" />
+                        <span asp-validation-for="Manufacturer"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="Picture" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Picture" />
+                        <span asp-validation-for="Picture"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="Sku" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Sku" />
+                        <span asp-validation-for="Sku"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="ManufacturerPartNumber" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ManufacturerPartNumber" />
+                        <span asp-validation-for="ManufacturerPartNumber"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="StockQuantity" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="StockQuantity" />
+                        <span asp-validation-for="StockQuantity"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="Price" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Price" />
+                        <span asp-validation-for="Price"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="OldPrice" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="OldPrice" />
+                        <span asp-validation-for="OldPrice"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="Weight" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Weight" />
+                        <span asp-validation-for="Weight"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

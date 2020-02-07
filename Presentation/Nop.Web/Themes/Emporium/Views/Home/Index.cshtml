@@ -18,7 +18,7 @@
     <div class="page-body">
         @await Component.InvokeAsync("Widget", new { widgetZone = "emporium_home_page_info_boxes" })
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageTop })
-        @await Component.InvokeAsync("TopicBlock", new { systemName = "HomepageText" })
+        @*@await Component.InvokeAsync("TopicBlock", new { systemName = "HomepageText" })*@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeCategories })
         @await Component.InvokeAsync("HomepageCategories")
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeNews })
@@ -30,6 +30,7 @@
 
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeProducts })
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeBestSellers })
+        @await Component.InvokeAsync("TopicBlock", new { systemName = "MalkoPovecheZaMitBg" })
 
         <div class="two-row-carousels small-products">
             @await Component.InvokeAsync("HomepageProducts")

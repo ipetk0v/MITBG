@@ -41,11 +41,11 @@
                         content: '.profile-menu-box',
                         preventClicking: true
                     },
-	                {
-	                    content: '.flyout-cart',
-	                    overlay: false,
-	                    scrollbar: flyoutCartScrollbarSelector + ' .items'
-	                }
+                    {
+                        content: '.flyout-cart',
+                        overlay: false,
+                        scrollbar: flyoutCartScrollbarSelector + ' .items'
+                    }
                 ]
             },
             goToTop: {
@@ -880,7 +880,7 @@
 
             handleExpand(".write-review .field-validation-error", ".write-review-collapse", ".write-review > .title");
         });
-        
+
         function groupedButton() {
 
             if (!$('.product-variant-line').length) {
@@ -892,7 +892,7 @@
             $(".grouped-btn > span").text($('.product-variant-line').length);
 
             //Click on the button scrolls to the first variant
-            $(".grouped-btn").on('click', function(event) {
+            $(".grouped-btn").on('click', function (event) {
 
                 event.preventDefault();
 
@@ -901,7 +901,7 @@
                 }, 1000);
             });
         }
-        
+
         function handleHeaderMenuCategories() {
             if ($('.header-menu.categories-in-side-panel').length === 0) {
                 return;
@@ -936,7 +936,7 @@
                 });
             }
         }
-        
+
         function accountPageColumns() {
             var navHeight = $('.block-account-navigation').outerHeight();
 
@@ -953,10 +953,10 @@
                 $('.order-summary-content .update-cart-button').click();
             });
         }
-        
+
         function updateCartMobiile() {
 
-            $(document).on('removeItemFlyoutCart', function() {
+            $(document).on('removeItemFlyoutCart', function () {
 
                 var windowWidth = $(window).width();
 
@@ -1059,7 +1059,7 @@
         function getHomePageCarouselResponsiveSettings() {
             var responsiveBreakpointsObj = {};
 
-            if ($('#home-page-carousel-breakpoints').length == 0|| !$('#home-page-carousel-breakpoints').val()) {
+            if ($('#home-page-carousel-breakpoints').length == 0 || !$('#home-page-carousel-breakpoints').val()) {
                 return responsiveBreakpointsObj;
             }
 
@@ -1096,4 +1096,22 @@
             }
         }
     });
+
+    displayAjaxLoading(true);
+
+    $(window).on('load', function () {
+        displayAjaxLoading(false);
+    });
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 0) {
+            $('#fb-root').addClass('go-up-from-scroll');
+            $('#fb-root').removeClass('go-down-from-scroll');
+        }
+        else {
+            $('#fb-root').addClass('go-down-from-scroll');
+            $('#fb-root').removeClass('go-up-from-scroll');
+        }
+    });
+
 })(jQuery);

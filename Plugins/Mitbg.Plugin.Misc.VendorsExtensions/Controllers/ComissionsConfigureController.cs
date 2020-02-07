@@ -67,8 +67,6 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
         [AdminAntiForgery]
         public IActionResult ComissionsList(ComissionsListSearchModel searchModel)
         {
-
-
             var comissionsQuery = _vendorComissionsRep.Table;
 
             if (searchModel.VendorId > 0)

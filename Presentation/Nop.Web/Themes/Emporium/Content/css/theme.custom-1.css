@@ -265,6 +265,7 @@ input[type="checkbox"]:checked + label:before,
 .eu-cookie-bar-notification button,
 .login-form-in-header .login-button,
 .category-navigation-list-wrapper:hover .category-navigation-title,
+.category-navigation-list-wrapper.menuItemsAreClickable.opened .category-navigation-title,
 .newsletter-email .newsletter-subscribe-button,
 .home-page-polls .poll .buttons input,
 .contact-vendor-button,
@@ -312,22 +313,17 @@ input[type="checkbox"]:checked + label:before,
     background-color: #f5191a;
   }
 }
-.ribbon-position:first-of-type {
-        z-index: 2;
+.sale-of-the-day-offer { background-image: url('https://localhost:44389/images/default-image.png'); }.payment-details{
+     display: inline-block;
 }
 
-.ribbon-position + .ribbon-position {
-        top: 40px;
+.payment-logo {
+     display: inline-block;
+     vertical-align: middle;
+     margin: 0 2% 0 0;
 }
 
-.cart td, .data-table td, .forums-table-section td{
-  padding: 10px
-}
-
-.advantages-item img {
- width:100px;
-}
-
-.item-box .old-price+.actual-price, .item-box .actual-price+.tax-shipping-info{
-   display: block;
+.pay-options img {
+margin: 0 -15px;
+max-width:100%;
 }

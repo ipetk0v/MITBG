@@ -1,0 +1,532 @@
+﻿@model TopicModel
+@using Nop.Core.Domain.Seo
+@inject Nop.Core.IWebHelper webHelper
+@inject SeoSettings seoSettings
+@{
+    var isPopup = ViewBag.IsPopup;
+    if (isPopup == null || isPopup == false)
+    {
+        Layout = "_Root";
+    }
+
+    if (!Model.IsPasswordProtected)
+    {
+        //title
+        Html.AddTitleParts(!string.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Title);
+        //meta
+        Html.AddMetaDescriptionParts(Model.MetaDescription);
+        Html.AddMetaKeywordParts(Model.MetaKeywords);
+    }
+
+    if (seoSettings.CanonicalUrlsEnabled)
+    {
+        var topicUrl = Url.RouteUrl("Topic", new { SeName = Model.SeName }, webHelper.CurrentRequestProtocol).ToLowerInvariant();
+        Html.AddCanonicalUrlParts(topicUrl, seoSettings.QueryStringInCanonicalUrlsEnabled);
+    }
+
+    //page class
+    Html.AppendPageCssClassParts("html-topic--page");
+
+    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/Emporium/Content/assets/css/bootstrap-custom.css","",true);
+    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/Emporium/Content/assets/css/slick.css", "", true);
+    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/Emporium/Content/assets/css/slick-theme.css", "", true);
+    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/Emporium/Content/assets/css/lity.min.css", "", true);
+    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/Emporium/Content/assets/css/fontawesome-all.min.css", "", true);
+    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/Emporium/Content/assets/css/web.css", "", true);
+    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/Emporium/Content/assets/css/color-1.css", "", true);
+
+
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/Emporium/Content/assets/js/popper.min.js", "", true, true);
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/Emporium/Content/assets/js/bootstrap.min.js", "", true, true);
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/Emporium/Content/assets/js/slick.min.js", "", true, true);
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/Emporium/Content/assets/js/waypoints.min.js", "", true, true);
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/Emporium/Content/assets/js/jquery.counterup.js", "", true, true);
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/Emporium/Content/assets/js/lity.min.js", "", true, true);
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/Emporium/Content/assets/js/main.js", "", true, true);
+}
+
+<style>
+    .master-wrapper-content {
+        padding:0;
+    }
+
+    .custom-row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px
+    }
+
+    p {
+        font-size:16px;
+    }
+</style>
+
+<div id="custom-body">
+    <!-- Start Header -->
+    <section id="slide" class="slide background-withcolor">
+        <div class="content-bottom">
+            <div class="container">
+                <div class="custom-row align-items-center">
+                    <div class="col-md-6">
+                        <p class="mb-0">Стани MIT.BG</p>
+                        <h1>партньор</h1>
+                        <p>
+                            Продавай чрез платформата MIT.BG. Регистрирай се като търговец и повиши продажбите си, само чрез няколко лесни стъпки.
+                        </p>
+                        <a href="/vendor/apply" class="btn btn-primary btn-white shadow btn-theme"><span>Регистрирай се</span></a>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="~/Themes/Emporium/Content/assets/img/OKR0RO1.png" class="img-fluid d-block mx-auto" alt="mit.bg laptop">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Header -->
+    <!-- Start Boxes -->
+    <section id="boxes" class="boxes padding-100">
+        <div class="container">
+            <div class="custom-row">
+                <div class="col-md-3 col-12">
+                    <div class="box-fox" style="height: 100%;">
+                        <div class="icon">
+                            <span class="lnr">1</span>
+                        </div>
+                        <div class="space-20"></div>
+                        <h4>Регистрирай се</h4>
+                        <div class="space-15"></div>
+                        <p>Направи регистрация в сайта, с имейл който ще използваш за получаване на известия.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="box-fox" style="height: 100%;">
+                        <div class="icon">
+                            <span class="lnr">2</span>
+                        </div>
+                        <div class="space-20"></div>
+                        <h4>Кандидатствай</h4>
+                        <div class="space-15"></div>
+                        <p>Попълни формата с юридическите данни на фирмата, които са необходими за създаване на договор.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="box-fox" style="height: 100%;">
+                        <div class="icon">
+                            <span class="lnr">3</span>
+                        </div>
+                        <div class="space-20"></div>
+                        <h4>Договор</h4>
+                        <div class="space-15"></div>
+                        <p>Ще ти изпратим договор и общи условия за работа, в който договор са описани всички права и задължения.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12">
+                    <div class="box-fox" style="height: 100%;">
+                        <div class="icon">
+                            <span class="lnr">4</span>
+                        </div>
+                        <div class="space-20"></div>
+                        <h4>Качи продукти</h4>
+                        <div class="space-15"></div>
+                        <p>Качване на продуктите в платформата с един от възможните начини - ръчно, XML, API.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Boxes -->
+    <!-- Start Why Us -->
+    <section id="about" class="why-us padding-100 background-fullwidth background-fixed "
+             style="background-image: url(/Themes/Emporium/Content/assets/img/gray-bg.jpg);">
+        <div class="container">
+            <div class="custom-row align-items-center">
+                <div class="col-md-6 text-center">
+                    <img src="~/Themes/Emporium/Content/assets/img/OC3JAY0.png" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-6">
+                    <h3>Продавай лесно с нас</h3>
+                    <p>Защо да избереш MIT.BG за твой партньор ? С какво може да ти бъдем полезни ?</p>
+                    <div class="space-50"></div>
+                    <div class="custom-row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="why-us-icon">
+                                <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/code.svg" class="lnr" />
+
+                                <p>
+                                    MIT.BG е реномиран домейн с над 20+ годишна история. Утвърден на пазара и с добри позиции в Google.
+                                </p>
+                            </div>
+                            <div class="space-25"></div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="why-us-icon">
+                                <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/screen.svg" class="lnr" />
+                                <p>
+                                    Админ платформата е подходяща за хора без опит и не се изисква специални умения за работа с нея.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space-25"></div>
+                    </div>
+                    <div class="custom-row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="why-us-icon">
+                                <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/rocket.svg" class="lnr" />
+                                <p>
+                                    В екипа ни има Маркетинг специалисти, Програмисти, SEO експерти, които ще се грижат за твоите продажби.
+                                </p>
+                            </div>
+                            <div class="space-25"></div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="why-us-icon">
+                                <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/select.svg" class="lnr" />
+                                <p>
+                                    Системата е напълно автоматизирана. Има възможност за автоматично качване на продукти. Автоматично получавате известие за нова поръчка и др.
+                                </p>
+                            </div>
+                            <div class="space-25"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Why Us -->
+    <!-- Start Main Features -->
+    <section id="main_features" class="main-features padding-100">
+        <div class="container">
+            <div class="custom-row">
+                <div class="text-center col-12 section-title">
+                    <h3>
+                        Нашите
+                        <span>Предимства</span>
+                    </h3>
+                    <div class="space-25"></div>
+                    <p>С какво ние се различаваме и ни прави уникални ?</p>
+                    <div class="space-25"></div>
+                </div>
+            </div>
+            <div class="custom-row align-items-center">
+                <div class="col-lg-3 text-lg-right left-side">
+                    <div class="one-feature one">
+                        <h5>Иновативен дизайн</h5>
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/laptop-phone.svg" class="lnr" />
+                        <p>Сайта разполага с иновативен дизайн. Подходящ за всички видове устройства.</p>
+                    </div>
+                    <div class="one-feature">
+                        <h5>Админ панел</h5>
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/screen.svg" class="lnr" />
+                        <p>Лесен за работа административен панел. Подходящ за хора без опит.</p>
+                    </div>
+                    <div class="one-feature">
+                        <h5>Поддръжка и помощ</h5>
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/cog.svg" class="lnr" />
+                        <p>Поддръжка и помощ при качване на продукти и обработване на поръчки.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="features-circle">
+                        <div class="circle-svg" style="top:0;">
+                            <svg version="1.1" id="features_circle" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="500px"
+                                 height="500px" viewBox="0 0 543 542.953" enable-background="new 0 0 543 542.953"
+                                 xml:space="preserve">
+                            <g>
+                            <circle fill="none" stroke="#" stroke-width="3" stroke-miterlimit="10"
+                                    stroke-dasharray="11.9474,11.9474" cx="271.5" cy="271.516" r="270" />
+
+
+
+                            <animateTransform attributeName="transform" type="rotate" from="0" to="360"
+                                              dur="50s" repeatCount="indefinite"></animateTransform>
+                                </g>
+                            </svg>
+                        </div>
+                        <img src="~/Themes/Emporium/Content/assets/img/mit.png" class="img-fluid"
+                             alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 right-side">
+                    <div class="one-feature">
+                        <h5>Импортиране</h5>
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/upload.svg" class="lnr" />
+                        <p>Възможност за импортиране на продукти от Excel, Xml и API</p>
+                    </div>
+                    <div class="one-feature">
+                        <h5>Комисионни</h5>
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/cart.svg" class="lnr" />
+                        <p>Ниски комисионни, съобразени с категорията и броя продукти.</p>
+                    </div>
+                    <div class="one-feature">
+                        <h5>Без лимити</h5>
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/database.svg" class="lnr" />
+                        <p>Без лимити в броя качени продукти или извършени продажби.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Main Features -->
+    <!-- Start Other Features -->
+    <section id="other_features" class="other-features padding-100 background-withcolor">
+        <div class="container-fluid">
+            <div class="custom-row">
+                <div class="text-center col-12 section-title">
+                    <h3>
+                        Други
+                        <span class="white"> предимства </span>
+                    </h3>
+                    <div class="space-25"></div>
+                    <p>Какво още е хубаво да знаеш за нашата платформа и начин на работа ?</p>
+                    <div class="space-50"></div>
+                </div>
+            </div>
+            <div class="custom-row align-items-center">
+                <div class="col-12">
+                    <div class="other-features-slider">
+                        <div class="item text-center">
+                            <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/diamond.svg" class="lnr" />
+                            <h4>Отчитане на комисионни</h4>
+                            <p>Комисионна се дължи, само при завършена поръчка, когато клиента е взел продукта от доставчика.</p>
+                        </div>
+                        <div class="item text-center">
+                            <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/chart-bars.svg" class="lnr" />
+                            <h4>Статистика</h4>
+                            <p>Отчет за ниски наличности в системата, най - продавани продукти и други полезни статистики.</p>
+                        </div>
+                        <div class="item text-center">
+                            <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/earth.svg" class="lnr" />
+                            <h4>Куриерска фирма</h4>
+                            <p>Доставката се организира от търговеца и сумата от Наложен Платеж се изплаща директно към него.</p>
+                        </div>
+                        <div class="item text-center">
+                            <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/laptop-phone.svg" class="lnr" />
+                            <h4>Картови плащания</h4>
+                            <p>При избор на клиента за картово плащане, то минава през системата на Epay, след което се изплаща на търговеца до 3 работни дни.</p>
+                        </div>
+                        <div class="item text-center">
+                            <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/cog.svg" class="lnr" />
+                            <h4>Опции</h4>
+                            <p>В системата има опции за безплатна доставка, следене на количества, оформяне на HTML описание и други полезни опции.</p>
+                        </div>
+                        <div class="item text-center">
+                            <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/phone-handset.svg" class="lnr" />
+                            <h4>Помощ и съдействие</h4>
+                            <p>Нашия екип ще Ви помага и съдейства с качване на продукти, реализиране на продажби и организация в изпълнението на поръчката.</p>
+                        </div>
+                        <div class="item text-center">
+                            <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/link.svg" class="lnr" />
+                            <h4>Партньори</h4>
+                            <p>Партньори сме с Pazaruvaj.com, ShopMania.bg и CheckPrice.bg</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Other Features  -->
+    <!-- Start FAQ -->
+    <section id="faq" class="faq padding-100">
+        <div class="container">
+            <div class="custom-row">
+                <div class="text-center col-12 section-title" @*data-aos="fade-zoom-in" *@>
+                    <h3>
+                        Често задавани
+                        <span> Въпроси</span>
+                    </h3>
+                    <div class="space-25"></div>
+                    <p>Ако все още имате въпрос, на който не сте си отговорили, може да прочетете по - долу или да се свържете с нас.</p>
+                    <div class="space-50"></div>
+                </div>
+            </div>
+            <div class="custom-row align-items-center">
+                <!--align-items-center-->
+                <div class="col-md-8 col-12">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="card shadow">
+                            <div class="card-header" id="heading_1">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse"
+                                            data-target="#collapse_1" aria-expanded="true" aria-controls="collapse_1">
+                                        Мога ли да продавам, ако нямам регистрирана фирма ?
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapse_1" class="collapse show" aria-labelledby="heading_1"
+                                 data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Не! За да работите с нас е необходимо да имате регистрирано юридическо дружество.
+                                    <br> Необходимо е да сте оторизиран търговец и да продавате нови продукти с гаранция.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header" id="heading_2">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                            data-target="#collapse_2" aria-expanded="false" aria-controls="collapse_2">
+                                        Кога се начислява комисионна ?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapse_2" class="collapse" aria-labelledby="heading_2"
+                                 data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Комисионната се начислява, само при завършена поръчка, като такава се счита продукт, който е изпратен и клиента е получил успешно.
+                                    <br> Ако дадения продукт, бъде отказан от клиент или върнат поради някаква причина, то търговеца НЕ дължи комисионна.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header" id="heading_3">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                            data-target="#collapse_3" aria-expanded="false" aria-controls="collapse_3">
+                                        С коя куриерска фирма работите ?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapse_3" class="collapse" aria-labelledby="heading_3"
+                                 data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Търговеца сам организира и изпраща продуктите си, като е задължен да ни предостави и вкара в системата товарителницата за проследяване на продукта.
+                                    <br> Ако търговеца използва наложен платеж или пощенски паричен превод, то сумата ще бъде усвоена от него, а на края на месеца ще му бъде фактурирана комисионната.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header" id="heading_4">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                            data-target="#collapse_4" aria-expanded="false" aria-controls="collapse_4">
+                                        Какъв е периода на отчитане на поръчките ?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapse_4" class="collapse" aria-labelledby="heading_4"
+                                 data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    В края на всеки календарен месец сумираме и събираме всички Завършени поръчки.
+                                    <br> Пресмятаме комисионната за дадения отчетен период и изпращаме фактура.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <img src="~/Themes/Emporium/Content/assets/img/2362748.png" class="img-fluid b-block mx-auto" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End FAQ  -->
+    <!-- Start Fun Facts -->
+    <section id="facts" class="fun-facts padding-100 background-withcolor">
+        <div class="container">
+            <div class="custom-row">
+                <div class="text-center col-12 section-title">
+                    <h3>
+                        <span class="white">Статистика</span>
+                    </h3>
+                    <div class="space-25"></div>
+                    <p>Малка част от статистиката, която сме генерирали до момента.</p>
+                    <div class="space-50"></div>
+                </div>
+            </div>
+            <div class="custom-row align-items-center">
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="fact-box text-center">
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/sort-amount-asc.svg" class="lnr" />
+                        <h5>1000</h5>
+                        <h6>Категории в сайта</h6>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="fact-box text-center">
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/briefcase.svg" class="lnr" />
+                        <h5>50</h5>
+                        <h6>Търговеца</h6>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="fact-box text-center">
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/heart.svg" class="lnr" />
+                        <h5>2000</h5>
+                        <h6>Facebook последователя</h6>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="fact-box text-center">
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/star.svg" class="lnr" />
+                        <h5>20</h5>
+                        <h6>Години опит</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Fun Facts  -->
+    <!-- Start Download App -->
+    <section id="download_app" class="download-app pb-0 background-fullwidth background-fixed"
+             style="background-image: url(/Themes/Emporium/Content/assets/img/gray-bg.jpg);">
+        <div class="container">
+            <div class="custom-row align-items-center">
+                <div class="col-lg-6 col-12">
+                    <h2>Продавай в MIT.BG</h2>
+                    <p>Може да започнеш да продаваш, чрез няколко лесно стъпки.</p>
+                    <a href="/vendor/apply" class="btn btn-primary shadow btn-colord btn-theme" tabindex="0" style="padding-left:50px;">
+                        <span>Регистрирай се</span>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <img src="~/Themes/Emporium/Content/assets/img/OC3GVI0.png" class="img-fluid d-block mx-auto" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Download App -->
+    <!-- Start  Git in touch -->
+    <section id="git_in_touch" class="git-in-touch padding-100">
+        <div class="container">
+            <div class="custom-row">
+                <div class="text-center col-12 section-title">
+                    <h3>
+
+                        <span> Свържи </span> се с нас
+                    </h3>
+                    <div class="space-25"></div>
+                    <p>Ние ще отговорим на твоите въпроси. Не се колебай да ни потърсиш.</p>
+                    <div class="space-50"></div>
+                </div>
+            </div>
+            <div class="space-50"></div>
+            <div class="custom-row contact-info">
+                <div class="col-md-4 col-12 text-center">
+                    <div class="info-box">
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/map-marker.svg" class="lnr" />
+                        <a href="http://maps.google.com/?q=гр. София, ул. „проф. Рашо Рашев“ 4, етаж 2 офис 16 1700 Студентски Комплекс, София">гр. София, ул. „проф. Рашо Рашев“ 4, етаж 2 офис 16 1700 Студентски Комплекс, София</a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12 text-center">
+                    <div class="info-box">
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/phone.svg" class="lnr" />
+                        <a href="tel:+359877666438">+359 877 666 438</a>
+                        <a href="tel:+359883688679">+359 883 688 679</a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12 text-center">
+                    <div class="info-box">
+                        <img src="~/Themes/Emporium/Content/assets/linearicons/SVG/envelope.svg" class="lnr" />
+                        <a href="mailto:office@mit.bg">office@mit.bg</a>
+                        <a href="mailto:support@mit.bg">support@mit.bg</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -27,6 +27,7 @@ using Nop.Services.Orders;
 using Nop.Services.Security;
 using Nop.Services.Seo;
 using Nop.Services.Shipping;
+using Nop.Services.Vendors;
 using Nop.Web.Areas.Admin.Factories;
 using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
 using Nop.Web.Areas.Admin.Models.Catalog;
@@ -70,6 +71,7 @@ namespace Nop.Web.Areas.Admin.Controllers
         private readonly ISpecificationAttributeService _specificationAttributeService;
         private readonly IUrlRecordService _urlRecordService;
         private readonly IWorkContext _workContext;
+        private readonly IVendorService _vendorService;
         private readonly VendorSettings _vendorSettings;
 
         #endregion
@@ -106,7 +108,8 @@ namespace Nop.Web.Areas.Admin.Controllers
             ISpecificationAttributeService specificationAttributeService,
             IUrlRecordService urlRecordService,
             IWorkContext workContext,
-            VendorSettings vendorSettings)
+            VendorSettings vendorSettings,
+            IVendorService vendorService)
         {
             _aclService = aclService;
             _backInStockSubscriptionService = backInStockSubscriptionService;
@@ -139,6 +142,7 @@ namespace Nop.Web.Areas.Admin.Controllers
             _urlRecordService = urlRecordService;
             _workContext = workContext;
             _vendorSettings = vendorSettings;
+            _vendorService = vendorService;
         }
 
         #endregion
@@ -824,7 +828,21 @@ namespace Nop.Web.Areas.Admin.Controllers
                 product.VisibleIndividually = true;
                 product.MarkAsNew = true;
                 product.MarkAsNewEndDateTimeUtc = DateTime.Now.AddDays(14);
+                product.AllowCustomerReviews = true;
+                product.IsShipEnabled = true;
                 _productService.InsertProduct(product);
+
+                if (product.WarehouseId == 0)
+                {
+                    var vendorName = _vendorService.GetVendorById(product.VendorId)?.Name;
+                    var warehouse = _shippingService.GetAllWarehouses().FirstOrDefault(x => x.Name == vendorName);
+
+                    if (warehouse != null)
+                    {
+                        product.WarehouseId = warehouse.Id;
+                        _productService.UpdateProduct(product);
+                    }
+                }
 
                 //search engine name
                 model.SeName = _urlRecordService.ValidateSeName(product, model.SeName, product.Name, true);
@@ -943,9 +961,6 @@ namespace Nop.Web.Areas.Admin.Controllers
                 var previousStockQuantity = product.StockQuantity;
                 var previousWarehouseId = product.WarehouseId;
 
-                // hardcode everytime
-                product.IsShipEnabled = true;
-
                 //price Ivan
                 var priceIsWithDiscounted = product.Price > model.Price;
                 if (priceIsWithDiscounted)
@@ -960,6 +975,20 @@ namespace Nop.Web.Areas.Admin.Controllers
                 product.UpdatedOnUtc = DateTime.UtcNow;
                 product.LowStockActivityId = (int)LowStockActivity.Unpublish;
                 product.VisibleIndividually = true;
+                product.AllowCustomerReviews = true;
+                product.IsShipEnabled = true;
+
+                if (product.WarehouseId == 0)
+                {
+                    var vendorName = _vendorService.GetVendorById(product.VendorId)?.Name;
+                    var warehouse = _shippingService.GetAllWarehouses().FirstOrDefault(x => x.Name == vendorName);
+
+                    if (warehouse != null)
+                    {
+                        product.WarehouseId = warehouse.Id;
+                    }
+                }
+
                 _productService.UpdateProduct(product);
 
                 //search engine name

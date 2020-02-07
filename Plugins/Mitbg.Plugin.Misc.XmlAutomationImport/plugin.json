@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Mitbg",
+  "FriendlyName": "AutomationXmlImport",
+  "SystemName": "Mitbg.Plugin.Misc.XmlAutomationImport",
+  "Version": "1.0",
+  "SupportedVersions": [ "4.20" ],
+  "Author": "Ivan Petkov",
+  "DisplayOrder": 1,
+  "FileName": "Mitbg.Plugin.Misc.XmlAutomationImport.dll",
+  "Description": "Xml Automation import"
+}

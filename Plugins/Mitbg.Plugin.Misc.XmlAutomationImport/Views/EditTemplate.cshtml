@@ -1,0 +1,43 @@
+@model Mitbg.Plugin.Misc.XmlAutomationImport.Models.XmlAutomationImportTemplateCreateEditModel
+
+@{
+    Layout = "_AdminLayout";
+    //page title
+    ViewBag.Title = T("XmlAutomationImportTemplate.Editor.Edit").Text;
+    //active menu item (system name)
+    Html.SetActiveMenuItemSystemName("XmlAutomationImport");
+}
+
+<form asp-controller="XmlAutomationImport" asp-action="Edit" method="post">
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("XmlAutomationImportTemplate.Editor.Edit")
+            <small>
+                <i class="fa fa-arrow-circle-left"></i>
+                <a asp-action="TemplateList">@T("XmlAutomationImportTemplate.Editor.BackToList")</a>
+            </small>
+        </h1>
+        <div class="pull-right">
+            <button type="submit" name="xmlexecute" class="btn bg-green">
+                <i class="fa fa-floppy-o"></i>
+                @T("XmlAutomationImport.Editor.Execute")
+            </button>
+            <button type="submit" name="save" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.Save")
+            </button>
+            <button type="submit" name="save-continue" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.SaveContinue")
+            </button>
+            <span id="xmlait-comission-delete" class="btn bg-red">
+                <i class="fa fa-trash-o"></i>
+                @T("Admin.Common.Delete")
+            </span>
+        </div>
+    </div>
+    @await Html.PartialAsync("~/Plugins/Mitbg.Plugin.Misc.XmlAutomationImport/Views/XmlAutomationImport/_CreateOrUpdate.cshtml", Model)
+</form>
+<nop-delete-confirmation asp-model-id="@Model.Id" asp-button-id="xmlait-delete" />
+@*<nop-action-confirmation asp-model-id="@Model.Id" asp-button-id="xmlexecute" />*@
+
