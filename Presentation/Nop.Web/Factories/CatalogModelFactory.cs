@@ -140,6 +140,15 @@ namespace Nop.Web.Factories
         #endregion
 
         #region Common
+        protected virtual string ExcludeQueryStringParams(string url, IWebHelper webHelper)
+        {
+            //comma separated list of parameters to exclude
+            const string excludedQueryStringParams = "pagenumber";
+            var excludedQueryStringParamsSplitted = excludedQueryStringParams.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var exclude in excludedQueryStringParamsSplitted)
+                url = webHelper.RemoveQueryString(url, exclude);
+            return url;
+        }
 
         /// <summary>
         /// Prepare sorting options
@@ -339,6 +348,7 @@ namespace Nop.Web.Factories
                 MetaDescription = _localizationService.GetLocalized(category, x => x.MetaDescription),
                 MetaTitle = _localizationService.GetLocalized(category, x => x.MetaTitle),
                 SeName = _urlRecordService.GetSeName(category),
+                PageNumber = command.PageNumber
             };
 
             //sorting
@@ -471,6 +481,8 @@ namespace Nop.Web.Factories
             }
             //products
             IList<int> alreadyFilteredSpecOptionIds = model.PagingFilteringContext.SpecificationFilter.GetAlreadyFilteredSpecOptionIds(_webHelper);
+            int alreadyManufacturerId = model.PagingFilteringContext.ManufacturerFilter.GetAlreadyManufacturerIds(_webHelper);
+
             var products = _productService.SearchProducts(out IList<int> filterableSpecificationAttributeOptionIds,
                 true,
                 categoryIds: categoryIds,
@@ -480,17 +492,38 @@ namespace Nop.Web.Factories
                 priceMin: minPriceConverted,
                 priceMax: maxPriceConverted,
                 filteredSpecs: alreadyFilteredSpecOptionIds,
+                manufacturerId: alreadyManufacturerId,
                 orderBy: (ProductSortingEnum)command.OrderBy,
                 pageIndex: command.PageNumber - 1,
                 pageSize: command.PageSize);
+            
             model.Products = _productModelFactory.PrepareProductOverviewModels(products).ToList();
 
             model.PagingFilteringContext.LoadPagedList(products);
 
-            //specs
-            model.PagingFilteringContext.SpecificationFilter.PrepareSpecsFilters(alreadyFilteredSpecOptionIds,
-                filterableSpecificationAttributeOptionIds?.ToArray(),
-                _specificationAttributeService, _localizationService, _webHelper, _workContext, _cacheManager);
+            if (_categoryService.GetAllCategoriesByParentCategoryId(category.Id).Count == 0)
+            {
+                //specs
+                model.PagingFilteringContext.SpecificationFilter.PrepareSpecsFilters(alreadyFilteredSpecOptionIds,
+                    filterableSpecificationAttributeOptionIds?.ToArray(),
+                    _specificationAttributeService, _localizationService, _webHelper, _workContext, _cacheManager);
+            }
+
+            var productIds = products.Select(x => x.Id).ToArray();
+            var filterableManufacturerIds = _manufacturerService
+                .GetProductManufacturerIds(productIds)
+                .SelectMany(x => x.Value)
+                .Distinct()
+                .ToArray();
+
+            model.PagingFilteringContext.ManufacturerFilter.PrepareManufacturerFilters(
+                alreadyManufacturerId,
+                filterableManufacturerIds,
+                _manufacturerService, _localizationService, _webHelper, _workContext, _cacheManager);
+
+            var removeFilterUrl = _webHelper.RemoveQueryString(_webHelper.GetThisPageUrl(true), "brand");
+            removeFilterUrl = _webHelper.RemoveQueryString(removeFilterUrl, "specs");
+            model.PagingFilteringContext.RemoveFilterUrl = ExcludeQueryStringParams(removeFilterUrl, _webHelper);
 
             return model;
         }
@@ -733,7 +766,8 @@ namespace Nop.Web.Factories
                 string.Join(",", _workContext.CurrentCustomer.GetCustomerRoleIds()),
                 _storeContext.CurrentStore.Id);
 
-            return _cacheManager.Get(cacheKey, () => {
+            return _cacheManager.Get(cacheKey, () =>
+            {
 
                 var categories = PrepareCategorySimpleModels();
 

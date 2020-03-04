@@ -78,6 +78,13 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
                 return AccessDeniedView();
 
             var model = new VendorsComissionSearchModel();
+
+            var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+            model.DateFrom = firstDayOfMonth;
+            model.DateTo = lastDayOfMonth;
+
             return View("~/Plugins/Mitbg.Plugin.Misc.VendorsExtensions/Views/VendorsList.cshtml", model);
         }
 
@@ -115,15 +122,25 @@ namespace Mitbg.Plugin.Misc.VendorsExtensions.Controllers
                 : (DateTime?)_dateTimeHelper.ConvertToUtcTime(searchModel.DateTo.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
 
             if (startDateValue.HasValue)
-                shipmentQuery = shipmentQuery.Where(w => w.Order.CreatedOnUtc >= startDateValue);
+                //shipmentQuery = shipmentQuery.Where(w => w.Order.CreatedOnUtc >= startDateValue);
+                shipmentQuery = shipmentQuery
+                    .Where(w =>
+                    w.Order.Deleted == false &&
+                    w.Order.OrderStatus == OrderStatus.Complete &&
+                    w.Order.PaidDateUtc >= startDateValue);
 
             if (endDateValue.HasValue)
-                shipmentQuery = shipmentQuery.Where(w => w.Order.CreatedOnUtc <= endDateValue);
+                shipmentQuery = shipmentQuery
+                    .Where(w =>
+                        w.Order.Deleted == false &&
+                        w.Order.OrderStatus == OrderStatus.Complete &&
+                        w.Order.PaidDateUtc <= endDateValue);
+            //shipmentQuery = shipmentQuery.Where(w => w.Order.CreatedOnUtc <= endDateValue);
 
-            var shipments = shipmentQuery.Where(a => !a.Order.Deleted && (a.AdminComment == "1" || a.AdminComment == "2")).ToList();
+            var shipments = shipmentQuery.Where(a => !a.Order.Deleted && a.Order.OrderStatus == OrderStatus.Complete && (a.AdminComment == "1" || a.AdminComment == "2")).ToList();
 
             //transaction
-            var shipmentsForTrans = shipmentQuery.Where(a => !a.Order.Deleted && (a.AdminComment == "1")).ToList();
+            var shipmentsForTrans = shipmentQuery.Where(a => !a.Order.Deleted && a.Order.OrderStatus == OrderStatus.Complete && (a.AdminComment == "1")).ToList();
 
             var trackNumbers = shipments.Select(x => x.TrackingNumber);
             var shipmentTasks = _shipmentTasksRep.Table.Where(w => trackNumbers.Contains(w.BarCode)).GroupBy(w => w.VendorId).ToDictionary(w => w.Key, w => w);

@@ -77,6 +77,28 @@ namespace Nop.Services.Catalog
             _eventPublisher.EntityDeleted(manufacturer);
         }
 
+        public virtual IList<Manufacturer> GetManufacturerByIds(int[] manufacturerIds)
+        {
+            if (manufacturerIds == null || manufacturerIds.Length == 0)
+                return new List<Manufacturer>();
+
+            var query = from sao in _manufacturerRepository.Table
+                where manufacturerIds.Contains(sao.Id)
+                select sao;
+
+            var manufacturers = query.ToList();
+            //sort by passed identifiers
+            var sortedManufacturer = new List<Manufacturer>();
+            foreach (var id in manufacturerIds)
+            {
+                var sao = manufacturers.Find(x => x.Id == id);
+                if (sao != null)
+                    sortedManufacturer.Add(sao);
+            }
+
+            return sortedManufacturer;
+        }
+
         /// <summary>
         /// Gets all manufacturers
         /// </summary>

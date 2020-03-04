@@ -77,8 +77,10 @@ namespace Nop.Services.Shipping.Tracking
         /// <returns>URL of a tracking page.</returns>
         public virtual string GetUrl(string trackingNumber)
         {
-            var tracker = GetTrackerByTrackingNumber(trackingNumber);
-            return tracker?.GetUrl(trackingNumber);
+            //var tracker = GetTrackerByTrackingNumber(trackingNumber);
+            //return tracker?.GetUrl(trackingNumber);
+            var trackerUrl = "http://parcelsapp.com/en/tracking/";
+            return $"{trackerUrl}{trackingNumber}";
         }
 
         /// <summary>

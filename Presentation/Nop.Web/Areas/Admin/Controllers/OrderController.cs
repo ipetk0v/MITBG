@@ -1052,6 +1052,9 @@ namespace Nop.Web.Areas.Admin.Controllers
                 order.OrderStatusId = model.OrderStatusId;
                 _orderService.UpdateOrder(order);
 
+                _orderProcessingService.MarkOrderAsPaid(order);
+                LogEditOrder(order.Id);
+
                 //add a note
                 order.OrderNotes.Add(new OrderNote
                 {

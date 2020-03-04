@@ -169,6 +169,7 @@ namespace Nop.Web.Infrastructure.Cache
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerNavigationPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductSpecsPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.SpecsFilterPrefixCacheKey);
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.TopicPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductBreadcrumbPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.CategoryAllPrefixCacheKey);
@@ -185,6 +186,7 @@ namespace Nop.Web.Infrastructure.Cache
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerNavigationPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductSpecsPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.SpecsFilterPrefixCacheKey);
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.TopicPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductBreadcrumbPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.CategoryAllPrefixCacheKey);
@@ -201,6 +203,7 @@ namespace Nop.Web.Infrastructure.Cache
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerNavigationPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductSpecsPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.SpecsFilterPrefixCacheKey);
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.TopicPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductBreadcrumbPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.CategoryAllPrefixCacheKey);
@@ -263,18 +266,21 @@ namespace Nop.Web.Infrastructure.Cache
         public void HandleEvent(EntityInsertedEvent<Manufacturer> eventMessage)
         {
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerNavigationPrefixCacheKey);
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.SitemapPrefixCacheKey);
 
         }
         public void HandleEvent(EntityUpdatedEvent<Manufacturer> eventMessage)
         {
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerNavigationPrefixCacheKey);
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductManufacturersPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.SitemapPrefixCacheKey);
             _cacheManager.RemoveByPrefix(string.Format(NopModelCacheDefaults.ManufacturerPicturePrefixCacheKeyById, eventMessage.Entity.Id));
         }
         public void HandleEvent(EntityDeletedEvent<Manufacturer> eventMessage)
         {
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerNavigationPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductManufacturersPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.SitemapPrefixCacheKey);
@@ -283,16 +289,19 @@ namespace Nop.Web.Infrastructure.Cache
         //product manufacturers
         public void HandleEvent(EntityInsertedEvent<ProductManufacturer> eventMessage)
         {
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(string.Format(NopModelCacheDefaults.ProductManufacturersPrefixCacheKeyById, eventMessage.Entity.ProductId));
             _cacheManager.RemoveByPrefix(string.Format(NopModelCacheDefaults.ManufacturerHasFeaturedProductsPrefixCacheKeyById, eventMessage.Entity.ManufacturerId));
         }
         public void HandleEvent(EntityUpdatedEvent<ProductManufacturer> eventMessage)
         {
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(string.Format(NopModelCacheDefaults.ProductManufacturersPrefixCacheKeyById, eventMessage.Entity.ProductId));
             _cacheManager.RemoveByPrefix(string.Format(NopModelCacheDefaults.ManufacturerHasFeaturedProductsPrefixCacheKeyById, eventMessage.Entity.ManufacturerId));
         }
         public void HandleEvent(EntityDeletedEvent<ProductManufacturer> eventMessage)
         {
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(string.Format(NopModelCacheDefaults.ProductManufacturersPrefixCacheKeyById, eventMessage.Entity.ProductId));
             _cacheManager.RemoveByPrefix(string.Format(NopModelCacheDefaults.ManufacturerHasFeaturedProductsPrefixCacheKeyById, eventMessage.Entity.ManufacturerId));
         }
@@ -516,6 +525,7 @@ namespace Nop.Web.Infrastructure.Cache
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductDetailsPicturesPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductDefaultPicturePrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.CategoryPicturePrefixCacheKey);
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerPicturePrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.VendorPicturePrefixCacheKey);
         }
@@ -526,6 +536,7 @@ namespace Nop.Web.Infrastructure.Cache
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductDetailsPicturesPrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ProductDefaultPicturePrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.CategoryPicturePrefixCacheKey);
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerPicturePrefixCacheKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.VendorPicturePrefixCacheKey);
         }
@@ -667,14 +678,17 @@ namespace Nop.Web.Infrastructure.Cache
         }
         public void HandleEvent(EntityInsertedEvent<ManufacturerTemplate> eventMessage)
         {
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerTemplatePrefixCacheKey);
         }
         public void HandleEvent(EntityUpdatedEvent<ManufacturerTemplate> eventMessage)
         {
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerTemplatePrefixCacheKey);
         }
         public void HandleEvent(EntityDeletedEvent<ManufacturerTemplate> eventMessage)
         {
+            _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerFilterModelKey);
             _cacheManager.RemoveByPrefix(NopModelCacheDefaults.ManufacturerTemplatePrefixCacheKey);
         }
         public void HandleEvent(EntityInsertedEvent<ProductTemplate> eventMessage)

@@ -37,6 +37,8 @@ namespace Nop.Services.Catalog
         /// <returns>Manufacturer</returns>
         Manufacturer GetManufacturerById(int manufacturerId);
 
+        IList<Manufacturer> GetManufacturerByIds(int[] manufacturerIds);
+
         /// <summary>
         /// Inserts a manufacturer
         /// </summary>

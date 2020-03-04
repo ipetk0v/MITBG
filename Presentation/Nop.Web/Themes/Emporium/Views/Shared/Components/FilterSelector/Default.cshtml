@@ -1,0 +1,167 @@
+﻿@model CatalogPagingFilteringModel
+
+@using Nop.Core
+
+@inject IWebHelper webHelper
+@inject IWorkContext workContext
+@inject IViewComponentSelector viewComponentSelector
+
+@{
+    var specNotFilteredItemsGroups = Model.SpecificationFilter.NotFilteredItems.GroupBy(x => x.SpecificationAttributeName);
+    var specAlreadyFilteredItemsGroups = Model.SpecificationFilter.AlreadyFilteredItems.GroupBy(x => x.SpecificationAttributeName);
+    var manNotFilteredItemsGroups = Model.ManufacturerFilter.NotFilteredItems.GroupBy(x => x.ManufacturerName);
+    var manAlreadyFilteredItemsGroups = Model.ManufacturerFilter.AlreadyFilteredItems.GroupBy(x => x.ManufacturerName);
+    var selectedItem = Model.PriceRangeFilter.Items.FirstOrDefault(x => x.Selected);
+
+}
+
+@functions{
+
+    public string FormatPriceRangeText(CatalogPagingFilteringModel.PriceRangeFilterItem filterItem)
+    {
+        var rangeText = "";
+        if (string.IsNullOrWhiteSpace(filterItem.From))
+        {
+            rangeText = string.Format(T("Filtering.PriceRangeFilter.Under").Text, $"<span class=\"PriceRange\">{filterItem.To}</span>");
+        }
+        else if (string.IsNullOrWhiteSpace(filterItem.To))
+        {
+            rangeText = string.Format(T("Filtering.PriceRangeFilter.Over").Text, $"<span class=\"PriceRange\">{filterItem.From}</span>");
+        }
+        else
+        {
+            rangeText = $"<span class=\"PriceRange\">{filterItem.From}</span> - <span class=\"PriceRange\">{filterItem.To}</span>";
+        }
+        return rangeText;
+    }
+}
+
+<div class="nopAjaxFilters7Spikes">
+    <div class="filtersPanel">
+        @if (Model.SpecificationFilter.AlreadyFilteredItems.Any() || Model.ManufacturerFilter.AlreadyFilteredItems.Any())
+        {
+            <div class="block filter-block selected-options">
+                <div class="title">
+                    <a class="toggleControl">@T("SevenSpikes.NopAjaxFilters.SelectedOptions.PanelTitle")</a>
+                </div>
+                <div class="filtersTitlePanel">
+                    <a class="clearFilterOptionsAll">@T("SevenSpikes.NopAjaxFilters.Client.Common.ClearAll")</a>
+                </div>
+                <div class="filtersGroupPanel">
+                    @foreach (var af in specAlreadyFilteredItemsGroups)
+                    {
+                        var alreadyGroupList = af.ToList();
+                        <ul class="selected-options-list">
+                            <li>
+                                <label>@alreadyGroupList[0].SpecificationAttributeName</label>
+                                @foreach (var spec in alreadyGroupList)
+                                {
+                                    <span onclick="location.href = '@spec.RemoveFilterUrl'" class="option">@spec.SpecificationAttributeOptionName</span>
+                                }
+                            </li>
+                        </ul>
+                    }
+
+                    @foreach (var af in manAlreadyFilteredItemsGroups)
+                    {
+                        var alreadyGroupList = af.ToList();
+                        <ul class="selected-options-list">
+                            <li>
+                                <label>@T("manufacturers")</label>
+                                @foreach (var man in alreadyGroupList)
+                                {
+                                    <span onclick="location.href = '@man.RemoveFilterUrl'" class="option">@man.ManufacturerName</span>
+                                }
+                            </li>
+                        </ul>
+                    }
+                </div>
+            </div>
+            <div class="filtersTitlePanel">
+                <a class="clearFilterOptionsAll" style="" href="@Model.RemoveFilterUrl">@T("SevenSpikes.NopAjaxFilters.Client.Common.ClearAll")</a>
+            </div>
+        }
+        @if (Model.PriceRangeFilter.Enabled)
+        {
+            <div class="block filter-block">
+                <div class="title">
+                    <a class="toggleControl">@T("Filtering.PriceRangeFilter")</a>
+                </div>
+                @if (selectedItem == null)
+                {
+                    var index = 0;
+                    <div class="filtersGroupPanel">
+                        @foreach (var item in Model.PriceRangeFilter.Items)
+                        {
+                            var formatedPriceRangeText = Html.Raw(FormatPriceRangeText(item));
+                            index++;
+                            <ul class="checkbox-list" onclick="location.href = '@item.FilterUrl'">
+                                <li class="checkbox-item">
+                                    <input type="checkbox" id="@index">
+                                    <label class="filter-item-name" for="@index">@(formatedPriceRangeText)</label>
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="filtersGroupPanel">
+                        <ul class="checkbox-list">
+                            <li class="checkbox-item">
+                                <input type="checkbox" checked="checked">
+                                <label class="filter-item-name">@Html.Raw(FormatPriceRangeText(selectedItem))</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="filtersTitlePanel">
+                        <a class="clearFilterOptionsAll" style="" href="@Model.PriceRangeFilter.RemoveFilterUrl">@T("SevenSpikes.NopAjaxFilters.Client.Common.ClearAll")</a>
+                    </div>
+                }
+            </div>
+        }
+        @if (Model.SpecificationFilter.NotFilteredItems.Count > 0)
+        {
+            foreach (var group in specNotFilteredItemsGroups)
+            {
+                var groupList = group.ToList();
+
+                <div class="block filter-block">
+                    <div class="title">
+                        <a class="toggleControl">@groupList[0].SpecificationAttributeName</a>
+                    </div>
+                    <div class="filtersGroupPanel">
+                        @foreach (var spec in groupList)
+                        {
+                            <ul class="checkbox-list" onclick="location.href = '@spec.FilterUrl'">
+                                <li class="checkbox-item">
+                                    <input type="checkbox" id="@spec.SpecificationAttributeOptionName">
+                                    <label class="filter-item-name" for="@spec.SpecificationAttributeOptionName">@spec.SpecificationAttributeOptionName</label>
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                </div>
+            }
+        }
+        @if (Model.ManufacturerFilter.NotFilteredItems.Count > 0)
+        {
+            <div class="block filter-block">
+                <div class="title">
+                    <a class="toggleControl">@T("manufacturers")</a>
+                </div>
+                <div class="filtersGroupPanel">
+                    @foreach (var man in Model.ManufacturerFilter.NotFilteredItems)
+                    {
+                        <ul class="checkbox-list" onclick="location.href = '@man.FilterUrl'">
+                            <li class="checkbox-item">
+                                <input type="checkbox" id="@man.ManufacturerName">
+                                <label class="filter-item-name" for="@man.ManufacturerName">@man.ManufacturerName</label>
+                            </li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

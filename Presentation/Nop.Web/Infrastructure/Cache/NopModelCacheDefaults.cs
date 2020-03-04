@@ -133,6 +133,9 @@
         public static string SpecsFilterModelKey => "Nop.pres.filter.specs-{0}-{1}";
         public static string SpecsFilterPrefixCacheKey => "Nop.pres.filter.specs";
 
+        public static string ManufacturerFilterModelKey => "Nop.pres.filter.manufacturer-{0}-{1}";
+        public static string ManufacturerPrefixCacheKey => "Nop.pres.filter.manufacturer";
+
         /// <summary>
         /// Key for ProductBreadcrumbModel caching
         /// </summary>

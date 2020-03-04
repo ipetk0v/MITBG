@@ -2,6 +2,7 @@
 using System.Linq;
 using Nop.Core;
 using Nop.Core.Domain.Shipping;
+using Nop.Core.Infrastructure;
 using Nop.Plugin.Shipping.FixedByWeightByTotal.Data;
 using Nop.Plugin.Shipping.FixedByWeightByTotal.Services;
 using Nop.Services.Catalog;
@@ -360,8 +361,8 @@ namespace Nop.Plugin.Shipping.FixedByWeightByTotal
             get
             {
                 //uncomment a line below to return a general shipment tracker (finds an appropriate tracker by tracking number)
-                //return new GeneralShipmentTracker(EngineContext.Current.Resolve<ITypeFinder>());
-                return null;
+                return new GeneralShipmentTracker(EngineContext.Current.Resolve<ITypeFinder>());
+                //return null;
             }
         }
 

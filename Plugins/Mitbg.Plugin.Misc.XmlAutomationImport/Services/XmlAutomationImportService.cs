@@ -421,7 +421,7 @@ namespace Mitbg.Plugin.Misc.XmlAutomationImport.Services
                         OrderMaximumQuantity = 1000,
                         CreatedOnUtc = DateTime.UtcNow,
                         UpdatedOnUtc = DateTime.UtcNow,
-                        ProductManufacturers = { !string.IsNullOrEmpty(manufacturer) ? new ProductManufacturer { Manufacturer = _manufacturerRepository.Table.FirstOrDefault(c => c.Name == manufacturer), DisplayOrder = 0 } : null },
+                        ProductManufacturers = { !string.IsNullOrEmpty(manufacturer) ? new ProductManufacturer { Manufacturer = _manufacturerRepository.Table.FirstOrDefault(c => c.Name == manufacturer), DisplayOrder = 0 } : new ProductManufacturer() },
                     };
 
                     _productService.InsertProduct(product);

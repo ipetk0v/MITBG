@@ -1254,6 +1254,78 @@ namespace Nop.Services.Orders
             }
         }
 
+        protected virtual void AddShipment(Order order)
+        {
+            if (order != null)
+            {
+                var orderItems = order.OrderItems;
+
+                Shipment shipment = null;
+                decimal? totalWeight = null;
+                foreach (var orderItem in orderItems)
+                {
+                    //is shippable
+                    if (!orderItem.Product.IsShipEnabled)
+                        continue;
+
+                    //ensure that this product can be shipped (have at least one item to ship)
+                    var maxQtyToAdd = _orderService.GetTotalNumberOfItemsCanBeAddedToShipment(orderItem);
+                    if (maxQtyToAdd <= 0)
+                        continue;
+
+                    var qtyToAdd = orderItem.Quantity;
+                    var warehouseId = orderItem.Product.WarehouseId;
+                    
+                    var orderItemTotalWeight = orderItem.ItemWeight * qtyToAdd;
+                    if (orderItemTotalWeight.HasValue)
+                    {
+                        if (!totalWeight.HasValue)
+                            totalWeight = 0;
+                        totalWeight += orderItemTotalWeight.Value;
+                    }
+
+                    if (shipment == null)
+                    {
+                        shipment = new Shipment
+                        {
+                            OrderId = order.Id,
+                            TrackingNumber = string.Empty,
+                            TotalWeight = null,
+                            ShippedDateUtc = null,
+                            DeliveryDateUtc = null,
+                            AdminComment = string.Empty,
+                            CreatedOnUtc = DateTime.UtcNow
+                        };
+                    }
+
+                    //create a shipment item
+                    var shipmentItem = new ShipmentItem
+                    {
+                        OrderItemId = orderItem.Id,
+                        Quantity = qtyToAdd,
+                        WarehouseId = warehouseId
+                    };
+                    shipment.ShipmentItems.Add(shipmentItem);
+                }
+
+                //if we have at least one item in the shipment, then save it
+                if (shipment != null && shipment.ShipmentItems.Any())
+                {
+                    shipment.TotalWeight = totalWeight;
+                    _shipmentService.InsertShipment(shipment);
+
+                    //add a note
+                    order.OrderNotes.Add(new OrderNote
+                    {
+                        Note = "A shipment has been added automatically",
+                        DisplayToCustomer = false,
+                        CreatedOnUtc = DateTime.UtcNow
+                    });
+                    _orderService.UpdateOrder(order);
+                }
+            }
+        }
+
         /// <summary>
         /// Move shopping cart items to order items
         /// </summary>
@@ -1563,6 +1635,8 @@ namespace Nop.Services.Orders
 
                     //move shopping cart items to order items
                     MoveShoppingCartItemsToOrderItems(details, order);
+
+                    AddShipment(order);
 
                     //discount usage history
                     SaveDiscountUsageHistory(details, order);
@@ -2329,7 +2403,7 @@ namespace Nop.Services.Orders
             if (order == null)
                 throw new ArgumentNullException(nameof(order));
 
-            if (order.OrderStatus == OrderStatus.Cancelled 
+            if (order.OrderStatus == OrderStatus.Cancelled
                 //|| order.OrderStatus == OrderStatus.CancelledVendor
                 || order.OrderStatus == OrderStatus.Pending)
                 return false;

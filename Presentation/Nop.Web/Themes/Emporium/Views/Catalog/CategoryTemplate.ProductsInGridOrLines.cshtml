@@ -22,10 +22,6 @@
     if (seoSettings.CanonicalUrlsEnabled)
     {
         var categoryUrl = Url.RouteUrl("Category", new { SeName = Model.SeName }, webHelper.CurrentRequestProtocol).ToLowerInvariant();
-        if (!categoryUrl.StartsWith("https:"))
-        {
-            categoryUrl = "https:" + categoryUrl;
-        }
         Html.AddCanonicalUrlParts(categoryUrl, seoSettings.QueryStringInCanonicalUrlsEnabled);
     }
 
