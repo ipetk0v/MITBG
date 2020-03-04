@@ -682,7 +682,7 @@ namespace Nop.Web.Framework.UI
             var result = new StringBuilder();
             foreach (var canonicalUrl in _canonicalUrlParts)
             {
-                result.AppendFormat("<link rel=\"canonical\" href=\"{0}\" />", canonicalUrl);
+                result.AppendFormat("<link rel=\"canonical\" href=\"{0}\" />", (canonicalUrl.StartsWith("http") ? canonicalUrl : "https:" + canonicalUrl));
                 result.Append(Environment.NewLine);
             }
             return result.ToString();
