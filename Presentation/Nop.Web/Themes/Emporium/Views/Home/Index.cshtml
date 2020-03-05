@@ -1,7 +1,10 @@
 ﻿@using Nop.Core
+@using Nop.Core.Domain.Seo
 @using Nop.Services.Configuration
 @inject ISettingService settingService
 @inject IStoreContext storeContext
+@inject Nop.Core.IWebHelper webHelper
+@inject SeoSettings seoSettings
 @{
     Layout = "_ColumnsOne";
 
@@ -10,6 +13,12 @@
 
     var homePageProductsCarouselBreakPoints =
         settingService.GetSettingByKey("EmporiumThemeSettings.ResponsiveBreakpointsForHomePageProducts", "", storeContext.CurrentStore.Id, true);
+
+    if (seoSettings.CanonicalUrlsEnabled)
+    {
+        var homePageUrl = Url.RouteUrl("Homepage", new { }, webHelper.CurrentRequestProtocol).ToLowerInvariant();
+        Html.AddCanonicalUrlParts(homePageUrl);
+    }
 }
 
 <input id="home-page-carousel-breakpoints" type="hidden" value="@homePageProductsCarouselBreakPoints" />

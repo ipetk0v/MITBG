@@ -82,7 +82,8 @@
         Model.PagingFilteringContext.SpecificationFilter.AlreadyFilteredItems.Any()
         && Model.PagingFilteringContext.PriceRangeFilter.Items.FirstOrDefault(x => x.Selected) != null ||
         Model.PagingFilteringContext.SpecificationFilter.AlreadyFilteredItems.Count > 1 ||
-        Model.PagingFilteringContext.PriceRangeFilter.Items.FirstOrDefault(x => x.Selected) != null)
+        Model.PagingFilteringContext.PriceRangeFilter.Items.FirstOrDefault(x => x.Selected) != null ||
+        Model.SubCategories.Any() && Model.PagingFilteringContext.ManufacturerFilter.AlreadyFilteredItems.Any())
     {
         Html.AppendHeadCustomParts("<meta name=\"robots\" content=\"noindex, follow\">");
     }

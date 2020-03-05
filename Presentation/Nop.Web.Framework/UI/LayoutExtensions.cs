@@ -20,7 +20,7 @@ namespace Nop.Web.Framework.UI
         /// <param name="part">Title part</param>
         public static void AddTitleParts(this IHtmlHelper html, string part)
         {
-            var pageHeadBuilder  = EngineContext.Current.Resolve<IPageHeadBuilder>();
+            var pageHeadBuilder = EngineContext.Current.Resolve<IPageHeadBuilder>();
             pageHeadBuilder.AddTitleParts(part);
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Nop.Web.Framework.UI
         /// <param name="part">Title part</param>
         public static void AppendTitleParts(this IHtmlHelper html, string part)
         {
-            var pageHeadBuilder  = EngineContext.Current.Resolve<IPageHeadBuilder>();
+            var pageHeadBuilder = EngineContext.Current.Resolve<IPageHeadBuilder>();
             pageHeadBuilder.AppendTitleParts(part);
         }
         /// <summary>
@@ -242,7 +242,7 @@ namespace Nop.Web.Framework.UI
         /// <param name="src">Script path (minified version)</param>
         /// <param name="debugSrc">Script path (full debug version). If empty, then minified version will be used</param>
         /// <param name="excludeFromBundle">A value indicating whether to exclude this script from bundling</param>
-        public static void AddCssFileParts(this IHtmlHelper html, ResourceLocation location, 
+        public static void AddCssFileParts(this IHtmlHelper html, ResourceLocation location,
             string src, string debugSrc = "", bool excludeFromBundle = false)
         {
             var pageHeadBuilder = EngineContext.Current.Resolve<IPageHeadBuilder>();
@@ -267,7 +267,7 @@ namespace Nop.Web.Framework.UI
         /// <param name="src">Script path (minified version)</param>
         /// <param name="debugSrc">Script path (full debug version). If empty, then minified version will be used</param>
         /// <param name="excludeFromBundle">A value indicating whether to exclude this script from bundling</param>
-        public static void AppendCssFileParts(this IHtmlHelper html, ResourceLocation location, 
+        public static void AppendCssFileParts(this IHtmlHelper html, ResourceLocation location,
             string src, string debugSrc = "", bool excludeFromBundle = false)
         {
             var pageHeadBuilder = EngineContext.Current.Resolve<IPageHeadBuilder>();
@@ -299,7 +299,9 @@ namespace Nop.Web.Framework.UI
             if (withQueryString)
             {
                 //add ordered query string parameters
-                var queryParameters = html.ViewContext.HttpContext.Request.Query.OrderBy(parameter => parameter.Key)
+                var queryParameters = html.ViewContext.HttpContext.Request.Query
+                    .Where(x => x.Key.Contains("specs") || x.Key.Contains("brand") || x.Key.Contains("pagenumber"))
+                    .OrderBy(parameter => parameter.Key)
                     .ToDictionary(parameter => parameter.Key, parameter => parameter.Value.ToString());
                 part = QueryHelpers.AddQueryString(part, queryParameters);
             }
