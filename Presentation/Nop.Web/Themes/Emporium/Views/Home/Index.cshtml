@@ -1,15 +1,26 @@
 ﻿@using Nop.Core
+@using Nop.Core.Domain.Seo
 @using Nop.Services.Configuration
 @inject ISettingService settingService
 @inject IStoreContext storeContext
+@inject Nop.Core.IWebHelper webHelper
+@inject SeoSettings seoSettings
 @{
     Layout = "_ColumnsOne";
 
     //page class
     Html.AppendPageCssClassParts("html-home-page");
 
+    Html.AddHomePageTitle("Магазин за Интернет Търговия");
+
     var homePageProductsCarouselBreakPoints =
         settingService.GetSettingByKey("EmporiumThemeSettings.ResponsiveBreakpointsForHomePageProducts", "", storeContext.CurrentStore.Id, true);
+
+    if (seoSettings.CanonicalUrlsEnabled)
+    {
+        var homePageUrl = Url.RouteUrl("Homepage", new { }, webHelper.CurrentRequestProtocol).ToLowerInvariant();
+        Html.AddCanonicalUrlParts(homePageUrl);
+    }
 }
 
 <input id="home-page-carousel-breakpoints" type="hidden" value="@homePageProductsCarouselBreakPoints" />
@@ -18,7 +29,7 @@
     <div class="page-body">
         @await Component.InvokeAsync("Widget", new { widgetZone = "emporium_home_page_info_boxes" })
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageTop })
-        @await Component.InvokeAsync("TopicBlock", new { systemName = "HomepageText" })
+        @*@await Component.InvokeAsync("TopicBlock", new { systemName = "HomepageText" })*@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeCategories })
         @await Component.InvokeAsync("HomepageCategories")
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeNews })
@@ -30,6 +41,7 @@
 
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeProducts })
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeBestSellers })
+        @await Component.InvokeAsync("TopicBlock", new { systemName = "MalkoPovecheZaMitBg" })
 
         <div class="two-row-carousels small-products">
             @await Component.InvokeAsync("HomepageProducts")

@@ -10,6 +10,8 @@
     Html.AddTitleParts(T("PageTitle.Wishlist").Text);
     //page class
     Html.AppendPageCssClassParts("html-wishlist-page");
+
+    Html.AppendHeadCustomParts("<meta name=\"robots\" content=\"noindex, follow\">");
 }
 <div class="page wishlist-page">
     <div class="page-title">

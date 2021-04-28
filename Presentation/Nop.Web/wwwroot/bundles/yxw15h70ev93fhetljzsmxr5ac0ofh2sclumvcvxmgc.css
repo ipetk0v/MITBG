@@ -14128,6 +14128,42 @@ input.search-box-text.instant-search-busy {
 
 
 
+
+.category-navigation-list-wrapper.menuItemsAreClickable ul li:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.category-navigation-list-wrapper.menuItemsAreClickable ul li .with-subcategories {
+    float: left;
+    width: calc(100% - 42px);
+}
+.category-navigation-list-wrapper.menuItemsAreClickable ul li .with-subcategories:after {
+    display: none;
+}
+.category-navigation-list-wrapper.menuItemsAreClickable ul li .with-subcategories + .plus-button {
+    position: relative;
+    z-index: 1;
+    display: inline-block !important;
+    float: right;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.category-navigation-list-wrapper.menuItemsAreClickable ul li .with-subcategories + .plus-button:before {
+    content: "\6a";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-family: "emporium-icons";
+    font-size: 10px;
+    color: #8c8c8c;
+}
+
 @media all and (max-width: 1024px) {
 
     .mega-menu {
@@ -14136,10 +14172,7 @@ input.search-box-text.instant-search-busy {
     .header-menu .mega-menu-responsive > li {
         border-bottom: 0;
     }
-
-
 }
-
 
 @media all and (min-width: 1025px) {
 
@@ -14347,8 +14380,6 @@ input.search-box-text.instant-search-busy {
         overflow: visible;
     }
 
-
-
     .mega-menu .dropdown {
         position: absolute;
         margin: 0;
@@ -14476,7 +14507,79 @@ input.search-box-text.instant-search-busy {
         opacity: .8;
     }
 
+    /*** RESETING HOVER EVENTS FOR THE ON-CLICK FUNCTIONALITY ***/
 
+    .category-navigation-list-wrapper.menuItemsAreClickable:hover {
+        overflow: hidden;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable:hover .category-navigation-title {
+        background-color: transparent;
+        color: #444;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable:hover .category-navigation-title:before {
+        color: #8c8c8c;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable:hover .category-navigation-list {
+        margin-top: 10px;
+        opacity: 0;
+        pointer-events: none;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable ul li:hover > .sublist-wrap {
+        opacity: 0;
+        pointer-events: none;
+        overflow: hidden;
+        width: 0 !important;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable ul li:hover > .sublist-wrap > .sublist {
+        border-width: 1px 0;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable ul li:hover > .sublist-wrap > .sublist > li {
+        opacity: 0;
+        transition: none;
+    }
+    .menuItemsAreClickable .category-navigation-list > li:hover .dropdown {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /*** ON-CLICK MENU STYLING ***/
+
+    .category-navigation-list-wrapper.menuItemsAreClickable .category-navigation-title {
+        cursor: pointer;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable.opened {
+        overflow: visible;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable.opened .category-navigation-title {
+        background-color: #eebe00;
+        color: #fff;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable.opened .category-navigation-title:before {
+        color: #fff;
+    }
+   .category-navigation-list-wrapper.menuItemsAreClickable.opened  .category-navigation-list {
+        margin-top: 0;
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable.opened ul li > .sublist-wrap.active {
+        opacity: 1;
+        pointer-events: auto;
+        overflow: visible;
+        width: 100% !important;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable.opened ul li > .sublist-wrap.active > .sublist {
+        border-width: 1px;
+    }
+    .category-navigation-list-wrapper.menuItemsAreClickable.opened ul li > .sublist-wrap.active > .sublist > li {
+        opacity: 1;
+        transition: all .1s ease-in .3s;
+    }
+
+    .menuItemsAreClickable .category-navigation-list > li .dropdown.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
 
 /*
@@ -16384,12 +16487,12 @@ input.productQuantityTextBox {
 .nop-jcarousel.vendor-grid .item-box .picture img{
     backface-visibility: hidden;
     transition: all .3s ease;
-    opacity: .3;
+    opacity: .3 !important;
 }
 
 .nop-jcarousel.manufacturer-grid .item-box:hover .picture img,
 .nop-jcarousel.vendor-grid .item-box:hover .picture img{
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 .nop-jcarousel.manufacturer-grid .item-box .picture a:before,

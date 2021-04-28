@@ -11,16 +11,40 @@
 @{
     var logoPath = $"~/Themes/{themeContext.WorkingThemeName}/Content/img/logo.png";
     var themeLogo = await Component.InvokeAsync("Widget", new { widgetZone = "emporium_theme_logo" });
+
+    var controllerName = Url.ActionContext.RouteData.Values["controller"].ToString();
+    var actionName = Url.ActionContext.RouteData.Values["action"].ToString();
+
+    //current category ID
+    bool isHomePage = controllerName.Equals("home", StringComparison.InvariantCultureIgnoreCase) &&
+        actionName.Equals("index", StringComparison.InvariantCultureIgnoreCase);
 }
 
-<a href="@Url.RouteUrl("Homepage")" class="logo">
-    @if (!String.IsNullOrEmpty(themeLogo.ToHtmlString()))
-    {
-        @themeLogo
-    }
-    else
-    {
-        string storeName = localizationService.GetLocalized(storeContext.CurrentStore, x => x.Name);
-        <img title="" alt="@storeName" src="@Url.Content(logoPath)">
-    }
-</a>
+@if (isHomePage)
+{
+    <label data-href="@Url.RouteUrl("Homepage")" class="logo">
+        @if (!String.IsNullOrEmpty(themeLogo.ToHtmlString()))
+        {
+            @themeLogo
+        }
+        else
+        {
+            string storeName = localizationService.GetLocalized(storeContext.CurrentStore, x => x.Name);
+            <img title="" alt="@storeName" src="@Url.Content(logoPath)">
+        }
+    </label>
+}
+else
+{
+    <a href="@Url.RouteUrl("Homepage")" class="logo">
+        @if (!String.IsNullOrEmpty(themeLogo.ToHtmlString()))
+        {
+            @themeLogo
+        }
+        else
+        {
+            string storeName = localizationService.GetLocalized(storeContext.CurrentStore, x => x.Name);
+            <img title="" alt="@storeName" src="@Url.Content(logoPath)">
+        }
+    </a>
+}

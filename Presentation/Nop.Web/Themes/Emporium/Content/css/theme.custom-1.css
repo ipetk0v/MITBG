@@ -66,6 +66,7 @@ input[type="checkbox"]:checked + label:before,
 .login-form-in-header .in-header-register .register-button:hover,
 .login-form-in-header .inputs input:focus + .inputs-icons,
 .footer-block a:hover,
+.footer-block label:hover,
 .social-sharing a:hover:before,
 .footer-block .title:before,
 .footer-block .title:after,
@@ -84,6 +85,7 @@ input[type="checkbox"]:checked + label:before,
 .vendor-item:hover .title a,
 .manufacturer-item:hover .title a,
 .category-grid .item-box:hover .title a,
+.category-grid .item-box:hover .title label,
 .product-name .manufacturers .value,
 .overview .manufacturers .value,
 .product-review-links a:hover,
@@ -147,10 +149,14 @@ input[type="checkbox"]:checked + label:before,
 .compare-products-table .product-price td,
 .order-progress .active-step.last a span,
 .category-navigation-list-wrapper ul li:hover > a,
+.category-navigation-list-wrapper ul li:hover > label,
 .category-navigation-list-wrapper ul li:hover > span,
 .category-navigation-list-wrapper ul li:hover > a:after,
+.category-navigation-list-wrapper ul li:hover > label:after,
 .header-links a:hover,
 .header-links a:hover:before,
+.header-links label:hover,
+.header-links label:hover:before,
 .block.block-recently-viewed-products .list a:hover,
 .block-account-navigation.block .list a:hover,
 .block-account-navigation.block .list a:hover:after,
@@ -169,6 +175,7 @@ input[type="checkbox"]:checked + label:before,
 .home-page .jCarouselMainWrapper.small-products .nop-jcarousel .carousel-title:before,
 .mega-menu .sublist li:hover > a,
 .category-navigation-list .dropdown .box .title a,
+.category-navigation-list .dropdown .box .title label,
 .category-navigation-list .dropdown .box .subcategory-item a:hover,
 .mega-menu .manufacturers .box:hover .title,
 .mega-menu .vendors .box:hover .title,
@@ -221,7 +228,8 @@ input[type="checkbox"]:checked + label:before,
 .rich-blog-homepage .view-all a:hover,
 .rich-blog-homepage .view-all a:hover:after,
 .post-relations li a:hover,
-.spc-categories .category-title a:hover {
+.spc-categories .category-title a:hover,
+.spc-categories .category-title label:hover {
   color: #b04600;
 }
 .ajax-loading-block-window:before,
@@ -265,6 +273,7 @@ input[type="checkbox"]:checked + label:before,
 .eu-cookie-bar-notification button,
 .login-form-in-header .login-button,
 .category-navigation-list-wrapper:hover .category-navigation-title,
+.category-navigation-list-wrapper.menuItemsAreClickable.opened .category-navigation-title,
 .newsletter-email .newsletter-subscribe-button,
 .home-page-polls .poll .buttons input,
 .contact-vendor-button,
@@ -312,22 +321,62 @@ input[type="checkbox"]:checked + label:before,
     background-color: #f5191a;
   }
 }
-.ribbon-position:first-of-type {
-        z-index: 2;
+.fb_reset>div{
+display:none;
+}
+.payment-details{
+     display: inline-block;
 }
 
-.ribbon-position + .ribbon-position {
-        top: 40px;
+.payment-logo {
+     display: inline-block;
+     vertical-align: middle;
+     margin: 0 2% 0 0;
+     width: 50px;
 }
 
-.cart td, .data-table td, .forums-table-section td{
-  padding: 10px
+.pay-options img {
+margin: 0 -15px;
+max-width:100%;
 }
 
-.advantages-item img {
- width:100px;
+.contact-page .page-body form{
+border:unset;
 }
 
-.item-box .old-price+.actual-price, .item-box .actual-price+.tax-shipping-info{
-   display: block;
+.min-amount-warning{
+text-align: center;
+color:red;
+font-size: x-large;
+font-weight:bold;
+}
+
+.back-in-stock-subscription{
+margin: 15px 0 0px;
+}
+
+.fb_dialog {
+ right: 10pt !important;
+}
+
+.eu-cookie-bar-notification {
+    width: 100%;
+    max-width: 100%;
+    top: auto;
+    left: 0;
+    bottom: 0;
+    height: auto;
+    padding: 20px 10px;
+    border-radius: 0;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+}
+.eu-cookie-bar-notification .content > * {
+    margin: 0 5px;
+    display: inline-block;
+}
+
+.eu-cookie-bar-notification button{
+margin:0;
 }

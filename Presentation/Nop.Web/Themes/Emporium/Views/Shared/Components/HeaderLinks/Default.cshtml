@@ -23,13 +23,15 @@
         @if (Model.IsAuthenticated)
         {
             <li>
-                <a href="@Url.RouteUrl("CustomerInfo")" class="ico-account opener">@T("Account.MyAccount")@*@Model.CustomerName*@</a>
+                <label data-href="@Url.RouteUrl("CustomerInfo")" class="ico-account opener nofollowclass">@T("Account.MyAccount")</label>
+                @*<a href="@Url.RouteUrl("CustomerInfo")" class="ico-account opener">@T("Account.MyAccount")</a>*@
                 <div class="profile-menu-box">
                     <div class="close-side-menu">
                         <span class="close-side-menu-text">@Model.CustomerName</span>
-		                <span class="close-side-menu-btn">@T("SevenSpikes.Themes.Common.CloseMenu")</span>
-		            </div>
-                    <a href="@Url.RouteUrl("CustomerInfo")" class="ico-account">@T("Account.MyAccount")@*@Model.CustomerName*@</a>
+                        <span class="close-side-menu-btn">@T("SevenSpikes.Themes.Common.CloseMenu")</span>
+                    </div>
+                    <label data-href="@Url.RouteUrl("CustomerInfo")" class="ico-account">@T("Account.MyAccount")</label>
+                    @*<a href="@Url.RouteUrl("CustomerInfo")" class="ico-account">@T("Account.MyAccount")@</a>*@
                     @if (Model.AllowPrivateMessages)
                     {
                         <a href="@Url.RouteUrl("PrivateMessages", new { tab = "" })" class="ico-inbox">
@@ -37,38 +39,48 @@
                             <span class="inbox-unread">@Model.UnreadPrivateMessages</span>
                         </a>
                     }
-                    <a href="@Url.RouteUrl("Logout")" class="ico-logout">@T("Account.Logout")</a>
+                    <label data-href="@Url.RouteUrl("Logout")" class="ico-logout">@T("Account.Logout")</label>
+                    @*<a href="@Url.RouteUrl("Logout")" class="ico-logout">@T("Account.Logout")</a>*@
                 </div>
             </li>
         }
         else
         {
             <li>
-                <a href="@Url.RouteUrl("CustomerInfo")" class="ico-account opener"  data-loginUrl="@Url.Action("Login", "Customer")">@T("Account.MyAccount")@*@Model.CustomerName*@</a>
-                <div class="profile-menu-box @if (shouldShowLoginFormInHeader && !isLoginPage){<text>login-form-in-header</text>}">
+                <label data-href="@Url.RouteUrl("CustomerInfo")" class="ico-account opener nofollowclass" data-loginUrl="@Url.Action("Login", "Customer")">@T("Account.MyAccount")</label>
+                @*<a href="@Url.RouteUrl("CustomerInfo")" class="ico-account opener" data-loginUrl="@Url.Action("Login", "Customer")">@T("Account.MyAccount")</a>*@
+                <div class="profile-menu-box @if (shouldShowLoginFormInHeader && !isLoginPage)
+                                             {<text>login-form-in-header</text>}">
                     <div class="close-side-menu">
                         <span class="close-side-menu-text">@T("Account.MyAccount")</span>
                         <span class="close-side-menu-btn">@T("SevenSpikes.Themes.Common.CloseMenu")</span>
                     </div>
                     <div class="header-form-holder">
-                        <a href="@Url.RouteUrl("Register")" class="ico-register">@T("Account.Register")</a>
-                        <a href="@Url.RouteUrl("Login")" class="ico-login">@T("Account.Login")</a>
+                        <label data-href="@Url.RouteUrl("Register")" class="ico-register">@T("Account.Register")</label>
+                        <label data-href="@Url.RouteUrl("Login")" class="ico-login">@T("Account.Login")</label>
+                        @*<a href="@Url.RouteUrl("Register")" class="ico-register">@T("Account.Register")</a>
+                        <a href="@Url.RouteUrl("Login")" class="ico-login">@T("Account.Login")</a>*@
                     </div>
                 </div>
             </li>
         }
         @if (compareProductsEnabled)
         {
-            <li><a href="@Url.RouteUrl("CompareProducts")" class="ico-compare">@T("Products.Compare.List")</a></li>
+            <li><label data-href="@Url.RouteUrl("CompareProducts")" class="ico-compare">@T("Products.Compare.List")</label></li>
+            @*<li><a href="@Url.RouteUrl("CompareProducts")" class="ico-compare">@T("Products.Compare.List")</a></li>*@
         }
 
         @if (Model.WishlistEnabled)
         {
             <li>
-                <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
+                <label data-href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
                     <span class="wishlist-label">@T("Wishlist")</span>
                     <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
-                </a>
+                </label>
+                @*<a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
+                    <span class="wishlist-label">@T("Wishlist")</span>
+                    <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
+                </a>*@
             </li>
         }
 

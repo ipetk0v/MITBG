@@ -414,6 +414,18 @@ script {
 /*********** GLOBAL STYLES **********/
 
 
+@font-face {
+	font-family: 'emporium-icons';
+	src: url('../icons/emporium-icons.eot?xwq28l');
+	src: url('../icons/emporium-icons.eot?xwq28l#iefix') format('embedded-opentype'),
+	url('../icons/emporium-icons.ttf?xwq28l') format('truetype'),
+	url('../icons/emporium-icons.woff?xwq28l') format('woff'),
+	url('../icons/emporium-icons.svg?xwq28l#emporium-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+    font-display: swap;
+}
+
 body {
 	max-width: 100%;
 	overflow-x: hidden; /* responsive navigation & filters scroll bug fix*/
@@ -843,11 +855,13 @@ label, label + * {
 .field-validation-error *,
 .username-not-available-status,
 .poll-vote-error, .password-error {
-	display: block;
-	margin: 2px 0 0;
-	font-size: 13px;
-	color: #ff4f60;
-	font-weight: 700;
+    display: block;
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: #ff4f60;
+    font-weight: 700;
+    text-align: right;
+    white-space: normal;
 }
 
 .page-body > .message-error,
@@ -884,17 +898,6 @@ label, label + * {
 
 /*********** GLOBAL TABLES ***********/
 
-
-@font-face {
-	font-family: 'emporium-icons';
-	src:  url('../icons/emporium-icons.eot?xwq28l');
-	src:  url('../icons/emporium-icons.eot?xwq28l#iefix') format('embedded-opentype'),
-	url('../icons/emporium-icons.ttf?xwq28l') format('truetype'),
-	url('../icons/emporium-icons.woff?xwq28l') format('woff'),
-	url('../icons/emporium-icons.svg?xwq28l#emporium-icons') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
 
 .table-wrapper {
 	overflow-x: auto;
@@ -2181,6 +2184,7 @@ input + .inputs-icons {
 	border-top: 3px solid #f6f6f6;
 	background-color: #fff;
 	text-align: center;
+    overflow: hidden;
 }
 
 .footer-upper {
@@ -7379,7 +7383,7 @@ label[for="Newsletter"],
 	line-height: 60px;
 }
 
-.opc .selector input[type="checkbox"] ~ label:before {
+.opc input[type="checkbox"] ~ label:before {
 	content: "";
 	display: inline-block;
 	margin-left: 10px;
@@ -7389,16 +7393,16 @@ label[for="Newsletter"],
 	vertical-align: text-top;
 	background-color: #fff;
 }
-.opc .selector input[type="checkbox"]:checked ~ label:before {
+.opc input[type="checkbox"]:checked ~ label:before {
 	margin-right: 1px;
 	width: 16px;
 	height: 16px;
-	box-shadow: 0 0 2px 0 #929292;
+	box-shadow: 0 0 0 1px #e7e7e7;
 	border: 3px solid #fff;
 	background-color: #97c300;
 }
 
-.opc .selector input[type="checkbox"] ~ label {
+.opc  input[type="checkbox"] ~ label {
     font-weight: 700;
     color: #444;
 }
@@ -7426,6 +7430,9 @@ label[for="Newsletter"],
 	font-size: 18px;
 	color: #444;
 	font-weight: 300;
+}
+.opc .step-title .number {
+    margin: 0 0 0 5px;
 }
 .opc > li.active .step-title .number,
 .opc > li.active .step-title .title {
@@ -7477,11 +7484,12 @@ label[for="Newsletter"],
 }
 
 .opc #opc-confirm_order .buttons,
-.opc .checkout-data>div:not(.section) {
-	float: right;
-	clear: both;
-	width: 100%;
-	margin: 30px 0 0;
+.opc #opc-payment_info .buttons,
+.opc .checkout-data > div:not(.section) {
+    float: right;
+    clear: both;
+    width: 100%;
+    margin: 30px 0 0;
 }
 
 .opc .back-link {

@@ -531,7 +531,7 @@
 
 .mobile-flyout-wrapper .flyout-cart-scroll-area {
 	max-height: calc(100vh - 97px);
-	overflow: hidden;
+	overflow-y: scroll;
 }
 
 .mobile-flyout-wrapper {

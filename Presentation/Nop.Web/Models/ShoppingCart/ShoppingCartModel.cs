@@ -72,6 +72,8 @@ namespace Nop.Web.Models.ShoppingCart
 
             public string SubTotal { get; set; }
 
+            public bool IsFreeShipping { get; set; }
+
             public string Discount { get; set; }
             public int? MaximumDiscountedQty { get; set; }
 

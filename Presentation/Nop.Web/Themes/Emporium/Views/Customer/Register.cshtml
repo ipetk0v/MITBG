@@ -6,6 +6,9 @@
     Html.AddTitleParts(T("PageTitle.Register").Text);
     //page class
     Html.AppendPageCssClassParts("html-registration-page");
+
+    Html.AppendHeadCustomParts("<meta name=\"robots\" content=\"noindex, follow\">");
+
 }
 
 <div class="page registration-page">

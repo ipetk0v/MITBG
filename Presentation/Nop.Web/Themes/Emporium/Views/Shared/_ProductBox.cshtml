@@ -64,9 +64,9 @@
         </div>
     </div>
     <div class="details">
-        <h2 class="product-title">
+        <p class="product-title">
             <a href="@Url.RouteUrl("Product", new {SeName = Model.SeName})">@Model.Name</a>
-        </h2>
+        </p>
         @if (catalogSettings.ShowSkuOnCatalogPages && !string.IsNullOrEmpty(Model.Sku))
         {
             <div class="sku">

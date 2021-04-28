@@ -1,4 +1,10 @@
-﻿@model BlogPostModel
+﻿@using Nop.Core.Domain.Seo
+@using Nop.Core.Infrastructure
+@using Nop.Services.Seo
+@model BlogPostModel
+@inject SeoSettings seoSettings
+@inject Nop.Core.IWebHelper webHelper
+
 @{
     Layout = "_ColumnsOne";
 
@@ -9,14 +15,21 @@
     Html.AddMetaKeywordParts(Model.MetaKeywords);
     //page class
     Html.AppendPageCssClassParts("html-blogpost-page");
+
+    if (seoSettings.CanonicalUrlsEnabled)
+    {
+        var blogUrl = Url.RouteUrl("Blog", new { }, webHelper.CurrentRequestProtocol).ToLowerInvariant();
+        var result = $"{blogUrl}/{Model.SeName}";
+        Html.AddCanonicalUrlParts(result, seoSettings.QueryStringInCanonicalUrlsEnabled);
+    }
 }
 @*@section left {
-    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.LeftSideColumnBlogBefore })
-    @await Component.InvokeAsync("BlogMonths")
-    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.LeftSideColumnAfterBlogArchive })
-    @await Component.InvokeAsync("BlogTags")
-    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.LeftSideColumnBlogAfter })
-}*@
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.LeftSideColumnBlogBefore })
+        @await Component.InvokeAsync("BlogMonths")
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.LeftSideColumnAfterBlogArchive })
+        @await Component.InvokeAsync("BlogTags")
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.LeftSideColumnBlogAfter })
+    }*@
 <div class="page blogpost-page">
     @await Component.InvokeAsync("Widget", new { widgetZone = "blogpost_page_top", additionalData = Model.Id })
     <a class="back-to-all-button" href="@Url.RouteUrl("Blog")">@T("SevenSpikes.Themes.Emporium.Common.BackToAll")</a>

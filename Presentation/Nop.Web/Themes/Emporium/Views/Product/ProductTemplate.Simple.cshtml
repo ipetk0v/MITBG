@@ -81,7 +81,7 @@
                         </div>
                         <!--product breadcrumb-->
                         @await Html.PartialAsync("_ProductBreadcrumb", Model.Breadcrumb)
-                        @await Html.PartialAsync("_Discontinued", Model)
+                        @*@await Html.PartialAsync("_Discontinued", Model)*@
                         <div class="product-name">
                             <h1 itemprop="name">
                                 @Model.Name
@@ -144,10 +144,14 @@
                                     dataDictPrice.TemplateInfo.HtmlFieldPrefix = $"price_{Model.Id}";
                                     @await Html.PartialAsync("_ProductPrice", Model.ProductPrice, dataDictPrice)
 
-                                    var dataDictAddToCart = new ViewDataDictionary(ViewData);
-                                    dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
-                                    @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
+                                    if (!Model.DisplayBackInStockSubscription)
+                                    {
+                                        var dataDictAddToCart = new ViewDataDictionary(ViewData);
+                                        dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
+                                        @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)   
+                                    }
                                 }
+                                @await Html.PartialAsync("_Discontinued", Model)
                                 <!--sample download-->
                                 @await Html.PartialAsync("_DownloadSample", Model)
                                 <!--add to wishlist-->

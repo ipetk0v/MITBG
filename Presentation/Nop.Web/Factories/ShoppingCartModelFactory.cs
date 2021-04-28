@@ -456,6 +456,8 @@ namespace Nop.Web.Factories
                     _mediaSettings.CartThumbPictureSize, true, cartItemModel.ProductName);
             }
 
+            cartItemModel.IsFreeShipping = sci.Product.IsFreeShipping;
+
             //item warnings
             var itemWarnings = _shoppingCartService.GetShoppingCartItemWarnings(
                 _workContext.CurrentCustomer,

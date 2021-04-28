@@ -6,6 +6,8 @@
     Html.AddTitleParts(T("PageTitle.CompareProducts").Text);
     //page class
     Html.AppendPageCssClassParts("html-compare-products-page");
+
+    Html.AppendHeadCustomParts("<meta name=\"robots\" content=\"noindex, follow\">");
 }
 @{
     var columnWidth = "";
@@ -13,7 +15,7 @@
     {
         columnWidth = Math.Round((decimal)(90M / Model.Products.Count), 0).ToString() + "%";
     }
-    
+
     var specificationAttributes = new List<ProductSpecificationModel>();
     foreach (var product in Model.Products)
     {

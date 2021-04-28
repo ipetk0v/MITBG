@@ -1,5 +1,15 @@
 @media all and (max-width: 1024px) {
 
+    .login-page .external-authentication > * {
+        margin: 20px -10px 0;
+        padding:18px;
+    }
+
+    .login-page .external-authentication > .facebook-login-block {
+        margin: 10px -7px 0;
+        padding:0;
+    }
+
 .header-upper .header-selectors-wrapper {
 	display: none;
 }
@@ -164,24 +174,26 @@
 	vertical-align: top;
 }
 
-.responsive-nav-wrapper > div > span,
-.responsive-nav-wrapper > div > a {
-	position: relative;
-	display: block;
-	width: 40px;
-	height: 40px;
-	line-height: 40px;
-	font-size: 0;
-	cursor: pointer;
-}
+    .responsive-nav-wrapper > div > span,
+    .responsive-nav-wrapper > div > a,
+    .responsive-nav-wrapper > div > label {
+        position: relative;
+        display: block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 0;
+        cursor: pointer;
+    }
 
-.responsive-nav-wrapper > div > span:before,
-.responsive-nav-wrapper > div > a:before {
-	display: inline-block;
-	font-family: "emporium-icons";
-	font-size: 18px;
-	color: #8e8e8e;
-}
+        .responsive-nav-wrapper > div > span:before,
+        .responsive-nav-wrapper > div > a:before,
+        .responsive-nav-wrapper > div > label:before {
+            display: inline-block;
+            font-family: "emporium-icons";
+            font-size: 18px;
+            color: #8e8e8e;
+        }
 
 .responsive-nav-wrapper .menu-title span:before {
 	content: "\67";
@@ -191,20 +203,22 @@
 	content: "\65";
 }
 
-.shopping-cart-link > a {
-	position: relative;
-	display: block;
-	width: 40px;
-	height: 40px;
-	line-height: 40px;
-	font-size: 0;
-}
-.shopping-cart-link > a:before {
-	content: "\64";
-	display: inline-block;
-	font-family: "emporium-icons";
-	font-size: 24px;	
-}
+    .shopping-cart-link > a,
+    .shopping-cart-link > label {
+        position: relative;
+        display: block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 0;
+    }
+        .shopping-cart-link > a:before,
+        .shopping-cart-link > label:before {
+            content: "\64";
+            display: inline-block;
+            font-family: "emporium-icons";
+            font-size: 24px;
+        }
 
 .shopping-cart-link .cart-qty {
 	position: absolute;
@@ -367,20 +381,21 @@
 	display: block;
 	clear: both;
 }
-.header-menu > ul li > a,
-.header-menu > ul li > span,
-.profile-menu-box > a,
-.header-form-holder > a {
-	display: block;
-	position: relative;
-	z-index: 0;
-	padding: 16px 18px !important;
-	font-size: 13px;
-	line-height: 17px;
-	color: #8c8c8c;
-	font-weight: 700;
-	text-transform: uppercase;
-}
+    .header-menu > ul li > a,
+    .header-menu > ul li > label,
+    .header-menu > ul li > span,
+    .profile-menu-box > a,
+    .header-form-holder > a {
+        display: block;
+        position: relative;
+        z-index: 0;
+        padding: 16px 18px !important;
+        font-size: 13px;
+        line-height: 17px;
+        color: #8c8c8c;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
 
 .header-menu > ul li {
 	border-bottom: 3px solid #fff;
@@ -531,7 +546,7 @@
 
 .mobile-flyout-wrapper .flyout-cart-scroll-area {
 	max-height: calc(100vh - 97px);
-	overflow: hidden;
+	overflow-y: scroll;
 }
 
 .mobile-flyout-wrapper {

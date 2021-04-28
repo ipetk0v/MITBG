@@ -329,7 +329,7 @@ namespace Nop.Services.Payments
             {
                 //percentage
                 var orderTotalCalculationService = EngineContext.Current.Resolve<IOrderTotalCalculationService>();
-                var orderTotalWithoutPaymentFee = orderTotalCalculationService.GetShoppingCartTotal(cart, usePaymentMethodAdditionalFee: false);
+                var orderTotalWithoutPaymentFee = orderTotalCalculationService.GetShoppingCartTotal(cart.Where(x => x.Product.IsFreeShipping == false).ToList(), usePaymentMethodAdditionalFee: false);
                 result = (decimal)((float)orderTotalWithoutPaymentFee * (float)fee / 100f);
             }
             else

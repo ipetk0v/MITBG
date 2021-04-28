@@ -9,10 +9,10 @@
     var subZero = priceFormatter.FormatPrice(0m, false, workContext.WorkingCurrency, workContext.WorkingLanguage, true);
 }
 
-
 <div id="flyout-cart" class="flyout-cart" data-removeItemFromCartUrl="@Url.Action("RemoveItemFromCart", "EmporiumTheme")" data-flyoutCartUrl="@Url.Action("FlyoutShoppingCart", "EmporiumTheme")">
     <div id="topcartlink">
-        <a href="@Url.RouteUrl("ShoppingCart")" class="ico-cart">
+        @*<a href="@Url.RouteUrl("ShoppingCart")" class="ico-cart">*@
+        <label data-href="@Url.RouteUrl("Checkout")" class="ico-cart">
             <span class="cart-qty">@Model.TotalProducts</span>
             <span class="cart-label">
                 @if (Model.TotalProducts == 0)
@@ -24,7 +24,20 @@
                     @Model.SubTotal
                 }
             </span>
-        </a>
+        </label>
+        @*<a href="@Url.RouteUrl("Checkout")" class="ico-cart">
+                <span class="cart-qty">@Model.TotalProducts</span>
+                <span class="cart-label">
+                    @if (Model.TotalProducts == 0)
+                    {
+                        @subZero
+                    }
+                    else
+                    {
+                        @Model.SubTotal
+                    }
+                </span>
+            </a>*@
     </div>
     <div class="mini-shopping-cart">
         <div class="flyout-cart-scroll-area">
@@ -88,11 +101,14 @@
                             {
                                 checkoutUrl = Url.RouteUrl("Checkout");
                             }
+
+                            checkoutUrl = Url.RouteUrl("Checkout");
                             <input type="button" value="@T("Checkout.Button")" class="button-1 checkout-button" onclick="setLocation('@checkoutUrl')" />
                         }
                         @if (Model.DisplayShoppingCartButton)
                         {
-                            <input type="button" value="@T("ShoppingCart.Mini.ViewCart")" class="button-1 cart-button" onclick="setLocation('@(Url.RouteUrl("ShoppingCart"))')" />
+                            <input type="button" value="@T("Checkout.Button")" class="button-1 cart-button" onclick="setLocation('@(Url.RouteUrl("Checkout"))')" />
+                            @*<input type="button" value="@T("ShoppingCart.Mini.ViewCart")" class="button-1 cart-button" onclick="setLocation('@(Url.RouteUrl("ShoppingCart"))')" />*@
 
                         }
                     </div>

@@ -1,11 +1,77 @@
-﻿@model BlogPostListModel
+﻿@using Nop.Core.Domain.Seo
+@model BlogPostListModel
+
+@inject Nop.Core.IWebHelper webHelper
+@inject SeoSettings seoSettings
+
 @{
     Layout = "_ColumnsTwo";
 
     //title
-    Html.AddTitleParts(T("PageTitle.Blog").Text);
+    //Html.AddTitleParts(T("PageTitle.Blog").Text);
     //page class
     Html.AppendPageCssClassParts("html-blog-page");
+
+    if (seoSettings.CanonicalUrlsEnabled)
+    {
+        var categoryUrl = Url.RouteUrl("Blog", new { }, webHelper.CurrentRequestProtocol).ToLowerInvariant();
+        Html.AddCanonicalUrlParts(categoryUrl, seoSettings.QueryStringInCanonicalUrlsEnabled);
+    }
+
+    var blogName = T("Blog").Value;
+
+    if (string.IsNullOrEmpty(Model.PagingFilteringContext.Tag))
+    {
+        if (Model.PagingFilteringContext.GetParsedMonth().HasValue)
+        {
+            blogName = string.Format(T("Blog.FilteredByMonth").Text, Model.PagingFilteringContext.GetParsedMonth().Value.Year, Model.PagingFilteringContext.GetParsedMonth().Value.ToString("MMMM"));
+        }
+    }
+    else
+    {
+        blogName = string.Format(T("Blog.TaggedWith").Text, Model.PagingFilteringContext.Tag);
+    }
+
+    var metaTitle = $"{blogName}";
+    var metaDescription = $"{Model.BlogPosts.Count} {blogName} статии от Магазин за интернет търговия - MIT.BG. Полезна и актуална информация за електроника, бяла техника, черна техника, автомобилни части и аксесоари, дом и градина, мода и др.";
+
+    if (Model.PagingFilteringContext.PageNumber > 1)
+    {
+        metaTitle += $" - Страница {Model.PagingFilteringContext.PageNumber}";
+        metaDescription += $" - Страница {Model.PagingFilteringContext.PageNumber}";
+        blogName += $" - Страница {Model.PagingFilteringContext.PageNumber}";
+    }
+
+    //meta
+    Html.AddTitleParts(metaTitle);
+    Html.AddMetaDescriptionParts(metaDescription);
+
+    if (!Html.Pager(Model.PagingFilteringContext).QueryParam("pagenumber").IsEmpty())
+    {
+        var path = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}";
+
+        if (Model.PagingFilteringContext.PageNumber > 0)
+        {
+            if (Model.PagingFilteringContext.PageNumber == Model.PagingFilteringContext.TotalPages)
+            {
+                Html.AppendHeadCustomParts($"<link rel=\"prev\" href=\"{path}&pagenumber={Model.PagingFilteringContext.PageNumber - 1}\">");
+            }
+            else if (Model.PagingFilteringContext.PageNumber == 2)
+            {
+                Html.AppendHeadCustomParts($"<link rel=\"prev\" href=\"{path}\">");
+                Html.AppendHeadCustomParts($"<link rel=\"next\" href=\"{path}&pagenumber={Model.PagingFilteringContext.PageNumber + 1}\">");
+            }
+            else
+            {
+                Html.AppendHeadCustomParts($"<link rel=\"prev\" href=\"{path}&pagenumber={Model.PagingFilteringContext.PageNumber - 1}\">");
+                Html.AppendHeadCustomParts($"<link rel=\"next\" href=\"{path}&pagenumber={Model.PagingFilteringContext.PageNumber + 1}\">");
+            }
+        }
+        else
+        {
+            Html.AppendHeadCustomParts($"<link rel=\"next\" href=\"{path}&pagenumber={Model.PagingFilteringContext.PageNumber + 2}\">");
+        }
+    }
 }
 @section left {
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.LeftSideColumnBlogBefore })
@@ -17,23 +83,7 @@
 <div class="page blog-page">
     <div class="page-title">
         <a href="@Url.RouteUrl("BlogRSS", new { languageId = Model.WorkingLanguageId })" class="link-rss" title="@T("Blog.RSS.Hint")">@T("Blog.RSS")</a>
-        <h1>
-            @if (string.IsNullOrEmpty(Model.PagingFilteringContext.Tag))
-            {
-                if (Model.PagingFilteringContext.GetParsedMonth().HasValue)
-                {
-                @string.Format(T("Blog.FilteredByMonth").Text, Model.PagingFilteringContext.GetParsedMonth().Value.Year, Model.PagingFilteringContext.GetParsedMonth().Value.ToString("MMMM"))
-                }
-                else
-                {
-                @T("Blog")
-                }
-            }
-            else
-            {
-                @string.Format(T("Blog.TaggedWith").Text, Model.PagingFilteringContext.Tag)
-            }
-        </h1>
+        <h1>@blogName</h1>
     </div>
     <div class="page-body">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.BlogListPageBeforePosts })
@@ -60,24 +110,24 @@
                         </div>
                         @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.BlogListPageAfterPostBody, additionalData = item })*@
                         @*<div class="blog-details">
-                            @if (item.Tags.Count > 0)
-                            {
-                                <div class="tags">
-                                    <label>@T("Blog.Tags"):</label>
-                                    <ul>
-                                        @for (var i = 0; i < item.Tags.Count; i++)
-                                        {
-                                            var tag = item.Tags[i];
-                                            <li><a href="@Url.RouteUrl("BlogByTag", new {tag = tag})">@tag</a></li>
-                                            if (i != item.Tags.Count - 1)
+                                @if (item.Tags.Count > 0)
+                                {
+                                    <div class="tags">
+                                        <label>@T("Blog.Tags"):</label>
+                                        <ul>
+                                            @for (var i = 0; i < item.Tags.Count; i++)
                                             {
-                                                <li class="separator">,</li>
+                                                var tag = item.Tags[i];
+                                                <li><a href="@Url.RouteUrl("BlogByTag", new {tag = tag})">@tag</a></li>
+                                                if (i != item.Tags.Count - 1)
+                                                {
+                                                    <li class="separator">,</li>
+                                                }
                                             }
-                                        }
-                                    </ul>
-                                </div>
-                            }
-                        </div>*@
+                                        </ul>
+                                    </div>
+                                }
+                            </div>*@
                         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.BlogListPageInsidePost, additionalData = item })
                     </div>
                 </div>

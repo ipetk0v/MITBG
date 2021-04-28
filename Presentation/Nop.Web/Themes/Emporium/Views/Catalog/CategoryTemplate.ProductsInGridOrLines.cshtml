@@ -1,13 +1,9 @@
 ﻿@model CategoryModel
-
 @using Nop.Core.Domain.Common
 @using Nop.Core.Domain.Seo
-
 @inject Nop.Core.IWebHelper webHelper
 @inject SeoSettings seoSettings
 @inject CommonSettings commonSettings
-@inject IViewComponentSelector viewComponentSelector
-
 @{
     Layout = "_ColumnsTwo";
 
@@ -28,8 +24,8 @@
     var breadcrumbDelimiter = commonSettings.BreadcrumbDelimiter;
 }
 @*category breadcrumb*@
-
-<div class="page category-page">
+@section Breadcrumb
+    {
     @if (Model.DisplayCategoryBreadcrumb)
     {
         <div class="breadcrumb">
@@ -65,18 +61,13 @@
         </div>
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsAfterBreadcrumb, additionalData = Model })
     }
+}
+<div class="page category-page">
     <div class="page-title">
         <h1>@Model.Name</h1>
     </div>
     <div class="page-body">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsTop, additionalData = Model })
-        @*description*@
-        @if (!string.IsNullOrWhiteSpace(Model.Description))
-        {
-            <div class="category-description">
-                @Html.Raw(Model.Description)
-            </div>
-        }
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBeforeSubcategories, additionalData = Model })
         @*subcategories*@
         @if (Model.SubCategories.Count > 0)
@@ -89,19 +80,7 @@
                             <div class="sub-category-item">
                                 <div class="picture">
                                     <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
-                                        @if (viewComponentSelector.SelectComponent("LazyLoadImage") != null)
-                                        {
-                                            @await Component.InvokeAsync("LazyLoadImage", new(string Key, string Value)[] 
-                                            {
-                                                ("src", item.PictureModel.ImageUrl),
-                                                ("alt", item.PictureModel.AlternateText),
-                                                ("title", item.PictureModel.Title)
-                                            })
-                                        }
-                                        else
-                                        {
-                                            <img alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title" />
-                                        }
+                                        <img alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title" />
                                     </a>
                                 </div>
                                 <h2 class="title">
@@ -175,7 +154,13 @@
                 @pager
             </div>
         }
-        <div class="returned-products-marker"></div>
+        @*description*@
+        @if (!string.IsNullOrWhiteSpace(Model.Description))
+        {
+            <div class="category-description" style="padding-top:5%; text-align: left;">
+                @Html.Raw(Model.Description)
+            </div>
+        }
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBottom, additionalData = Model })
     </div>
 </div>

@@ -6,11 +6,15 @@
 
 @media all and (min-width: 768px) {
 
-/* GLOBAL STYLES */
-.master-wrapper-content,
-.html-account-page .master-wrapper-content {
-	padding: 60px 20px;
-}
+    .login-page .external-authentication > .facebook-login-block {
+        margin: 10px -17px 0;
+    }
+
+    /* GLOBAL STYLES */
+    .master-wrapper-content,
+    .html-account-page .master-wrapper-content {
+        padding: 60px 20px;
+    }
 
 .page {
 	clear: both;
